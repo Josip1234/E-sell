@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
-import sell.files.CreateFolders;
+import sell.files.Folder;
 
 @Slf4j
 @Controller
@@ -23,15 +23,14 @@ import sell.files.CreateFolders;
 public class RegistrationController {
 	private final SellerRepository repository;
 	
-	CreateFolders folders;
+	Folder folders = new Folder();
 	
 	@Autowired
 	PasswordEncoder encoder;
 	
 	@Autowired
-	public RegistrationController(SellerRepository repository, CreateFolders folders) {
+	public RegistrationController(SellerRepository repository) {
 		this.repository=repository;
-		this.folders=folders;
 	}
 @GetMapping
 public String registration(Model model) {

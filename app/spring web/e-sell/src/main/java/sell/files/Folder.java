@@ -10,7 +10,7 @@ import sell.articles.Articles;
 import sell.sellers.Sellers;
 @Data
 @NoArgsConstructor
-public class Folder implements CreateFolders {
+public class Folder {
    private boolean done;
    private String folderName;
    private File file;
@@ -28,7 +28,7 @@ public class Folder implements CreateFolders {
 	   this.folderName=folderName;
    }
    
-   @Override
+   
 	public boolean createFolder(Object object) {
 	   if(object instanceof Sellers) {
 		   
