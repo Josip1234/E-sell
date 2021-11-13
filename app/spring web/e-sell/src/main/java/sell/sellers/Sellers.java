@@ -18,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import sell.password.ValidPassword;
@@ -25,6 +26,8 @@ import sell.password.ValidPassword;
 
 @Data
 @RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Sellers {
 	@Null
 	private Integer id;
@@ -43,6 +46,7 @@ public class Sellers {
 	@NotBlank(message = "Location is required.")
 	@Size(min=1, message = "Location must contain at least 1 letter.")
 	private String location;
+	@NonNull
 	@NotNull
 	@NotBlank(message = "Nickname is required.")
 	@Size(min=1, max=50, message ="Nickname must be between 1 and 50 letters.")
@@ -56,12 +60,19 @@ public class Sellers {
 	@Size(min=10, max=50, message = "Email must have at least 10 letters, or 50 letters max.")
 	@Email(message = "Email must be correct.")
 	private String email;
+	@NonNull
 	@NotNull
 	@NotBlank(message = "Password is required.")
 	@Size(min=8, message = "Password must have at least 8 leters.")
 	@ValidPassword
 	private String hash_password;
 
+	public Sellers(Integer id,String nickname, String location, String contact) {
+	    this.id=id;
+		this.contact=contact;
+		this.nickname=nickname;
+		this.location=location;
+	}
 	public Sellers(String nickname, String location, String contact) {
 		this.contact=contact;
 		this.nickname=nickname;
