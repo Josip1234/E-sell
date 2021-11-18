@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 13, 2021 at 01:17 PM
+-- Generation Time: Nov 18, 2021 at 06:49 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -74,7 +74,7 @@ CREATE TABLE `article_basic_details` (
 CREATE TABLE `article_types` (
   `id` int(11) NOT NULL,
   `type` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `types_of_categories` int(11) NOT NULL
+  `types_of_categories` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci COMMENT='will be used by other table to get  type of products';
 
 -- --------------------------------------------------------
@@ -87,7 +87,7 @@ CREATE TABLE `category_or_subcategory` (
   `id` int(11) NOT NULL,
   `type` varchar(50) COLLATE utf8_croatian_ci NOT NULL,
   `lang` varchar(2) COLLATE utf8_croatian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci COMMENT='This will be used as structure creation in the menu of the page. Category, subcategory, subcategory will be labeledd article_type and it will be edited later on by the users. Categoy or subcategory will be accessed only by admins. Dekstop app will be created for that purpose.';
 
 -- --------------------------------------------------------
 
