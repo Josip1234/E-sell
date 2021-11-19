@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2021 at 06:49 PM
+-- Generation Time: Nov 19, 2021 at 09:46 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -76,6 +76,13 @@ CREATE TABLE `article_types` (
   `type` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `types_of_categories` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci COMMENT='will be used by other table to get  type of products';
+
+--
+-- Dumping data for table `article_types`
+--
+
+INSERT INTO `article_types` (`id`, `type`, `types_of_categories`) VALUES
+(1, 'Novi tip produkta', NULL);
 
 -- --------------------------------------------------------
 
@@ -273,7 +280,7 @@ ALTER TABLE `article_basic_details`
 -- AUTO_INCREMENT for table `article_types`
 --
 ALTER TABLE `article_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `category_or_subcategory`
