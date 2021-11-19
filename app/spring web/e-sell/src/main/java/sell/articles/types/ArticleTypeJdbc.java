@@ -24,7 +24,7 @@ public class ArticleTypeJdbc implements TypesRepository {
 	@Override
 	public Iterable<ArticleTypes> findAll() {
 		
-		return jdbc.query("select id,type from article_types", this::mapRowToTypes);
+		return jdbc.query("select id,type,types_of_categories from article_types", this::mapRowToTypes);
 	}
 
 	@Override
@@ -34,8 +34,11 @@ public class ArticleTypeJdbc implements TypesRepository {
 	}
 
 	@Override
-	public ArticleTypes save(Sellers seller) {
-		// TODO Auto-generated method stub
+	public ArticleTypes save(ArticleTypes types) {
+		jdbc.update(
+				"insert into article_types (type) values(?)",
+				types.getType()
+				);
 		return null;
 	}
 	

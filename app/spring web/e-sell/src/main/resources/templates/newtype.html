@@ -11,13 +11,29 @@
 </head>
 
 <body>
-    <div class="container">
-        <form action="" method="post">
-            <input type="text" name="type" placeholder="Electronics, Laptops...">
-            <input type="submit" value="Add type">
+ <div class="container">
 
+         <form method="post" th:action="@{/e-sell/en/articles/newtype}" th:object="${type}" class="row g-3 bg-dark text-white">
+ <div th:if="${#fields.hasErrors()}">
+        <span class="validationError text-danger">
+        Please correct the problems below and resubmit.
+        </span>
+      </div>
+            <div class="col-md-6">
+             <label for="type" class="form-label">Enter new type:</label>
+                <input type="text" th:field="*{type}"  class="form-control">
+                <span class="validationError text-danger" th:if="${#fields.hasErrors('type')}" 
+                th:errors="*{type}">
+                Type error
+                </span>
+
+            </div>
+       
+            <div class="col-12">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
         </form>
-    </div>
+</div>
 
 </body>
 

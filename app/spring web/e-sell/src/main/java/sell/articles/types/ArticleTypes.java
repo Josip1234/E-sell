@@ -21,6 +21,6 @@ private Integer id;
 private String type;
 //this is foreign key for tables category or subcategory. each number here will be connected to that table for making product categorization automaticly. 
 //user will choose it from select choice.
-@NotBlank(message = "Please choose category or subcategory for automaticly categorization of product.")
+@Null
 private Integer types_of_categories;
 }
