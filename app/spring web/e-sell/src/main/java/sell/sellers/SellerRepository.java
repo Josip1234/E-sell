@@ -3,7 +3,7 @@ package sell.sellers;
 public interface SellerRepository {
 
 	Iterable<Sellers> findAll();
-	Sellers findOne(String id);
+	Sellers findOne(String email);
 	Sellers save(Sellers seller);
 
 }

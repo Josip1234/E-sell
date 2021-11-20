@@ -2,6 +2,8 @@ package sell.articles;
 
 import javax.validation.Valid;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -13,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
+import sell.sellers.SellerRepository;
+import sell.sellers.Sellers;
 
 @Slf4j
 @Controller
@@ -20,11 +24,15 @@ import sell.articles.types.TypesRepository;
 public class ArticleController {
 
 	private final TypesRepository repository;
+	private final ArticleRepository articleRepository;
+	private final SellerRepository sellerRepository;
 	
 	
 	
-	public ArticleController(TypesRepository repository) {
+	public ArticleController(TypesRepository repository, ArticleRepository articleRepository,SellerRepository sellerRepository) {
 		this.repository = repository;
+		this.articleRepository=articleRepository;
+		this.sellerRepository=sellerRepository;
 	}
 
 	@GetMapping("/options")
@@ -33,9 +41,28 @@ public class ArticleController {
 	}
 	
 	@GetMapping("/newarticles")
-	public String newarticles() {
+	public String newarticles(Model model) {
+		model.addAttribute("article", new Articles());
 		return "newarticles";
 	}
+	@PostMapping("/newarticles")
+	public String addArticle(@Valid @ModelAttribute("article") Articles articles, Errors errors) {
+		Sellers sellers=sellerRepository.findOne(getUserEmail());
+		articles.setSeller(sellers.getNickname());
+		log.info(sellers.getNickname());
+
+		if(errors.hasErrors()) {
+			errors.getClass();
+			System.out.println(errors.toString());
+			return "newarticles";
+		}else {
+			log.info("Values:"+articles);
+			articleRepository.save(articles);
+			return "redirect:/e-sell/en/";
+		}
+	}
+	
+	
 	@GetMapping("/newtype")
 	public String newtype(Model model) {
 		model.addAttribute("type", new ArticleTypes());
@@ -54,6 +81,19 @@ public class ArticleController {
 			return "redirect:/e-sell/en/articles/newarticles";
 		}
 		
+	}
+	private String getUserEmail() {
+		String email="";
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+		  String username = ((UserDetails)principal).getUsername();
+		  email=username;
+		} else {
+		  String username = principal.toString();
+		  email=username;
+		}
+		return email;
 	}
 	
 }

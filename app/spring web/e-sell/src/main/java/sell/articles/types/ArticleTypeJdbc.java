@@ -39,7 +39,7 @@ public class ArticleTypeJdbc implements TypesRepository {
 				"insert into article_types (type) values(?)",
 				types.getType()
 				);
-		return null;
+		return types;
 	}
 	
 	private ArticleTypes mapRowToTypes(ResultSet rs, int rowNum) throws SQLException {

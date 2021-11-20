@@ -22,9 +22,9 @@ public class SellerDbRepo implements SellerRepository {
 	}
 
 	@Override
-	public Sellers findOne(String id) {
+	public Sellers findOne(String email) {
 		
-		return jdbc.queryForObject("select nickname,location,contact from Sellers where id=?", this::mapRowToSeller,id);
+		return jdbc.queryForObject("select nickname,location,contact from Sellers where email=?", this::mapRowToSeller,email);
 	}
 
 	private Sellers mapRowToSeller(ResultSet rs, int rowNum) throws SQLException {
