@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2021 at 09:46 PM
+-- Generation Time: Nov 20, 2021 at 08:23 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -49,6 +49,13 @@ CREATE TABLE `articles` (
   `seller` varchar(50) COLLATE utf8_croatian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
+(6, 1, 'rtgdsg', 'jobo');
+
 -- --------------------------------------------------------
 
 --
@@ -82,7 +89,8 @@ CREATE TABLE `article_types` (
 --
 
 INSERT INTO `article_types` (`id`, `type`, `types_of_categories`) VALUES
-(1, 'Novi tip produkta', NULL);
+(1, 'Novi tip produkta', NULL),
+(2, 'gdgdh', NULL);
 
 -- --------------------------------------------------------
 
@@ -114,16 +122,12 @@ CREATE TABLE `sellers` (
   `hash_password` longtext COLLATE utf8_croatian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `seller_information`
+-- Dumping data for table `sellers`
 --
 
-CREATE TABLE `seller_information` (
-  `id` int(11) NOT NULL,
-  `nickname` varchar(50) COLLATE utf8_croatian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+INSERT INTO `sellers` (`id`, `fname`, `lname`, `dateofbirth`, `location`, `nickname`, `contact`, `email`, `hash_password`) VALUES
+(1, 'Josip', 'Bošnjak', '1992-11-05', 'Sveti rok 81 34000 Požega', 'jobo', 'Phone: +91 9759754 email: jbosnjak3@]mail.com', 'jbosnjak3@gmail.com', '$2a$10$I0uQSC9yNQ5K805hCGzfMu7sbF26AStJJIO3CBIjb.uDoo/yAuBmK');
 
 -- --------------------------------------------------------
 
@@ -232,13 +236,6 @@ ALTER TABLE `sellers`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `seller_information`
---
-ALTER TABLE `seller_information`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nickname` (`nickname`);
-
---
 -- Indexes for table `shipping_details`
 --
 ALTER TABLE `shipping_details`
@@ -268,7 +265,7 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
@@ -280,7 +277,7 @@ ALTER TABLE `article_basic_details`
 -- AUTO_INCREMENT for table `article_types`
 --
 ALTER TABLE `article_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `category_or_subcategory`
@@ -292,13 +289,7 @@ ALTER TABLE `category_or_subcategory`
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `seller_information`
---
-ALTER TABLE `seller_information`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `shipping_details`
@@ -326,7 +317,7 @@ ALTER TABLE `ad_details`
 -- Constraints for table `articles`
 --
 ALTER TABLE `articles`
-  ADD CONSTRAINT `seller_fk` FOREIGN KEY (`seller`) REFERENCES `seller_information` (`nickname`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `seller_fk` FOREIGN KEY (`seller`) REFERENCES `sellers` (`nickname`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `article_basic_details`
@@ -342,12 +333,6 @@ ALTER TABLE `article_basic_details`
 --
 ALTER TABLE `article_types`
   ADD CONSTRAINT `category_or_subcategory_fk` FOREIGN KEY (`types_of_categories`) REFERENCES `category_or_subcategory` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
--- Constraints for table `seller_information`
---
-ALTER TABLE `seller_information`
-  ADD CONSTRAINT `seller_inf_fk` FOREIGN KEY (`nickname`) REFERENCES `sellers` (`nickname`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `shipping_details`
