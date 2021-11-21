@@ -49,7 +49,7 @@ public class ArticleJdbcRepository implements ArticleRepository {
 	}
 	private Articles mapRowToArticles(ResultSet rs, int rowNum) throws SQLException {
 		return new Articles(
-				BigInteger.valueOf(rs.getLong("article_number")),
+				rs.getString("article_number"),
 				rs.getString("article_name"),
 				rs.getString("seller"));
 	

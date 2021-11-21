@@ -15,7 +15,7 @@ public class Main {
 	public static void main(String[] args) {
 		Sellers seller=new Sellers("josip","123456789");
 		Folder folder=new Folder(seller.getNickname());
-		Articles article=new Articles(1, BigInteger.TEN, "neki artikl", seller.getNickname());
+		Articles article=new Articles(1, String.valueOf(BigInteger.TEN), "neki artikl", seller.getNickname());
 		
 		System.out.println(folder.createFolder(article));
 		

@@ -24,8 +24,9 @@ public class Articles {
 private Integer id;
 @NonNull
 @NotNull
-@Range(min = 1, message = "Must have at least 1 number. Required field.")
-private BigInteger article_number;
+@NotBlank(message = "Article number is required.")
+@Size(min = 1, max=20, message = "Must have at least 1 letter. Required field. Can have maximum 20 characters.")
+private String article_number;
 @NonNull
 @NotNull
 @NotBlank(message = "Article name is required.")

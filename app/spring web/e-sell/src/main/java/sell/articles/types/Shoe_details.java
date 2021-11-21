@@ -9,7 +9,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Shoe_details {
 private Integer id;
-private BigInteger article_number;
+private String article_number;
 private String Shoe_condition;
 private String Theme;
 private String Pattern;

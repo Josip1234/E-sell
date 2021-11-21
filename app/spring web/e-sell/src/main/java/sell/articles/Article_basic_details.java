@@ -17,7 +17,7 @@ public class Article_basic_details {
 private Integer id;
 //foreign key from articles tables. will be generated automaticly by session when article was entered
 @Null 
-private BigInteger art_num;
+private String art_num;
 //foreign key from table types. same as type id2 and typeid3
 @Null
 private Integer type_id;

@@ -20,7 +20,7 @@ public class Ad_details {
 	@Null
 	private Integer id;
 	//nije potrebna validacija to će se birati iz tablice artikala, ime u selekt choiceu a id kao vrijednost
-	private BigInteger article_num;
+	private String article_num;
 	@NotNull(message = "Date is required.")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ad_added;

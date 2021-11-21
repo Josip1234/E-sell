@@ -9,7 +9,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Shipping_details {
 private Integer id;
-private BigInteger article_number;
+private String article_number;
 private String shipping;
 private String comment;
 private String location;
