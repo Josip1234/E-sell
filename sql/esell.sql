@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2021 at 08:23 PM
+-- Generation Time: Nov 21, 2021 at 09:09 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `ad_details` (
   `id` int(11) NOT NULL,
-  `article_num` bigint(20) NOT NULL,
+  `article_num` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
   `ad_added` datetime NOT NULL,
   `ad_last_updated` datetime NOT NULL,
   `time_until_expire` varchar(100) COLLATE utf8_croatian_ci DEFAULT NULL,
@@ -44,17 +44,10 @@ CREATE TABLE `ad_details` (
 
 CREATE TABLE `articles` (
   `id` int(11) NOT NULL,
-  `article_number` bigint(20) NOT NULL,
+  `article_number` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
   `article_name` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `seller` varchar(50) COLLATE utf8_croatian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
-
---
--- Dumping data for table `articles`
---
-
-INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
-(6, 1, 'rtgdsg', 'jobo');
 
 -- --------------------------------------------------------
 
@@ -64,7 +57,7 @@ INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
 
 CREATE TABLE `article_basic_details` (
   `id` int(11) NOT NULL,
-  `ar_num` bigint(20) NOT NULL,
+  `ar_num` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
   `type_id` int(11) NOT NULL,
   `price` varchar(50) COLLATE utf8_croatian_ci NOT NULL,
   `article_condition` varchar(50) COLLATE utf8_croatian_ci DEFAULT NULL,
@@ -137,7 +130,7 @@ INSERT INTO `sellers` (`id`, `fname`, `lname`, `dateofbirth`, `location`, `nickn
 
 CREATE TABLE `shipping_details` (
   `id` int(11) NOT NULL,
-  `article_number` bigint(20) NOT NULL,
+  `article_number` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
   `shipping` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `comment` varchar(255) COLLATE utf8_croatian_ci DEFAULT NULL,
   `location` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
@@ -154,7 +147,7 @@ CREATE TABLE `shipping_details` (
 
 CREATE TABLE `shoe_details` (
   `id` int(11) NOT NULL,
-  `article_number` bigint(20) NOT NULL,
+  `article_number` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
   `Shoe_condition` text COLLATE utf8_croatian_ci NOT NULL,
   `Theme` varchar(20) COLLATE utf8_croatian_ci DEFAULT NULL,
   `Pattern` varchar(20) COLLATE utf8_croatian_ci DEFAULT NULL,
