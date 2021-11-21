@@ -53,11 +53,11 @@
   </div>
   <div class="row">
     <div class="col">
-     <h2> Search by brand:</h2>
+     <h3> Search by brand:</h3>
          <img th:src="@{/images/clarks_brand_logo.png}" alt="Clarks"/>
     </div>
     <div class="col">
-       <h2>Search by category:</h2>
+       <h3>Search by category:</h3>
           
         <ul class="list-unstyled">
         <li th:unless="${#lists.isEmpty(type)}" th:each="tip : ${type}">
@@ -70,7 +70,7 @@
 
     </div>
     <div class="col">
-      <h2> Search by sellers:</h2>
+      <h3> Search by sellers:</h3>
       
         <ul class="list-unstyled">
         <li th:unless="${#lists.isEmpty(sell)}" th:each="seller : ${sell}">
@@ -81,7 +81,7 @@
     </div>
     
       <div class="col">
-      <h2> Search by price:</h2>
+      <h3> Search by price:</h3>
        <ul class="list-unstyled">
        <li>Between 0.01 and 100</li>
         <li>Between 100 and 1000</li>
