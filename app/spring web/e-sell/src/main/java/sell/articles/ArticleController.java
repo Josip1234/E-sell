@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
+import sell.files.Folder;
 import sell.sellers.SellerRepository;
 import sell.sellers.Sellers;
 
@@ -27,7 +28,7 @@ public class ArticleController {
 	private final ArticleRepository articleRepository;
 	private final SellerRepository sellerRepository;
 	
-	
+	Folder folder=new Folder();
 	
 	public ArticleController(TypesRepository repository, ArticleRepository articleRepository,SellerRepository sellerRepository) {
 		this.repository = repository;
@@ -58,6 +59,7 @@ public class ArticleController {
 		}else {
 			log.info("Values:"+articles);
 			articleRepository.save(articles);
+			folder.createFolder(articles);
 			return "redirect:/e-sell/en/";
 		}
 	}
