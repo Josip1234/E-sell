@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.files.Folder;
+import sell.functions.GeneralFunctions;
 import sell.sellers.SellerRepository;
 import sell.sellers.Sellers;
 
@@ -48,7 +49,7 @@ public class ArticleController {
 	}
 	@PostMapping("/newarticles")
 	public String addArticle(@Valid @ModelAttribute("article") Articles articles, Errors errors) {
-		Sellers sellers=sellerRepository.findOne(getUserEmail());
+		Sellers sellers=sellerRepository.findOne(GeneralFunctions.getUserEmail());
 		articles.setSeller(sellers.getNickname());
 		log.info(sellers.getNickname());
 
@@ -84,18 +85,6 @@ public class ArticleController {
 		}
 		
 	}
-	private String getUserEmail() {
-		String email="";
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		if (principal instanceof UserDetails) {
-		  String username = ((UserDetails)principal).getUsername();
-		  email=username;
-		} else {
-		  String username = principal.toString();
-		  email=username;
-		}
-		return email;
-	}
 	
 }

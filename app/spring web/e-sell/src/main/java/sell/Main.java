@@ -13,7 +13,9 @@ import sell.test.data.UserPassword;
 public class Main {
 
 	public static void main(String[] args) {
-		Sellers seller=new Sellers("josip","123456789");
+		Sellers seller=new Sellers();
+		seller.setNickname("josip");
+		seller.setHash_password("123456789");
 		Folder folder=new Folder(seller.getNickname());
 		Articles article=new Articles(1, String.valueOf(BigInteger.TEN), "neki artikl", seller.getNickname());
 		

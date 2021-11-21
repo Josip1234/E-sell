@@ -13,7 +13,46 @@
  <body>
  
   <div class="container">
+      <form method="post" th:action="@{/e-sell/en/seller/profile}" th:object="${profile}" class="row g-3 bg-dark text-white">
+            <div class="col-md-6">
+             <label for="fname" class="form-label">Enter first name:</label>
+                <input type="text" th:field="*{fname}" th:value="${profile.fname}" class="form-control">
 
+            </div>
+             <div class="col-md-6">
+              <label for="lname" class="form-label">Enter last name:</label>
+                <input type="text" th:field="*{lname}" id="lname" th:value="${profile.lname}" class="form-control">
+
+            </div>
+               <div class="col-md-6">
+               <label for="location" class="form-label">Enter location:</label>
+                <input type="text" th:field="*{location}" id="location" th:value="${profile.location}" class="form-control">
+            </div>
+            
+               <div class="col-md-6">
+               <label for="nickname" class="form-label">Enter nickname:</label>
+                <input type="text" th:field="*{nickname}" id="nickname" th:value="${profile.nickname}" class="form-control">
+            </div>
+            
+              <div class="col-md-6">
+               <label for="contact" class="form-label">Enter contact information:</label>
+                <input type="text" th:field="*{contact}" id="contact" th:value="${profile.contact}" class="form-control">
+            </div>
+            
+             <div class="col-md-6">
+               <label for="email" class="form-label">Enter email:</label>
+                <input type="email" th:field="*{email}" id="email" th:value="${profile.email}" class="form-control">
+            </div>
+            
+             <div class="col-md-6">
+               <label for="hash_password" class="form-label">Password:</label>
+                <input type="text" th:field="*{hash_password}" id="hash_password" th:value="${profile.hash_password}" class="form-control">
+            </div>
+       
+            <div class="col-12">
+                <input type="submit" value="Submit" class="btn btn-primary">
+            </div>
+        </form>
 </div>
  
  

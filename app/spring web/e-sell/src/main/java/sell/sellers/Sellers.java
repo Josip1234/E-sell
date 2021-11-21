@@ -32,10 +32,12 @@ public class Sellers {
 	@Null
 	private Integer id;
 	@NotNull
+	@NonNull
 	@NotBlank(message = "First name is required.")
 	@Size(min = 1, max = 50, message = "Name must be between 1 and 50 letters.")
 	private String fname;
 	@NotNull
+	@NonNull
 	@NotBlank(message = "Last name is required.")
 	@Size(min=1,max=50, message = "Last name must be between 1 and 50 letters.")
 	private String lname;
@@ -43,6 +45,7 @@ public class Sellers {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateofbirth;
 	@NotNull
+	@NonNull
 	@NotBlank(message = "Location is required.")
 	@Size(min=1, message = "Location must contain at least 1 letter.")
 	private String location;
@@ -51,11 +54,13 @@ public class Sellers {
 	@NotBlank(message = "Nickname is required.")
 	@Size(min=1, max=50, message ="Nickname must be between 1 and 50 letters.")
 	private String nickname;
+	@NonNull
 	@NotNull
 	@NotBlank(message = "Contact is required.")
 	@Size(min=1, max=150, message = "Contact must be between 1 and 150 letters.")
 	private String contact;
 	@NotNull
+	@NonNull
 	@NotBlank(message = "Email is required.")
 	@Size(min=10, max=50, message = "Email must have at least 10 letters, or 50 letters max.")
 	@Email(message = "Email must be correct.")
