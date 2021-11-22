@@ -2,6 +2,9 @@ package sell.sellers;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.files.Folder;
+import sell.test.data.UserPassImpl;
 
 @Slf4j
 @Controller
@@ -24,6 +28,8 @@ public class RegistrationController {
 	private final SellerRepository repository;
 	
 	Folder folders = new Folder();
+	UserPassImpl password= new UserPassImpl();
+	Map<String, Sellers> map = new HashMap<>();
 	
 	@Autowired
 	PasswordEncoder encoder;
@@ -48,6 +54,8 @@ public String registerSeller(@Valid @ModelAttribute("sellers") Sellers sellers, 
 		sellers.setHash_password(encoder.encode(sellers.getHash_password()));
 		repository.save(sellers);
 		folders.createFolder(sellers);
+		map.put(sellers.getNickname(),sellers);
+		password.saveTestData(map,sellers);
 		return "redirect:/e-sell/en/";
 	}
 
