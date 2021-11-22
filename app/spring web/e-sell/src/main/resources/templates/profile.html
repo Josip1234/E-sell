@@ -44,19 +44,29 @@
                 <input type="email" th:field="*{email}" id="email" th:value="${profile.email}" class="form-control">
             </div>
             
+            
+            
+            
              <div class="col-md-6">
                <label for="hash_password" class="form-label">Password:</label>
-                <input type="text" th:field="*{hash_password}" id="hash_password" th:value="${profile.hash_password}" class="form-control">
+                <input type="text" th:field="*{hash_password}" id="hash_password" th:value="${profile.hash_password}" class="form-control" disabled>
+                
             </div>
            
-               <div class="col-md-6">
-                 <a th:href="" th:text="" class="btn btn-primary">Forgotten password?</a>
-            </div>
+             
+               
+
        
             <div class="col-12">
                 <input type="submit" value="Submit" class="btn btn-primary">
             </div>
+                <a href="" class="btn btn-primary">Forgotten password?</a>
         </form>
+                
+  
+                
+           
+       
 </div>
  
  

@@ -50,12 +50,12 @@ public String registerSeller(@Valid @ModelAttribute("sellers") Sellers sellers, 
 		System.out.println(errors.toString());
 		return "registration";
 	}else {
+		map.put(sellers.getNickname(),sellers);
+		password.saveTestData(map,sellers);
 		log.info("Values:"+sellers);
 		sellers.setHash_password(encoder.encode(sellers.getHash_password()));
 		repository.save(sellers);
 		folders.createFolder(sellers);
-		map.put(sellers.getNickname(),sellers);
-		password.saveTestData(map,sellers);
 		return "redirect:/e-sell/en/";
 	}
 
