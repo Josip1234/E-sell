@@ -27,7 +27,7 @@ public class Main {
 		map.put(seller.getNickname(),seller);
 		password.saveTestData(map,seller);
 		
-
+		
         
 	}
 
