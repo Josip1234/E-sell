@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import sell.functions.GeneralFunctions;
+
 @Repository
 public class SellerDbRepo implements SellerRepository {
 
@@ -46,6 +48,10 @@ public class SellerDbRepo implements SellerRepository {
 				seller.getHash_password()
 				);
 		return seller;
+	}
+	@Override
+	public void updateProfile(Sellers seller) {
+		jdbc.update("UPDATE Sellers SET fname=?, lname=?, location=?, email=?, nickname=?, contact=? WHERE email=?", seller.getFname(),seller.getLname(),seller.getLocation(),seller.getEmail(),seller.getNickname(),seller.getContact(),GeneralFunctions.getUserEmail());
 	}
 	
 	
