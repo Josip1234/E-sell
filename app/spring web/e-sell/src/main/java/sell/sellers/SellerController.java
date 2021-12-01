@@ -60,7 +60,7 @@ public class SellerController {
 	}
 	
 	@PostMapping("/updatePass")
-	public String updatePassword(@Valid @ModelAttribute("sellers") Sellers sellers, Errors errors) {
+	public String updatePassword(@Valid @ModelAttribute("profile") Sellers sellers, Errors errors) {
 		if(errors.hasErrors()) {
 			errors.getClass();
 			System.out.println(errors.toString());
