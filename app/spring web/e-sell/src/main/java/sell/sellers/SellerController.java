@@ -43,4 +43,8 @@ public class SellerController {
 		return "redirect:/e-sell/en/";
 	}
 
+	@GetMapping("/updatePass")
+	public String showForm() {
+		return "updateForm";
+	}
 }
