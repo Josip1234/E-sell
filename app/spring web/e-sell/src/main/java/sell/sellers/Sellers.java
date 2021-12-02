@@ -53,6 +53,8 @@ public class Sellers {
 	@NotNull
 	@NotBlank(message = "Nickname is required.")
 	@Size(min=1, max=50, message ="Nickname must be between 1 and 50 letters.")
+	//trebamo napisati validaciju za nickname jer ne smije dva nicknamea biti u bazi
+	//za dupli email ista stvar.
 	private String nickname;
 	@NonNull
 	@NotNull
