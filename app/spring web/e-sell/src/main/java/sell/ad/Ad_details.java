@@ -1,15 +1,12 @@
 package sell.ad;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
-import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 

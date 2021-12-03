@@ -8,7 +8,6 @@ import sell.articles.Articles;
 import sell.files.Folder;
 import sell.sellers.Sellers;
 import sell.test.data.UserPassImpl;
-import sell.test.data.UserPassword;
 
 public class Main {
 

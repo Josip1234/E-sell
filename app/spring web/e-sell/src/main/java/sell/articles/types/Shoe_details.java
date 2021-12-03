@@ -1,7 +1,5 @@
 package sell.articles.types;
 
-import java.math.BigInteger;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

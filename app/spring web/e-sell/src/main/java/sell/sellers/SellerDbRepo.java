@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import lombok.NoArgsConstructor;
 import sell.functions.GeneralFunctions;
 
 @Repository
+@NoArgsConstructor
 public class SellerDbRepo implements SellerRepository {
 
 	private JdbcTemplate jdbc;
@@ -34,6 +36,12 @@ public class SellerDbRepo implements SellerRepository {
 				rs.getString("email"),rs.getString("hash_password"));
 	
 	}
+	
+	private Sellers mapNicknameToSeller(ResultSet rs, int rowNum) throws SQLException {
+		return new Sellers(rs.getString("nickname"));
+	
+	}
+	
 	@Override
 	public Sellers save(Sellers seller) {
 		jdbc.update(
@@ -53,7 +61,6 @@ public class SellerDbRepo implements SellerRepository {
 	public void updateProfile(Sellers seller) {
 		jdbc.update("UPDATE Sellers SET fname=?, lname=?, location=?, email=?, nickname=?, contact=? WHERE email=?", seller.getFname(),seller.getLname(),seller.getLocation(),seller.getEmail(),seller.getNickname(),seller.getContact(),GeneralFunctions.getUserEmail());
 	}
-	
 	
 
 

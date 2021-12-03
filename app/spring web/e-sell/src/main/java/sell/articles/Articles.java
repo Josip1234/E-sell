@@ -1,13 +1,9 @@
 package sell.articles;
 
-import java.math.BigInteger;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Range;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

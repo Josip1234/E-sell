@@ -1,17 +1,13 @@
 package sell.articles;
 
-import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.hibernate.validator.internal.util.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import lombok.extern.slf4j.Slf4j;
-import sell.articles.types.ArticleTypes;
-import sell.sellers.Sellers;
 
 @Slf4j
 @Repository

@@ -3,6 +3,7 @@ package sell.sellers;
 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.files.Folder;
+import sell.functions.GeneralFunctions;
 import sell.test.data.UserPassImpl;
 
 @Slf4j
@@ -45,18 +47,25 @@ public String registration(Model model) {
 }
 @PostMapping
 public String registerSeller(@Valid @ModelAttribute("sellers") Sellers sellers, Errors errors) {
-	if(errors.hasErrors()) {
-		errors.getClass();
-		System.out.println(errors.toString());
+	boolean doesExists=false;
+	List<Sellers> findAll= (List<Sellers>) repository.findAll();
+    doesExists=GeneralFunctions.findInAList(sellers.getNickname(),findAll);
+	if(doesExists==true) {
 		return "registration";
 	}else {
-		map.put(sellers.getNickname(),sellers);
-		password.saveTestData(map,sellers);
-		log.info("Values:"+sellers);
-		sellers.setHash_password(encoder.encode(sellers.getHash_password()));
-		repository.save(sellers);
-		folders.createFolder(sellers);
-		return "redirect:/e-sell/en/";
+		if(errors.hasErrors()) {
+			errors.getClass();
+			System.out.println(errors.toString());
+			return "registration";
+		}else {
+			map.put(sellers.getNickname(),sellers);
+			password.saveTestData(map,sellers);
+			log.info("Values:"+sellers);
+			sellers.setHash_password(encoder.encode(sellers.getHash_password()));
+			repository.save(sellers);
+			folders.createFolder(sellers);
+			return "redirect:/e-sell/en/";
+		}
 	}
 
 }

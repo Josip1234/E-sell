@@ -1,9 +1,6 @@
 package sell.files;
 
 import java.io.File;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import sell.articles.Articles;

@@ -8,9 +8,6 @@ import java.util.Map;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.github.javafaker.Faker;
-
 import lombok.NoArgsConstructor;
 import sell.sellers.Sellers;
 
