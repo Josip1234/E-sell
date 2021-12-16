@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2021 at 09:09 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Dec 16, 2021 at 10:40 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -49,6 +49,14 @@ CREATE TABLE `articles` (
   `seller` varchar(50) COLLATE utf8_croatian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
+--
+-- Dumping data for table `articles`
+--
+
+INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
+(7, '144', 'dhrthrhrth', 'joka'),
+(8, 'vnioeghniegjoijjno', 'Prijenosni Hard Disk', 'joka');
+
 -- --------------------------------------------------------
 
 --
@@ -83,7 +91,38 @@ CREATE TABLE `article_types` (
 
 INSERT INTO `article_types` (`id`, `type`, `types_of_categories`) VALUES
 (1, 'Novi tip produkta', NULL),
-(2, 'gdgdh', NULL);
+(2, 'gdgdh', NULL),
+(3, 'Elektronika', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `car_detail`
+--
+
+CREATE TABLE `car_detail` (
+  `id` int(11) NOT NULL,
+  `article_number` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `brand` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `model` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `year` year(4) NOT NULL,
+  `car_condition` text COLLATE utf8_croatian_ci NOT NULL,
+  `serialnumber` longtext COLLATE utf8_croatian_ci NOT NULL,
+  `mileage` longtext COLLATE utf8_croatian_ci NOT NULL,
+  `mpg` text COLLATE utf8_croatian_ci NOT NULL,
+  `color` text COLLATE utf8_croatian_ci NOT NULL,
+  `engine` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
+  `drivetrain` varchar(10) COLLATE utf8_croatian_ci NOT NULL,
+  `basic_equipment` text COLLATE utf8_croatian_ci NOT NULL,
+  `additional_equipment` text COLLATE utf8_croatian_ci DEFAULT NULL,
+  `car_history` text COLLATE utf8_croatian_ci DEFAULT NULL,
+  `additional` text COLLATE utf8_croatian_ci DEFAULT NULL,
+  `car_type` varchar(255) COLLATE utf8_croatian_ci DEFAULT NULL,
+  `fuel_type` varchar(255) COLLATE utf8_croatian_ci DEFAULT NULL,
+  `max_speed` varchar(10) COLLATE utf8_croatian_ci DEFAULT NULL,
+  `gearbox_type` varchar(255) COLLATE utf8_croatian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
 -- --------------------------------------------------------
 
@@ -120,7 +159,12 @@ CREATE TABLE `sellers` (
 --
 
 INSERT INTO `sellers` (`id`, `fname`, `lname`, `dateofbirth`, `location`, `nickname`, `contact`, `email`, `hash_password`) VALUES
-(1, 'Josip', 'Bošnjak', '1992-11-05', 'Sveti rok 81 34000 Požega', 'jobo', 'Phone: +91 9759754 email: jbosnjak3@]mail.com', 'jbosnjak3@gmail.com', '$2a$10$I0uQSC9yNQ5K805hCGzfMu7sbF26AStJJIO3CBIjb.uDoo/yAuBmK');
+(1, 'Josip', 'Bošnjak', '1992-11-05', 'Sveti rok 81 34000 Požega', 'jobo', 'Phone: +91 9759754 email: jbosnjak3@]mail.com', 'jbosnjak3@gmail.com', '$2a$10$I0uQSC9yNQ5K805hCGzfMu7sbF26AStJJIO3CBIjb.uDoo/yAuBmK'),
+(2, 'Josipa', 'Bošnjak', '1992-11-05', 'Požega', 'joka', 'egergegr', 'joka@joka.com', '$2a$10$9FGLOrBt1tiYg1KWEz6JoOLyipXcPomTIfANgUnWlswGoDsugg9IK'),
+(3, 'Josip', 'Josip', '1995-05-05', 'Josip', 'jopa', 'josip', 'jopa@gmail.com', '$2a$10$NAw/DgAS6SOjVkuUA7hy..CnqGXF98XPZwnjbVTZSzF00jpF241Pi'),
+(6, 'Josip', 'Bošnjak', '1992-11-05', 'Požega, Sveti rok 81, 34000 Požega, Republika Hrvatska, Europska unija', 'Jobo123', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak33@gmail.com', '$2a$10$QlvV7KSL9dI4Eo6aMTIwseajBUtmINOXIAtXp58JntpPdChDc7JlK'),
+(8, 'Josip', 'Bošnjak', '1992-11-05', 'Požega, Sveti rok 81, 34000 Požega, Republika Hrvatska, Europska unija', 'ggegedg', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak344@gmail.com', '$2a$10$ENFwOyVUkM0n99hyZ9c5teL8C4H1WV2Xy94e1fIZmDcGGpAyLvW9a'),
+(10, 'Josip', 'Bošnjak', '1992-11-05', 'drgrghtr', 'ggegedga', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak3445@gmail.com', '$2a$10$Gou2kgfKKE0JIEF.RQD3hOSKydbrQK.2Mub27665zjrTLavzPFAUS');
 
 -- --------------------------------------------------------
 
@@ -213,6 +257,14 @@ ALTER TABLE `article_types`
   ADD KEY `types_of_categories` (`types_of_categories`) USING BTREE;
 
 --
+-- Indexes for table `car_detail`
+--
+ALTER TABLE `car_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `article_number` (`article_number`),
+  ADD KEY `type` (`type`);
+
+--
 -- Indexes for table `category_or_subcategory`
 --
 ALTER TABLE `category_or_subcategory`
@@ -258,7 +310,7 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
@@ -270,7 +322,13 @@ ALTER TABLE `article_basic_details`
 -- AUTO_INCREMENT for table `article_types`
 --
 ALTER TABLE `article_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `car_detail`
+--
+ALTER TABLE `car_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `category_or_subcategory`
@@ -282,7 +340,7 @@ ALTER TABLE `category_or_subcategory`
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `shipping_details`
@@ -326,6 +384,13 @@ ALTER TABLE `article_basic_details`
 --
 ALTER TABLE `article_types`
   ADD CONSTRAINT `category_or_subcategory_fk` FOREIGN KEY (`types_of_categories`) REFERENCES `category_or_subcategory` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Constraints for table `car_detail`
+--
+ALTER TABLE `car_detail`
+  ADD CONSTRAINT `an2_fk` FOREIGN KEY (`article_number`) REFERENCES `articles` (`article_number`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `type2_fk` FOREIGN KEY (`type`) REFERENCES `article_types` (`type`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `shipping_details`
