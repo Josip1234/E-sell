@@ -22,7 +22,7 @@ public class ArticleTypeJdbc implements TypesRepository {
 	@Override
 	public Iterable<ArticleTypes> findAll() {
 		
-		return jdbc.query("select id,type,types_of_categories from article_types", this::mapRowToTypes);
+		return jdbc.query("select id,type from article_types", this::mapRowToTypes);
 	}
 
 	@Override
@@ -43,8 +43,7 @@ public class ArticleTypeJdbc implements TypesRepository {
 	private ArticleTypes mapRowToTypes(ResultSet rs, int rowNum) throws SQLException {
 		return new ArticleTypes(
 				rs.getInt("id"),
-				rs.getString("type"),
-				rs.getInt("types_of_categories"));
+				rs.getString("type"));
 	
 	}
 

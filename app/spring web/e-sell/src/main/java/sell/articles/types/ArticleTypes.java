@@ -19,8 +19,5 @@ private Integer id;
 @NotBlank(message = "Type is required.")
 @Size(min = 1, max = 255, message = "Type must be between 1 and 50 letters.")
 private String type;
-//this is foreign key for tables category or subcategory. each number here will be connected to that table for making product categorization automaticly. 
-//user will choose it from select choice.
-@Null
-private Integer types_of_categories;
+
 }

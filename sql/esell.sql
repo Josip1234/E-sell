@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2021 at 02:06 PM
+-- Generation Time: Dec 18, 2021 at 02:21 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -55,7 +55,8 @@ CREATE TABLE `articles` (
 
 INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
 (7, '144', 'dhrthrhrth', 'joka'),
-(8, 'vnioeghniegjoijjno', 'Prijenosni Hard Disk', 'joka');
+(8, 'vnioeghniegjoijjno', 'Prijenosni Hard Disk', 'joka'),
+(9, 'hgsrthserhsdhtsrht', 'hrtrthrfshdghtrhr', 'joka414541');
 
 -- --------------------------------------------------------
 
@@ -90,6 +91,7 @@ CREATE TABLE `article_types` (
 
 INSERT INTO `article_types` (`id`, `type`) VALUES
 (3, 'Elektronika'),
+(4, 'fhetrtjhtejjrjfgz'),
 (2, 'gdgdh'),
 (1, 'Novi tip produkta');
 
@@ -150,7 +152,8 @@ INSERT INTO `sellers` (`id`, `fname`, `lname`, `dateofbirth`, `location`, `nickn
 (3, 'Josip', 'Josip', '1995-05-05', 'Josip', 'jopa', 'josip', 'jopa@gmail.com', '$2a$10$NAw/DgAS6SOjVkuUA7hy..CnqGXF98XPZwnjbVTZSzF00jpF241Pi'),
 (6, 'Josip', 'Bošnjak', '1992-11-05', 'Požega, Sveti rok 81, 34000 Požega, Republika Hrvatska, Europska unija', 'Jobo123', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak33@gmail.com', '$2a$10$QlvV7KSL9dI4Eo6aMTIwseajBUtmINOXIAtXp58JntpPdChDc7JlK'),
 (8, 'Josip', 'Bošnjak', '1992-11-05', 'Požega, Sveti rok 81, 34000 Požega, Republika Hrvatska, Europska unija', 'ggegedg', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak344@gmail.com', '$2a$10$ENFwOyVUkM0n99hyZ9c5teL8C4H1WV2Xy94e1fIZmDcGGpAyLvW9a'),
-(10, 'Josip', 'Bošnjak', '1992-11-05', 'drgrghtr', 'ggegedga', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak3445@gmail.com', '$2a$10$Gou2kgfKKE0JIEF.RQD3hOSKydbrQK.2Mub27665zjrTLavzPFAUS');
+(10, 'Josip', 'Bošnjak', '1992-11-05', 'drgrghtr', 'ggegedga', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak3445@gmail.com', '$2a$10$Gou2kgfKKE0JIEF.RQD3hOSKydbrQK.2Mub27665zjrTLavzPFAUS'),
+(11, 'Josip', 'Bošnjak', '1981-12-02', 'Požega, Sveti rok 81, 34000 Požega, Republika Hrvatska, Europska unija', 'joka414541', 'Email: jbosnjak35@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak35@gmail.com', '$2a$10$awRHKTo3GENjwufRHMdc/OzL4FDH4oqxx2Bs0vmJgwcMwa/R7VNK.');
 
 -- --------------------------------------------------------
 
@@ -284,7 +287,7 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
@@ -296,7 +299,7 @@ ALTER TABLE `article_basic_details`
 -- AUTO_INCREMENT for table `article_types`
 --
 ALTER TABLE `article_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `car_detail`
@@ -308,7 +311,7 @@ ALTER TABLE `car_detail`
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `shipping_details`

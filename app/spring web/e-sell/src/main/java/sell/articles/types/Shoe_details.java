@@ -11,7 +11,6 @@ private String article_number;
 private String Shoe_condition;
 private String Theme;
 private String Pattern;
-private String type;
 private boolean Customized;
 private String Color;
 private String Upper_Material;
