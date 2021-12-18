@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2021 at 10:40 PM
+-- Generation Time: Dec 18, 2021 at 02:06 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -81,18 +81,17 @@ CREATE TABLE `article_basic_details` (
 
 CREATE TABLE `article_types` (
   `id` int(11) NOT NULL,
-  `type` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `types_of_categories` int(11) DEFAULT NULL
+  `type` varchar(255) COLLATE utf8_croatian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci COMMENT='will be used by other table to get  type of products';
 
 --
 -- Dumping data for table `article_types`
 --
 
-INSERT INTO `article_types` (`id`, `type`, `types_of_categories`) VALUES
-(1, 'Novi tip produkta', NULL),
-(2, 'gdgdh', NULL),
-(3, 'Elektronika', NULL);
+INSERT INTO `article_types` (`id`, `type`) VALUES
+(3, 'Elektronika'),
+(2, 'gdgdh'),
+(1, 'Novi tip produkta');
 
 -- --------------------------------------------------------
 
@@ -103,7 +102,6 @@ INSERT INTO `article_types` (`id`, `type`, `types_of_categories`) VALUES
 CREATE TABLE `car_detail` (
   `id` int(11) NOT NULL,
   `article_number` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
-  `type` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `brand` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `model` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `year` year(4) NOT NULL,
@@ -123,18 +121,6 @@ CREATE TABLE `car_detail` (
   `max_speed` varchar(10) COLLATE utf8_croatian_ci DEFAULT NULL,
   `gearbox_type` varchar(255) COLLATE utf8_croatian_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `category_or_subcategory`
---
-
-CREATE TABLE `category_or_subcategory` (
-  `id` int(11) NOT NULL,
-  `type` varchar(50) COLLATE utf8_croatian_ci NOT NULL,
-  `lang` varchar(2) COLLATE utf8_croatian_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci COMMENT='This will be used as structure creation in the menu of the page. Category, subcategory, subcategory will be labeledd article_type and it will be edited later on by the users. Categoy or subcategory will be accessed only by admins. Dekstop app will be created for that purpose.';
 
 -- --------------------------------------------------------
 
@@ -195,7 +181,6 @@ CREATE TABLE `shoe_details` (
   `Shoe_condition` text COLLATE utf8_croatian_ci NOT NULL,
   `Theme` varchar(20) COLLATE utf8_croatian_ci DEFAULT NULL,
   `Pattern` varchar(20) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Type` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
   `Customized` tinyint(1) DEFAULT NULL,
   `Color` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
   `Upper Material` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
@@ -253,24 +238,14 @@ ALTER TABLE `article_basic_details`
 --
 ALTER TABLE `article_types`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `type` (`type`),
-  ADD KEY `types_of_categories` (`types_of_categories`) USING BTREE;
+  ADD UNIQUE KEY `type` (`type`);
 
 --
 -- Indexes for table `car_detail`
 --
 ALTER TABLE `car_detail`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `article_number` (`article_number`),
-  ADD KEY `type` (`type`);
-
---
--- Indexes for table `category_or_subcategory`
---
-ALTER TABLE `category_or_subcategory`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `type` (`type`),
-  ADD KEY `lang` (`lang`);
+  ADD KEY `article_number` (`article_number`);
 
 --
 -- Indexes for table `sellers`
@@ -293,7 +268,6 @@ ALTER TABLE `shipping_details`
 ALTER TABLE `shoe_details`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `article_number` (`article_number`),
-  ADD KEY `Type` (`Type`),
   ADD KEY `Shoe_character` (`Shoe_character`);
 
 --
@@ -328,12 +302,6 @@ ALTER TABLE `article_types`
 -- AUTO_INCREMENT for table `car_detail`
 --
 ALTER TABLE `car_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `category_or_subcategory`
---
-ALTER TABLE `category_or_subcategory`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -380,17 +348,10 @@ ALTER TABLE `article_basic_details`
   ADD CONSTRAINT `type_id_3_fk` FOREIGN KEY (`type_id_3`) REFERENCES `article_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `article_types`
---
-ALTER TABLE `article_types`
-  ADD CONSTRAINT `category_or_subcategory_fk` FOREIGN KEY (`types_of_categories`) REFERENCES `category_or_subcategory` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
---
 -- Constraints for table `car_detail`
 --
 ALTER TABLE `car_detail`
-  ADD CONSTRAINT `an2_fk` FOREIGN KEY (`article_number`) REFERENCES `articles` (`article_number`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `type2_fk` FOREIGN KEY (`type`) REFERENCES `article_types` (`type`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `an2_fk` FOREIGN KEY (`article_number`) REFERENCES `articles` (`article_number`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `shipping_details`
@@ -403,8 +364,7 @@ ALTER TABLE `shipping_details`
 --
 ALTER TABLE `shoe_details`
   ADD CONSTRAINT `an_fk` FOREIGN KEY (`article_number`) REFERENCES `articles` (`article_number`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `shoe_character` FOREIGN KEY (`Shoe_character`) REFERENCES `article_types` (`type`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `type_fk` FOREIGN KEY (`Type`) REFERENCES `article_types` (`type`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `shoe_character` FOREIGN KEY (`Shoe_character`) REFERENCES `article_types` (`type`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
