@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.extern.slf4j.Slf4j;
+import sell.articles.ArticleBdRepository;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.sellers.SellerRepository;
@@ -20,11 +21,13 @@ import sell.sellers.Sellers;
 public class HomePageController {
 	private final SellerRepository repository;
 	private final TypesRepository typesRepository;
+	private final ArticleBdRepository articleBdRepository;
 	
 	@Autowired
-	public HomePageController(SellerRepository repository, TypesRepository typesRepository) {
+	public HomePageController(SellerRepository repository, TypesRepository typesRepository, ArticleBdRepository articleBdRepository) {
 		this.repository=repository;
 		this.typesRepository=typesRepository;
+		this.articleBdRepository=articleBdRepository;
 	}
 @GetMapping("/e-sell/en/")
 public String home(Model model) {
