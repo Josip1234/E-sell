@@ -1,10 +1,12 @@
 package sell.functions;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -63,14 +65,27 @@ public class GeneralFunctions {
 		//we need regex to match all the numbers
 		String regex="\\d+\\.\\d+|^\\d+";
 		Pattern p = Pattern.compile(regex);
-		
+		//after string is found add it to another list
+		List<Double> price2 = new ArrayList<Double>();
 		for (Iterator iterator = price.iterator(); iterator.hasNext();) {
 			String string = (String) iterator.next();
 			Matcher m = p.matcher(string);
 			if(m.find()) {
-				System.out.println(m.group(0));
+				price2.add(Double.valueOf(m.group(0)));
 			}
 		}
+		//find minimum and maximum value 
+		Double minimum=0.0;
+		Double maximum=0.0;
+	   
+		minimum=price2.stream().mapToDouble(d->d).min().orElseThrow(NoSuchElementException::new);
+		maximum=price2.stream().mapToDouble(d->d).max().orElseThrow(NoSuchElementException::new);
+		System.out.println(minimum);
+		System.out.println(maximum);
+		//add it to the map
+		map.put(minKey, minimum.toString());
+		map.put(maxKey, maximum.toString());
+		
 		return map;
 	}
 }
