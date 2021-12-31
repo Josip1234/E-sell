@@ -97,7 +97,7 @@
       <h3> Search by price:</h3>
        <ul class="list-unstyled">
          <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
-            <a th:href="@{/e-sell/en/articles/{basic.price}(price=${basic.price})}" th:text="${basic.price}" class="text-decoration-none"></a>
+            <a th:href="@{/e-sell/en/articles/{article}(price=${article})}" th:text="${article}" class="text-decoration-none"></a>
         </li>
        <!--
        <li>Between 0.01 and 100</li>
