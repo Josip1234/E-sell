@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2021 at 02:21 PM
+-- Generation Time: Dec 31, 2021 at 01:25 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -56,7 +56,8 @@ CREATE TABLE `articles` (
 INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
 (7, '144', 'dhrthrhrth', 'joka'),
 (8, 'vnioeghniegjoijjno', 'Prijenosni Hard Disk', 'joka'),
-(9, 'hgsrthserhsdhtsrht', 'hrtrthrfshdghtrhr', 'joka414541');
+(9, 'hgsrthserhsdhtsrht', 'hrtrthrfshdghtrhr', 'joka414541'),
+(10, '36124969', '\r\nHilfiger čizme 39/40', 'jobo');
 
 -- --------------------------------------------------------
 
@@ -73,6 +74,16 @@ CREATE TABLE `article_basic_details` (
   `type_id_2` int(11) DEFAULT NULL,
   `type_id_3` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+
+--
+-- Dumping data for table `article_basic_details`
+--
+
+INSERT INTO `article_basic_details` (`id`, `ar_num`, `type_id`, `price`, `article_condition`, `type_id_2`, `type_id_3`) VALUES
+(4, '36124969', 1, '550 kn ~ 74 €', NULL, NULL, NULL),
+(5, '144', 3, 'C $3.42', NULL, NULL, NULL),
+(6, 'hgsrthserhsdhtsrht', 1, 'C $12.56', NULL, NULL, NULL),
+(8, 'vnioeghniegjoijjno', 2, 'US $29.50', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -287,13 +298,13 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
 --
 ALTER TABLE `article_basic_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `article_types`
