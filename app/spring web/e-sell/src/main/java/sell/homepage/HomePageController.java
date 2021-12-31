@@ -83,10 +83,10 @@ public String home(Model model) {
 		
 	}
 	
-	
+	Collections.shuffle(valuesToDisplay);
 	model.addAttribute("sell",sellers.stream().limit(4).collect(Collectors.toList()));
 	model.addAttribute("type",types.stream().limit(4).collect(Collectors.toList()));
-	model.addAttribute("basic", valuesToDisplay);
+	model.addAttribute("basic", valuesToDisplay.stream().limit(4).collect(Collectors.toList()));
 	return "home";
 }
 
