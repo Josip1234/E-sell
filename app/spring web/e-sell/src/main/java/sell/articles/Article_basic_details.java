@@ -30,7 +30,6 @@ private Integer type_id;
 @Size(min = 1, max = 50, message = "Price must be between 1 and 50 letters.")
 private String price;
 @Null
-@NonNull
 private String article_condition;
 @NonNull
 @Null
@@ -38,4 +37,17 @@ private Integer type_id2;
 @NonNull
 @Null
 private Integer type_id3;
+
+public Article_basic_details(String art_num, Integer type_id,String price,String article_condition, Integer type_id2, Integer type_id3) {
+	this.art_num = art_num;
+	this.type_id = type_id;
+	this.price = price;
+	this.article_condition = article_condition;
+	this.type_id2 = type_id2;
+	this.type_id3 = type_id3;
+}
+
+
+
+
 }

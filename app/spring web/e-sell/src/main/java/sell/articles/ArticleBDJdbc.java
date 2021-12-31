@@ -21,7 +21,7 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 
 	@Override
 	public Iterable<Article_basic_details> findByPrice(String price) {
-		return template.query("select ar_num,type_id,price,article_condition,type_id_2,type_id_3 from Article_basic_details", this::mapRowToArticlesBD);
+		return template.query("select ar_num,type_id,price,article_condition,type_id_2,type_id_3 from Article_basic_details where price=?", this::mapRowToArticlesBD);
 	}
 	
 	private Article_basic_details mapRowToArticlesBD(ResultSet rs, int rowNum) throws SQLException {
@@ -34,6 +34,11 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 				rs.getInt("type_id_3")
 				);
 	
+	}
+
+	@Override
+	public Iterable<Article_basic_details> findAll() {
+		return  template.query("select ar_num,type_id,price,article_condition,type_id_2,type_id_3 from Article_basic_details", this::mapRowToArticlesBD);
 	}
 
 }

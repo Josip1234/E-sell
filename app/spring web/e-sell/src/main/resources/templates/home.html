@@ -96,10 +96,15 @@
       <div class="col">
       <h3> Search by price:</h3>
        <ul class="list-unstyled">
+         <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
+            <a th:href="@{/e-sell/en/articles/{basic.price}(price=${basic.price})}" th:text="${basic.price}" class="text-decoration-none"></a>
+        </li>
+       <!--
        <li>Between 0.01 and 100</li>
         <li>Between 100 and 1000</li>
          <li>Between 1000 and 1000</li>
           <li>Enter number:</li>
+          -->
        </ul>
     </div>
   </div>
