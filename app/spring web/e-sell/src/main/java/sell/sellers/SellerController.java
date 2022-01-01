@@ -51,6 +51,12 @@ public class SellerController {
 		return "redirect:/e-sell/en/";
 	}
 
+	//for non logged in users password update
+	@GetMapping("/updateNotLoggedInPass")
+	public String getNotLoggedIn() {
+		return "updateNotLoggedInPass";
+	}
+	
 	//this is for logged in user if he forgot password
 	@GetMapping("/updatePass")
 	public String showForm(Model model) {
