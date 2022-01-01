@@ -54,11 +54,15 @@
     <h2> Forgotten password? </h2>
     <a th:href="@{/e-sell/en/seller/updatePass}" class="btn btn-primary">Forgotten password?</a>
   </div>
-  
-</form>
- <form method="POST" th:action="@{/logout}">
+    
+  </form>
+
+  <div class="col-auto">
+    <form method="POST" th:action="@{/logout}">
 <input type="submit" value="Logout"/>
 </form>
+  </div>
+
            
     </div>
 
@@ -103,7 +107,7 @@
       <h3> Search by price:</h3>
        <ul class="list-unstyled">
          <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
-            <a th:href="@{/e-sell/en/articles/{article}(price=${article})}" th:text="${article}" class="text-decoration-none"></a>
+            <a th:href="@{/e-sell/en/articles/{article}(article=${article})}" th:text="${article}" class="text-decoration-none"></a>
         </li>
        <!--
        <li>Between 0.01 and 100</li>
