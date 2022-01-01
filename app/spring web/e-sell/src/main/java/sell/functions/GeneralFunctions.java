@@ -83,8 +83,8 @@ public class GeneralFunctions {
 	   
 		minimum=price2.stream().mapToDouble(d->d).min().orElseThrow(NoSuchElementException::new);
 		maximum=price2.stream().mapToDouble(d->d).max().orElseThrow(NoSuchElementException::new);
-		System.out.println(minimum);
-		System.out.println(maximum);
+		//System.out.println(minimum);
+		//System.out.println(maximum);
 		//add it to the map
 		map.put(minKey, minimum.toString());
 		map.put(maxKey, maximum.toString());
