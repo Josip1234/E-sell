@@ -59,8 +59,8 @@ public String registerSeller(@Valid @ModelAttribute("sellers") Sellers sellers, 
 			return "registration";
 		}else {
 			map.put(sellers.getNickname(),sellers);
-			password.saveTestData(map,sellers);
-			log.info("Values:"+sellers);
+			//password.saveTestData(map,sellers);
+			//log.info("Values:"+sellers);
 			sellers.setHash_password(encoder.encode(sellers.getHash_password()));
 			repository.save(sellers);
 			folders.createFolder(sellers);
