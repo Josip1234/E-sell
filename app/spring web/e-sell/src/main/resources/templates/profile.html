@@ -13,6 +13,16 @@
  <body>
  
   <div class="container">
+         <div class="col">
+    <ul class="list-unstyled">
+    <h1>Ovo ide na profile stranicu to je dostupno samo ako je korisnik prijavljen</h1>
+    <li><a th:href="@{/e-sell/en/articles/options}" class="text-decoration-none">Insert new ad</a></li>
+    <li><a th:href="@{/e-sell/en/articles/findall}" class="text-decoration-none">Show all of your ads</a></li>
+    <li><a th:href="@{/e-sell/en/seller/profile}" class="text-decoration-none">Show profile</a></li>
+    
+    </ul>
+    
+    </div>
       <form method="post" th:action="@{/e-sell/en/seller/profile}" th:object="${profile}" class="row g-3 bg-dark text-white">
             <div class="col-md-6">
              <label for="fname" class="form-label">Enter first name:</label>
