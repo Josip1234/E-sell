@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/e-sell/en/seller/profile","/e-sell/en/seller/updatePass").authenticated()
 		.antMatchers("/e-sell/en/registration","/e-sell/en/","/e-sell/en/seller/updateNotLoggedInPass").permitAll() .and()
 		.logout().logoutSuccessUrl("/e-sell/en/").and()
-		.formLogin().defaultSuccessUrl("/e-sell/en/", true);
+		.formLogin().defaultSuccessUrl("/e-sell/en/seller/profile", true);
 	}
 	
 	 @Bean
