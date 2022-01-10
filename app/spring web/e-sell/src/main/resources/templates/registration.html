@@ -12,16 +12,9 @@
 <link th:href="@{/styles/top_navigation.css}" rel="stylesheet" />
 <link th:href="@{/styles/rowpadding.css}" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-<script th:src="@{/script/nickname_validation.js}"></script>
+<script th:src="@{/script/form_validation.js}"></script>
  </head>
- <body ng-app="nicknameValidation" ng-controller="validateCtrl">
-       <ul>
-            <li ng-repeat="x in myData">
-                {{x.value}}
-
-            </li>
-        </ul>
-  
+ <body>
  
   <div class="topnav">
         <a th:href="@{/e-sell/en/}" >Homepage</a>
@@ -35,7 +28,7 @@
  <div class="col mt-5">
  
 
-         <form method="post" th:action="@{/e-sell/en/registration}" th:object="${sellers}" class="row g-3">
+         <form method="post" th:action="@{/e-sell/en/registration}" th:object="${sellers}" class="row g-3" ng-app="formValidation" ng-controller="validateForm">
  <div th:if="${#fields.hasErrors()}">
         <span class="validationError text-danger">
         Please correct the problems below and resubmit.
@@ -43,7 +36,7 @@
       </div>
             <div class="col-md-6">
              <label for="fname" class="form-label">Enter first name:</label>
-                <input type="text" th:field="*{fname}"  class="form-control">
+                <input type="text" th:field="*{fname}"  class="form-control" ng-model="fname" id="fname">
                 <span class="validationError text-danger" th:if="${#fields.hasErrors('fname')}" 
                 th:errors="*{fname}">
                 First name error
@@ -52,7 +45,7 @@
             </div>
              <div class="col-md-6">
               <label for="lname" class="form-label">Enter last name:</label>
-                <input type="text" th:field="*{lname}" id="lname" class="form-control">
+                <input type="text" th:field="*{lname}" id="lname" class="form-control" ng-model="lname">
                 <span class="validationError text-danger" th:if="${#fields.hasErrors('lname')}" 
                 th:errors="*{lname}">
                 Last name error
@@ -61,7 +54,7 @@
             </div>
               <div class="col-md-6">
                <label for="dateofbirth" class="form-label">Date of birth:</label>
-                <input type="date" th:field="*{dateofbirth}" id="dateofbirth" class="form-control">
+                <input type="date" th:field="*{dateofbirth}" id="dateofbirth" class="form-control" ng-model="dateofbirth">
     <span class="validationError text-danger" th:if="${#fields.hasErrors('dateofbirth')}" 
                 th:errors="*{dateofbirth}">
                 Date of birth error
@@ -69,7 +62,7 @@
             </div>
                <div class="col-md-6">
                <label for="location" class="form-label">Enter location:</label>
-                <input type="text" th:field="*{location}" id="location" class="form-control">
+                <input type="text" th:field="*{location}" id="location" class="form-control" ng-model="location">
    <span class="validationError text-danger" th:if="${#fields.hasErrors('location')}" 
                 th:errors="*{location}">
                 Location error
@@ -78,7 +71,7 @@
             
                <div class="col-md-6">
                <label for="nickname" class="form-label">Enter nickname:</label>
-                <input type="text" th:field="*{nickname}"  id="nickname" class="form-control">
+                <input type="text" th:field="*{nickname}"  id="nickname" class="form-control" ng-model="nickname">
   <span class="validationError text-danger" th:if="${#fields.hasErrors('nickname')}" 
                 th:errors="*{nickname}">
                 Nickname error
@@ -87,7 +80,7 @@
             
               <div class="col-md-6">
                <label for="contact" class="form-label">Enter contact information:</label>
-                <input type="text" th:field="*{contact}" id="contact" class="form-control">
+                <input type="text" th:field="*{contact}" id="contact" class="form-control" ng-model="contact">
   <span class="validationError text-danger" th:if="${#fields.hasErrors('contact')}" 
                 th:errors="*{contact}">
                 Contact error
@@ -96,7 +89,7 @@
             
              <div class="col-md-6">
                <label for="email" class="form-label">Enter email:</label>
-                <input type="email" th:field="*{email}" id="email" class="form-control">
+                <input type="email" th:field="*{email}" id="email" class="form-control" ng-model="email">
  <span class="validationError text-danger" th:if="${#fields.hasErrors('email')}" 
                 th:errors="*{email}">
                 Email error
@@ -105,7 +98,7 @@
             
              <div class="col-md-6">
                <label for="hash_password" class="form-label">Password:</label>
-                <input type="password" th:field="*{hash_password}" id="hash_password" class="form-control">
+                <input type="password" th:field="*{hash_password}" id="hash_password" class="form-control" ng-model="hash_password">
  <span class="validationError text-danger" th:if="${#fields.hasErrors('hash_password')}" 
                 th:errors="*{hash_password}">
                 Password error
@@ -113,7 +106,7 @@
             </div>
        
             <div class="col-12">
-                <input type="submit" value="Submit" class="btn btn-primary">
+                <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="error">
             </div>
         </form>
  </div>
