@@ -31,6 +31,7 @@ app.controller('validateForm', function($scope,$http){
 	$scope.validate=function(){
 	   	if($scope.fname.length==0 || $scope.lname.length==0 || $scope.dateofbirth.length==0 || $scope.location.length==0 || $scope.nickname.length==0 || $scope.contact.length==0 || $scope.email.length==0 || $scope.hash_password.length==0){
 		$scope.error=true;
+		$scope.showError=true;
 	   }else{
 		if($scope.myData.some(code => code.value === $scope.nickname)==true){
 		  $scope.error=true;	

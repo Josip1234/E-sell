@@ -28,7 +28,7 @@
  <div class="col mt-5">
  
 
-         <form method="post" th:action="@{/e-sell/en/registration}" th:object="${sellers}" class="row g-3" ng-app="formValidation" ng-controller="validateForm">
+    <form method="post" th:action="@{/e-sell/en/registration}" th:object="${sellers}" class="row g-3" ng-app="formValidation" ng-controller="validateForm" name="registrationForm" novalidate>
  <div th:if="${#fields.hasErrors()}">
         <span class="validationError text-danger">
         Please correct the problems below and resubmit.
@@ -36,88 +36,108 @@
       </div>
             <div class="col-md-6">
              <label for="fname" class="form-label">Enter first name:</label>
-                <input type="text" th:field="*{fname}"  class="form-control" ng-model="fname" id="fname">
+                <input type="text" th:field="*{fname}"  class="form-control" ng-model="fname" required id="fname">
                 <span class="validationError text-danger" th:if="${#fields.hasErrors('fname')}" 
                 th:errors="*{fname}">
                 First name error
                 </span>
-
+               
+                    <span class="validationError text-danger" ng-show="registrationForm.fname.$dirty && registrationForm.fname.$invalid">
+      <span ng-show="registrationForm.fname.$error.required">First name is required.</span></span>
+                
             </div>
              <div class="col-md-6">
               <label for="lname" class="form-label">Enter last name:</label>
-                <input type="text" th:field="*{lname}" id="lname" class="form-control" ng-model="lname">
+                <input type="text" th:field="*{lname}" id="lname" class="form-control" ng-model="lname" required>
                 <span class="validationError text-danger" th:if="${#fields.hasErrors('lname')}" 
                 th:errors="*{lname}">
                 Last name error
                 </span>
+         <span class="validationError text-danger" ng-show="registrationForm.lname.$dirty && registrationForm.lname.$invalid">
+      <span ng-show="registrationForm.lname.$error.required">Last name is required.</span></span>
 
             </div>
               <div class="col-md-6">
                <label for="dateofbirth" class="form-label">Date of birth:</label>
-                <input type="date" th:field="*{dateofbirth}" id="dateofbirth" class="form-control" ng-model="dateofbirth">
+                <input type="date" th:field="*{dateofbirth}" id="dateofbirth" class="form-control" ng-model="dateofbirth" required>
     <span class="validationError text-danger" th:if="${#fields.hasErrors('dateofbirth')}" 
                 th:errors="*{dateofbirth}">
                 Date of birth error
                 </span>
+                
+         <span class="validationError text-danger" ng-show="registrationForm.dateofbirth.$dirty && registrationForm.dateofbirth.$invalid">
+      <span ng-show="registrationForm.dateofbirth.$error.required">Date of birth is required.</span></span>
             </div>
                <div class="col-md-6">
                <label for="location" class="form-label">Enter location:</label>
-                <input type="text" th:field="*{location}" id="location" class="form-control" ng-model="location">
+                <input type="text" th:field="*{location}" id="location" class="form-control" ng-model="location" required>
    <span class="validationError text-danger" th:if="${#fields.hasErrors('location')}" 
                 th:errors="*{location}">
                 Location error
                 </span>
+                
+     <span class="validationError text-danger" ng-show="registrationForm.location.$dirty && registrationForm.location.$invalid">
+      <span ng-show="registrationForm.location.$error.required">Location is required.</span></span>
             </div>
+            
             
                <div class="col-md-6">
                <label for="nickname" class="form-label">Enter nickname:</label>
-                <input type="text" th:field="*{nickname}"  id="nickname" class="form-control" ng-model="nickname">
+                <input type="text" th:field="*{nickname}"  id="nickname" class="form-control" ng-model="nickname" required>
   <span class="validationError text-danger" th:if="${#fields.hasErrors('nickname')}" 
                 th:errors="*{nickname}">
                 Nickname error
                 </span>
+   <span class="validationError text-danger" ng-show="registrationForm.nickname.$dirty && registrationForm.nickname.$invalid">
+      <span ng-show="registrationForm.nickname.$error.required">Nickname is required.</span></span>
             </div>
             
               <div class="col-md-6">
                <label for="contact" class="form-label">Enter contact information:</label>
-                <input type="text" th:field="*{contact}" id="contact" class="form-control" ng-model="contact">
+                <input type="text" th:field="*{contact}" id="contact" class="form-control" ng-model="contact" required>
   <span class="validationError text-danger" th:if="${#fields.hasErrors('contact')}" 
                 th:errors="*{contact}">
                 Contact error
                 </span>
+     <span class="validationError text-danger" ng-show="registrationForm.contact.$dirty && registrationForm.contact.$invalid">
+      <span ng-show="registrationForm.contact.$error.required">Contact is required.</span></span>
             </div>
             
              <div class="col-md-6">
                <label for="email" class="form-label">Enter email:</label>
-                <input type="email" th:field="*{email}" id="email" class="form-control" ng-model="email">
+                <input type="email" th:field="*{email}" id="email" class="form-control" ng-model="email" required>
  <span class="validationError text-danger" th:if="${#fields.hasErrors('email')}" 
                 th:errors="*{email}">
                 Email error
                 </span>
+        <span class="validationError text-danger" ng-show="registrationForm.email.$dirty && registrationForm.email.$invalid">
+      <span ng-show="registrationForm.email.$error.required">Email is required.</span></span>
             </div>
             
              <div class="col-md-6">
                <label for="hash_password" class="form-label">Password:</label>
-                <input type="password" th:field="*{hash_password}" id="hash_password" class="form-control" ng-model="hash_password">
+                <input type="password" th:field="*{hash_password}" id="hash_password" class="form-control" ng-model="hash_password" required>
  <span class="validationError text-danger" th:if="${#fields.hasErrors('hash_password')}" 
                 th:errors="*{hash_password}">
                 Password error
                 </span>
+       <span class="validationError text-danger" ng-show="registrationForm.hash_password.$dirty && registrationForm.hash_password.$invalid">
+      <span ng-show="registrationForm.hash_password.$error.required">Password is required.</span></span>
             </div>
        
             <div class="col-12">
                 <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="error">
             </div>
         </form>
- </div>
  </div >
-</div>
+ </div >
+ </div>
  
  <footer id="foot" class="text-center text-lg-start text-muted mt-5"> 
  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); color:black">
     &copy; 2022 Copyright: Esell.com 
   </div>
-</footer    >
+</footer >
 
  </body >
 </html>
