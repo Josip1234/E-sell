@@ -29,7 +29,7 @@ app.controller('validateForm', function($scope,$http){
 	$scope.$watch('hash_password', function(){$scope.validate();})
     
 	$scope.validate=function(){
-		
+		//check if there is dupolicate nickname in database
 			if($scope.myData.some(code => code.value === $scope.nickname)==true){
 		  $scope.error=true;
 		  $scope.alreradyExists=true;	
