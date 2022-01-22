@@ -90,6 +90,7 @@
                 </span>
    <span class="validationError text-danger" ng-show="registrationForm.nickname.$dirty && registrationForm.nickname.$invalid">
       <span ng-show="registrationForm.nickname.$error.required">Nickname is required.</span></span>
+      <span ng-show="alreradyExists" class="validationError text-danger">Nickname already exsts in database.</span >
             </div>
             
               <div class="col-md-6">
