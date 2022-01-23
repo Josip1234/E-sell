@@ -113,6 +113,7 @@
                 </span>
         <span class="validationError text-danger" ng-show="registrationForm.email.$dirty && registrationForm.email.$invalid">
       <span ng-show="registrationForm.email.$error.required">Email is required.</span></span>
+      <span ng-show="alreradyExistsEmail" class="validationError text-danger">Email already exsts in database.</span >
             </div>
             
              <div class="col-md-6">
@@ -127,7 +128,7 @@
             </div>
        
             <div class="col-12">
-                <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="error">
+                <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="error||incomplete">
             </div>
         </form>
  </div >
