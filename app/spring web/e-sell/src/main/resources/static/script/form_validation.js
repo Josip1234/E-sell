@@ -32,7 +32,25 @@ app.controller('validateForm', function($scope,$http){
 	$scope.$watch('contact', function(){$scope.validate();})
 	$scope.$watch('email', function(){$scope.validate();})
 	$scope.$watch('hash_password', function(){$scope.validate();})
-    
+	$scope.fnameLength=function(){
+		return $scope.fname.length;
+	};
+	$scope.lnameLength=function(){
+		return $scope.lname.length;
+	};
+    $scope.locationLength=function(){
+		return $scope.location.length;
+	};
+	  $scope.nicknameLength=function(){
+		return $scope.nickname.length;
+	};
+	  $scope.contactLength=function(){
+		return $scope.contact.length;
+	};
+	  $scope.passwordLength=function(){
+		return $scope.hash_password.length;
+	};
+	
 	$scope.validate=function(){
 		//check if there is dupolicate nickname in database
 			if($scope.myData.some(code => code.value === $scope.nickname)==true){

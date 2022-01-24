@@ -44,6 +44,7 @@
                
                     <span class="validationError text-danger" ng-show="registrationForm.fname.$dirty && registrationForm.fname.$invalid">
       <span ng-show="registrationForm.fname.$error.required">First name is required.</span></span>
+      <span ng-bind="fnameLength()"></span >
                 
             </div>
              <div class="col-md-6">
@@ -55,6 +56,7 @@
                 </span>
          <span class="validationError text-danger" ng-show="registrationForm.lname.$dirty && registrationForm.lname.$invalid">
       <span ng-show="registrationForm.lname.$error.required">Last name is required.</span></span>
+         <span ng-bind="lnameLength()"></span >
 
             </div>
               <div class="col-md-6">
@@ -78,6 +80,7 @@
                 
      <span class="validationError text-danger" ng-show="registrationForm.location.$dirty && registrationForm.location.$invalid">
       <span ng-show="registrationForm.location.$error.required">Location is required.</span></span>
+         <span ng-bind="locationLength()"></span >
             </div>
             
             
@@ -91,6 +94,7 @@
    <span class="validationError text-danger" ng-show="registrationForm.nickname.$dirty && registrationForm.nickname.$invalid">
       <span ng-show="registrationForm.nickname.$error.required">Nickname is required.</span></span>
       <span ng-show="alreradyExists" class="validationError text-danger">Nickname already exsts in database.</span >
+        <span ng-bind="nicknameLength()"></span >
             </div>
             
               <div class="col-md-6">
@@ -102,6 +106,7 @@
                 </span>
      <span class="validationError text-danger" ng-show="registrationForm.contact.$dirty && registrationForm.contact.$invalid">
       <span ng-show="registrationForm.contact.$error.required">Contact is required.</span></span>
+      <span ng-bind="contactLength()"></span >
             </div>
             
              <div class="col-md-6">
@@ -125,6 +130,7 @@
                 </span>
        <span class="validationError text-danger" ng-show="registrationForm.hash_password.$dirty && registrationForm.hash_password.$invalid">
       <span ng-show="registrationForm.hash_password.$error.required">Password is required.</span></span>
+       <span ng-bind="passwordLength()"></span >
             </div>
        
             <div class="col-12">
