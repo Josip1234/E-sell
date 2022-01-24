@@ -51,6 +51,10 @@ app.controller('validateForm', function($scope,$http){
 		return $scope.hash_password.length;
 	};
 	
+	  $scope.emailLength=function(){
+		return $scope.email.length;
+	};
+	
 	$scope.validate=function(){
 		//check if there is dupolicate nickname in database
 			if($scope.myData.some(code => code.value === $scope.nickname)==true){
