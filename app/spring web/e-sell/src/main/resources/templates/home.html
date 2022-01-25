@@ -34,7 +34,7 @@
   <div class="row">
     <div class="col">
      <h3> Search by brand:</h3>
-         <img th:src="@{/images/clarks_brand_logo.png}" alt="Clarks"/>
+         <img class="brand" th:src="@{/images/clarks_brand_logo.png}" alt="Clarks"/>
     </div>
     <div class="col">
        <h3>Search by category:</h3>
@@ -64,7 +64,7 @@
       <h3> Search by price:</h3>
        <ul class="list-unstyled">
          <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
-            <a th:href="@{/e-sell/en/articles/{article}(article=${article})}" th:text="${article}" class="text-decoration-none"></a>
+            <span id="spacing">To</span ><a th:href="@{/e-sell/en/articles/{article}(article=${article})}" th:text="${article}" class="text-decoration-none"></a>
         </li>
        <!--
        <li>Between 0.01 and 100</li>
@@ -78,11 +78,11 @@
   
   </div >
   
-<footer class="text-center text-lg-start text-muted"> 
+<footer id="foot1" class="text-center text-lg-start text-muted"> 
  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); color:black">
     &copy; 2022 Copyright: Esell.com 
   </div>
-</footer >
+</footer  >
 
  </body>
 
