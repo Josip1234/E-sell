@@ -37,7 +37,7 @@
             <div class="col-md-6">
              <label for="fname" class="form-label">Enter first name:</label>
              <div class="input-group mb-3">
-                <input type="text" th:field="*{fname}"  class="form-control" ng-model="fname" required id="fname">
+                <input type="text" th:field="*{fname}"  class="form-control" ng-model="fname" required id="fname" placeholder="John, Jane...">
                   <div class="input-group-append">
     <span class="input-group-text" ng-bind="fnameLength()"></span>
   </div>
@@ -54,7 +54,7 @@
              <div class="col-md-6">
               <label for="lname" class="form-label">Enter last name:</label>
               <div class="input-group mb-3">
-                <input type="text" th:field="*{lname}" id="lname" class="form-control" ng-model="lname" required>
+                <input type="text" th:field="*{lname}" id="lname" class="form-control" ng-model="lname" required placeholder="Doe...">
                  <span class="input-group-text" ng-bind="lnameLength()"></span>
               </div>
                 <span class="validationError text-danger" th:if="${#fields.hasErrors('lname')}" 
@@ -80,7 +80,7 @@
                <div class="col-md-6">
                <label for="location" class="form-label">Enter location:</label>
                <div class="input-group mb-3">
-                <input type="text" th:field="*{location}" id="location" class="form-control" ng-model="location" required>
+                <input type="text" th:field="*{location}" id="location" class="form-control" ng-model="location" required placeholder="London, 3600 Open Road... ">
                   <div class="input-group-append">
                          <span class="input-group-text" ng-bind="locationLength()"></span  >
                   </div>
@@ -99,7 +99,7 @@
                <div class="col-md-6">
                <label for="nickname" class="form-label">Enter nickname:</label>
                <div class="input-group mb-3">
-                <input type="text" th:field="*{nickname}"  id="nickname" class="form-control" ng-model="nickname" required>
+                <input type="text" th:field="*{nickname}"  id="nickname" class="form-control" ng-model="nickname" required placeholder="John the Doe,Jane the doe...">
                  <div class="input-group-append">
     <span class="input-group-text" ng-bind="nicknameLength()"></span>
   </div>
@@ -116,7 +116,7 @@
               <div class="col-md-6">
                <label for="contact" class="form-label">Enter contact information:</label>
                <div class="input-group mb-3">
-                <input type="text" th:field="*{contact}" id="contact" class="form-control" ng-model="contact" required>
+                <input type="text" th:field="*{contact}" id="contact" class="form-control" ng-model="contact" required placeholder="Email: janedoe@email.com, Phone: +11111111...">
                 <div class="input-group-append">
     <span class="input-group-text" ng-bind="contactLength()"></span>
   </div>
@@ -132,7 +132,7 @@
              <div class="col-md-6">
                <label for="email" class="form-label">Enter email:</label>
                <div class="input-group mb-3">
-                <input type="email" th:field="*{email}" id="email" class="form-control" ng-model="email" required>
+                <input type="email" th:field="*{email}" id="email" class="form-control" ng-model="email" required placeholder="janedoe@email.com,johndoe@gmail.com...">
                  <div class="input-group-append">
     <span class="input-group-text" ng-bind="emailLength()"></span>
   </div>
