@@ -19,6 +19,7 @@ public class Main {
 		/*start test2
 		Map<String, String> map = new HashMap<String,String>();
 		*/
+		/*
 		List<Article_basic_details> bd= new ArrayList<Article_basic_details>();
 		Article_basic_details details= new Article_basic_details("1", 1, "US $36.90", "Used", 2, 3);
 		bd.add(details);
@@ -41,7 +42,7 @@ public class Main {
 		 details= new Article_basic_details("10", 1, "fgrge 13.45", "Used", 2, 3);bd.add(details);
 		 bd.add(details);
 	
-		 
+	*/	 
 		 /*
 		 for (Article_basic_details article_basic_details : bd) {
 			System.out.println(article_basic_details);
@@ -72,12 +73,12 @@ public class Main {
 		password.saveTestData(map,seller);
 		stop test
 		*/
-		 //test 3 including test 1  
-		 List<Article_basic_details> det = new ArrayList<Article_basic_details>();
+		 //test 3 including test 2  
+		/* List<Article_basic_details> det = new ArrayList<Article_basic_details>();
 		 det=GeneralFunctions.removeStringFromPrice(bd);
 		 for (Article_basic_details article_basic_details : det) {
 			System.out.println(article_basic_details);
-		}
+		}*/
 	}
 
 }

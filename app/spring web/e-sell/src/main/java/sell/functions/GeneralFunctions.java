@@ -130,6 +130,7 @@ public class GeneralFunctions {
 		return valuesToDisplay;
 	}
 	//this will remove any stringvalue from database as price it will take only numbers
+	//this list will be searched to find products by price
 	public static List<Article_basic_details> removeStringFromPrice(List<Article_basic_details> list){
 		List<Article_basic_details> details= new ArrayList<Article_basic_details>();
 		Article_basic_details detailsCopy=new Article_basic_details();
