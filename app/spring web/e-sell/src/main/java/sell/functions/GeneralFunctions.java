@@ -129,5 +129,27 @@ public class GeneralFunctions {
 		Collections.shuffle(valuesToDisplay);
 		return valuesToDisplay;
 	}
+	//this will remove any stringvalue from database as price it will take only numbers
+	public static List<Article_basic_details> removeStringFromPrice(List<Article_basic_details> list){
+		List<Article_basic_details> details= new ArrayList<Article_basic_details>();
+		Article_basic_details detailsCopy=new Article_basic_details();
+		String regex="\\d+\\.\\d+|^\\d+";
+		Pattern p = Pattern.compile(regex);
+		for (Article_basic_details article_basic_details : list) {
+			Matcher m = p.matcher(article_basic_details.getPrice());
+			if(m.find()) {
+				detailsCopy.setArt_num(article_basic_details.getArt_num());
+				detailsCopy.setArticle_condition(article_basic_details.getArticle_condition());
+				detailsCopy.setType_id(article_basic_details.getType_id());
+				detailsCopy.setType_id2(article_basic_details.getType_id2());
+				detailsCopy.setType_id3(article_basic_details.getType_id3());
+				detailsCopy.setPrice(m.group(0));
+				  details.add(detailsCopy);
+				  detailsCopy=new Article_basic_details();
+			}
+
+		}
+		return details;
+	}
 	
 }

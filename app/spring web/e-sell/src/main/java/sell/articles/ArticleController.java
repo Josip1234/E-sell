@@ -23,6 +23,7 @@ import sell.sellers.Sellers;
 @RequestMapping("/e-sell/en/articles")
 public class ArticleController {
 
+
 	private final TypesRepository repository;
 	private final ArticleRepository articleRepository;
 	private final SellerRepository sellerRepository;
