@@ -152,5 +152,17 @@ public class GeneralFunctions {
 		}
 		return details;
 	}
+//take mall the numbers from urls
+public static String replaceURL(String url) {
+	String temp="";
+	Pattern pattern = Pattern.compile(".*/(.*)");
+	Matcher matcher = pattern.matcher(url);
+	if (matcher.find())
+	{
+	   
+	    temp=matcher.group(1);
+	}
+	return temp;
+}
 	
 }

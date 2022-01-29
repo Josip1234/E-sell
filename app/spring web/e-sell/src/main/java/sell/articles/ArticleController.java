@@ -1,5 +1,8 @@
 package sell.articles;
 
+import java.net.URL;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -7,8 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.types.ArticleTypes;
@@ -84,6 +89,13 @@ public class ArticleController {
 		}
 		
 	}
-
+@GetMapping("/{*article}")
+public String getDetails(HttpServletRequest request) {
+    String url= ServletUriComponentsBuilder.fromRequestUri(request).toUriString();
+    log.info("Url"+url);
+    log.info("Replaced url"+GeneralFunctions.replaceURL(url));
+    Article
+	return "article_details";
+}
 	
 }
