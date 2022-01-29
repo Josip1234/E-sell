@@ -24,7 +24,10 @@
         
 
  <divclass="container">
-  
+     <ul class="list-unstyled">
+         <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
+          <p th:text="${article}"></p>
+        </li>
   </div >
   
 <footer id="foot1" class="text-center text-lg-start text-muted"> 

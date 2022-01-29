@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -163,6 +164,18 @@ public static String replaceURL(String url) {
 	    temp=matcher.group(1);
 	}
 	return temp;
+}
+
+//function for returning all objects from list which contains up to price
+public static List<Article_basic_details> findAllObjectsByPrice(List<Article_basic_details> article_basic_details,String price){
+	Double priceDouble=Double.valueOf(price);
+	List<Article_basic_details> article_basic_details2 = new ArrayList<Article_basic_details>();
+	for (Article_basic_details article_basic_details3 : article_basic_details) {
+		if(Double.valueOf(article_basic_details3.getPrice())<=priceDouble){
+			article_basic_details2.add(article_basic_details3);
+		}
+	}
+	return article_basic_details2;
 }
 	
 }

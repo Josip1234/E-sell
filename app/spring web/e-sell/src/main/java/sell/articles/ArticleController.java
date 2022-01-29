@@ -1,6 +1,7 @@
 package sell.articles;
 
 import java.net.URL;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -32,13 +33,15 @@ public class ArticleController {
 	private final TypesRepository repository;
 	private final ArticleRepository articleRepository;
 	private final SellerRepository sellerRepository;
+	private final ArticleBdRepository articleBdRepository;
 	
 	Folder folder=new Folder();
 	
-	public ArticleController(TypesRepository repository, ArticleRepository articleRepository,SellerRepository sellerRepository) {
+	public ArticleController(TypesRepository repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository) {
 		this.repository = repository;
 		this.articleRepository=articleRepository;
 		this.sellerRepository=sellerRepository;
+		this.articleBdRepository=articleBdRepository;
 	}
 
 	@GetMapping("/options")
@@ -90,11 +93,13 @@ public class ArticleController {
 		
 	}
 @GetMapping("/{*article}")
-public String getDetails(HttpServletRequest request) {
+public String getDetails(HttpServletRequest request, Model model) {
     String url= ServletUriComponentsBuilder.fromRequestUri(request).toUriString();
-    log.info("Url"+url);
-    log.info("Replaced url"+GeneralFunctions.replaceURL(url));
-    Article
+    String replacedUrl=GeneralFunctions.replaceURL(url);
+    List<Article_basic_details> article_basic_details=(List<Article_basic_details>) articleBdRepository.findAll();
+    List<Article_basic_details> getNumbersFromList=GeneralFunctions.removeStringFromPrice(article_basic_details);
+    List<Article_basic_details> getFinalList=GeneralFunctions.findAllObjectsByPrice(getNumbersFromList, replacedUrl);
+    model.addAttribute("basic", getFinalList);
 	return "article_details";
 }
 	
