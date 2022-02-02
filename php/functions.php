@@ -32,6 +32,27 @@ function makeFirstPart($value){
 function printString($value){
 	echo $value;
 }
+function selectArticleNamesAndNumbers(){
+	include("sql_connect.php");
+	$sql = "SELECT article_number,article_name FROM articles";
+	$result=mysqli_query($dbc,$sql);
+	return $result;
+}
+
+function retrieveValuesOfArticlesAndNumbers(){
+	$result=selectArticleNamesAndNumbers();
+	$array=array();
+	while($row=mysqli_fetch_array($result)){
+		array_push($array, array($row["article_number"]=>$row["article_name"]));
+	}
+	$toJson=json_encode($array,JSON_UNESCAPED_UNICODE);
+	$data.=openBracket1().getQuotation()."Article".getQuotation().getColon().$toJson.closeBracket1();
+	return $data;
+	
+}
+
+
+
 function returnNumberOfrecords($table){
 	include("sql_connect.php");	
 	$countSql="SELECT COUNT(*) AS total FROM $table";
