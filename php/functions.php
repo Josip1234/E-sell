@@ -51,6 +51,24 @@ function retrieveValuesOfArticlesAndNumbers(){
 	
 }
 
+function selectArticleNumbersWithPrices(){
+	include("sql_connect.php");
+	$sql = "SELECT ar_num,price FROM article_basic_details;";
+	$result=mysqli_query($dbc,$sql);
+	return $result;
+}
+
+function retrievePricesFromArticleDetails(){
+	$result=selectArticleNumbersWithPrices();
+	$array=array();
+	while($row=mysqli_fetch_array($result)){
+		array_push($array, array("article_number"=>$row["ar_num"],"price"=>$row["price"]));
+	}
+	$toJson=json_encode($array,JSON_UNESCAPED_UNICODE);
+	$data.=openBracket1().getQuotation()."Article".getQuotation().getColon().$toJson.closeBracket1();
+	return $data;
+}
+
 
 
 function returnNumberOfrecords($table){
