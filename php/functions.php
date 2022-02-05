@@ -43,7 +43,7 @@ function retrieveValuesOfArticlesAndNumbers(){
 	$result=selectArticleNamesAndNumbers();
 	$array=array();
 	while($row=mysqli_fetch_array($result)){
-		array_push($array, array($row["article_number"]=>$row["article_name"]));
+		array_push($array, array("article_number"=>$row["article_number"],"article_name"=>$row["article_name"]));
 	}
 	$toJson=json_encode($array,JSON_UNESCAPED_UNICODE);
 	$data.=openBracket1().getQuotation()."Article".getQuotation().getColon().$toJson.closeBracket1();
