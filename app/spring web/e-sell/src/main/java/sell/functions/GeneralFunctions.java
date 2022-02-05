@@ -177,5 +177,6 @@ public static List<Article_basic_details> findAllObjectsByPrice(List<Article_bas
 	}
 	return article_basic_details2;
 }
+
 	
 }
