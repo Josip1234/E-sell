@@ -26,7 +26,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
-		http.authorizeRequests().antMatchers("/e-sell/en/articles/**").authenticated()
+		http.authorizeRequests().antMatchers("/e-sell/en/articles/options").authenticated()
+		.antMatchers("/e-sell/en/articles/newarticles").authenticated()
+		.antMatchers("/e-sell/en/articles/newtype").authenticated()
+		.antMatchers("/e-sell/en/articles/{*article}").permitAll()
 		.antMatchers("/e-sell/en/seller/profile","/e-sell/en/seller/updatePass").authenticated()
 		.antMatchers("/e-sell/en/registration","/e-sell/en/","/e-sell/en/seller/updateNotLoggedInPass").permitAll() .and()
 		.logout().logoutSuccessUrl("/e-sell/en/").and()
