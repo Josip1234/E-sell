@@ -46,7 +46,7 @@ function retrieveValuesOfArticlesAndNumbers(){
 		array_push($array, array("article_number"=>$row["article_number"],"article_name"=>$row["article_name"]));
 	}
 	$toJson=json_encode($array,JSON_UNESCAPED_UNICODE);
-	$data.=openBracket1().getQuotation()."Article".getQuotation().getColon().$toJson.closeBracket1();
+	$data.=openBracket1().getQuotation()."article".getQuotation().getColon().$toJson.closeBracket1();
 	return $data;
 	
 }
@@ -65,7 +65,7 @@ function retrievePricesFromArticleDetails(){
 		array_push($array, array("article_number"=>$row["ar_num"],"price"=>$row["price"]));
 	}
 	$toJson=json_encode($array,JSON_UNESCAPED_UNICODE);
-	$data.=openBracket1().getQuotation()."Article".getQuotation().getColon().$toJson.closeBracket1();
+	$data.=openBracket1().getQuotation()."article".getQuotation().getColon().$toJson.closeBracket1();
 	return $data;
 }
 
