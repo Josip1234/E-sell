@@ -21,9 +21,7 @@ app.controller('articleBasicDetails', function($scope,$http){
 		          var value2=$scope.article_numbers[j].innerHTML;
 		          var valueToWrite=$scope.article[i].article_name;
 	         if(value1===value2){
-		var index=j;
-		alert(value2);
-		alert(index);
+		
 		document.getElementById(value2).innerHTML=valueToWrite;
 		
 		}
@@ -38,7 +36,36 @@ app.controller('articleBasicDetails', function($scope,$http){
       
     });
 	$scope.emails=$http.get("http://localhost/e-sell/php/article_basic_prices.php").then(function(response){
-        $scope.emailData = response.data.Article;
+		
+
+		
+        $scope.emailData = response.data.article;
+        var ids=document.querySelectorAll('ul.list-unstyled>li>p[id]:not(:first-child)');
+        
+        //alert(ids[0].id);
+        		 // 1 var text=ids[0].id;
+        		 // alert(text);
+		 //2 var pattern=/(?<=price)(.*)/;
+		//3 var result=text.match(pattern);
+		  //returns as array
+		  // 4 alert(result[0]);
+        
+        for(var i=0;i<$scope.emailData.length;i++){
+	      var price=$scope.emailData[i].price;
+	      var articlenum=$scope.emailData[i].article_number;
+	       for(var j=0;j<ids.length;j++){
+		      var text=ids[j].id;
+		 	  var pattern=/(?<=price)(.*)/;
+		      var result=text.match(pattern);
+		  if(articlenum===result[0]){
+			var id="price"+result[0];
+			document.getElementById(id).innerHTML=price;
+		}
+	}
+}
+        
+        
+     
     });
 	
 	$scope.print=function(){
