@@ -28,7 +28,7 @@
  <divclass="container">
      <ul class="list-unstyled">
          <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
-           <p th:text="${article.art_num}" class="article_number"></p>
+           <p th:text="${article.art_num}" class="article_number" th:id="${article.art_num}" ></p>
             <p th:text="${article.price}"></p>
             <p th:text="${article.article_condition}"></p>
         </li>
