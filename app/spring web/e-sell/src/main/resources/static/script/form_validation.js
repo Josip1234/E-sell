@@ -57,7 +57,7 @@ app.controller('validateForm', function($scope,$http){
 	};
 	
 	$scope.validate=function(){
-		//this is working because it is a string from php
+		//this is working because it is a string from php 
 		//check if there is dupolicate nickname in database
 			if($scope.myData.some(code => code.value === $scope.nickname)==true){
 		  $scope.error=true;
