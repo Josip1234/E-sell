@@ -32,12 +32,14 @@ function makeFirstPart($value){
 function printString($value){
 	echo $value;
 }
-function selectArticleNamesAndNumbers(){
+
+function selectArticleTypes(){
 	include("sql_connect.php");
-	$sql = "SELECT article_number,article_name FROM articles";
+	$sql="SELECT type FROM article_types";
 	$result=mysqli_query($dbc,$sql);
 	return $result;
 }
+
 
 function retrieveValuesOfArticlesAndNumbers(){
 	$result=selectArticleNamesAndNumbers();
@@ -86,6 +88,17 @@ function returnNumberOfrecords($table){
 		$result=mysqli_query($dbc,$sql1);
 		return $result;
 	}
+
+function retrieveTypesFromArticleTypes(){
+	$result=selectUniqueFromTables("article_types","type");
+	$array=array();
+	while($row=mysqli_fetch_array($result)){
+		array_push($array,array("type"=>$row["type"]));
+	}
+	$convertToJson=json_encode($array,JSON_UNESCAPED_UNICODE);
+	$data.=openBracket1().getQuotation()."article_types".getQuotation().getColon().$convertToJson.closeBracket1();
+	return $data;
+}
 
 	function createJsonFromUniques($result,$totalValues,$tableColumn){
 		$concatString=makeFirstPart($tableColumn);
