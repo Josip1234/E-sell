@@ -14,6 +14,7 @@ app.controller('validateForm', function($scope,$http){
 	$scope.emails=$http.get("http://localhost/e-sell/php/email_from_sellers.php").then(function(response){
         $scope.emailData = response.data.email;
     });
+    //used to get previous entered values in form
 	$scope.fname=document.getElementById("fname").value;
 	$scope.lname=document.getElementById("lname").value;
 	$scope.dateofbirth=document.getElementById("dateofbirth").value;
@@ -56,6 +57,7 @@ app.controller('validateForm', function($scope,$http){
 	};
 	
 	$scope.validate=function(){
+		//this is working because it is a string from php
 		//check if there is dupolicate nickname in database
 			if($scope.myData.some(code => code.value === $scope.nickname)==true){
 		  $scope.error=true;
@@ -64,7 +66,7 @@ app.controller('validateForm', function($scope,$http){
 			$scope.error=false;
 			$scope.alreradyExists=false;
 		}
-		
+		//value is in json
 		if($scope.emailData.some(em => em.value === $scope.email)==true){
 			$scope.error=true;
 			$scope.alreradyExistsEmail=true;	

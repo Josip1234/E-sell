@@ -93,10 +93,10 @@ function retrieveTypesFromArticleTypes(){
 	$result=selectUniqueFromTables("article_types","type");
 	$array=array();
 	while($row=mysqli_fetch_array($result)){
-		array_push($array,array("type"=>$row["type"]));
+		array_push($array,array("value"=>$row["type"]));
 	}
 	$convertToJson=json_encode($array,JSON_UNESCAPED_UNICODE);
-	$data.=openBracket1().getQuotation()."article_types".getQuotation().getColon().$convertToJson.closeBracket1();
+	$data.=openBracket1().getQuotation()."types".getQuotation().getColon().$convertToJson.closeBracket1();
 	return $data;
 }
 
@@ -122,6 +122,12 @@ function retrieveTypesFromArticleTypes(){
 	$concatString.=closeBracket1();
 		return $concatString;
 	}
+function selectArticleNamesAndNumbers(){
+	include("sql_connect.php");
+	$sql = "SELECT article_number,article_name FROM articles";
+	$result=mysqli_query($dbc,$sql);
+	return $result;
+}
 
 
 ?>
