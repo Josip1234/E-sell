@@ -14,17 +14,43 @@ app.config(function($sceDelegateProvider) {
 	$scope.type=document.getElementById("type").value;
 	$scope.error=false;
 	$scope.incomplete=true;
+    $scope.$watch('type', function(){$scope.validate();})
+	
 	$scope.typeLength=function(){
 		return $scope.type.length;
 	};
-    $scope.$watch('type', function(){$scope.validate();})
+
 	$scope.validate=function(){
 	  	if($scope.myData.some(ty => ty.value === $scope.type)==true){
 		alert(true);
 		  $scope.error=true;
 		  $scope.alreradyExists=true;	
-		} 
+		  $scope.showError=true;
+		}else{
+			$scope.error=false;
+			$scope.alreradyExists=false;
+		}
+		
+		
+		
+		
+	   	if($scope.type.length==0){
+		$scope.error=true;
+		$scope.showError=true;
+		$scope.incomplete=true;
+	   }else{
+  	if($scope.myData.some(ty => ty.value === $scope.type)==true){
+		alert(true);
+		  $scope.error=true;
+		  $scope.alreradyExists=true;	
+		  $scope.showError=true;
+		}else{
+			$scope.error=false;
+			$scope.alreradyExists=false;
+		}
+		  $scope.incomplete=false;
+		
+	}
 	};
-	
 	
 });

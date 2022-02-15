@@ -23,7 +23,7 @@
  <div class="container">
 <div id="rw" class="row mt-4">
  <div class="col mt-5">
-         <form method="post" th:action="@{/e-sell/en/articles/newtype}" th:object="${type}" class="row g-3" ng-app="type_validation" ng-controller="validateType" name="type_form" novalidate>
+         <form method="post" th:action="@{/e-sell/en/articles/newtype}" th:object="${type}" class="row g-3" ng-app="type_validation" ng-controller="validateType" name="newtypeForm" novalidate>
  <div th:if="${#fields.hasErrors()}">
         <span class="validationError text-danger">
         Please correct the problems below and resubmit.
@@ -41,8 +41,9 @@
                 th:errors="*{type}">
                 Type error
                 </span>
-    <span class="validationError text-danger" ng-show="type_form.type.$dirty && type_form.type.$invalid">
+    <span class="validationError text-danger" ng-show="newtypeForm.type.$dirty && newtypeForm.type.$invalid">
       <span ng-show="type_form.type.$error.required">New type of product is required.</span></span>
+       <span ng-show="alreradyExists" class="validationError text-danger">Type already exists in database.</span >
 
             </div>
        
