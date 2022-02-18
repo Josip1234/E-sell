@@ -32,9 +32,9 @@
             <div class="col-md-6">
              <label for="article_number" class="form-label">Enter article number:</label>
                   <div class="input-group mb-3">
-                <input type="text" th:field="*{article_number}"  class="form-control">
+                <input type="text" th:field="*{article_number}" ng-model="article_number" id="article_number" class="form-control">
                  <div class="input-group-append">
-                         <spanclass="input-group-text" ng-bind="articleNumberLength()"></span >
+                         <span class="input-group-text" ng-bind="articleNumberLength()"></span >
                   </div>
                   </div>
                 <span class="validationError text-danger" th:if="${#fields.hasErrors('article_number')}" 
@@ -42,18 +42,24 @@
                 Article number error
                 </span>
         <span class="validationError text-danger" ng-show="newarticleForm.article_number.$dirty && newarticleForm.article_number.$invalid">
-      <span ng-show="type_form.type.$error.required">New article number is required.</span></span>
+      <span ng-show="newarticleForm.article_number.$error.required">New article number is required.</span></span>
        <span ng-show="alreradyExists" class="validationError text-danger">Article number already exists in database.</span >
 
             </div>
             
                         <div class="col-md-6">
              <label for="article_name" class="form-label">Article name:</label>
-                <input type="text" th:field="*{article_name}"  class="form-control">
+                 <div class="input-group mb-3">
+                <input type="text" th:field="*{article_name}" ng-model="article_name" id="article_name" class="form-control">
+                    <div class="input-group-append">
+                      <span class="input-group-text" ng-bind="articleNameLength()"></span >
+                      </div>
+                  </div>
                 <span class="validationError text-danger" th:if="${#fields.hasErrors('article_name')}" 
                 th:errors="*{article_name}">
                 Article name error
                 </span>
+                 <span ng-show="newarticleForm.article_name.$error.required">Article name is required.</span></span>
 
             </div>
             

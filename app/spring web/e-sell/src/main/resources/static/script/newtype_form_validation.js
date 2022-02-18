@@ -22,7 +22,6 @@ app.config(function($sceDelegateProvider) {
 
 	$scope.validate=function(){
 	  	if($scope.myData.some(ty => ty.value === $scope.type)==true){
-		alert(true);
 		  $scope.error=true;
 		  $scope.alreradyExists=true;	
 		  $scope.showError=true;
