@@ -21,7 +21,7 @@ app.config(function($sceDelegateProvider) {
 	};
 
 	$scope.validate=function(){
-
+           $scope.type=document.getElementById("type").value;
 		
 	  	if($scope.myData.some(ty => ty.value === $scope.type)==true){
 		  $scope.error=true;
