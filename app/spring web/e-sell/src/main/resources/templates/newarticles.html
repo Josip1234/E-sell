@@ -59,6 +59,7 @@
                 th:errors="*{article_name}">
                 Article name error
                 </span>
+                        <span class="validationError text-danger" ng-show="newarticleForm.article_name.$dirty && newarticleForm.article_name.$invalid">
                  <span ng-show="newarticleForm.article_name.$error.required">Article name is required.</span></span>
 
             </div>

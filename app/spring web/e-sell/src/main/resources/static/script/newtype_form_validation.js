@@ -15,12 +15,17 @@ app.config(function($sceDelegateProvider) {
 	$scope.error=false;
 	$scope.incomplete=true;
     $scope.$watch('type', function(){$scope.validate();})
-	
-	$scope.typeLength=function(){
+		
+		$scope.typeLength=function(){
 		return $scope.type.length;
 	};
 
 	$scope.validate=function(){
+
+	$scope.typeLength=function(){
+		return $scope.type.length;
+	};
+		
 	  	if($scope.myData.some(ty => ty.value === $scope.type)==true){
 		  $scope.error=true;
 		  $scope.alreradyExists=true;	
@@ -28,6 +33,7 @@ app.config(function($sceDelegateProvider) {
 		}else{
 			$scope.error=false;
 			$scope.alreradyExists=false;
+		    $scope.showError=false;
 		}
 		
 		
@@ -39,17 +45,20 @@ app.config(function($sceDelegateProvider) {
 		$scope.incomplete=true;
 	   }else{
   	if($scope.myData.some(ty => ty.value === $scope.type)==true){
-		alert(true);
 		  $scope.error=true;
 		  $scope.alreradyExists=true;	
 		  $scope.showError=true;
 		}else{
 			$scope.error=false;
 			$scope.alreradyExists=false;
+			$scope.incomplete=false;
 		}
 		  $scope.incomplete=false;
 		
 	}
 	};
+
 	
+
 });
+
