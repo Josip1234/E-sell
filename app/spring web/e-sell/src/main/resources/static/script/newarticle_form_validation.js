@@ -31,30 +31,33 @@ app.controller("validateNewArticle", function($scope,$http){
 		  $scope.error=true;
 		  $scope.alreradyExists=true;	
 		  $scope.showError=true;
+		  $scope.incomplete=true;
 		}else{
 			$scope.error=false;
 			$scope.alreradyExists=false;
 		    $scope.showError=false;
+		    $scope.incomplete=true;
 		}
 		
 		
 		
 		
-	   	if($scope.article_number.length==0 ||  $scope.article_name.length==0){
-		$scope.error=true;
-		$scope.showError=true;
-		$scope.incomplete=true;
+	   	if($scope.article_number.length==0 || $scope.article_name.length==0){
+		  $scope.error=true;
+	
+		  $scope.incomplete=true;
 	   }else{
+		$scope.incomplete=false;
   	if($scope.Data.some(an => an.article_number === $scope.article_number)==true){
 		  $scope.error=true;
 		  $scope.alreradyExists=true;	
-		  $scope.showError=true;
+		  $scope.incomplete=true;
 		}else{
 			$scope.error=false;
 			$scope.alreradyExists=false;
 			$scope.incomplete=false;
 		}
-		  $scope.incomplete=false;
+		  
 		
 	}
 	};
