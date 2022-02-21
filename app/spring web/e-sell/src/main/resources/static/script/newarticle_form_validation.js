@@ -9,7 +9,7 @@ app.controller("validateNewArticle", function($scope,$http){
 			      $scope.data = response.data.article;
         })
 	$scope.article_number=document.getElementById("article_number").value;
-	$scope.article_name=document.getElementById("article_name").value
+	$scope.article_name=document.getElementById("article_name").value;
 	$scope.error=false;
 	$scope.incomplete=true;
     $scope.$watch('article_number', function(){$scope.validate();})
@@ -25,6 +25,8 @@ app.controller("validateNewArticle", function($scope,$http){
 	
 	
 		$scope.validate=function(){
+			$scope.article_number=document.getElementById("article_number").value;
+	$scope.article_name=document.getElementById("article_name").value;
 	  	if($scope.data.some(an => an.article_number === $scope.article_number)==true){
 		  $scope.error=true;
 		  $scope.alreradyExists=true;	
@@ -32,6 +34,7 @@ app.controller("validateNewArticle", function($scope,$http){
 		}else{
 			$scope.error=false;
 			$scope.alreradyExists=false;
+		    $scope.showError=false;
 		}
 		
 		
@@ -49,6 +52,7 @@ app.controller("validateNewArticle", function($scope,$http){
 		}else{
 			$scope.error=false;
 			$scope.alreradyExists=false;
+			$scope.incomplete=false;
 		}
 		  $scope.incomplete=false;
 		

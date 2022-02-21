@@ -57,6 +57,14 @@ app.controller('validateForm', function($scope,$http){
 	};
 	
 	$scope.validate=function(){
+			$scope.fname=document.getElementById("fname").value;
+	$scope.lname=document.getElementById("lname").value;
+	$scope.dateofbirth=document.getElementById("dateofbirth").value;
+	$scope.location=document.getElementById("location").value;
+	$scope.nickname=document.getElementById("nickname").value;
+	$scope.contact=document.getElementById("contact").value;
+	$scope.email=document.getElementById("email").value;
+	$scope.hash_password=document.getElementById("hash_password").value;
 		//this is working because it is a string from php 
 		//check if there is dupolicate nickname in database
 			if($scope.myData.some(code => code.value === $scope.nickname)==true){

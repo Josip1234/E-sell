@@ -32,7 +32,7 @@
             <div class="col-md-6">
              <label for="article_number" class="form-label">Enter article number:</label>
                   <div class="input-group mb-3">
-                <input type="text" th:field="*{article_number}" ng-model="article_number" id="article_number" class="form-control">
+                <input type="text" th:field="*{article_number}" ng-model="article_number" id="article_number" class="form-control" required>
                  <div class="input-group-append">
                          <span class="input-group-text" ng-bind="articleNumberLength()"></span >
                   </div>
@@ -50,7 +50,7 @@
                         <div class="col-md-6">
              <label for="article_name" class="form-label">Article name:</label>
                  <div class="input-group mb-3">
-                <input type="text" th:field="*{article_name}" ng-model="article_name" id="article_name" class="form-control">
+                <input type="text" th:field="*{article_name}" ng-model="article_name" id="article_name" class="form-control" required>
                     <div class="input-group-append">
                       <span class="input-group-text" ng-bind="articleNameLength()"></span >
                       </div>
