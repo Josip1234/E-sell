@@ -57,4 +57,9 @@ public String home(Model model) {
 	return "home";
 }
 
+@GetMapping("/e-sell/en/loggingout")
+public String getLogOutView() {
+	return "loggingout";
+}
+
 }
