@@ -19,7 +19,7 @@ app.controller('validateForm', function($scope,$http){
 	$scope.lname=document.getElementById("lname").value;
 	$scope.dateofbirth=document.getElementById("dateofbirth").value;
 	$scope.location=document.getElementById("location").value;
-	$scope.nickname=document.getElementById("nickname").value;
+	$scope.nickname=document.getElementById("nickname").value
 	$scope.contact=document.getElementById("contact").value;
 	$scope.email=document.getElementById("email").value;
 	$scope.hash_password=document.getElementById("hash_password").value;
