@@ -62,4 +62,9 @@ public String getLogOutView() {
 	return "loggingout";
 }
 
+@GetMapping("/logout")
+public String redirect() {
+	return "/e-sell/en/";
+}
+
 }
