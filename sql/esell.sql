@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2021 at 01:25 PM
+-- Generation Time: Mar 05, 2022 at 03:03 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -57,7 +57,10 @@ INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
 (7, '144', 'dhrthrhrth', 'joka'),
 (8, 'vnioeghniegjoijjno', 'Prijenosni Hard Disk', 'joka'),
 (9, 'hgsrthserhsdhtsrht', 'hrtrthrfshdghtrhr', 'joka414541'),
-(10, '36124969', '\r\nHilfiger čizme 39/40', 'jobo');
+(10, '36124969', '\r\nHilfiger čizme 39/40', 'jobo'),
+(11, '789456120', 'Cd Edo Maajka - Mater', 'mrasica@gmail.com'),
+(12, 'ndhnd', 'nnrnfnd', 'Jobo123456'),
+(14, '294771966105', 'Custom Nike Air Force 1 Black & Gold (MENS)', 'primoblack');
 
 -- --------------------------------------------------------
 
@@ -102,9 +105,13 @@ CREATE TABLE `article_types` (
 
 INSERT INTO `article_types` (`id`, `type`) VALUES
 (3, 'Elektronika'),
+(8, 'fdsssddvs'),
 (4, 'fhetrtjhtejjrjfgz'),
 (2, 'gdgdh'),
-(1, 'Novi tip produkta');
+(5, 'i67rti7it7i6rt'),
+(10, 'Men\'s Shoes'),
+(1, 'Novi tip produkta'),
+(9, 'Shoes');
 
 -- --------------------------------------------------------
 
@@ -164,7 +171,11 @@ INSERT INTO `sellers` (`id`, `fname`, `lname`, `dateofbirth`, `location`, `nickn
 (6, 'Josip', 'Bošnjak', '1992-11-05', 'Požega, Sveti rok 81, 34000 Požega, Republika Hrvatska, Europska unija', 'Jobo123', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak33@gmail.com', '$2a$10$QlvV7KSL9dI4Eo6aMTIwseajBUtmINOXIAtXp58JntpPdChDc7JlK'),
 (8, 'Josip', 'Bošnjak', '1992-11-05', 'Požega, Sveti rok 81, 34000 Požega, Republika Hrvatska, Europska unija', 'ggegedg', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak344@gmail.com', '$2a$10$ENFwOyVUkM0n99hyZ9c5teL8C4H1WV2Xy94e1fIZmDcGGpAyLvW9a'),
 (10, 'Josip', 'Bošnjak', '1992-11-05', 'drgrghtr', 'ggegedga', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak3445@gmail.com', '$2a$10$Gou2kgfKKE0JIEF.RQD3hOSKydbrQK.2Mub27665zjrTLavzPFAUS'),
-(11, 'Josip', 'Bošnjak', '1981-12-02', 'Požega, Sveti rok 81, 34000 Požega, Republika Hrvatska, Europska unija', 'joka414541', 'Email: jbosnjak35@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak35@gmail.com', '$2a$10$awRHKTo3GENjwufRHMdc/OzL4FDH4oqxx2Bs0vmJgwcMwa/R7VNK.');
+(11, 'Josip', 'Bošnjak', '1981-12-02', 'Požega, Sveti rok 81, 34000 Požega, Republika Hrvatska, Europska unija', 'joka414541', 'Email: jbosnjak35@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak35@gmail.com', '$2a$10$awRHKTo3GENjwufRHMdc/OzL4FDH4oqxx2Bs0vmJgwcMwa/R7VNK.'),
+(12, 'Marko', 'Rašica', '1985-09-30', 'Zagreb ', 'mrasica@gmail.com', 'E-mail: mrasica@gmail.com', 'mrasica@gmail.com', '$2a$10$ZoqdRonZYIXecKaDwr95qucHwuGv/JAUhYML08ECDaXxe.k3beRim'),
+(13, 'Pavle', 'Šesti', '1955-05-05', 'London', 'pthesixst', 'Email: jbosnjak3@gmail.com Kućni telefon: 034-292-229 Mobitel: 0919759754', 'pthesixst@gmail.com', '$2a$10$1z4Ood2Da55ndOIf2XGryeIdq/QRbedn8CCWuMTfOlKsSreIG.w.W'),
+(15, 'Josip', 'Bošnjak', '1992-11-05', 'Po', 'Jobo123456', 'jbosnjak333@gmail.com,Kućni telefon: 034-292-229 Mobitel: 0919759754', 'jbosnjak333@gmail.com', '$2a$10$cUDrxwBaJY1eUmZy4ZIjSOVhCL9Sfcu.KzbECrjV4sx9ht60C5tIu'),
+(16, 'Primo', 'Black', '1989-03-05', 'Columbus, Ohio, United States', 'primoblack', 'Email: primoblack@gmail.com, Second email: primoblack12@gmail.com', 'primoblack@gmail.com', '$2a$10$ap7MDspN9ubvrPYTUAy9leCJMlcPoRdbc2SJ7VOwhEO3q2ZlYkLtG');
 
 -- --------------------------------------------------------
 
@@ -298,7 +309,7 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
@@ -310,7 +321,7 @@ ALTER TABLE `article_basic_details`
 -- AUTO_INCREMENT for table `article_types`
 --
 ALTER TABLE `article_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `car_detail`
@@ -322,7 +333,7 @@ ALTER TABLE `car_detail`
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `shipping_details`
