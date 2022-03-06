@@ -68,7 +68,7 @@ public class ArticleController {
 			log.info("Values:"+articles);
 			articleRepository.save(articles);
 			folder.createFolder(articles);
-			return "redirect:/e-sell/en/";
+			return "redirect:insertBasicArticleDetails";
 		}
 	}
 	
@@ -102,5 +102,10 @@ public String getDetails(HttpServletRequest request, Model model) {
     model.addAttribute("basic", getFinalList);
 	return "article_details";
 }
-	
+
+@GetMapping("/insertBasicArticleDetails")
+public String getForm() {
+	return "insertBasicArticleDetails";
+}
+
 }
