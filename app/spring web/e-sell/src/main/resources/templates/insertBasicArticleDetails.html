@@ -33,8 +33,9 @@
         </span>
       </div>
       
-      <select id="type_id" name="type_id">
-        <option value="type_id">Type_name</option >
+      <select id="type_id" name="type_id" th:field="${types}">
+         <option value="0">select type</option>
+        <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
       
       <input type="text" name="price">
@@ -42,12 +43,14 @@
       <input type="text" name="article_condition">
       
   
-    <select id="type_id2" name="type_id2">
-        <option value="type_id2">Type_name</option >
+     <select id="type_id2" name="type_id2" th:field="${types}">
+         <option value="0">select subtype</option>
+        <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
       
-        <select id="type_id3" name="type_id3">
-        <option value="type_id3">Type_name</option >
+       <select id="type_id3" name="type_id3" th:field="${types}">
+         <option value="0">select subtype</option>
+        <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
 
        

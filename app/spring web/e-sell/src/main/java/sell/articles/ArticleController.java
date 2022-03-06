@@ -105,6 +105,8 @@ public String getDetails(HttpServletRequest request, Model model) {
 
 @GetMapping("/insertBasicArticleDetails")
 public String getForm(Model model) {
+	List<ArticleTypes> types= (List<ArticleTypes>) repository.findAll();
+	model.addAttribute("types",types);
 	model.addAttribute("bdetails", new Article_basic_details());
 	return "insertBasicArticleDetails";
 }
