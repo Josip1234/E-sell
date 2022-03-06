@@ -104,7 +104,8 @@ public String getDetails(HttpServletRequest request, Model model) {
 }
 
 @GetMapping("/insertBasicArticleDetails")
-public String getForm() {
+public String getForm(Model model) {
+	model.addAttribute("bdetails", new Article_basic_details());
 	return "insertBasicArticleDetails";
 }
 
