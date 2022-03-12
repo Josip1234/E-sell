@@ -45,7 +45,7 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 	public Article_basic_details save(String article_number,Article_basic_details bdetails) {
 		template.update(
 				"insert into Article_basic_details (ar_num,type_id,price,article_condition,type_id_2,type_id_3) values(?,?,?,?,?,?)",
-			    article_number,
+			    bdetails.getArt_num(),
 			    bdetails.getType_id(),
 			    bdetails.getPrice(),
 			    bdetails.getArticle_condition(),

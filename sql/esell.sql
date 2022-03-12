@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2022 at 03:03 PM
+-- Generation Time: Mar 12, 2022 at 03:55 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -105,7 +105,10 @@ INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
 (58, '9', '464545', 'Jobo123456'),
 (59, '83', 'rzjjj', 'Jobo123456'),
 (60, '768', 'hdhhdfhfdh', 'Jobo123456'),
-(61, '545545', '464545', 'Jobo123456');
+(61, '545545', '464545', 'Jobo123456'),
+(62, 'sfs', 'fsfgs', 'Jobo123456'),
+(63, 'zstrstzt', 'zsezsz', 'Jobo123456'),
+(64, 'grgsrgsg', 'Cd Edo Maajka - Mater', 'Jobo123456');
 
 -- --------------------------------------------------------
 
@@ -131,7 +134,8 @@ INSERT INTO `article_basic_details` (`id`, `ar_num`, `type_id`, `price`, `articl
 (4, '36124969', 1, '550 kn ~ 74 €', NULL, NULL, NULL),
 (5, '144', 3, 'C $3.42', NULL, NULL, NULL),
 (6, 'hgsrthserhsdhtsrht', 1, 'C $12.56', NULL, NULL, NULL),
-(8, 'vnioeghniegjoijjno', 2, 'US $29.50', NULL, NULL, NULL);
+(8, 'vnioeghniegjoijjno', 2, 'US $29.50', NULL, NULL, NULL),
+(19, 'grgsrgsg', 2, 'gerhee', 'ehehshstrhsh', 9, 5);
 
 -- --------------------------------------------------------
 
@@ -354,13 +358,13 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
 --
 ALTER TABLE `article_basic_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `article_types`
