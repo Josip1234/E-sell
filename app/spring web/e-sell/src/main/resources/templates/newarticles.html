@@ -33,6 +33,7 @@
              <label for="article_number" class="form-label">Enter article number:</label>
                   <div class="input-group mb-3">
                 <input type="text" th:field="*{article_number}" ng-model="article_number" id="article_number" class="form-control" required>
+                <input type="hidden" name="article_numb" value="" id="sendArNum">
                  <div class="input-group-append">
                          <span class="input-group-text" ng-bind="articleNumberLength()"></span >
                   </div>
@@ -44,7 +45,7 @@
         <span class="validationError text-danger" ng-show="newarticleForm.article_number.$dirty && newarticleForm.article_number.$invalid">
       <span ng-show="newarticleForm.article_number.$error.required">New article number is required.</span></span>
        <span ng-show="alreradyExists" class="validationError text-danger">Article number already exists in database.</span >
-
+        
             </div>
             
                         <div class="col-md-6">

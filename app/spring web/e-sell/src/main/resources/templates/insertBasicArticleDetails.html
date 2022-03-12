@@ -38,9 +38,9 @@
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
       
-      <input type="text" name="price">
+      <input type="text" th:field="*{price}">
       
-      <input type="text" name="article_condition">
+      <input type="text" th:field="*{article_condition}">
       
   
      <select id="type_id2" name="type_id2" th:field="${types}">

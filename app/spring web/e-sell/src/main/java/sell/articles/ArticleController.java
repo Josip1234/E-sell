@@ -111,4 +111,11 @@ public String getForm(Model model) {
 	return "insertBasicArticleDetails";
 }
 
+@PostMapping("/insertBasicDetails")
+public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_basic_details bdetails, @ModelAttribute("article_numb") String article_numb) {
+	articleBdRepository.save(article_numb,bdetails);
+	return "redirect:/e-sell/en/";
+	
+}
+
 }

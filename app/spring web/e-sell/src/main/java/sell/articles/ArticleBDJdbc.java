@@ -41,4 +41,17 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 		return  template.query("select ar_num,type_id,price,article_condition,type_id_2,type_id_3 from Article_basic_details", this::mapRowToArticlesBD);
 	}
 
+	@Override
+	public Article_basic_details save(String article_number,Article_basic_details bdetails) {
+		template.update(
+				"insert into Article_basic_details (ar_num,type_id,price,article_condition,type_id_2,type_id_3) values(?,?,?,?,?,?)",
+			    article_number,
+			    bdetails.getType_id(),
+			    bdetails.getArticle_condition(),
+			    bdetails.getType_id2(),
+			    bdetails.getType_id3()
+				);
+		return bdetails;
+	}
+
 }
