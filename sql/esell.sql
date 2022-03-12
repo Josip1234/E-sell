@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2022 at 03:03 PM
+-- Generation Time: Mar 12, 2022 at 03:03 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -60,7 +60,52 @@ INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
 (10, '36124969', '\r\nHilfiger čizme 39/40', 'jobo'),
 (11, '789456120', 'Cd Edo Maajka - Mater', 'mrasica@gmail.com'),
 (12, 'ndhnd', 'nnrnfnd', 'Jobo123456'),
-(14, '294771966105', 'Custom Nike Air Force 1 Black & Gold (MENS)', 'primoblack');
+(14, '294771966105', 'Custom Nike Air Force 1 Black & Gold (MENS)', 'primoblack'),
+(15, '12345689', 'test1', 'primoblack'),
+(16, 'wqfqfGRAGREAGERGEG', 'Cd Edo Maajka - Mater', 'primoblack'),
+(17, 'fwgaggtaeghr', 'esgrggreaheare', 'Jobo123456'),
+(18, '12345555', 'Test', 'Jobo123456'),
+(19, 'blablabla,blablabla', 'gwergerwg', 'Jobo123456'),
+(20, '789', 'ersg', 'Jobo123456'),
+(21, 'mojtestni', 'mojtestni', 'Jobo123456'),
+(22, 'neki novi broj', 'neki novi artikal', 'Jobo123456'),
+(23, 'wwgwge', 'gewgwggwgwe', 'Jobo123456'),
+(24, 'a444t', 't3t4t3t34t', 'Jobo123456'),
+(25, 'fdafafa', 'affafaedf', 'Jobo123456'),
+(26, 'hrhdehht', 'hedhezhehtedh', 'Jobo123456'),
+(27, 's', 'af', 'Jobo123456'),
+(28, 'egewgrgr', 'wggwg', 'Jobo123456'),
+(29, 'wgg', 'gwgr', 'Jobo123456'),
+(30, 'wf', 'fe', 'Jobo123456'),
+(31, '1', '1', 'Jobo123456'),
+(32, '294771966105ef', 'sfesee', 'Jobo123456'),
+(33, '54554', '464545', 'Jobo123456'),
+(35, 'agreagrga', 'egegsergseagrgresg', 'Jobo123456'),
+(36, 'ndhnd4', 'Cd Edo Maajka - Mater', 'Jobo123456'),
+(37, '294771966105e', '464545', 'Jobo123456'),
+(38, 'vnioeghniegjoijjnogr', 'gssrg', 'Jobo123456'),
+(39, '545541', '12', 'Jobo123456'),
+(40, '5455416', '12', 'Jobo123456'),
+(41, 'hgsrthserhsdhtsrht98', '12', 'Jobo123456'),
+(42, '545546', '67u6u', 'Jobo123456'),
+(43, '5496459646', '45416416ht', 'Jobo123456'),
+(44, '294771966105f', 'vsdf', 'Jobo123456'),
+(45, '294771966105d', 'hhtthhr', 'Jobo123456'),
+(46, 'uezeruu', 'krkkkrk', 'Jobo123456'),
+(48, 'uezeruuuzruiti', 'krkkkrkgukiti', 'Jobo123456'),
+(49, 'twwtqwtt', 'qtqttqttt', 'Jobo123456'),
+(50, 'jrjzjdjjz', 'jjrzjjfjzjz', 'Jobo123456'),
+(51, 'hsetrhhths', 'ezszzstzttre', 'Jobo123456'),
+(52, '54554fzu', 'urzrzuzru', 'Jobo123456'),
+(53, '2', '2', 'Jobo123456'),
+(54, '8', '8', 'Jobo123456'),
+(55, '54554ert', 'wtwtwt', 'Jobo123456'),
+(56, 'egr', 'gergegre', 'Jobo123456'),
+(57, '3', 'Cd Edo Maajka - Mater', 'Jobo123456'),
+(58, '9', '464545', 'Jobo123456'),
+(59, '83', 'rzjjj', 'Jobo123456'),
+(60, '768', 'hdhhdfhfdh', 'Jobo123456'),
+(61, '545545', '464545', 'Jobo123456');
 
 -- --------------------------------------------------------
 
@@ -309,13 +354,13 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
 --
 ALTER TABLE `article_basic_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `article_types`
