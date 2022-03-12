@@ -26,7 +26,8 @@ app.controller("validateNewArticle", function($scope,$http){
 	
 		$scope.validate=function(){
 			$scope.article_number=document.getElementById("article_number").value;
-			document.getElementById("sendArNum").value=	$scope.article_number;
+			document.getElementById("sendArNum").value=	$scope.article_number; // možda je višak
+			document.cookie = "article_number="+$scope.article_number;
 	$scope.article_name=document.getElementById("article_name").value;
 	  	if($scope.data.some(an => an.article_number === $scope.article_number)==true){
 		  $scope.error=true;

@@ -11,6 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 <link th:href="@{/styles/top_navigation.css}" rel="stylesheet" />
 <link th:href="@{/styles/rowpadding.css}" rel="stylesheet" />
+<script th:src="@{/script/basicdetails.js}"></script>
  </head>
  <body>
  
@@ -26,14 +27,16 @@
  <div class="col mt-5">
  
 <!-- type is not needed it will have this type when processed get request -->
-    <form method="post" th:action="@{/e-sell/en/insertBasicDetails}" th:object="${bdetails}" class="row g-3">
+    <form method="post" th:action="@{/e-sell/en/articles/insertBasicDetails}" th:object="${bdetails}" class="row g-3">
  <div th:if="${#fields.hasErrors()}">
         <span class="validationError text-danger">
         Please correct the problems below and resubmit.
         </span>
       </div>
       
-      <select id="type_id" name="type_id" th:field="${types}">
+        <input type="text" id="article_number" value="Nothing" name="art_num">
+      
+      <select id="1"  th:field="*{type_id}">
          <option value="0">select type</option>
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
@@ -43,16 +46,17 @@
       <input type="text" th:field="*{article_condition}">
       
   
-     <select id="type_id2" name="type_id2" th:field="${types}">
+     <select id="2"  th:field="*{type_id2}">
          <option value="0">select subtype</option>
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
       
-       <select id="type_id3" name="type_id3" th:field="${types}">
+       <select id="3"   th:field="*{type_id3}">
          <option value="0">select subtype</option>
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
-
+      
+         
        
             <div class="col-12">
                 <input type="submit" value="Submit" class="btn btn-primary">
