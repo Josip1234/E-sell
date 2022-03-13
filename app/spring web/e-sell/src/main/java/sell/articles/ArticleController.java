@@ -112,11 +112,14 @@ public String getForm(Model model) {
 }
 
 @PostMapping("/insertBasicDetails")
-public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_basic_details bdetails, @ModelAttribute("article_numb") String article_numb) {
-	log.info(bdetails.toString());
-	articleBdRepository.save(article_numb,bdetails);
-	return "redirect:/e-sell/en/";
-	
+public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_basic_details bdetails, @ModelAttribute("article_numb") String article_numb, Errors errors) {
+    if(errors.hasErrors()) {
+    	errors.getClass();
+    	return "/insertBasicArticleDetails";
+    }else {
+    	articleBdRepository.save(article_numb,bdetails);
+    	return "redirect:/e-sell/en/";
+    }
 }
 
 }

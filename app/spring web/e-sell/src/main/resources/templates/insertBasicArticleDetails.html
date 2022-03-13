@@ -33,24 +33,30 @@
         Please correct the problems below and resubmit.
         </span>
       </div>
+         <label for="an">Article number</label>
+        <input type="text" id="an" value="Nothing" name="art_num" readonly>
       
-        <input type="text" id="an" value="Nothing" name="art_num">
-      
+      <label for="type_id">Choose product type:</label>
       <select id="1"  th:field="*{type_id}">
          <option value="0">select type</option>
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
       
+         <label for="price">Enter price of product:</label>
       <input type="text" th:field="*{price}">
+      <span class="validationError text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</span>
+               
       
+         <label for="article_condition">Enter product condition:</label>
       <input type="text" th:field="*{article_condition}">
       
-  
+     <label for="type_id2">Choose subtype:</label>
      <select id="2"  th:field="*{type_id2}">
          <option value="0">select subtype</option>
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
       
+         <label for="type_id3">Choose subtype:</label>
        <select id="3"   th:field="*{type_id3}">
          <option value="0">select subtype</option>
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
