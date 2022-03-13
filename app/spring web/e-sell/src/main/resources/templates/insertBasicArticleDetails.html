@@ -33,35 +33,47 @@
         Please correct the problems below and resubmit.
         </span>
       </div>
-         <label for="an">Article number</label>
-        <input type="text" id="an" value="Nothing" name="art_num" readonly>
-      
-      <label>Choose product type:</label>
-      <select id="1"  th:field="*{type_id}">
+      <div class="col-md-6">
+         <label for="an" class="form-label">Article number</label>
+        <input type="text" id="an" value="Nothing" name="art_num" class="form-control" readonly>
+      </div>
+      <div class="col-md-6">
+      <label class="form-label">Choose product type:</label >
+      <select id="1"  th:field="*{type_id}" class="form-control">
          <option value="0">select type</option>
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option >
       </select>
+      </div>
       
-         <label for="price">Enter price of product:</label>
-      <input type="text" th:field="*{price}">
+      <div class="col-md-6">
+         <label for="price" class="form-label">Enter price of product:</label>
+      <input type="text" th:field="*{price}" class="form-control">
       <span class="validationError text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</span>
-               
+      </div>
       
-         <label for="article_condition">Enter product condition:</label>
-      <input type="text" th:field="*{article_condition}">
+      <div class="col-md-6">
+         <label for="article_condition" class="form-label">Enter product condition:</label>
+      <input type="text" th:field="*{article_condition}" class="form-control">
       
-     <label>Choose subtype:</label>
-     <select id="2"  th:field="*{type_id2}">
+      </div>
+      
+      
+      
+      <div class="col-md-6">
+     <label class="form-label">Choose subtype:</label >
+     <select id="2"  th:field="*{type_id2}" class="form-control">
          <option value="0">select subtype</option>
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
+      </div>
       
-         <label>Choose subtype:</label>
-       <select id="3"   th:field="*{type_id3}">
+      <div class="col-md-6">
+         <label class="form-label">Choose subtype:</label >
+       <select id="3"   th:field="*{type_id3}" class="form-control">
          <option value="0">select subtype</option>
         <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
       </select>
-      
+      </div>
          
        
             <div class="col-12">
