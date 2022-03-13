@@ -43,7 +43,7 @@ public class RegistrationController {
 @GetMapping
 public String registration(Model model) {
 	model.addAttribute("sellers", new Sellers());
-	return("registration");
+	return  "registration";
 }
 @PostMapping
 public String registerSeller(@Valid @ModelAttribute("sellers") Sellers sellers, Errors errors) {
