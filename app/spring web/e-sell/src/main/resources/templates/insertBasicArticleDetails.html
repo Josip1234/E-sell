@@ -55,8 +55,15 @@
       
       <div class="col-md-6">
          <label for="price" class="form-label">Enter price of product:</label>
-      <input type="text" th:field="*{price}" class="form-control">
+      <input type="text" th:field="*{price}" class="form-control" id="price" required>
       <span class="validationError text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</span>
+       </span>
+          <span class="validationError text-danger" ng-show="detailsForm.price.$dirty && detailsForm.price.$invalid">
+       <span class="validationError text-danger" ng-show="detailsForm.price.$error.required">Price is required.</span >
+          </span>
+          
+           <span class="validationError text-danger" id="showPriceError">Price is required.</span >
+          
       </div>
       
       <div class="col-md-6">

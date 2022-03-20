@@ -18,11 +18,19 @@ app.controller('validateDetailsForm', function($scope){
 	$scope.types_id3=document.getElementById("types_id3").value;
 	
 	document.getElementById("show_error4").style.display='none';
+	
+	document.getElementById("showPriceError").style.display='none';
+	
+	$scope.price=document.getElementById("price").value;
+	
+	
  
     $scope.$watch('types_id', function(){$scope.validate();})
     $scope.$watch('types_id2', function(){$scope.validate();})
 	$scope.$watch('types_id3', function(){$scope.validate();})
-	
+	$scope.$watch('price',function(){$scope.validate()});
+    
+    	
 	$scope.fnameLength=function(){
 		return $scope.fname.length;
 	};
@@ -47,11 +55,29 @@ app.controller('validateDetailsForm', function($scope){
 	};
 	
 	$scope.validate=function(){
+		
+		
 		$scope.error=true;
 	$scope.incomplete=true;
 	  var selected=document.getElementById("types_id").value;
 	  var selected_subtype=document.getElementById("types_id2").value;
 	  var second_subtype=document.getElementById("types_id3").value;
+	  	$scope.price=document.getElementById("price").value;
+	  	
+	  	
+	  	 if($scope.price.length!=0){
+		
+		$scope.error=false;
+		$scope.showError=false;
+		$scope.incomplete=false;
+		document.getElementById("showPriceError").style.display='none';
+	}else{
+		$scope.error=true;
+		$scope.showError=true;
+		$scope.incomplete=true;
+		document.getElementById("showPriceError").style.display='';
+	}
+
 
 	  if(parseInt(selected)===0){
      document.getElementById("show_error").style.display = '';
@@ -95,7 +121,10 @@ app.controller('validateDetailsForm', function($scope){
 	$scope.incomplete=false;
 
 }
+
 }
+
+
 	
 });
 //check for incompleted selected values
