@@ -29,6 +29,8 @@ app.controller('validateDetailsForm', function($scope){
 	$scope.price=document.getElementById("price").value;
 	
 	
+	
+	
  
     $scope.$watch('types_id', function(){$scope.validate();})
     $scope.$watch('types_id2', function(){$scope.validate();})
@@ -59,15 +61,30 @@ app.controller('validateDetailsForm', function($scope){
 		return $scope.email.length;
 	};
 	
+	window.onchange=function(){
+		$scope.price=document.getElementById("price").value;
+		if($scope.price.length===0){
+			$scope.error=true;
+				document.getElementById("showPriceError").style.display='';
+				document.getElementById("subbut").disabled=true;
+		}else{
+			$scope.error=false;
+			document.getElementById("subbut").disabled=false;
+			document.getElementById("showPriceError").style.display='none';
+		}
+	}
+	
 	$scope.validate=function(){
 		
-		
+
+
+	  
 		$scope.error=true;
-	$scope.incomplete=true;
 	  var selected=document.getElementById("types_id").value;
 	  var selected_subtype=document.getElementById("types_id2").value;
 	  var second_subtype=document.getElementById("types_id3").value;
-	  	
+	  
+
 	  	
 	  if(parseInt(selected)===0){
 		document.getElementById("types_id2").disabled = true;
@@ -79,6 +96,7 @@ app.controller('validateDetailsForm', function($scope){
 		     document.getElementById("show_error").style.display = 'none';
 			$scope.error=false;
 	$scope.incomplete=checkForIncomplete(selected,selected_subtype,second_subtype);
+
 	}
 	
 	
@@ -92,6 +110,7 @@ app.controller('validateDetailsForm', function($scope){
 		     document.getElementById("show_error2").style.display = 'none';
 			$scope.error=false;
 	$scope.incomplete=checkForIncomplete(selected,selected_subtype,second_subtype);
+
 	}
 	
    
