@@ -69,13 +69,18 @@ app.controller('validateDetailsForm', function($scope){
 		
 		$scope.error=false;
 		$scope.showError=false;
-		$scope.incomplete=false;
+		$scope.incomplete=checkForIncomplete(selected,selected_subtype,second_subtype);
 		document.getElementById("showPriceError").style.display='none';
-	}else{
+	}else if($scope.price.length===0){
 		$scope.error=true;
 		$scope.showError=true;
-		$scope.incomplete=true;
+	$scope.incomplete=checkForIncomplete(selected,selected_subtype,second_subtype);
 		document.getElementById("showPriceError").style.display='';
+	}else{
+			$scope.error=false;
+		$scope.showError=false;
+		$scope.incomplete=checkForIncomplete(selected,selected_subtype,second_subtype);
+		document.getElementById("showPriceError").style.display='none';
 	}
 
 
