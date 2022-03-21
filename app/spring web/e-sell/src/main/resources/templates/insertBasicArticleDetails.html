@@ -55,7 +55,12 @@
       
       <div class="col-md-6">
          <label for="price" class="form-label">Enter price of product:</label>
-      <input type="text" th:field="*{price}" class="form-control" id="price" required>
+           <div class="input-group mb-3">
+      <input type="text" th:field="*{price}" class="form-control" id="price" ng-model="price" required>
+                       <div class="input-group-append">
+    <span class="input-group-text" ng-bind="priceLn()"></span>
+  </div>
+               </div>
       <span class="validationError text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</span>
        </span>
           <span class="validationError text-danger" ng-show="detailsForm.price.$dirty && detailsForm.price.$invalid">
@@ -68,8 +73,13 @@
       
       <div class="col-md-6">
          <label for="article_condition" class="form-label">Enter product condition:</label>
-      <input type="text" th:field="*{article_condition}" class="form-control">
+            <div class="input-group mb-3">
+      <input type="text" th:field="*{article_condition}" class="form-control" ng-model="article_condition">
+                 <div class="input-group-append">
+    <span class="input-group-text" ng-bind="arconLn()"></span>
+  </div>
       
+      </div>
       </div>
       
       

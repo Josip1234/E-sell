@@ -28,7 +28,8 @@ app.controller('validateDetailsForm', function($scope){
 	
 	$scope.price=document.getElementById("price").value;
 	
-	
+		
+	$scope.article_condition=document.getElementById("article_condition").value;
 	
 	
  
@@ -38,28 +39,13 @@ app.controller('validateDetailsForm', function($scope){
 	$scope.$watch('price',function(){$scope.validate()});
     
     	
-	$scope.fnameLength=function(){
-		return $scope.fname.length;
+	$scope.priceLn=function(){
+		return $scope.price.length;
 	};
-	$scope.lnameLength=function(){
-		return $scope.lname.length;
+	$scope.arconLn=function(){
+		return $scope.article_condition.length;
 	};
-    $scope.locationLength=function(){
-		return $scope.location.length;
-	};
-	  $scope.nicknameLength=function(){
-		return $scope.nickname.length;
-	};
-	  $scope.contactLength=function(){
-		return $scope.contact.length;
-	};
-	  $scope.passwordLength=function(){
-		return $scope.hash_password.length;
-	};
-	
-	  $scope.emailLength=function(){
-		return $scope.email.length;
-	};
+
 	
 	window.onchange=function(){
 		$scope.price=document.getElementById("price").value;
@@ -75,8 +61,9 @@ app.controller('validateDetailsForm', function($scope){
 	}
 	
 	$scope.validate=function(){
-		
-
+				
+	$scope.article_condition=document.getElementById("article_condition").value;
+	$scope.price=document.getElementById("price").value;
 
 	  
 		$scope.error=true;
