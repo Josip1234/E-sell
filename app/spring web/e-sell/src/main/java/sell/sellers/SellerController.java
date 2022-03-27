@@ -50,6 +50,11 @@ public class SellerController {
 		password.saveTestData(map,sellers);
 		return "redirect:/e-sell/en/";
 	}
+	
+	@GetMapping("/findAllArticles")
+	public String findAllArticlesOfUser() {
+		return "findAllArticles";
+	}
 
 	//for non logged in users password update
 	@GetMapping("/updateNotLoggedInPass")
