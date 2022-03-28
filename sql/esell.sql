@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2022 at 04:50 PM
+-- Generation Time: Mar 28, 2022 at 08:55 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -119,7 +119,96 @@ INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
 (72, '5455454', 'hrhjhrh', 'Jobo123456'),
 (73, '+4948489898', 'wef', 'Jobo123456'),
 (74, '575857', 'f1tf1tdf1zh1fd', 'Jobo123456'),
-(75, '545547', 'tzrzr', 'Jobo123456');
+(75, '545547', 'tzrzr', 'Jobo123456'),
+(76, 'Konzum', 'Vidimo se', 'Jobo123456'),
+(77, 'Od tog je događaja p', 'Dva tjedna', 'Jobo123456'),
+(78, 'Treba vratiti', 'povjerenje građana', 'Jobo123456'),
+(79, 'fqf', 'wfwf', 'Jobo123456'),
+(80, 'fqffwq', 'fwfqfq', 'Jobo123456'),
+(81, 'tako loše', 'takva skupina igrača', 'Jobo123456'),
+(82, 'uezeruuqff', 'qffef', 'Jobo123456'),
+(83, 'uezeruufq', 'fwqfwf', 'Jobo123456'),
+(84, 'fqfe', 'fqfqf', 'Jobo123456'),
+(85, 'Christiano', 'Ronaldo', 'Jobo123456'),
+(86, 'fqfqfq', 'fqwfqfqf', 'Jobo123456'),
+(87, '54554691', 'geheh', 'Jobo123456'),
+(88, 'nije', 'prekršaj', 'Jobo123456'),
+(89, '54554rq', 'qwefeqrr', 'Jobo123456'),
+(90, 'fqfqf', 'qwfq', 'Jobo123456'),
+(91, 'fqwf', 'qdwdq', 'Jobo123456'),
+(92, 'bio je bolji', 'ne prolaze uvijek', 'Jobo123456'),
+(93, '123', '123', 'Jobo123456'),
+(94, 'fw', 'qwfwq', 'Jobo123456'),
+(95, '34', '34', 'Jobo123456'),
+(96, 'tako lošes', 'fwfqfq', 'Jobo123456'),
+(97, 'uezeruur', 'gwrwg', 'Jobo123456'),
+(98, 'sgrg', 'grger', 'Jobo123456'),
+(99, 'hgsrthserhsdhtsrht5', '12', 'Jobo123456'),
+(100, 'uezeruufqfw', 'fqwqf', 'Jobo123456'),
+(101, 'ad', 'ad', 'Jobo123456'),
+(102, '134', '124', 'Jobo123456'),
+(103, '345', '33445', 'Jobo123456'),
+(104, '1234', '123', 'Jobo123456'),
+(105, 'fwfw', 'gwrhh', 'Jobo123456'),
+(106, '123456', '43254', 'Jobo123456'),
+(107, '6', '6', 'Jobo123456'),
+(108, '456', '5665', 'Jobo123456'),
+(109, '567', '776', 'Jobo123456'),
+(110, 'fqffwq1', 'Ronaldo', 'Jobo123456'),
+(111, '7891', '7894', 'Jobo123456'),
+(112, '7', '7', 'Jobo123456'),
+(113, '11', '1', 'Jobo123456'),
+(114, '545544', '43243', 'Jobo123456'),
+(115, '13', '13', 'Jobo123456'),
+(116, '54554grg', 'gwrg', 'Jobo123456'),
+(117, '45', '455', 'Jobo123456'),
+(118, '12345', '1234', 'Jobo123456'),
+(119, 'uezeruuwffw', 'wfqwf', 'Jobo123456'),
+(120, 'vil', 'vil', 'Jobo123456'),
+(121, 'uezeruufe', '12', 'Jobo123456'),
+(122, 'aer', 'eqrw', 'Jobo123456'),
+(123, '54554w', 'dwd', 'Jobo123456'),
+(124, 'ramstein', 'ramstein', 'Jobo123456'),
+(125, 'vnioeghniegjoijjndw', 'dqwdq', 'Jobo123456'),
+(126, 'as', 'as', 'Jobo123456'),
+(127, 'vnioeghniegjoijjnowd', 'dwdw', 'Jobo123456'),
+(128, 'jz', 'jz', 'Jobo123456'),
+(129, 'ztz', 'tztzzt', 'Jobo123456'),
+(130, '65', '65', 'Jobo123456'),
+(131, 'bnmk', 'fdbr', 'Jobo123456'),
+(132, 'rtz', 'ztr', 'Jobo123456'),
+(133, 'grgew', 'gwegwgeg', 'Jobo123456'),
+(134, 'qwfq', 'fwqf', 'Jobo123456'),
+(135, 'fqffwqf', 'fefw', 'Jobo123456'),
+(136, 'de', 'de', 'Jobo123456'),
+(137, 'w34', '4343', 'Jobo123456'),
+(138, 'wfefwf', 'fwef', 'Jobo123456'),
+(139, 'uezeruuge', 'gwgwg', 'Jobo123456'),
+(140, '23', '32', 'Jobo123456'),
+(141, 'rdr', 'rdr', 'Jobo123456'),
+(142, 'tlc', 'tlc', 'Jobo123456'),
+(143, '4561', '45', 'Jobo123456'),
+(144, 'tre', 'rrere', 'Jobo123456'),
+(145, '1245', '3525', 'Jobo123456'),
+(146, 'uezeruue', '464545', 'Jobo123456'),
+(147, 'uezeruuf', 'wffw', 'Jobo123456'),
+(148, 'uezeruucs', 'sccsc', 'Jobo123456'),
+(149, '54554ffe', 'eff', 'Jobo123456'),
+(150, 'vnioeghniegjoijjnofw', 'fqffq', 'Jobo123456'),
+(151, 'uezeruufw', 'fwqffq', 'Jobo123456'),
+(152, 'uezeruugwegwg', 'fwfwefgw', 'Jobo123456'),
+(153, 'uezeruugweg', 'fwfwefgw', 'Jobo123456'),
+(154, '7898', '89595', 'Jobo123456'),
+(155, '3535', '35354', 'Jobo123456'),
+(156, '3434', '35355', 'Jobo123456'),
+(157, '4546', '6466', 'Jobo123456'),
+(158, 'w346', '12', 'Jobo123456'),
+(159, '54554fh', '12', 'Jobo123456'),
+(160, '12344', '1234', 'Jobo123456'),
+(161, 'xbfbhdhd', 'hdhth', 'Jobo123456'),
+(162, 'vnioeghniegjoijjnofe', 'feffe', 'Jobo123456'),
+(163, 'wffw', 'wff', 'Jobo123456'),
+(164, 'fwq', 'wffq', 'Jobo123456');
 
 -- --------------------------------------------------------
 
@@ -147,7 +236,11 @@ INSERT INTO `article_basic_details` (`id`, `ar_num`, `type_id`, `price`, `articl
 (6, 'hgsrthserhsdhtsrht', 1, 'C $12.56', NULL, NULL, NULL),
 (8, 'vnioeghniegjoijjno', 2, 'US $29.50', NULL, NULL, NULL),
 (19, 'grgsrgsg', 2, 'gerhee', 'ehehshstrhsh', 9, 5),
-(21, 'gk', 3, '12 hrk', 'Used', 1, 5);
+(21, 'gk', 3, '12 hrk', 'Used', 1, 5),
+(22, 'uezeruufw', 8, 'qfwf', 'wfqqw', 3, 4),
+(23, '4546', 3, '12 hrk', 'FRRRE', 8, 4),
+(24, 'w346', 1, '1000', 'Used', 3, 8),
+(26, 'vnioeghniegjoijjnofe', 3, '78', 'Used', 8, 4);
 
 -- --------------------------------------------------------
 
@@ -370,13 +463,13 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=165;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
 --
 ALTER TABLE `article_basic_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `article_types`

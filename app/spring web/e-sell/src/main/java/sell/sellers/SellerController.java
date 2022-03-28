@@ -1,6 +1,7 @@
 package sell.sellers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import lombok.extern.slf4j.Slf4j;
+import sell.articles.ArticleRepository;
+import sell.articles.Articles;
 import sell.functions.GeneralFunctions;
 import sell.test.data.UserPassImpl;
 
@@ -24,14 +27,17 @@ import sell.test.data.UserPassImpl;
 @RequestMapping("/e-sell/en/seller/")
 public class SellerController {
 	private final SellerRepository sellerRepository;
+	private final ArticleRepository articleRepository;
+	
 	UserPassImpl password= new UserPassImpl();
 	Map<String, Sellers> map = new HashMap<>();
 
 	@Autowired
 	PasswordEncoder encoder;
 	
-	public SellerController(SellerRepository sellerRepository) {
+	public SellerController(SellerRepository sellerRepository, ArticleRepository articleRepository) {
 		this.sellerRepository = sellerRepository;
+		this.articleRepository=articleRepository;
 	}
 	
 	@GetMapping("/profile")
@@ -52,7 +58,11 @@ public class SellerController {
 	}
 	
 	@GetMapping("/findAllArticles")
-	public String findAllArticlesOfUser() {
+	public String findAllArticlesOfUser(Model model) {
+		String userEmail=GeneralFunctions.getUserEmail();
+		Sellers nickname=sellerRepository.findOne(userEmail);
+		List<Articles> articles=articleRepository.findAllByUsername(nickname);
+		model.addAttribute("articles", articles);
 		return "findAllArticles";
 	}
 

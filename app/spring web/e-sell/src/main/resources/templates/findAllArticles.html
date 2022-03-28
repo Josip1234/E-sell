@@ -23,19 +23,14 @@
 
         
 
- <div class="container">
-  <div class="row">
-    <div class="col">
-      <h3> List of products:</h3>
-      
-        <ul class="list-unstyled">
-        <li><a th:href="@{/e-sell/en/sellers}" class="text-decoration-none">Find more sellers...</a></li>
-    </ul>
-    </div>
-    
-  </div>
-  
+ <divclass="container">
+     <ul class="list-unstyled">
+         <li th:unless="${#lists.isEmpty(articles)}" th:each="article : ${articles}">
+           <p th:text="${article.article_number}" class="article_number" th:id="${article.article_number}" ></p>
+            <p th:id="${article.article_name}" th:text="${article.article_name}"></p >
+        </li>
   </div >
+  
   
 <footer id="foot1" class="text-center text-lg-start text-muted"> 
  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); color:black">
