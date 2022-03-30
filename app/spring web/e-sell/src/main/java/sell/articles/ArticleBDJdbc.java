@@ -9,6 +9,11 @@ import org.springframework.stereotype.Repository;
 
 import lombok.extern.slf4j.Slf4j;
 
+/***
+ * 
+ * @author Josip Bošnjak	
+ * Implementation of jdbc template for articles
+ */
 @Slf4j
 @Repository
 public class ArticleBDJdbc implements ArticleBdRepository {
@@ -24,6 +29,13 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 		return template.query("select ar_num,type_id,price,article_condition,type_id_2,type_id_3 from Article_basic_details where price=?", this::mapRowToArticlesBD);
 	}
 	
+	/***
+	 * @author Josip Bošnjak
+	 * @param rs 
+	 * @param rowNum
+	 * @return new basic details object
+	 * @throws SQLException
+	 */
 	private Article_basic_details mapRowToArticlesBD(ResultSet rs, int rowNum) throws SQLException {
 		return new Article_basic_details(
 				rs.getString("ar_num"),

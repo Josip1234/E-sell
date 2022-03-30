@@ -12,7 +12,13 @@ import org.springframework.stereotype.Repository;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.sellers.Sellers;
-
+/***
+ * 
+ * @author Josip Bošnjak
+ * This class is implementation of interface of article table.
+ * 
+ *
+ */
 @Slf4j
 @Repository
 public class ArticleJdbcRepository implements ArticleRepository {
@@ -54,7 +60,15 @@ public class ArticleJdbcRepository implements ArticleRepository {
 				rs.getString("seller"));
 	
 	}
-
+    
+	/***
+	 * This function founds all articles from current user.
+	 * First query for selection of all data is done. Conversion from iterable is done.
+	 * Then new array list is created.
+	 * There is a string of seller username which will be used to compare velus.
+	 * Lambda expression is used to compare string with article seller in return article 
+	 * list. If they are the same, object will be added to empty list. That list will be returned.
+	 */
 	@Override
 	public List<Articles> findAllByUsername(Sellers seller) {
 		List<Articles> listFromDatabase=(List<Articles>) findAll();

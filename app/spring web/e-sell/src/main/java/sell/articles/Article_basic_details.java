@@ -11,6 +11,12 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+/***
+ * 
+ * @author Josip Bošnjak
+ * Class for Basic article details.
+ *
+ */
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor

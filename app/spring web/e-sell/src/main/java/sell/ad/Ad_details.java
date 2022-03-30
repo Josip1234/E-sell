@@ -10,6 +10,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
+/***
+ * 
+ * @author Josip Bošnjak
+ * This will be used to display artice details on web site.
+ *
+ */
 @Data
 @RequiredArgsConstructor
 public class Ad_details {
