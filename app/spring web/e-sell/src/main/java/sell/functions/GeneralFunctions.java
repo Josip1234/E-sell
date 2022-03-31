@@ -20,10 +20,18 @@ import org.springframework.security.core.userdetails.UserDetails;
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.Article_basic_details;
 import sell.sellers.Sellers;
-
+/***
+ * Class for general functions.
+ * @author Josip Bošnjak
+ *
+ */
 @Slf4j
 public class GeneralFunctions {
-
+    /***
+     * This function using security context holder and user details to get user email from logged in user.
+     * @author Josip Bošnjak
+     * @return email from logged in user
+     */
 	public static String getUserEmail() {
 		String email="";
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -37,7 +45,13 @@ public class GeneralFunctions {
 		}
 		return email;
 	}
-	
+	/***
+	 * Find value in list of sellers.
+	 * @param valueToFind
+	 * @param sellers
+	 * @return true if value has been found
+	 * @author Josip Bošnjak
+	 */
 	public static boolean findInAList(String valueToFind,List<Sellers> sellers) {
 		boolean found=false;
 		for (Iterator iterator = sellers.iterator(); iterator.hasNext();) {
@@ -52,7 +66,12 @@ public class GeneralFunctions {
 		log.info(String.valueOf("Value has been found?"+String.valueOf(found)));
 		return found;
 	}
-	//function to get minimum and maximum from basic articles
+	/***
+	 * function to get minimum and maximum from basic articles
+	 * @param article_details 
+	 * @return map which contains min and max price values
+	 * @author Josip Bošnjak
+	 */
 	//we will need dollars to other currencies conversion 
 	public static Map<String,String> findMinAndMax(Iterable<Article_basic_details> article_details){
 		Map<String, String> map = new HashMap<String,String>();
@@ -92,7 +111,12 @@ public class GeneralFunctions {
 		
 		return map;
 	}
-	
+	/***
+	 * This function displays random prices from the article basic detail list. 
+	 * @param articleBasic
+	 * @return list which contains double price values on homepage.
+	 * @author Josip Bošnjak
+	 */
 	public static List<Double> displayPrices(List<Article_basic_details> articleBasic){
 		//declare map
 		Map<String, String> map = new HashMap<String,String>();
@@ -130,8 +154,14 @@ public class GeneralFunctions {
 		Collections.shuffle(valuesToDisplay);
 		return valuesToDisplay;
 	}
-	//this will remove any stringvalue from database as price it will take only numbers
-	//this list will be searched to find products by price
+	
+	/***
+	 * 	this will remove any stringvalue from database as price it will take only numbers . this list will be searched to find products by price
+	 * @param list
+	 * @return list of objects with stripped price values.
+	 * @author Josip Bošnjak
+	 */
+
 	public static List<Article_basic_details> removeStringFromPrice(List<Article_basic_details> list){
 		List<Article_basic_details> details= new ArrayList<Article_basic_details>();
 		Article_basic_details detailsCopy=new Article_basic_details();
@@ -153,7 +183,13 @@ public class GeneralFunctions {
 		}
 		return details;
 	}
-//take mall the numbers from urls
+	
+/***
+ * Function for taking last value of url.
+ * @param url 
+ * @return stripped url
+ * @author Josip Bošnjak
+ */
 public static String replaceURL(String url) {
 	String temp="";
 	Pattern pattern = Pattern.compile(".*/(.*)");
@@ -166,11 +202,19 @@ public static String replaceURL(String url) {
 	return temp;
 }
 
-//function for returning all objects from list which contains up to price
+/***
+ * function for returning all objects from list which contains up to price
+ * @param article_basic_details
+ * @param price
+ * @return list of objects with price values. It search original list.
+ * @author Josip Bošnjak
+ */
 public static List<Article_basic_details> findAllObjectsByPrice(List<Article_basic_details> article_basic_details,String price){
+	//convert price string to double
 	Double priceDouble=Double.valueOf(price);
 	List<Article_basic_details> article_basic_details2 = new ArrayList<Article_basic_details>();
 	for (Article_basic_details article_basic_details3 : article_basic_details) {
+		//if price from the list of object is less or equal to wanted price add to the list.
 		if(Double.valueOf(article_basic_details3.getPrice())<=priceDouble){
 			article_basic_details2.add(article_basic_details3);
 		}

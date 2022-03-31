@@ -2,7 +2,11 @@ package sell.articles.types;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
+/***
+ * Class for shoe details table
+ * @author Josip Bošnjak
+ *
+ */
 @Data
 @AllArgsConstructor
 public class Shoe_details {

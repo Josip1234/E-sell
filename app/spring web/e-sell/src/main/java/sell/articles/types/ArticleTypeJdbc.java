@@ -6,7 +6,14 @@ import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-
+/***
+ * 
+ * Class for implementation of article type table jdbc template
+ * 
+ * @author Josip Bošnjak
+ * 
+ *
+ */
 @Repository
 public class ArticleTypeJdbc implements TypesRepository {
 	
