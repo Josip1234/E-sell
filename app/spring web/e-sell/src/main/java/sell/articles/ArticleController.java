@@ -178,6 +178,7 @@ public String getForm(Model model) {
 }
 
 /***
+ * After basic details has been written, redirect to the form for uploading images of products.
  * @author Josip Bošnjak
  * @param bdetails get values from form input for article basic details
  * @param errors
@@ -191,8 +192,17 @@ public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_
     	return "insertBasicArticleDetails";
     }else {
     	articleBdRepository.save(article_numb,bdetails);
-    	return "redirect:/e-sell/en/";
+    	return "redirect:uploadFile";
     }
+}
+
+/***
+ * @author Josip Bošnjak
+ * @return form for uploading images of products
+ */
+@GetMapping("/uploadFile")
+public String getUploadForm() {
+	return "uploadFile";
 }
 
 }

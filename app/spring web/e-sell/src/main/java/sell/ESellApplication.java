@@ -2,6 +2,9 @@ package sell;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+import sell.files.StorageSettings;
 /***
  * 
  * @author Josip Bošnjak
@@ -10,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
+@EnableConfigurationProperties(StorageSettings.class)
 public class ESellApplication {
 
 	public static void main(String[] args) {
