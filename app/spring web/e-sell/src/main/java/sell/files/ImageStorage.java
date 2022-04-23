@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 
+
+
 @Service
 public class ImageStorage implements ImageStorageService {
 	private final Path fileLocation;
@@ -80,6 +82,17 @@ public class ImageStorage implements ImageStorageService {
 		
 			throw new StorageFileNotFoundException("Could not read file: " + fileName, e);
 		}
+	}
+
+	@Override
+	public void init() {
+		try {
+			Files.createDirectories(fileLocation);
+		} catch (IOException e) {
+			throw new StorageException("Could not initialize storage",e);
+		}
+		
+		
 	}
 
 }

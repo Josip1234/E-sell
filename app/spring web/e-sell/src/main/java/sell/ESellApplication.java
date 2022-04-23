@@ -1,9 +1,12 @@
 package sell;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 
+import sell.files.ImageStorageService;
 import sell.files.StorageSettings;
 /***
  * 
@@ -20,4 +23,11 @@ public class ESellApplication {
 		SpringApplication.run(ESellApplication.class, args);
 	}
 
+	@Bean
+	CommandLineRunner init(ImageStorageService storageService) {
+		return (args) -> {
+			
+			storageService.init();
+		};
+	}
 }

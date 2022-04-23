@@ -226,7 +226,7 @@ public String getUploadForm(Model model) throws IOException {
 }
 
 
-@GetMapping("/e-sell/en/articles/uploadFile/files/{filename:.+}")
+@GetMapping("/files/{filename:.+}")
 @ResponseBody
 public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
     log.info("success");
@@ -235,7 +235,7 @@ public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 			"attachment; filename=\"" + file.getFilename() + "\"").body(file);
 }
 
-@PostMapping("/e-sell/en/articles/uploadFile")
+@PostMapping("/uploadFile")
 public String handleFileUpload(@RequestParam("file") MultipartFile file,
 		RedirectAttributes redirectAttributes) {
       log.info("success");

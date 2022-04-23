@@ -6,7 +6,8 @@
 	</div>
 
 	<div>
-		<form method="POST" enctype="multipart/form-data" action="/e-sell/en/articles/uploadFile">
+		<form method="POST"  th:action="@{/e-sell/en/articles/uploadFile}" enctype="multipart/form-data">
+
 			<table>
 				<tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
 				<tr><td></td><td><input type="submit" value="Upload" /></td></tr>
