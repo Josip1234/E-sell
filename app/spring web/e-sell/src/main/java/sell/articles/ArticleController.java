@@ -1,25 +1,38 @@
 package sell.articles;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.files.Folder;
+import sell.files.ImageStorageService;
+import sell.files.StorageFileNotFoundException;
 import sell.functions.GeneralFunctions;
 import sell.sellers.SellerRepository;
 import sell.sellers.Sellers;
@@ -44,6 +57,7 @@ public class ArticleController {
 	private final ArticleRepository articleRepository;
 	private final SellerRepository sellerRepository;
 	private final ArticleBdRepository articleBdRepository;
+	private final ImageStorageService imageStorageService;
 	
 	//empty object for making new folder
 	Folder folder=new Folder();
@@ -56,11 +70,12 @@ public class ArticleController {
 	 * @param articleBdRepository
 	 * Repository injection
 	 */
-	public ArticleController(TypesRepository repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository) {
+	public ArticleController(TypesRepository repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService) {
 		this.repository = repository;
 		this.articleRepository=articleRepository;
 		this.sellerRepository=sellerRepository;
 		this.articleBdRepository=articleBdRepository;
+		this.imageStorageService=imageStorageService;
 	}
     /***
      * @author Josip Bošnjak
@@ -201,8 +216,42 @@ public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_
  * @return form for uploading images of products
  */
 @GetMapping("/uploadFile")
-public String getUploadForm() {
+public String getUploadForm(Model model) throws IOException {
+	model.addAttribute("files", imageStorageService.loadAll().map(
+			path -> MvcUriComponentsBuilder.fromMethodName(ArticleController.class,
+					"serveFile", path.getFileName().toString()).build().toUri().toString())
+			.collect(Collectors.toList()));
+
 	return "uploadFile";
 }
+
+
+@GetMapping("/e-sell/en/articles/uploadFile/files/{filename:.+}")
+@ResponseBody
+public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+    log.info("success");
+	Resource file = imageStorageService.loadAsResource(filename);
+	return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
+			"attachment; filename=\"" + file.getFilename() + "\"").body(file);
+}
+
+@PostMapping("/e-sell/en/articles/uploadFile")
+public String handleFileUpload(@RequestParam("file") MultipartFile file,
+		RedirectAttributes redirectAttributes) {
+      log.info("success");
+	imageStorageService.storeFile(file);
+	redirectAttributes.addFlashAttribute("message",
+			"You successfully uploaded " + file.getOriginalFilename() + "!");
+
+	return "redirect:/";
+}
+
+@ExceptionHandler(StorageFileNotFoundException.class)
+public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
+	log.info("success");
+	return ResponseEntity.notFound().build();
+}
+
+
 
 }
