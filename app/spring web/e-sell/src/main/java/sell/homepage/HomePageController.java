@@ -50,7 +50,12 @@ public String home(Model model) {
 	Collections.shuffle(sellers);
 	Collections.shuffle(types);
 	List<Double> valuesToDisplay=new ArrayList<Double>();
-	valuesToDisplay=GeneralFunctions.displayPrices(articleBasic);
+	try {
+		valuesToDisplay=GeneralFunctions.displayPrices(articleBasic);
+	} catch (Exception e) {
+		
+		e.printStackTrace();
+	}
 	model.addAttribute("sell",sellers.stream().limit(4).collect(Collectors.toList()));
 	model.addAttribute("type",types.stream().limit(4).collect(Collectors.toList()));
 	model.addAttribute("basic", valuesToDisplay.stream().limit(4).collect(Collectors.toList()));

@@ -22,7 +22,7 @@ public class Folder {
    //file object for opening or closing stream 
    private File file;
    //varialble to store default path
-   private String defaultPath="src/main/resources/static/images/";
+   private String defaultPath="images/";
    //variable for checking if file exists
    private boolean doesExists;
   
