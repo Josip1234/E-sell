@@ -114,8 +114,11 @@
     <artifactId>json</artifactId>
     <version>20210307</version>
 </dependency>
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
