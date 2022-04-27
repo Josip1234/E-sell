@@ -214,6 +214,7 @@ public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_
 /***
  * @author Josip Bošnjak
  * @return form for uploading images of products
+ *we need to get coockies here see file:///C:/Users/Korisnik/Desktop/Tutorials/docs/spring%205/java%20-%20get%20cookie%20value%20by%20name%20in%20spring%20mvc%20-%20Stack%20Overflow.html
  */
 @GetMapping("/uploadFile")
 public String getUploadForm(Model model) throws IOException {
