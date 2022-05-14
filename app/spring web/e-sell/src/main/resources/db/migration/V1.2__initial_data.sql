@@ -4,7 +4,7 @@ INSERT INTO `sellers` (`id`, `fname`, `lname`, `dateofbirth`, `location`, `nickn
 INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
 (1, '0', '0', 'root');
 
-INSERT INTO `article_types` (`id`, `type`) VALUES (1, "0");
+INSERT INTO `article_types` (`id`, `type`) VALUES (1, "Null");
 INSERT INTO `article_types` (`id`, `type`) VALUES (2, 'Shoes'), (3, 'Cars');
 
 
