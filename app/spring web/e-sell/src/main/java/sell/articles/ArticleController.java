@@ -239,10 +239,13 @@ public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 }
 
 @PostMapping("/uploadFile")
-public String handleFileUpload(@RequestParam("file") MultipartFile file,
+public String handleFileUpload(@CookieValue(value="article_number", required = false) String article_number, @RequestParam("file") MultipartFile file,
 		RedirectAttributes redirectAttributes) {
       log.info("success");
-	imageStorageService.storeFile(file);
+      String nickname=GeneralFunctions.getUserEmail();
+      Sellers seller=sellerRepository.findOne(nickname);
+      nickname=seller.getNickname();
+	imageStorageService.storeFile(nickname,article_number,file);
 	redirectAttributes.addFlashAttribute("message",
 			"You successfully uploaded " + file.getOriginalFilename() + "!");
 

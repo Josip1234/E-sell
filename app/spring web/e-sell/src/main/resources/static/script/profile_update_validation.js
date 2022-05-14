@@ -20,6 +20,8 @@ app.controller('validateForm', function($scope,$http){
 
 	$scope.location=document.getElementById("location").value;
 	$scope.nickname=document.getElementById("nickname").value;
+
+	
 	$scope.contact=document.getElementById("contact").value;
 	$scope.email=document.getElementById("email").value;
 

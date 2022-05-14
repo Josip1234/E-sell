@@ -30,17 +30,16 @@ public class ImageStorage implements ImageStorageService {
 	}
 
 	@Override
-	public void storeFile(MultipartFile fileName) {
+	public void storeFile(String nickname,String article_number,MultipartFile fileName) {
 		try {
 			if(fileName.isEmpty()) {
 				throw new StorageException("Failed to store empty file.");
 			}
-			Path destinationFile=this.fileLocation.resolve(Paths.get(fileName.getOriginalFilename())).normalize().toAbsolutePath();
-		
-			if(!destinationFile.getParent().equals(this.fileLocation.toAbsolutePath())){
-				//security check
-				throw new StorageException("Cannot store file outside current directory.");
-			}
+			Path destinationFile=this.fileLocation.resolve(Paths.get(nickname+"//"+article_number+"//"+fileName.getOriginalFilename())).normalize().toAbsolutePath();
+			StorageSettings settings= new StorageSettings();
+			settings.setLocation(destinationFile.toString());
+		    System.out.println(destinationFile.toString());
+			
 			try(InputStream inputStream = fileName.getInputStream()) {
 				Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
 			}

@@ -104,7 +104,7 @@ public class Folder {
    }
  
    /***
-    * THis function recieves folder object. Checks if file exists and returns true or false.
+    * THis function recieves folder object. Checks if file exists and returns true or false
     * @param folder
     * @return true if folder already exists, false if not.
     * @author Josip Bošnjak

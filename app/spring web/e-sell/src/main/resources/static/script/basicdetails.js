@@ -7,7 +7,7 @@ window.onload = function(){
 	document.getElementById("types_id3").disabled = true;
 	document.getElementById("types_id2").disabled = true;
 let x = document.cookie;
- var y = document.getElementById("an").value=x.match(/(?<=article_number=).*/);;
+ var y = document.getElementById("an").value=x.match(/(?<=article_number=).*/);
 y.value=x;
 document.cookie = "article_number=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
