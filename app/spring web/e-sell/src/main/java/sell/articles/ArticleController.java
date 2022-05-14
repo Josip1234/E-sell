@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -217,7 +218,8 @@ public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_
  *we need to get coockies here see file:///C:/Users/Korisnik/Desktop/Tutorials/docs/spring%205/java%20-%20get%20cookie%20value%20by%20name%20in%20spring%20mvc%20-%20Stack%20Overflow.html
  */
 @GetMapping("/uploadFile")
-public String getUploadForm(Model model) throws IOException {
+public String getUploadForm(@CookieValue(value="article_number", required = false) String article_number,Model model) throws IOException {
+	log.info(article_number);
 	model.addAttribute("files", imageStorageService.loadAll().map(
 			path -> MvcUriComponentsBuilder.fromMethodName(ArticleController.class,
 					"serveFile", path.getFileName().toString()).build().toUri().toString())
