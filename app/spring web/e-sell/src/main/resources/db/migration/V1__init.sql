@@ -1,1 +1,0 @@
-CREATE DATABASE esell CHARACTER SET utf8 COLLATE utf8_croatian_ci;
