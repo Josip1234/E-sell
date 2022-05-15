@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 26, 2022 at 08:01 PM
+-- Generation Time: May 15, 2022 at 12:33 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -61,7 +61,8 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
-(1, '0', '0', 'root');
+(1, '0', '0', 'root'),
+(2, '265546250692', 'beautiful gold 2000s Y2k suede high heel boots by cobbler Spain', 'peppony');
 
 -- --------------------------------------------------------
 
@@ -84,7 +85,8 @@ CREATE TABLE `article_basic_details` (
 --
 
 INSERT INTO `article_basic_details` (`id`, `ar_num`, `type_id`, `price`, `article_condition`, `type_id_2`, `type_id_3`) VALUES
-(1, '0', 1, '0.00', '0', 1, 1);
+(1, '0', 1, '0.00', '0', 1, 1),
+(2, '265546250692', 2, 'GBP 20.00', 'Pre-owned', 6, 7);
 
 -- --------------------------------------------------------
 
@@ -102,9 +104,14 @@ CREATE TABLE `article_types` (
 --
 
 INSERT INTO `article_types` (`id`, `type`) VALUES
-(1, '0'),
+(8, 'Boots'),
 (3, 'Cars'),
-(2, 'Shoes');
+(4, 'Clothing, Shoes & Accessories'),
+(1, 'Nothing'),
+(2, 'Shoes'),
+(5, 'Women'),
+(7, 'Women\'s Boots'),
+(6, 'Women\'s Shoes');
 
 -- --------------------------------------------------------
 
@@ -150,26 +157,28 @@ INSERT INTO `car_detail` (`id`, `article_number`, `brand`, `model`, `year`, `car
 
 CREATE TABLE `flyway_schema_history` (
   `installed_rank` int(11) NOT NULL,
-  `version` varchar(50) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `description` varchar(200) COLLATE utf8_croatian_ci NOT NULL,
-  `type` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
-  `script` varchar(1000) COLLATE utf8_croatian_ci NOT NULL,
+  `version` varchar(50) DEFAULT NULL,
+  `description` varchar(200) NOT NULL,
+  `type` varchar(20) NOT NULL,
+  `script` varchar(1000) NOT NULL,
   `checksum` int(11) DEFAULT NULL,
-  `installed_by` varchar(100) COLLATE utf8_croatian_ci NOT NULL,
+  `installed_by` varchar(100) NOT NULL,
   `installed_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `execution_time` int(11) NOT NULL,
   `success` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `flyway_schema_history`
 --
 
 INSERT INTO `flyway_schema_history` (`installed_rank`, `version`, `description`, `type`, `script`, `checksum`, `installed_by`, `installed_on`, `execution_time`, `success`) VALUES
-(1, '1', 'init', 'SQL', 'V1__init.sql', 0, 'root', '2022-04-26 18:00:03', 4, 1),
-(2, '1.1', 'create tables', 'SQL', 'V1.1__create_tables.sql', 1793196138, 'root', '2022-04-26 18:00:04', 1557, 1),
-(3, '1.2', 'startdata', 'SQL', 'V1.2__startdata.sql', 0, 'root', '2022-04-26 18:00:04', 2, 1),
-(4, '1.3', 'initial data', 'SQL', 'V1.3__initial_data.sql', 845999342, 'root', '2022-04-26 18:00:04', 97, 1);
+(1, '1', 'init', 'SQL', 'V1__init.sql', 0, 'root', '2022-05-14 11:23:40', 3, 1),
+(2, '1.1', 'create tables', 'SQL', 'V1.1__create_tables.sql', 1793196138, 'root', '2022-05-14 11:23:42', 1391, 1),
+(3, '1.2', 'article type data', 'SQL', 'V1.2__article_type_data.sql', -1634923675, 'root', '2022-05-14 11:23:42', 14, 1),
+(4, '1.3', 'seller data', 'SQL', 'V1.3__seller_data.sql', -169531880, 'root', '2022-05-14 11:23:42', 7, 1),
+(5, '1.4', 'articles data', 'SQL', 'V1.4__articles_data.sql', 692060780, 'root', '2022-05-14 11:23:42', 8, 1),
+(6, '1.5', 'initial data', 'SQL', 'V1.5__initial_data.sql', -397976566, 'root', '2022-05-14 11:23:42', 19, 1);
 
 -- --------------------------------------------------------
 
@@ -194,7 +203,8 @@ CREATE TABLE `sellers` (
 --
 
 INSERT INTO `sellers` (`id`, `fname`, `lname`, `dateofbirth`, `location`, `nickname`, `contact`, `email`, `hash_password`) VALUES
-(1, 'admin', 'admin', '2022-04-26', '0', 'root', '0', 'root@localhost.phpmyadmin', '$2y$10$ZS/hh5SAFlkWb5wojf7Oku/GVXlEeUgv4hOg2rtVmvyPAjtvZR2iK');
+(1, 'admin', 'admin', '2022-04-26', '0', 'root', '0', 'root@localhost.phpmyadmin', '$2y$10$ZS/hh5SAFlkWb5wojf7Oku/GVXlEeUgv4hOg2rtVmvyPAjtvZR2iK'),
+(2, 'Kimberly ', 'Matthews', '1987-01-17', 'Watford, United Kingdom', 'peppony', 'Ms, Shakti, McLin, 1489 Jagged Embers Moor, Watford, 96836-4792, UK, (808) 839-3775', 'peppony@rehtdita.com', '$2a$10$/BQ5H5fKzz7CYkY7PaXUwezSezNR8cuvBLagKuao3sZHjAUn0G976');
 
 -- --------------------------------------------------------
 
@@ -259,7 +269,7 @@ CREATE TABLE `shoe_details` (
 --
 
 INSERT INTO `shoe_details` (`id`, `article_number`, `Shoe_condition`, `Theme`, `Pattern`, `Customized`, `Color`, `Upper Material`, `Vintage`, `Insole Material`, `Occasion`, `Brand`, `Shoe size`, `Lining Material`, `Shoe_character`, `Accents`, `Model`, `Toe Shape`, `Department`, `Style`, `Heel Style`, `Shoe Shaft Style`, `Season`, `Outsole Material`, `Heel Height`) VALUES
-(1, '0', '0', '0', '0', 0, '0', '0', 0, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
+(1, '0', '', NULL, NULL, NULL, '0', '0', NULL, NULL, NULL, NULL, '0', NULL, 'Cars', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -349,19 +359,19 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
 --
 ALTER TABLE `article_basic_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `article_types`
 --
 ALTER TABLE `article_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `car_detail`
@@ -373,7 +383,7 @@ ALTER TABLE `car_detail`
 -- AUTO_INCREMENT for table `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shipping_details`
