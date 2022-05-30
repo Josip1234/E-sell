@@ -72,4 +72,9 @@ public String redirect() {
 	return "/e-sell/en/";
 }
 
+@GetMapping("/e-sell/en/products")
+public String getProducts() {
+	return "products";
+}
+
 }
