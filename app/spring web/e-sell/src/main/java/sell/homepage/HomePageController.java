@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.ArticleBdRepository;
+import sell.articles.ArticleRepository;
 import sell.articles.Article_basic_details;
+import sell.articles.Articles;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.functions.GeneralFunctions;
@@ -32,12 +34,14 @@ public class HomePageController {
 	private final SellerRepository repository;
 	private final TypesRepository typesRepository;
 	private final ArticleBdRepository articleBdRepository;
+	private final ArticleRepository articleRepository;
 	
 	@Autowired
-	public HomePageController(SellerRepository repository, TypesRepository typesRepository, ArticleBdRepository articleBdRepository) {
+	public HomePageController(SellerRepository repository, TypesRepository typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository) {
 		this.repository=repository;
 		this.typesRepository=typesRepository;
 		this.articleBdRepository=articleBdRepository;
+		this.articleRepository=articleRepository;
 	}
 @GetMapping("/e-sell/en/")
 public String home(Model model) {
@@ -73,7 +77,9 @@ public String redirect() {
 }
 
 @GetMapping("/e-sell/en/products")
-public String getProducts() {
+public String getProducts(Model model) {
+	List<Articles> articles= (List<Articles>) articleRepository.findAll();
+	model.addAttribute("articles", articles);
 	return "products";
 }
 
