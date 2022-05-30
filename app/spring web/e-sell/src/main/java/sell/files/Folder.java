@@ -47,6 +47,17 @@ public class Folder {
    }
    
    /***
+    * Set folder name, remove default path name
+    * @param nameOfFolder
+    */
+   public void setFolder(String nameOfFolder) {
+	   this.folderName=nameOfFolder;
+	   this.defaultPath="";
+	   this.file=new File(this.folderName);
+	   
+   }
+   
+   /***
     * Creates a new folder depending of object. If object is seller, it creates new folder with seller nickname.
     * Seller nickname is unique, so it is allowed. 
     * @param object - seller or article object
@@ -72,6 +83,10 @@ public class Folder {
 		   System.out.println(folder2.getFolderName());
 		   //set true if directory is made.
 		   setDone(makeDirectory(folder2));
+	   }else if(object instanceof Folder) {
+	        Folder folder3=(Folder) object;
+	        setDone(makeDirectory(folder3));
+		   
 	   }else {
 		   System.out.println("Define what to do if any other object is present.");
 	   }

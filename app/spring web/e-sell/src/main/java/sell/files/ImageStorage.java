@@ -87,6 +87,9 @@ public class ImageStorage implements ImageStorageService {
 	public void init() {
 		try {
 			Files.createDirectories(fileLocation);
+			Folder folder=new Folder();
+			folder.setFolder("logos");
+			folder.createFolder(folder);
 		} catch (IOException e) {
 			throw new StorageException("Could not initialize storage",e);
 		}
