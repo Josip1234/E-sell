@@ -14,19 +14,23 @@
  
   <div class="container">
     <div class="row">
-    < class="col">
+    <div class="col">
       <h1>Custom login premjesti na poseban login site layout će biti drugačiji isto</h1>
-  <form class="row g-3 bg-dark text-white">
-  <div class="col-auto">
-    <input type="text" readonly class="form-control border border-dark" id="nickname" placeholder="Enter your nickname:">
-  </div>
-  <div class="col-auto">
-    <input type="password" class="form-control border border-dark" id="inputPassword2" placeholder="Enter password:">
-  </div>
-  <div class="col-auto">
-    <button type="submit" class="btn btn-primary mb-3">Login</button>
-  </div>
-  </form>
+     <h1>Login</h1>
+<div th:if="${error}">
+Unable to login. Check your username and password.
+</div>
+<p>New here? Click
+<a th:href="@{/register}">here</a> to register.</p>
+
+<form method="POST" th:action="@{/e-sell/en/login}" id="loginForm">
+<label for="username">Username: </label>
+<input type="text" name="username" id="username" /><br/>
+<label for="password">Password: </label>
+<input type="password" name="password" id="password" /><br/>
+<input type="submit" value="Login"/>
+</form>
+    </div>
 </div>
  
  
