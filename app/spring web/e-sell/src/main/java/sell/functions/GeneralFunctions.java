@@ -137,6 +137,8 @@ public class GeneralFunctions {
 		double remainder=0.0;
 		//if index is zero remainder is max add it to the list after that subtract remainder and add it to the list for every other case subtract remainder add it to the list
 		//this will be optimized after project is finished
+		//we need anpther list for second class, we need one variable to save current value and next value added by division reminder.
+		//we need to decide by how much will devide
 		for (double i = 0.0; i < max; i++) {
 			if(i==0) {
 				remainder=max;
