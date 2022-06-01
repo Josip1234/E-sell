@@ -3,7 +3,7 @@ package sell.functions;
 import java.util.List;
 import java.util.Map;
 
-public interface Classification {
+public interface Classification{
   public Double divideInHalf(Double number);
   public Double subtractNumber(Double number,Double with);
   public Double rememberRemainder(Double number);

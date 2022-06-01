@@ -14,4 +14,6 @@ public class Numeric {
  public Double value;
  public Double remainder;
  public Map<Double, Double> classification;
+ public Double maximum;
+ public Integer counter;
 }
