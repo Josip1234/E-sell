@@ -8,7 +8,7 @@ public interface Classification{
   public Double subtractNumber(Double number,Double with);
   public Double rememberRemainder(Double number);
   public Map<Double,Double> addToMap(Double key,Double value);
-  public List<Map<Double,Double>> addMapToList();
+  public List<Map<Double,Double>> addMapToList(Map<Double,Double> map);
   public boolean checkDecimalValue(double number);
   public double rememberNewMaximum(double number);
   public boolean isLast(int count, int listLength);

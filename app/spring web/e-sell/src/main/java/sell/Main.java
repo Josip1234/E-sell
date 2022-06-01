@@ -9,6 +9,7 @@ import java.util.Map;
 import sell.articles.Article_basic_details;
 import sell.articles.Articles;
 import sell.files.Folder;
+import sell.functions.ClassificationImplementation;
 import sell.functions.GeneralFunctions;
 import sell.sellers.Sellers;
 import sell.test.data.UserPassImpl;
@@ -23,6 +24,11 @@ import sell.test.data.UserPassImpl;
 public class Main {
 
 	public static void main(String[] args) {
+		//new test
+		ClassificationImplementation classificationImplementation=new ClassificationImplementation();
+		classificationImplementation.returnPriceListForHomePage(Double.valueOf(120));
+		
+		
 		/*start test2 test two test a function for finding minimun and maximum price. This price will be stored in a map. 
 		 * Map is declared first.
 		Map<String, String> map = new HashMap<String,String>();
