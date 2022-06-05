@@ -14,4 +14,5 @@ public interface Classification{
   public boolean isLast(int count, int listLength);
   public boolean isFirst(int count);
   public List<Double> returnPriceListForHomePage(Double maximumValue);
+  
 }

@@ -1,5 +1,6 @@
 package sell.functions;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,4 +20,8 @@ public class Numeric {
  public Double maximum;
  public Integer counter;
 
+ public Map<Double, Double> initMap(){
+	 this.classification=new HashMap<Double,Double>();
+	 return this.classification;
+ }
 }

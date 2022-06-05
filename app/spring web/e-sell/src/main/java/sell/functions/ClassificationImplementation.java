@@ -73,26 +73,41 @@ public class ClassificationImplementation extends Numeric implements Classificat
 
 	@Override
 	public List<Double> returnPriceListForHomePage(Double maximumValue) {
+		initMap();
 		rememberRemainder(0.0);
 		rememberNewMaximum(maximumValue);
 	    setCounter(0);
-	    System.out.println("Start Remainder:"+getRemainder().toString());
-	    System.out.println("Start Maximum:"+getMaximum().toString());
-	    System.out.println("Start Counter:"+getCounter().toString());
-	    setCounter(getCounter()+1);
-	    System.out.println("Next Counter:"+getCounter().toString());
-	   if(isFirst(getCounter())==true) {
-		   setRemainder(divideInHalf(maximumValue));
-		   setKey(getRemainder());
-		   setValue(getMaximum());
-		   System.out.println("First key:"+getKey().toString());
-		   System.out.println("First value:"+getValue().toString());
-		   setRemainder(subtractNumber(getRemainder(), Double.valueOf(1)));
-		   System.out.println("New remainder:"+getRemainder());
-		   setCounter(getCounter()+1);
-		   System.out.println("Next Counter:"+getCounter().toString());
-		   
-	   }else {
+	    while(getMaximum()>1.99) {
+	    if(getCounter()==0) {
+	    	 System.out.println("Start Remainder:"+getRemainder().toString());
+	 	    System.out.println("Start Maximum:"+getMaximum().toString());
+	 	    System.out.println("Start Counter:"+getCounter().toString());
+	 	    setCounter(getCounter()+1);
+	 	   System.out.println("Next Counter:"+getCounter().toString());
+	 	   
+	 	   if(checkMaximum(getMaximum())==true) {
+	 		  printMap(getClassification());
+	 		   break;
+	 	   }
+	 	   
+	    }else if(isFirst(getCounter())==true) {
+
+			   setRemainder(divideInHalf(maximumValue));
+			   setKey(getRemainder());
+			   setValue(getMaximum());
+			   getClassification().put(getKey(), getValue());
+			   System.out.println("First key:"+getKey().toString());
+			   System.out.println("First value:"+getValue().toString());
+			   setRemainder(subtractNumber(getRemainder(), Double.valueOf(1)));
+			   System.out.println("New remainder:"+getRemainder());
+			   setCounter(getCounter()+1);
+			   System.out.println("Next Counter:"+getCounter().toString());
+			   
+			   if(checkMaximum(getMaximum())==true) {
+				   printMap(getClassification());
+		 		   break;
+		 	   }
+	    }else {
 	        rememberNewMaximum(getRemainder());
 	        System.out.println("New Maximum:"+getMaximum().toString());
 	        setRemainder(divideInHalf(getMaximum()));
@@ -100,12 +115,52 @@ public class ClassificationImplementation extends Numeric implements Classificat
 	        setCounter(getCounter()+1);
 	        setKey(getMaximum());
 	        setValue(getRemainder());
+	        getClassification().put(getKey(), getValue());
 	        System.out.println("Next key:"+getKey().toString());
 			System.out.println("Next value:"+getValue().toString());
+			System.out.println("Next Counter:"+getCounter().toString());
+			
+			   if(checkMaximum(getMaximum())==true) {
+				   printMap(getClassification());
+		 		   break;
+		 		
+		 	   }
 	   }
-	 
-		
+	    
+
+	    }
+	    
+	  
+		   
+	   
 		return null;
 	}
+	
+	public boolean checkMaximum(Double maximum) {
+	    if(getMaximum()<2.0) {
+	    	rememberNewMaximum(2.0);
+	    	rememberRemainder(0.0);
+	    	   System.out.println("Last Maximum:"+getMaximum().toString());
+	           System.out.println("Last remainder:"+getRemainder());
+	           setKey(getMaximum());
+		        setValue(getRemainder());
+		        getClassification().put(getKey(), getValue());
+		        System.out.println("Next key:"+getKey().toString());
+				System.out.println("Next value:"+getValue().toString());
+	    	return true;
+    }else {
+    	return false;
+    }
+	}
 
+	
+	public void printMap(Map<Double, Double> map) {
+		for (Map.Entry<Double, Double> entry : map.entrySet()) {
+			Double key = entry.getKey();
+			Double val = entry.getValue();
+		    
+			System.out.println(key+"-"+val);
+			
+		}
+	}
 }
