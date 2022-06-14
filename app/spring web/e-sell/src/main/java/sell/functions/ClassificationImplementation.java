@@ -70,7 +70,7 @@ public class ClassificationImplementation extends Numeric implements Classificat
 		}
 		return itIs;
 	}
-
+    //need to change this to list of map key value
 	@Override
 	public List<Double> returnPriceListForHomePage(Double maximumValue) {
 		initMap();

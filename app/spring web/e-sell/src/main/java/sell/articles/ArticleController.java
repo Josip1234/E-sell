@@ -165,7 +165,8 @@ public class ArticleController {
 	 * After that, list is being created by querying article basic details repository. 
 	 * After that, new list is created by using another cleanup function. We need clean prices, only numbers from string.
 	 * We are getting final list which will be displayed in a view to user. That list is a list of objects with search criteria
-	 * from the homepage. It will display values up to price.
+	 * from the homepage. It will display values up to price 
+	 * need to update this to display all products in selected range..
 	 */
 @GetMapping("/{*article}")
 public String getDetails(HttpServletRequest request, Model model) {

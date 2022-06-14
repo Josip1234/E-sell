@@ -66,6 +66,7 @@
     
       <div class="col">
       <h3> Search by price:</h3>
+      <!-- need to display key value prices -->
        <ul class="list-unstyled">
          <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
             <span id="spacing">To</span ><a th:href="@{/e-sell/en/articles/{article}(article=${article})}" th:text="${article}" class="text-decoration-none"></a>

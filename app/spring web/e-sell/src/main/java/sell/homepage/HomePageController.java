@@ -55,6 +55,7 @@ public String home(Model model) {
 	Collections.shuffle(types);
 	List<Double> valuesToDisplay=new ArrayList<Double>();
 	try {
+		//need to display maps instead list
 		valuesToDisplay=GeneralFunctions.displayPrices(articleBasic);
 	} catch (Exception e) {
 		
