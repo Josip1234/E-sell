@@ -63,7 +63,7 @@ public String home(Model model) {
 	}
 	model.addAttribute("sell",sellers.stream().limit(4).collect(Collectors.toList()));
 	model.addAttribute("type",types.stream().limit(4).collect(Collectors.toList()));
-	model.addAttribute("basic", valuesToDisplay.stream().limit(4).collect(Collectors.toMap()));
+	model.addAttribute("basic", valuesToDisplay);
 	return "home";
 }
 

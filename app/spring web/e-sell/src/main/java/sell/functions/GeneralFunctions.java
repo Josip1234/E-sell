@@ -118,18 +118,20 @@ public class GeneralFunctions {
 	 * @author Josip Bošnjak
 	 */
 	public static Map<Double,Double> displayPrices(Map<Double, Double> map,List<Article_basic_details> articleBasic){
+		articleBasic=removeStringFromPrice(articleBasic);
 		//declare map
 		Map<String, String> maxmin = new HashMap<String,String>();
 		//declare min and max value to find range for prices
-		double min,max;
+		Double max;
 		//variable for range
-		Double divideBy=0.0;
+		//Double divideBy=0.0; deprecated
 		//find min and max value and add it into the map
 		maxmin=findMinAndMax(articleBasic);
 		//get minimum value
 		//min=Double.valueOf(map.get(MinMax.min.toString())); we dont need minimum value only max deprecated function now
 		//get maximum value
-		max=Double.valueOf(map.get(MinMax.max.toString()));
+		max=Double.valueOf(maxmin.get(MinMax.max.toString()));
+		log.info(String.valueOf(max));
 		//get range round it to integer
 		//divideBy= max/min; deprecated we have function now
 		//ntil max value has been reached, subtract max value add it to list

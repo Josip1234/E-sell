@@ -66,11 +66,19 @@
     
       <div class="col">
       <h3> Search by price:</h3>
-      <!-- need to display key value prices -->
+      <!-- need to display key value prices 
        <ul class="list-unstyled">
          <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
             <span id="spacing">To</span ><a th:href="@{/e-sell/en/articles/{article}(article=${article})}" th:text="${article}" class="text-decoration-none"></a>
-        </li>
+        </li> -->
+        
+        <div th:each="map : ${basic}">
+     <div th:each="mapEntry : ${map}">
+         <span th:text="${mapEntry.key}"></span> -
+         <span th:text="${mapEntry.value}"></span> 
+         
+     </div>
+</div>
        <!--
        <li>Between 0.01 and 100</li>
         <li>Between 100 and 1000</li>
