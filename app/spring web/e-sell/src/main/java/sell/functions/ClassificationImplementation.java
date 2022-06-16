@@ -131,7 +131,8 @@ public class ClassificationImplementation extends Numeric implements Classificat
 
 	    }
 	    
-	  
+	  //we need to write function here for hash map which will be used to limit classes and 
+	  //display random class range.
 		   
 	   
 		return getClassification();
