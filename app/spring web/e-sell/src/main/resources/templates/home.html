@@ -74,8 +74,11 @@
         
         <div th:each="map : ${basic}">
      <div th:each="article : ${map}">
-     <a th:href="@{/e-sell/en/articles/{article}(article=${article})}" th:text="${article}" class="text-decoration-none"></a>
-         
+     <a th:href="@{/e-sell/en/articles/{article}(article=${article})}"  class="text-decoration-none">
+     <span th:text="${article.key}"></span> -
+         <span th:text="${article.value}"></span> 
+     </a>
+          
      </div>
 </div>
        <!--
