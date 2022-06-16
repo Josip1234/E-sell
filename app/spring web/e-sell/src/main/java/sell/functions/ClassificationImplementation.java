@@ -71,8 +71,9 @@ public class ClassificationImplementation extends Numeric implements Classificat
 		return itIs;
 	}
     //need to change this to list of map key value
+	//we need only 4 classes so this will need to modify it. We will use as parameter number of data we want to display.
 	@Override
-	public List<Double> returnPriceListForHomePage(Double maximumValue) {
+	public Map<Double,Double> returnPriceListForHomePage(Double maximumValue) {
 		initMap();
 		rememberRemainder(0.0);
 		rememberNewMaximum(maximumValue);
@@ -133,7 +134,7 @@ public class ClassificationImplementation extends Numeric implements Classificat
 	  
 		   
 	   
-		return null;
+		return getClassification();
 	}
 	
 	public boolean checkMaximum(Double maximum) {

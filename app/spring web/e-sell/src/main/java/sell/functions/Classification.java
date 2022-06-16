@@ -13,6 +13,6 @@ public interface Classification{
   public double rememberNewMaximum(double number);
   public boolean isLast(int count, int listLength);
   public boolean isFirst(int count);
-  public List<Double> returnPriceListForHomePage(Double maximumValue);
+  public Map<Double, Double> returnPriceListForHomePage(Double maximumValue);
   
 }

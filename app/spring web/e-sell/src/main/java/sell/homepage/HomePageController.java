@@ -53,17 +53,17 @@ public String home(Model model) {
 	//log.info("list of sellers:"+sellers);
 	Collections.shuffle(sellers);
 	Collections.shuffle(types);
-	List<Double> valuesToDisplay=new ArrayList<Double>();
+	Map<Double,Double> valuesToDisplay=new HashMap<Double,Double>();
 	try {
 		//need to display maps instead list
-		valuesToDisplay=GeneralFunctions.displayPrices(articleBasic);
+		valuesToDisplay=GeneralFunctions.displayPrices(valuesToDisplay,articleBasic);
 	} catch (Exception e) {
 		
 		e.printStackTrace();
 	}
 	model.addAttribute("sell",sellers.stream().limit(4).collect(Collectors.toList()));
 	model.addAttribute("type",types.stream().limit(4).collect(Collectors.toList()));
-	model.addAttribute("basic", valuesToDisplay.stream().limit(4).collect(Collectors.toList()));
+	model.addAttribute("basic", valuesToDisplay.stream().limit(4).collect(Collectors.toMap()));
 	return "home";
 }
 

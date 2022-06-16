@@ -117,29 +117,30 @@ public class GeneralFunctions {
 	 * @return list which contains double price values on homepage.
 	 * @author Josip Bošnjak
 	 */
-	public static List<Double> displayPrices(List<Article_basic_details> articleBasic){
+	public static Map<Double,Double> displayPrices(Map<Double, Double> map,List<Article_basic_details> articleBasic){
 		//declare map
-		Map<String, String> map = new HashMap<String,String>();
+		Map<String, String> maxmin = new HashMap<String,String>();
 		//declare min and max value to find range for prices
 		double min,max;
 		//variable for range
 		Double divideBy=0.0;
 		//find min and max value and add it into the map
-		map=findMinAndMax(articleBasic);
+		maxmin=findMinAndMax(articleBasic);
 		//get minimum value
-		min=Double.valueOf(map.get(MinMax.min.toString()));
+		//min=Double.valueOf(map.get(MinMax.min.toString())); we dont need minimum value only max deprecated function now
 		//get maximum value
 		max=Double.valueOf(map.get(MinMax.max.toString()));
 		//get range round it to integer
-		divideBy= max/min;
+		//divideBy= max/min; deprecated we have function now
 		//ntil max value has been reached, subtract max value add it to list
-		List<Double> valuesToDisplay = new ArrayList<Double>();
-		double remainder=0.0;
+		/*List<Double> valuesToDisplay = new ArrayList<Double>();
+		double remainder=0.0; deprecated we need map key value as class
+		*/
 		//if index is zero remainder is max add it to the list after that subtract remainder and add it to the list for every other case subtract remainder add it to the list
 		//this will be optimized after project is finished
 		//we need anpther list for second class, we need one variable to save current value and next value added by division reminder.
 		//we need to decide by how much will devide
-		for (double i = 0.0; i < max; i++) {
+		/*for (double i = 0.0; i < max; i++) {
 			if(i==0) {
 				remainder=max;
 			}else if(remainder<0) {
@@ -152,9 +153,14 @@ public class GeneralFunctions {
 				
 			}
 			
+			
 		}
-		Collections.shuffle(valuesToDisplay);
-		return valuesToDisplay;
+		   deprecated we need map 
+		*/
+		//Collections.shuffle(map); deprecated we need to see how to shuffle data in map
+		ClassificationImplementation implementation = new ClassificationImplementation();
+		map=implementation.returnPriceListForHomePage(max);
+		return map;
 	}
 	
 	/***
