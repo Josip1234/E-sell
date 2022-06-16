@@ -195,22 +195,58 @@ public class GeneralFunctions {
 	}
 	
 /***
- * Function for taking last value of url.
+ * Function for taking last value of url. those three functions needs to be one function. Need to optimise this code.
  * @param url 
  * @return stripped url
  * @author Josip Bošnjak
  */
 public static String replaceURL(String url) {
 	String temp="";
-	Pattern pattern = Pattern.compile(".*/(.*)");
+	String temp2="";
+	//Pattern pattern = Pattern.compile(".*/(.*)");
+	Pattern pattern = Pattern.compile(".*/(.*)=(.*)");
 	Matcher matcher = pattern.matcher(url);
+	String complete="";
 	if (matcher.find())
 	{
 	   
 	    temp=matcher.group(1);
+	    complete+=temp;
+	    temp2=matcher.group(2);
+	    complete+="-";
+	    complete+=temp2;
+	    System.out.println(temp);
+	    System.out.println(temp2);
+	}
+	return complete;
+}
+
+public static String replacePrice(String price,String regex) {
+	String temp="";
+	Pattern pattern = Pattern.compile(regex);
+	Matcher matcher = pattern.matcher(price);
+	if (matcher.find())
+	{
+	   
+	    temp=matcher.group(0);
+	    System.out.println(temp);
 	}
 	return temp;
 }
+
+public static String replacePriceGroup(String price,String regex) {
+	String temp="";
+	Pattern pattern = Pattern.compile(regex);
+	Matcher matcher = pattern.matcher(price);
+	if (matcher.find())
+	{
+	   
+	    temp=matcher.group(1);
+	    System.out.println(temp);
+	}
+	return temp;
+}
+
 
 /***
  * function for returning all objects from list which contains up to price
@@ -220,13 +256,21 @@ public static String replaceURL(String url) {
  * @author Josip Bošnjak
  */
 public static List<Article_basic_details> findAllObjectsByPrice(List<Article_basic_details> article_basic_details,String price){
+	System.out.println("Price"+price);
 	//convert price string to double
-	Double priceDouble=Double.valueOf(price);
+	Double priceDouble=Double.valueOf(replacePrice(price,".*(?=-)"));
+	Double priceDouble2=Double.valueOf(replacePriceGroup(price,"-(.*)"));
 	List<Article_basic_details> article_basic_details2 = new ArrayList<Article_basic_details>();
 	for (Article_basic_details article_basic_details3 : article_basic_details) {
 		//if price from the list of object is less or equal to wanted price add to the list.
 		if(Double.valueOf(article_basic_details3.getPrice())<=priceDouble){
 			article_basic_details2.add(article_basic_details3);
+		}else if(Double.valueOf(article_basic_details3.getPrice())<=priceDouble2) {
+			article_basic_details2.add(article_basic_details3);
+		}else if(Double.valueOf(article_basic_details3.getPrice())>priceDouble) {
+			continue;
+		}else if(Double.valueOf(article_basic_details3.getPrice())>=priceDouble2) {
+			continue;
 		}
 	}
 	return article_basic_details2;

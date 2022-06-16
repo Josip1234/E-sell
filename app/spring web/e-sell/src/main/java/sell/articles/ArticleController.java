@@ -171,8 +171,9 @@ public class ArticleController {
 @GetMapping("/{*article}")
 public String getDetails(HttpServletRequest request, Model model) {
     String url= ServletUriComponentsBuilder.fromRequestUri(request).toUriString();
-    log.info("Map entry"+url);
+    log.info("Map entry "+url);
     String replacedUrl=GeneralFunctions.replaceURL(url);
+    log.info("Replaced url "+url);
     List<Article_basic_details> article_basic_details=(List<Article_basic_details>) articleBdRepository.findAll();
     List<Article_basic_details> getNumbersFromList=GeneralFunctions.removeStringFromPrice(article_basic_details);
     List<Article_basic_details> getFinalList=GeneralFunctions.findAllObjectsByPrice(getNumbersFromList, replacedUrl);
