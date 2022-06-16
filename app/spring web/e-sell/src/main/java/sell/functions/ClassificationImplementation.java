@@ -96,7 +96,7 @@ public class ClassificationImplementation extends Numeric implements Classificat
 			   setRemainder(divideInHalf(maximumValue));
 			   setKey(getRemainder());
 			   setValue(getMaximum());
-			   getClassification().put(getKey(), getValue());
+			   getClassification().put(getValue(), getKey());
 			   System.out.println("First key:"+getKey().toString());
 			   System.out.println("First value:"+getValue().toString());
 			   setRemainder(subtractNumber(getRemainder(), Double.valueOf(1)));
@@ -116,7 +116,7 @@ public class ClassificationImplementation extends Numeric implements Classificat
 	        setCounter(getCounter()+1);
 	        setKey(getMaximum());
 	        setValue(getRemainder());
-	        getClassification().put(getKey(), getValue());
+	        getClassification().put(getValue(), getKey());
 	        System.out.println("Next key:"+getKey().toString());
 			System.out.println("Next value:"+getValue().toString());
 			System.out.println("Next Counter:"+getCounter().toString());
@@ -145,7 +145,7 @@ public class ClassificationImplementation extends Numeric implements Classificat
 	           System.out.println("Last remainder:"+getRemainder());
 	           setKey(getMaximum());
 		        setValue(getRemainder());
-		        getClassification().put(getKey(), getValue());
+		        getClassification().put(getValue(), getKey());
 		        System.out.println("Next key:"+getKey().toString());
 				System.out.println("Next value:"+getValue().toString());
 	    	return true;

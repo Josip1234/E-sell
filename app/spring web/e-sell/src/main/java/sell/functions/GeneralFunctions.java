@@ -258,8 +258,8 @@ public static String replacePriceGroup(String price,String regex) {
 public static List<Article_basic_details> findAllObjectsByPrice(List<Article_basic_details> article_basic_details,String price){
 	System.out.println("Price"+price);
 	//convert price string to double
-	Double priceDouble=Double.valueOf(replacePrice(price,".*(?=-)"));
-	Double priceDouble2=Double.valueOf(replacePriceGroup(price,"-(.*)"));
+	Double priceDouble2=Double.valueOf(replacePrice(price,".*(?=-)"));
+	Double priceDouble=Double.valueOf(replacePriceGroup(price,"-(.*)"));
 	List<Article_basic_details> article_basic_details2 = new ArrayList<Article_basic_details>();
 	for (Article_basic_details article_basic_details3 : article_basic_details) {
 		//if price from the list of object is less or equal to wanted price add to the list.
