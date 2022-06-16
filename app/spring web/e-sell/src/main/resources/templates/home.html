@@ -73,9 +73,8 @@
         </li> -->
         
         <div th:each="map : ${basic}">
-     <div th:each="mapEntry : ${map}">
-         <span th:text="${mapEntry.key}"></span> -
-         <span th:text="${mapEntry.value}"></span> 
+     <div th:each="article : ${map}">
+     <a th:href="@{/e-sell/en/articles/{article}(article=${article})}" th:text="${article}" class="text-decoration-none"></a>
          
      </div>
 </div>
@@ -85,7 +84,7 @@
          <li>Between 1000 and 1000</li>
           <li>Enter number:</li>
           -->
-       </ul>
+      
     </div>
   </div>
   
