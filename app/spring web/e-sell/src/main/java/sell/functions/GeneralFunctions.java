@@ -10,12 +10,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.github.javafaker.Faker;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.Article_basic_details;
@@ -277,9 +280,13 @@ public static List<Article_basic_details> findAllObjectsByPrice(List<Article_bas
 }
 
 public Map<Double, Double> displayValues(Map<Double,Double> map, int howMany){
-	int count=0;
+	for (int i = 0; i < howMany; i++) {
+		
+	}
 	for (Map.Entry<Double, Double> entry : map.entrySet()) {
-		Double key = entry.getKey();
+		Faker faker=new Faker();
+		int random=faker.random().nextInt(0, howMany);
+		Double key = entry.getKey().
 		Double val = entry.getValue();
 		
 	}

@@ -1,6 +1,7 @@
 package sell.functions;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class Numeric {
  public Integer counter;
 
  public Map<Double, Double> initMap(){
-	 this.classification=new HashMap<Double,Double>();
+	 this.classification=new LinkedHashMap<Double,Double>();
 	 return this.classification;
  }
 }
