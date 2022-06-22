@@ -280,15 +280,28 @@ public static List<Article_basic_details> findAllObjectsByPrice(List<Article_bas
 	}
 	return article_basic_details2;
 }
-
+//it is not possible at this momment to make random apearence at the site. we need to think about it maybe in angular
+//or some other framework.
 public static Map<Double, Double> displayValues(Map<Double,Double> map, int howMany){
 	Numeric numeric=new Numeric();
 	numeric.initMap();
 	int mapSize=map.size();
 	int[] randomIndexes=numeric.generateRandomIndexesWithoutRepeat(mapSize, howMany);
-	 numeric.printArray(randomIndexes);
-     numeric.setDoubleNumArray(numeric.convertMapToDoubleArray(map, howMany));
-
+int index=0;
+	for (Map.Entry<Double, Double> entry : map.entrySet()) {
+		if(index==howMany) break;
+		
+	    //System.out.println("Index"+index);  
+		Double key = entry.getKey();
+		//numeric.doubleNumArray.add(key);
+		Double val = entry.getValue();
+		//numeric.doubleNumArray.add(val);
+		index++;
+		
+		System.out.println(key+" "+ val);
+		numeric.getClassification().put(key, val);
+		//printDoubleList(getDoubleNumArray());
+	}
      
 
    
