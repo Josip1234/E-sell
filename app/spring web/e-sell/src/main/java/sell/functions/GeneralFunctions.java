@@ -276,5 +276,13 @@ public static List<Article_basic_details> findAllObjectsByPrice(List<Article_bas
 	return article_basic_details2;
 }
 
+public Map<Double, Double> displayValues(Map<Double,Double> map, int howMany){
+	int count=0;
+	for (Map.Entry<Double, Double> entry : map.entrySet()) {
+		Double key = entry.getKey();
+		Double val = entry.getValue();
+		
+	}
+}
 	
 }
