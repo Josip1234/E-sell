@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -34,7 +35,7 @@ public class Numeric {
  }
  
  public List<Double> initList(){
-	 this.doubleNumArray=new ArrayList<Double>();
+	 this.doubleNumArray=new LinkedList<Double>();
 	 return this.doubleNumArray;
  }
  
@@ -78,7 +79,7 @@ public List<Double> convertMapToDoubleArray(Map<Double,Double> map, int howMany)
 	for (Map.Entry<Double, Double> entry : map.entrySet()) {
 		if(index==howMany) break;
 		
-	    System.out.println("Index"+index);  
+	    //System.out.println("Index"+index);  
 		Double key = entry.getKey();
 		doubleNumArray.add(key);
 		Double val = entry.getValue();
@@ -87,7 +88,7 @@ public List<Double> convertMapToDoubleArray(Map<Double,Double> map, int howMany)
 		
 		System.out.println(key+" "+ val);
 		//numeric.getClassification().put(key, val);
-		printDoubleList(getDoubleNumArray());
+		//printDoubleList(getDoubleNumArray());
 	}
 
 	return getDoubleNumArray();
@@ -96,9 +97,10 @@ public List<Double> convertMapToDoubleArray(Map<Double,Double> map, int howMany)
 
 public void printDoubleList(List<Double> list) {
 	for (Double double1 : list) {
-		System.out.println("Value"+double1);
+		System.out.println(double1);
 	}
 	
 }
+
 	
 }

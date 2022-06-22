@@ -289,7 +289,6 @@ public static Map<Double, Double> displayValues(Map<Double,Double> map, int howM
 	 numeric.printArray(randomIndexes);
      numeric.setDoubleNumArray(numeric.convertMapToDoubleArray(map, howMany));
 
-
      
 
    
