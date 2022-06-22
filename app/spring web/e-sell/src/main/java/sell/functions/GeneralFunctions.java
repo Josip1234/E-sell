@@ -282,14 +282,55 @@ public static List<Article_basic_details> findAllObjectsByPrice(List<Article_bas
 }
 
 public static Map<Double, Double> displayValues(Map<Double,Double> map, int howMany){
-	Map<Double,Double> map2 = new LinkedHashMap<Double,Double>();
-	Set<Map.Entry<Double, Double>> entrySet = map.entrySet();
-	Iterator<Map.Entry<Double, Double>> iterator = entrySet.iterator();
-    Faker faker = new Faker();
- 
+	Numeric numeric=new Numeric();
+	numeric.initMap();
+	
+	 
+	for (Map.Entry<Double, Double> entry : map.entrySet()) {
+	
+		Double key = entry.getKey();
+		Double val = entry.getValue();
+		
+		System.out.println(key+" "+ val);
+	}
+   
+     
 
    
-	return map2;
+	return numeric.getClassification();
 }
-	
+
+
+public int[] generateRandomIndexesWithoutRepeat(int number) {
+
+	 int array[] = new int[number];
+	 for (int i=0; i< array.length;i++) {
+		int num=generateValue(number);
+		array[i]=num;
+	} 
+	 return array;
+}
+
+public boolean checkForDuplicate(int array[]) {
+	boolean doubleValue=false;
+	for (int i = 0; i < array.length; i++) {
+		int firstValue=array[i];
+		for (int j = array.length; j < 0; j--) {
+			int secondValue=array[j];
+			if(firstValue==secondValue) {
+				doubleValue=true;
+				break;
+			}else {
+				doubleValue=false;
+			}
+		}
+	}
+	return doubleValue;
+}
+
+public int generateValue(int max) {
+	 Faker faker = new Faker();
+	return faker.random().nextInt(0, max);
+}
+
 }
