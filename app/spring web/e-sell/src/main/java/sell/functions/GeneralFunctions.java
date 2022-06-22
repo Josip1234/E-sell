@@ -286,35 +286,6 @@ public static Map<Double, Double> displayValues(Map<Double,Double> map, int howM
 	Set<Map.Entry<Double, Double>> entrySet = map.entrySet();
 	Iterator<Map.Entry<Double, Double>> iterator = entrySet.iterator();
     Faker faker = new Faker();
-    
-   
-    for(int i=0;i<howMany;i++) {
-    	   int index = faker.random().nextInt(0, map.size());
-    	
-    	    Double value = 0.0;
-    	    Double key=iterator.next().getKey();
-    	    
-    	   
-    	    
-    	    	 if(iterator.hasNext()) {
-    	    	     if(index==i) {
-    	    	    	 key=iterator.next().getKey();
-    	    	    	 value = iterator.next()
-	                             .getValue(); // index is found
-	                                          // get value
-    	    	     System.out.println("Current key:"+key);
-	                 System.out.println("Current value:"+value);
-    	    	     }else {
-    	    	    	 faker.random().nextInt(0, map.size());
-    	    	     }
-    	                 
-    	             
-    	     	  
-    	    	 }
-    	 
-    	
-    	
-    }
  
 
    

@@ -22,8 +22,7 @@ public class Numeric {
  public Integer counter;
 
  public Map<Double, Double> initMap(){
-	 this.classification=new LinkedHashMap<Double,Double>();
-	 this.classification.put(0.0, 0.0);
+	 this.classification=new HashMap<Double,Double>();
 	 return this.classification;
  }
 }

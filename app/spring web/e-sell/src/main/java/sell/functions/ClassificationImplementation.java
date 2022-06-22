@@ -78,6 +78,7 @@ public class ClassificationImplementation extends Numeric implements Classificat
 		rememberRemainder(0.0);
 		rememberNewMaximum(maximumValue);
 	    setCounter(0);
+	    getClassification().put(0.0, 0.0);
 	    while(getMaximum()>1.99) {
 	    if(getCounter()==0) {
 	    	 System.out.println("Start Remainder:"+getRemainder().toString());
