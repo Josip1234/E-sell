@@ -7,10 +7,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Random;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -279,17 +281,44 @@ public static List<Article_basic_details> findAllObjectsByPrice(List<Article_bas
 	return article_basic_details2;
 }
 
-public Map<Double, Double> displayValues(Map<Double,Double> map, int howMany){
-	for (int i = 0; i < howMany; i++) {
-		
-	}
-	for (Map.Entry<Double, Double> entry : map.entrySet()) {
-		Faker faker=new Faker();
-		int random=faker.random().nextInt(0, howMany);
-		Double key = entry.getKey().
-		Double val = entry.getValue();
-		
-	}
+public static Map<Double, Double> displayValues(Map<Double,Double> map, int howMany){
+	Map<Double,Double> map2 = new LinkedHashMap<Double,Double>();
+	Set<Map.Entry<Double, Double>> entrySet = map.entrySet();
+	Iterator<Map.Entry<Double, Double>> iterator = entrySet.iterator();
+    Faker faker = new Faker();
+    
+   
+    for(int i=0;i<howMany;i++) {
+    	   int index = faker.random().nextInt(0, map.size());
+    	
+    	    Double value = 0.0;
+    	    Double key=iterator.next().getKey();
+    	    
+    	   
+    	    
+    	    	 if(iterator.hasNext()) {
+    	    	     if(index==i) {
+    	    	    	 key=iterator.next().getKey();
+    	    	    	 value = iterator.next()
+	                             .getValue(); // index is found
+	                                          // get value
+    	    	     System.out.println("Current key:"+key);
+	                 System.out.println("Current value:"+value);
+    	    	     }else {
+    	    	    	 faker.random().nextInt(0, map.size());
+    	    	     }
+    	                 
+    	             
+    	     	  
+    	    	 }
+    	 
+    	
+    	
+    }
+ 
+
+   
+	return map2;
 }
 	
 }
