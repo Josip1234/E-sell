@@ -20,9 +20,14 @@ public class Numeric {
  public List<Map<Double,Double>> list; 
  public Double maximum;
  public Integer counter;
+ public int indexOfArray;
 
  public Map<Double, Double> initMap(){
 	 this.classification=new HashMap<Double,Double>();
 	 return this.classification;
+ }
+ 
+ public int getIndexOfArray() {
+	 return indexOfArray;
  }
 }

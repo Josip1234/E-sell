@@ -284,7 +284,9 @@ public static List<Article_basic_details> findAllObjectsByPrice(List<Article_bas
 public static Map<Double, Double> displayValues(Map<Double,Double> map, int howMany){
 	Numeric numeric=new Numeric();
 	numeric.initMap();
-	
+	int mapSize=map.size();
+	int[] randomIndexes=generateRandomIndexesWithoutRepeat(howMany);
+	 printArray(randomIndexes);
 	 
 	for (Map.Entry<Double, Double> entry : map.entrySet()) {
 	
@@ -301,17 +303,27 @@ public static Map<Double, Double> displayValues(Map<Double,Double> map, int howM
 }
 
 
-public int[] generateRandomIndexesWithoutRepeat(int number) {
-
+public static int[] generateRandomIndexesWithoutRepeat(int number) {
+	Numeric numeric=new Numeric();
 	 int array[] = new int[number];
 	 for (int i=0; i< array.length;i++) {
 		int num=generateValue(number);
 		array[i]=num;
 	} 
+	 if(checkForDuplicate(array,numeric)==true) {
+		 do {
+			 for (int i = 0; i < array.length; i++) {
+				if(i==numeric.indexOfArray) {
+					array[i]=generateValue(number);
+				}
+			}
+		 }while(checkForDuplicate(array,numeric)==true);
+	 }
+	
 	 return array;
 }
 
-public boolean checkForDuplicate(int array[]) {
+public static boolean checkForDuplicate(int array[],Numeric numeric) {
 	boolean doubleValue=false;
 	for (int i = 0; i < array.length; i++) {
 		int firstValue=array[i];
@@ -319,6 +331,7 @@ public boolean checkForDuplicate(int array[]) {
 			int secondValue=array[j];
 			if(firstValue==secondValue) {
 				doubleValue=true;
+				numeric.setIndexOfArray(i);
 				break;
 			}else {
 				doubleValue=false;
@@ -328,9 +341,15 @@ public boolean checkForDuplicate(int array[]) {
 	return doubleValue;
 }
 
-public int generateValue(int max) {
+public static int generateValue(int max) {
 	 Faker faker = new Faker();
 	return faker.random().nextInt(0, max);
+}
+
+public static void printArray(int array[]) {
+	for (int i : array) {
+		System.out.println(i);
+	}
 }
 
 }
