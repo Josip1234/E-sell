@@ -97,7 +97,7 @@ public class ClassificationImplementation extends Numeric implements Classificat
 			   setRemainder(divideInHalf(maximumValue));
 			   setKey(getRemainder());
 			   setValue(getMaximum());
-			   getClassification().put(getValue(), getKey());
+			   getClassification().put(getKey(), getValue());
 			   System.out.println("First key:"+getKey().toString());
 			   System.out.println("First value:"+getValue().toString());
 			   setRemainder(subtractNumber(getRemainder(), Double.valueOf(1)));
