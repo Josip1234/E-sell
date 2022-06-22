@@ -287,15 +287,9 @@ public static Map<Double, Double> displayValues(Map<Double,Double> map, int howM
 	int mapSize=map.size();
 	int[] randomIndexes=numeric.generateRandomIndexesWithoutRepeat(mapSize, howMany);
 	 numeric.printArray(randomIndexes);
-	 
-	for (Map.Entry<Double, Double> entry : map.entrySet()) {
-	
-		Double key = entry.getKey();
-		Double val = entry.getValue();
-		
-		System.out.println(key+" "+ val);
-	}
-   
+     numeric.setDoubleNumArray(numeric.convertMapToDoubleArray(map, howMany));
+
+
      
 
    

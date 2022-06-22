@@ -1,6 +1,8 @@
 package sell.functions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,15 +26,23 @@ public class Numeric {
  public Integer counter;
  public int indexOfArray;
  int[] numberArray;
+ List<Double> doubleNumArray;
 
  public Map<Double, Double> initMap(){
 	 this.classification=new HashMap<Double,Double>();
 	 return this.classification;
  }
  
+ public List<Double> initList(){
+	 this.doubleNumArray=new ArrayList<Double>();
+	 return this.doubleNumArray;
+ }
+ 
+ 
  public int getIndexOfArray() {
 	 return indexOfArray;
  }
+ 
  
  public int[] generateRandomIndexesWithoutRepeat(int number, int howMany) {
 		
@@ -44,7 +54,7 @@ public class Numeric {
 				} 
 		
 		
-
+         
 
 		 return array;
 	}
@@ -62,4 +72,33 @@ public class Numeric {
 		}
 	}
  
+public List<Double> convertMapToDoubleArray(Map<Double,Double> map, int howMany) {
+	initList();
+	int index=0;
+	for (Map.Entry<Double, Double> entry : map.entrySet()) {
+		if(index==howMany) break;
+		
+	    System.out.println("Index"+index);  
+		Double key = entry.getKey();
+		doubleNumArray.add(key);
+		Double val = entry.getValue();
+		doubleNumArray.add(val);
+		index++;
+		
+		System.out.println(key+" "+ val);
+		//numeric.getClassification().put(key, val);
+		printDoubleList(getDoubleNumArray());
+	}
+
+	return getDoubleNumArray();
+   
+}
+
+public void printDoubleList(List<Double> list) {
+	for (Double double1 : list) {
+		System.out.println("Value"+double1);
+	}
+	
+}
+	
 }
