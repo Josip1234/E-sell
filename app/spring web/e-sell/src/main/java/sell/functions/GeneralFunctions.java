@@ -285,8 +285,8 @@ public static Map<Double, Double> displayValues(Map<Double,Double> map, int howM
 	Numeric numeric=new Numeric();
 	numeric.initMap();
 	int mapSize=map.size();
-	int[] randomIndexes=generateRandomIndexesWithoutRepeat(howMany);
-	 printArray(randomIndexes);
+	int[] randomIndexes=numeric.generateRandomIndexesWithoutRepeat(mapSize, howMany);
+	 numeric.printArray(randomIndexes);
 	 
 	for (Map.Entry<Double, Double> entry : map.entrySet()) {
 	
@@ -303,53 +303,6 @@ public static Map<Double, Double> displayValues(Map<Double,Double> map, int howM
 }
 
 
-public static int[] generateRandomIndexesWithoutRepeat(int number) {
-	Numeric numeric=new Numeric();
-	 int array[] = new int[number];
-	 for (int i=0; i< array.length;i++) {
-		int num=generateValue(number);
-		array[i]=num;
-	} 
-	 if(checkForDuplicate(array,numeric)==true) {
-		 do {
-			 for (int i = 0; i < array.length; i++) {
-				if(i==numeric.indexOfArray) {
-					array[i]=generateValue(number);
-				}
-			}
-		 }while(checkForDuplicate(array,numeric)==true);
-	 }
-	
-	 return array;
-}
 
-public static boolean checkForDuplicate(int array[],Numeric numeric) {
-	boolean doubleValue=false;
-	for (int i = 0; i < array.length; i++) {
-		int firstValue=array[i];
-		for (int j = array.length; j < 0; j--) {
-			int secondValue=array[j];
-			if(firstValue==secondValue) {
-				doubleValue=true;
-				numeric.setIndexOfArray(i);
-				break;
-			}else {
-				doubleValue=false;
-			}
-		}
-	}
-	return doubleValue;
-}
-
-public static int generateValue(int max) {
-	 Faker faker = new Faker();
-	return faker.random().nextInt(0, max);
-}
-
-public static void printArray(int array[]) {
-	for (int i : array) {
-		System.out.println(i);
-	}
-}
 
 }
