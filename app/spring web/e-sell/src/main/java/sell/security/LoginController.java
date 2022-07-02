@@ -1,7 +1,9 @@
 package sell.security;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 
 @Controller
@@ -11,6 +13,7 @@ public class LoginController {
 	public String getLogin() {
 		return "login";
 	}
+
 
 	public void addViewControllers(ViewControllerRegistry registry) {
 	
