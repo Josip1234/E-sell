@@ -30,14 +30,6 @@
  <div class="col mt-5">
  
 
-
-<form method="POST" th:action="@{/e-sell/en/login}" id="loginForm" class="row g-3">
- <div th:if="${param.error}">
-    <span class="text-danger">
-Unable to login. Check your username and password.
-    </span>
-</div>
-
  <div class="col-md-6">
  	<div th:if="${message}">
 		<h2 th:text="${message}"/>
