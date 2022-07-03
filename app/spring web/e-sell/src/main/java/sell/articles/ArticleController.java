@@ -222,6 +222,11 @@ public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_
  */
 @GetMapping("/uploadFile")
 public String getUploadForm(@CookieValue(value="article_number", required = false) String article_number,Model model) throws IOException {
+	String email=GeneralFunctions.getUserEmail();
+	System.out.println("Email:"+email);
+	if(email!="anonymousUser") {
+		
+	
 	log.info(article_number);
 	model.addAttribute("files", imageStorageService.loadAll().map(
 			path -> MvcUriComponentsBuilder.fromMethodName(ArticleController.class,
@@ -229,6 +234,10 @@ public String getUploadForm(@CookieValue(value="article_number", required = fals
 			.collect(Collectors.toList()));
 
 	return "uploadFile";
+	}else {
+		return "redirect:/e-sell/en/";
+	}
+	
 }
 
 
