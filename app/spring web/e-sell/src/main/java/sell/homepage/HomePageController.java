@@ -48,10 +48,10 @@ public String home(Model model) {
 	List<ArticleTypes> types=(List<ArticleTypes>) typesRepository.findAll();
 	List<Sellers> sellers = (List<Sellers>) repository.findAll();
 	List<Article_basic_details> articleBasic=(List<Article_basic_details>) articleBdRepository.findAll();
-	
+	List<Sellers> filterSellers=GeneralFunctions.removeStartSellerFromList(sellers);
 	//log.info(articleBasic.toString());
 	//log.info("list of sellers:"+sellers);
-	Collections.shuffle(sellers);
+	Collections.shuffle(filterSellers);
 	Collections.shuffle(types);
 	Map<Double,Double> valuesToDisplay=new HashMap<Double,Double>();
 	try {
@@ -61,7 +61,7 @@ public String home(Model model) {
 		
 		e.printStackTrace();
 	}
-	model.addAttribute("sell",sellers.stream().limit(4).collect(Collectors.toList()));
+	model.addAttribute("sell",filterSellers.stream().limit(4).collect(Collectors.toList()));
 	model.addAttribute("type",types.stream().limit(4).collect(Collectors.toList()));
 	model.addAttribute("basic", valuesToDisplay);
 	return "home";

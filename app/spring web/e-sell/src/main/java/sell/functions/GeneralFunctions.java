@@ -32,6 +32,24 @@ import sell.sellers.Sellers;
  */
 @Slf4j
 public class GeneralFunctions {
+	
+	/***
+	 * @author Josip Bošnjak
+	 * @param seller accept list of sellers
+	 * @return filtered list of sellers of non forbidden key words like root
+	 */
+	public static List<Sellers> removeStartSellerFromList(List<Sellers> seller){
+		List<Sellers> filtered= new ArrayList<Sellers>();
+		for (Iterator iterator = seller.iterator(); iterator.hasNext();) {
+			Sellers sellers = (Sellers) iterator.next();
+			if(sellers.getNickname().equalsIgnoreCase("root")==true){
+				continue;
+			}else {
+				filtered.add(sellers);
+			}
+		}
+		return filtered;
+	}
     /***
      * This function using security context holder and user details to get user email from logged in user.
      * @author Josip Bošnjak
