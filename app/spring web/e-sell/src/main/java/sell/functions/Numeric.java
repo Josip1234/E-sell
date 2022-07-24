@@ -86,7 +86,7 @@ public List<Double> convertMapToDoubleArray(Map<Double,Double> map, int howMany)
 		doubleNumArray.add(val);
 		index++;
 		
-		System.out.println(key+" "+ val);
+		//System.out.println(key+" "+ val);
 		getClassification().put(key, val);
 		//printDoubleList(getDoubleNumArray());
 	}
