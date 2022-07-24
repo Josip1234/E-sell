@@ -84,11 +84,11 @@ public class SellerController {
 	public String updatePassword(@Valid @ModelAttribute("profile") Sellers sellers, Errors errors) {
 		if(errors.hasErrors()) {
 			errors.getClass();
-			System.out.println(errors.toString());
+			//System.out.println(errors.toString());
 			return "updateForm";
 		}else {
 		Sellers seller=sellerRepository.findOne(GeneralFunctions.getUserEmail());
-		log.info(seller.getFname());
+		//log.info(seller.getFname());
 		seller.setHash_password(encoder.encode(sellers.getHash_password()));
 		sellerRepository.updateProfile(seller);
 		return "redirect:/e-sell/en/";
