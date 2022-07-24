@@ -38,7 +38,7 @@ public class ImageStorage implements ImageStorageService {
 			Path destinationFile=this.fileLocation.resolve(Paths.get(nickname+"//"+article_number+"//"+fileName.getOriginalFilename())).normalize().toAbsolutePath();
 			StorageSettings settings= new StorageSettings();
 			settings.setLocation(destinationFile.toString());
-		    System.out.println(destinationFile.toString());
+		    //System.out.println(destinationFile.toString());
 			
 			try(InputStream inputStream = fileName.getInputStream()) {
 				Files.copy(inputStream, destinationFile, StandardCopyOption.REPLACE_EXISTING);
