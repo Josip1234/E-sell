@@ -109,16 +109,16 @@ public class ArticleController {
 		//set seller nickname to article field of seller, it is a foreign key to nickname in seller table
 		articles.setSeller(sellers.getNickname());
 		//print seller nickname to check if it is the real value
-		log.info(sellers.getNickname());
+		//log.info(sellers.getNickname());
         //if values from form have errors print errors and return to the form and display errors to the form 
 		//else insert new article in database using jdbc template repository and redirect user to insert basic details of this new
 		//article.
 		if(errors.hasErrors()) {
 			errors.getClass();
-			System.out.println(errors.toString());
+			//System.out.println(errors.toString());
 			return "newarticles";
 		}else {
-			log.info("Values:"+articles);
+			//log.info("Values:"+articles);
 			articleRepository.save(articles);
 			folder.createFolder(articles);
 			return "redirect:insertBasicArticleDetails";
@@ -146,10 +146,10 @@ public class ArticleController {
 	public String addtype(@Valid @ModelAttribute("type") ArticleTypes types, Errors errors) {
 		if(errors.hasErrors()) {
 			errors.getClass();
-			System.out.println(errors.toString());
+			//System.out.println(errors.toString());
 			return "newtype";
 		}else {
-			log.info("Values:"+types);
+			//log.info("Values:"+types);
 			repository.save(types);
 			return "redirect:/e-sell/en/articles/newarticles";
 		}
@@ -171,9 +171,9 @@ public class ArticleController {
 @GetMapping("/{*article}")
 public String getDetails(HttpServletRequest request, Model model) {
     String url= ServletUriComponentsBuilder.fromRequestUri(request).toUriString();
-    log.info("Map entry "+url);
+    //log.info("Map entry "+url);
     String replacedUrl=GeneralFunctions.replaceURL(url);
-    log.info("Replaced url "+url);
+    //log.info("Replaced url "+url);
     List<Article_basic_details> article_basic_details=(List<Article_basic_details>) articleBdRepository.findAll();
     List<Article_basic_details> getNumbersFromList=GeneralFunctions.removeStringFromPrice(article_basic_details);
     List<Article_basic_details> getFinalList=GeneralFunctions.findAllObjectsByPrice(getNumbersFromList, replacedUrl);
@@ -223,11 +223,11 @@ public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_
 @GetMapping("/uploadFile")
 public String getUploadForm(@CookieValue(value="article_number", required = false) String article_number,Model model) throws IOException {
 	String email=GeneralFunctions.getUserEmail();
-	System.out.println("Email:"+email);
+	//System.out.println("Email:"+email);
 	if(email!="anonymousUser") {
 		
 	
-	log.info(article_number);
+	//log.info(article_number);
 	model.addAttribute("files", imageStorageService.loadAll().map(
 			path -> MvcUriComponentsBuilder.fromMethodName(ArticleController.class,
 					"serveFile", path.getFileName().toString()).build().toUri().toString())
@@ -244,7 +244,7 @@ public String getUploadForm(@CookieValue(value="article_number", required = fals
 @GetMapping("/files/{filename:.+}")
 @ResponseBody
 public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-    log.info("success");
+    //log.info("success");
 	Resource file = imageStorageService.loadAsResource(filename);
 	return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
 			"attachment; filename=\"" + file.getFilename() + "\"").body(file);
@@ -253,7 +253,7 @@ public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 @PostMapping("/uploadFile")
 public String handleFileUpload(@CookieValue(value="article_number", required = false) String article_number, @RequestParam("file") MultipartFile file,
 		RedirectAttributes redirectAttributes) {
-      log.info("success");
+     //log.info("success");
       String nickname=GeneralFunctions.getUserEmail();
       Sellers seller=sellerRepository.findOne(nickname);
       nickname=seller.getNickname();
@@ -266,7 +266,7 @@ public String handleFileUpload(@CookieValue(value="article_number", required = f
 
 @ExceptionHandler(StorageFileNotFoundException.class)
 public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
-	log.info("success");
+	//log.info("success");
 	return ResponseEntity.notFound().build();
 }
 
