@@ -81,11 +81,11 @@ public class ClassificationImplementation extends Numeric implements Classificat
 	    getClassification().put(0.0, 0.0);
 	    while(getMaximum()>1.99) {
 	    if(getCounter()==0) {
-	    	 System.out.println("Start Remainder:"+getRemainder().toString());
-	 	    System.out.println("Start Maximum:"+getMaximum().toString());
-	 	    System.out.println("Start Counter:"+getCounter().toString());
+	    	 //System.out.println("Start Remainder:"+getRemainder().toString());
+	 	    //System.out.println("Start Maximum:"+getMaximum().toString());
+	 	    //System.out.println("Start Counter:"+getCounter().toString());
 	 	    setCounter(getCounter()+1);
-	 	   System.out.println("Next Counter:"+getCounter().toString());
+	 	   //System.out.println("Next Counter:"+getCounter().toString());
 	 	   
 	 	   if(checkMaximum(getMaximum())==true) {
 	 		  printMap(getClassification());
@@ -98,12 +98,12 @@ public class ClassificationImplementation extends Numeric implements Classificat
 			   setKey(getRemainder());
 			   setValue(getMaximum());
 			   getClassification().put(getValue(), getValue());
-			   System.out.println("First key:"+getKey().toString());
-			   System.out.println("First value:"+getValue().toString());
+			   //System.out.println("First key:"+getKey().toString());
+			   //System.out.println("First value:"+getValue().toString());
 			   setRemainder(subtractNumber(getRemainder(), Double.valueOf(1)));
-			   System.out.println("New remainder:"+getRemainder());
+			   //System.out.println("New remainder:"+getRemainder());
 			   setCounter(getCounter()+1);
-			   System.out.println("Next Counter:"+getCounter().toString());
+			   //System.out.println("Next Counter:"+getCounter().toString());
 			   
 			   if(checkMaximum(getMaximum())==true) {
 				   printMap(getClassification());
@@ -111,19 +111,19 @@ public class ClassificationImplementation extends Numeric implements Classificat
 		 	   }
 	    }else {
 	        rememberNewMaximum(getRemainder());
-	        System.out.println("New Maximum:"+getMaximum().toString());
+	        //System.out.println("New Maximum:"+getMaximum().toString());
 	        setRemainder(divideInHalf(getMaximum()));
-	        System.out.println("New remainder:"+getRemainder());
+	        //System.out.println("New remainder:"+getRemainder());
 	        setCounter(getCounter()+1);
 	        setKey(getMaximum());
 	        setValue(getRemainder());
 	        getClassification().put(getValue(), getKey());
-	        System.out.println("Next key:"+getKey().toString());
-			System.out.println("Next value:"+getValue().toString());
-			System.out.println("Next Counter:"+getCounter().toString());
+	        //System.out.println("Next key:"+getKey().toString());
+			//System.out.println("Next value:"+getValue().toString());
+			//System.out.println("Next Counter:"+getCounter().toString());
 			
 			   if(checkMaximum(getMaximum())==true) {
-				   printMap(getClassification());
+				   //printMap(getClassification());
 		 		   break;
 		 		
 		 	   }
@@ -143,13 +143,13 @@ public class ClassificationImplementation extends Numeric implements Classificat
 	    if(getMaximum()<2.0) {
 	    	rememberNewMaximum(2.0);
 	    	rememberRemainder(0.0);
-	    	   System.out.println("Last Maximum:"+getMaximum().toString());
-	           System.out.println("Last remainder:"+getRemainder());
+	    	   //System.out.println("Last Maximum:"+getMaximum().toString());
+	           //System.out.println("Last remainder:"+getRemainder());
 	           setKey(getMaximum());
 		        setValue(getRemainder());
 		        getClassification().put(getValue(), getKey());
-		        System.out.println("Next key:"+getKey().toString());
-				System.out.println("Next value:"+getValue().toString());
+		        //System.out.println("Next key:"+getKey().toString());
+				//System.out.println("Next value:"+getValue().toString());
 	    	return true;
     }else {
     	return false;
