@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2022 at 12:33 PM
+-- Generation Time: Jul 24, 2022 at 01:34 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.12
 
@@ -62,7 +62,24 @@ CREATE TABLE `articles` (
 
 INSERT INTO `articles` (`id`, `article_number`, `article_name`, `seller`) VALUES
 (1, '0', '0', 'root'),
-(2, '265546250692', 'beautiful gold 2000s Y2k suede high heel boots by cobbler Spain', 'peppony');
+(2, '265546250692', 'beautiful gold 2000s Y2k suede high heel boots by cobbler Spain', 'peppony'),
+(3, '1299', 'efe', 'peppony'),
+(4, '1299s', 'fsfsf', 'peppony'),
+(5, '568', 'pojbms', 'peppony'),
+(6, 'oinoi', 'hoijgrephe', 'peppony');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `article_advanced_detail`
+--
+
+CREATE TABLE `article_advanced_detail` (
+  `id` int(11) NOT NULL,
+  `article_num` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
+  `description1` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`description1`)),
+  `description2` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`description2`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
 -- --------------------------------------------------------
 
@@ -86,7 +103,11 @@ CREATE TABLE `article_basic_details` (
 
 INSERT INTO `article_basic_details` (`id`, `ar_num`, `type_id`, `price`, `article_condition`, `type_id_2`, `type_id_3`) VALUES
 (1, '0', 1, '0.00', '0', 1, 1),
-(2, '265546250692', 2, 'GBP 20.00', 'Pre-owned', 6, 7);
+(2, '265546250692', 2, 'GBP 20.00', 'Pre-owned', 6, 7),
+(3, '1299', 3, '14', 'gwgegw', 4, 5),
+(4, '1299s', 8, '14', 'gwgegw', 1, 7),
+(5, '568', 2, '14eg', 'gwgegw', 5, 7),
+(6, 'oinoi', 5, '14eg', 'hrehehhreh', 6, 3);
 
 -- --------------------------------------------------------
 
@@ -230,47 +251,6 @@ CREATE TABLE `shipping_details` (
 INSERT INTO `shipping_details` (`id`, `article_number`, `shipping`, `comment`, `location`, `delivery`, `returns`, `payments`) VALUES
 (1, '0', '0', '0', '0', '0', '0', '0');
 
--- --------------------------------------------------------
-
---
--- Table structure for table `shoe_details`
---
-
-CREATE TABLE `shoe_details` (
-  `id` int(11) NOT NULL,
-  `article_number` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
-  `Shoe_condition` text COLLATE utf8_croatian_ci NOT NULL,
-  `Theme` varchar(20) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Pattern` varchar(20) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Customized` tinyint(1) DEFAULT NULL,
-  `Color` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
-  `Upper Material` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
-  `Vintage` tinyint(1) DEFAULT NULL,
-  `Insole Material` varchar(20) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Occasion` text COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Brand` varchar(50) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Shoe size` varchar(100) COLLATE utf8_croatian_ci NOT NULL,
-  `Lining Material` varchar(30) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Shoe_character` varchar(255) COLLATE utf8_croatian_ci NOT NULL,
-  `Accents` varchar(50) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Model` varchar(50) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Toe Shape` varchar(20) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Department` varchar(20) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Style` varchar(50) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Heel Style` varchar(30) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Shoe Shaft Style` varchar(30) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Season` varchar(100) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Outsole Material` varchar(50) COLLATE utf8_croatian_ci DEFAULT NULL,
-  `Heel Height` varchar(30) COLLATE utf8_croatian_ci DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
-
---
--- Dumping data for table `shoe_details`
---
-
-INSERT INTO `shoe_details` (`id`, `article_number`, `Shoe_condition`, `Theme`, `Pattern`, `Customized`, `Color`, `Upper Material`, `Vintage`, `Insole Material`, `Occasion`, `Brand`, `Shoe size`, `Lining Material`, `Shoe_character`, `Accents`, `Model`, `Toe Shape`, `Department`, `Style`, `Heel Style`, `Shoe Shaft Style`, `Season`, `Outsole Material`, `Heel Height`) VALUES
-(1, '0', '', NULL, NULL, NULL, '0', '0', NULL, NULL, NULL, NULL, '0', NULL, 'Cars', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
-
 --
 -- Indexes for dumped tables
 --
@@ -290,6 +270,13 @@ ALTER TABLE `articles`
   ADD UNIQUE KEY `article_number` (`article_number`),
   ADD KEY `seller` (`seller`),
   ADD KEY `seller_2` (`seller`);
+
+--
+-- Indexes for table `article_advanced_detail`
+--
+ALTER TABLE `article_advanced_detail`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `article_num` (`article_num`);
 
 --
 -- Indexes for table `article_basic_details`
@@ -338,14 +325,6 @@ ALTER TABLE `shipping_details`
   ADD UNIQUE KEY `article_number` (`article_number`);
 
 --
--- Indexes for table `shoe_details`
---
-ALTER TABLE `shoe_details`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `article_number` (`article_number`),
-  ADD KEY `Shoe_character` (`Shoe_character`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -359,13 +338,19 @@ ALTER TABLE `ad_details`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `article_advanced_detail`
+--
+ALTER TABLE `article_advanced_detail`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `article_basic_details`
 --
 ALTER TABLE `article_basic_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `article_types`
@@ -392,12 +377,6 @@ ALTER TABLE `shipping_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `shoe_details`
---
-ALTER TABLE `shoe_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- Constraints for dumped tables
 --
 
@@ -412,6 +391,12 @@ ALTER TABLE `ad_details`
 --
 ALTER TABLE `articles`
   ADD CONSTRAINT `seller_fk` FOREIGN KEY (`seller`) REFERENCES `sellers` (`nickname`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `article_advanced_detail`
+--
+ALTER TABLE `article_advanced_detail`
+  ADD CONSTRAINT `artnum` FOREIGN KEY (`article_num`) REFERENCES `articles` (`article_number`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `article_basic_details`
@@ -433,13 +418,6 @@ ALTER TABLE `car_detail`
 --
 ALTER TABLE `shipping_details`
   ADD CONSTRAINT `art_num_fk` FOREIGN KEY (`article_number`) REFERENCES `articles` (`article_number`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `shoe_details`
---
-ALTER TABLE `shoe_details`
-  ADD CONSTRAINT `an_fk` FOREIGN KEY (`article_number`) REFERENCES `articles` (`article_number`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `shoe_character` FOREIGN KEY (`Shoe_character`) REFERENCES `article_types` (`type`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
