@@ -86,7 +86,7 @@ public class GeneralFunctions {
 				found=false;
 			}
 		}
-		log.info(String.valueOf("Value has been found?"+String.valueOf(found)));
+		//log.info(String.valueOf("Value has been found?"+String.valueOf(found)));
 		return found;
 	}
 	/***
@@ -154,7 +154,7 @@ public class GeneralFunctions {
 		//min=Double.valueOf(map.get(MinMax.min.toString())); we dont need minimum value only max deprecated function now
 		//get maximum value
 		max=Double.valueOf(maxmin.get(MinMax.max.toString()));
-		log.info(String.valueOf(max));
+		//log.info(String.valueOf(max));
 		//get range round it to integer
 		//divideBy= max/min; deprecated we have function now
 		//ntil max value has been reached, subtract max value add it to list
@@ -238,8 +238,8 @@ public static String replaceURL(String url) {
 	    temp2=matcher.group(2);
 	    complete+="-";
 	    complete+=temp2;
-	    System.out.println(temp);
-	    System.out.println(temp2);
+	    //System.out.println(temp);
+	    //System.out.println(temp2);
 	}
 	return complete;
 }
@@ -252,7 +252,7 @@ public static String replacePrice(String price,String regex) {
 	{
 	   
 	    temp=matcher.group(0);
-	    System.out.println(temp);
+	    //System.out.println(temp);
 	}
 	return temp;
 }
@@ -265,7 +265,7 @@ public static String replacePriceGroup(String price,String regex) {
 	{
 	   
 	    temp=matcher.group(1);
-	    System.out.println(temp);
+	    //System.out.println(temp);
 	}
 	return temp;
 }
@@ -279,7 +279,7 @@ public static String replacePriceGroup(String price,String regex) {
  * @author Josip Bošnjak
  */
 public static List<Article_basic_details> findAllObjectsByPrice(List<Article_basic_details> article_basic_details,String price){
-	System.out.println("Price"+price);
+	//System.out.println("Price"+price);
 	//convert price string to double
 	Double priceDouble2=Double.valueOf(replacePrice(price,".*(?=-)"));
 	Double priceDouble=Double.valueOf(replacePriceGroup(price,"-(.*)"));
@@ -316,7 +316,7 @@ int index=0;
 		//numeric.doubleNumArray.add(val);
 		index++;
 		
-		System.out.println(key+" "+ val);
+		//System.out.println(key+" "+ val);
 		numeric.getClassification().put(key, val);
 		//printDoubleList(getDoubleNumArray());
 	}
