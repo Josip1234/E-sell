@@ -16,6 +16,10 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	public String[] authenticatedPaths;
+	public String[] nonAuthenticatedPaths;
+	
 	@Autowired
 	DataSource dataSource;
 
