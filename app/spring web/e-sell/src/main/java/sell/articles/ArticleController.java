@@ -171,7 +171,7 @@ public class ArticleController {
 @GetMapping("/{*article}")
 public String getDetails(HttpServletRequest request, Model model) {
     String url= ServletUriComponentsBuilder.fromRequestUri(request).toUriString();
-    //log.info("Map entry "+url);
+    log.info("Map entry "+url);
     String replacedUrl=GeneralFunctions.replaceURL(url);
     //log.info("Replaced url "+url);
     List<Article_basic_details> article_basic_details=(List<Article_basic_details>) articleBdRepository.findAll();
@@ -223,7 +223,7 @@ public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_
 @GetMapping("/uploadFile")
 public String getUploadForm(@CookieValue(value="article_number", required = false) String article_number,Model model) throws IOException {
 	String email=GeneralFunctions.getUserEmail();
-	//System.out.println("Email:"+email);
+	log.info(article_number);
 	if(email!="anonymousUser") {
 		
 	
@@ -244,7 +244,7 @@ public String getUploadForm(@CookieValue(value="article_number", required = fals
 @GetMapping("/files/{filename:.+}")
 @ResponseBody
 public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-    //log.info("success");
+    log.info(filename);
 	Resource file = imageStorageService.loadAsResource(filename);
 	return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
 			"attachment; filename=\"" + file.getFilename() + "\"").body(file);
@@ -253,6 +253,7 @@ public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 @PostMapping("/uploadFile")
 public String handleFileUpload(@CookieValue(value="article_number", required = false) String article_number, @RequestParam("file") MultipartFile file,
 		RedirectAttributes redirectAttributes) {
+	 //we will save here everything from url article number nickname user folder article folder file name file extension local path url and type of file.
      //log.info("success");
       String nickname=GeneralFunctions.getUserEmail();
       Sellers seller=sellerRepository.findOne(nickname);

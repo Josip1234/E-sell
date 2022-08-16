@@ -36,6 +36,7 @@ public class ImageStorage implements ImageStorageService {
 				throw new StorageException("Failed to store empty file.");
 			}
 			Path destinationFile=this.fileLocation.resolve(Paths.get(nickname+"//"+article_number+"//"+fileName.getOriginalFilename())).normalize().toAbsolutePath();
+		    System.out.println(destinationFile);
 			StorageSettings settings= new StorageSettings();
 			settings.setLocation(destinationFile.toString());
 		    //System.out.println(destinationFile.toString());
