@@ -15,6 +15,10 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import sell.functions.GeneralFunctions;
+import sell.sellers.SellerRepository;
+import sell.sellers.Sellers;
+
 
 
 
@@ -36,7 +40,22 @@ public class ImageStorage implements ImageStorageService {
 				throw new StorageException("Failed to store empty file.");
 			}
 			Path destinationFile=this.fileLocation.resolve(Paths.get(nickname+"//"+article_number+"//"+fileName.getOriginalFilename())).normalize().toAbsolutePath();
-		    System.out.println(destinationFile);
+		    System.out.println("Local path:"+destinationFile);
+		    System.out.println("Nickname:"+nickname);
+		    System.out.println("Article number:"+article_number);
+		    System.out.println("User folder:"+nickname);
+		    System.out.println("Article folder:"+article_number);
+		    System.out.println("File name:"+fileName.getResource().getFilename());
+		    String fileExtension=GeneralFunctions.getFileExtension("(?<=\\.).*", fileName.getResource().getFilename());
+		    System.out.println("File extension:"+fileExtension);
+		    //System.out.println("Url"+fileName.getResource().getURL());
+		    /*
+			private String user_folder;
+			private String article_folder;
+			private String file_name;
+			private String file_extension;
+			private String url;
+		    */
 			StorageSettings settings= new StorageSettings();
 			settings.setLocation(destinationFile.toString());
 		    //System.out.println(destinationFile.toString());

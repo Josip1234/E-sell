@@ -35,6 +35,25 @@ public class GeneralFunctions {
 	
 	/***
 	 * @author Josip Bošnjak
+	 * @since 18.08.2022. 20:32
+	 * @param regExpression -reg expression to match
+	 * @param valueToReplace - value to replace
+	 * @return file extension
+	 */
+	public static String getFileExtension(String regExpression, String valueToReplace) {
+		String value="";
+		String regex=regExpression;
+		Pattern p = Pattern.compile(regex);
+		Matcher m = p.matcher(valueToReplace);
+		if(m.find()) {
+			value=m.group(0);
+			
+		}
+		return value;
+	}
+	
+	/***
+	 * @author Josip Bošnjak
 	 * @param seller accept list of sellers
 	 * @return filtered list of sellers of non forbidden key words like root
 	 */
