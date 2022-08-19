@@ -15,6 +15,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import sell.articles.types.TypesRepository;
 import sell.functions.GeneralFunctions;
 import sell.sellers.SellerRepository;
 import sell.sellers.Sellers;
@@ -26,10 +27,11 @@ import sell.sellers.Sellers;
 public class ImageStorage implements ImageStorageService {
 	private final Path fileLocation;
 	
+	private final StorageRepository repository;
 	
 	@Autowired
-	public ImageStorage(StorageSettings settings) {
-		
+	public ImageStorage(StorageSettings settings, StorageRepository repository) {
+		this.repository=repository;
 		this.fileLocation = Paths.get(settings.getLocation());
 	}
 
@@ -40,14 +42,20 @@ public class ImageStorage implements ImageStorageService {
 				throw new StorageException("Failed to store empty file.");
 			}
 			Path destinationFile=this.fileLocation.resolve(Paths.get(nickname+"//"+article_number+"//"+fileName.getOriginalFilename())).normalize().toAbsolutePath();
-		    System.out.println("Local path:"+destinationFile);
-		    System.out.println("Nickname:"+nickname);
-		    System.out.println("Article number:"+article_number);
-		    System.out.println("User folder:"+nickname);
-		    System.out.println("Article folder:"+article_number);
-		    System.out.println("File name:"+fileName.getResource().getFilename());
+	       StorageRepJdbcImpl impl = new StorageRepJdbcImpl();
 		    String fileExtension=GeneralFunctions.getFileExtension("(?<=\\.).*", fileName.getResource().getFilename());
-		    System.out.println("File extension:"+fileExtension);
+		    String url="http://localhost:8080/e-sell/en/images/"+nickname+"/"+article_number+"/"+fileName.getResource().getFilename();
+	        Storage storage= new Storage();
+		    storage.setArticle_folder(article_number);
+		    storage.setArticle_number(article_number);
+		    storage.setFile_extension(fileExtension);
+		    storage.setFile_name(fileName.getResource().getFilename());
+		    storage.setLocal_path(destinationFile.toString());
+		    storage.setNickname(nickname);
+		    storage.setType(ImageType.Product_picture.toString());
+		    storage.setUrl(url);
+		    storage.setUser_folder(nickname);
+		    repository.save(storage);
 		    //System.out.println("Url"+fileName.getResource().getURL());
 		    /*
 			private String user_folder;

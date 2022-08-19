@@ -16,4 +16,7 @@ public class Storage {
 	private String file_extension;
 	private String local_path;
 	private String url;
+	private String type;
+	
+	
 }
