@@ -55,6 +55,8 @@ public class ImageStorage implements ImageStorageService {
 		    storage.setType(ImageType.Product_picture.toString());
 		    storage.setUrl(url);
 		    storage.setUser_folder(nickname);
+		    String relativeLink="/images/"+nickname+"/"+article_number+"/"+fileName.getResource().getFilename();
+		    storage.setRelative_link(relativeLink);
 		    repository.save(storage);
 		    //System.out.println("Url"+fileName.getResource().getURL());
 		    /*

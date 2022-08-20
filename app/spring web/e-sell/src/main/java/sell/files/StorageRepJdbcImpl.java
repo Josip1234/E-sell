@@ -20,9 +20,9 @@ public class StorageRepJdbcImpl implements StorageRepository {
 	@Override
 	public Storage save(Storage storage) {
 		jdbcTemplate.update(
-				"insert into Storage_system (nickname,article_number,user_folder,article_folder,file_name,file_extension, local_path, url,type) values(?,?,?,?,?,?,?,?,?)",
+				"insert into Storage_system (nickname,article_number,user_folder,article_folder,file_name,file_extension, local_path, url,type,relative_link) values(?,?,?,?,?,?,?,?,?,?)",
 				storage.getNickname(),storage.getArticle_number(),storage.getUser_folder(),storage.getArticle_folder(),storage.getFile_name(),
-				storage.getFile_extension(),storage.getLocal_path(),storage.getUrl(),storage.getType()
+				storage.getFile_extension(),storage.getLocal_path(),storage.getUrl(),storage.getType(),storage.getRelative_link()
 				);
 		return storage;
 		
