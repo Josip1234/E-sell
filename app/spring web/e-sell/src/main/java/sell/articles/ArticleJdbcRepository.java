@@ -38,8 +38,8 @@ public class ArticleJdbcRepository implements ArticleRepository {
 
 	@Override
 	public Articles findOne(String value) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return (Articles) jdbc.query("select article_number,article_name,seller from Articles where article_number="+value, this::mapRowToArticles);
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package sell.articles;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -271,6 +272,13 @@ public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException 
 	return ResponseEntity.notFound().build();
 }
 
+@GetMapping("/update_article")
+public String update_article(Model model) {
+	List<Articles> articles= new ArrayList<Articles>();
+	articles=(List<Articles>) articleRepository.findAll();
+	model.addAttribute("articles", articles);
+	return "update_article";
+}
 
 
 }
