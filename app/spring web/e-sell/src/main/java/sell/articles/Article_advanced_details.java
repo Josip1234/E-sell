@@ -1,4 +1,4 @@
-package sell.articles.types;
+package sell.articles;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
