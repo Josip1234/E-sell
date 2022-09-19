@@ -262,7 +262,8 @@ public String handleFileUpload(@CookieValue(value="article_number", required = f
 	imageStorageService.storeFile(nickname,article_number,file);
 	redirectAttributes.addFlashAttribute("message",
 			"You successfully uploaded " + file.getOriginalFilename() + "!");
-
+    //if user want to input more files we need to ask it overhere when button is executed then redirect first on get where upload 
+	//form is then we can finally redirect to insert advanced details.
 	return "redirect:/";
 }
 
@@ -278,6 +279,11 @@ public String update_article(Model model) {
 	articles=(List<Articles>) articleRepository.findAll();
 	model.addAttribute("articles", articles);
 	return "update_article";
+}
+
+@GetMapping("/insert_add_art_det")
+public String insertAdvancedProductDetail() {
+	return "insert_add_art_det";
 }
 
 
