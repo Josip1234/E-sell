@@ -282,7 +282,8 @@ public String update_article(Model model) {
 }
 
 @GetMapping("/insert_add_art_det")
-public String insertAdvancedProductDetail() {
+public String insertAdvancedProductDetail(Model model) {
+	model.addAttribute("add_art_det", new Article_advanced_details());
 	return "insert_add_art_det";
 }
 
