@@ -33,17 +33,16 @@ function generateParagraph(number,data){
 	return para;
 }
 
-function generateKeyOrValue(number, keyOrValue,data){
+function generateKeyOrValue(number,data){
 	let keyval="";
-	if(keyOrValue=="key"){
 		   for (let index = 0; index < number; index++) {
-            keyval+=p+strong+data+strong2+p2;
+			   
+            keyval+=strong+data+":"+strong2;
+			     keyval+=data;
+			   
        }
-	}else if(keyOrValue=="value"){
-		for (let index = 0; index < number; index++) {
-            keyval+=p+data+p2;
-       }
-	}
+	
+	
 	
 	return keyval;
 }
@@ -78,12 +77,9 @@ function generateHeaderOrBody(header_or_body, number, data){
        }
     }else if(header_or_body=="body"){
         for (let index = 0; index < number; index++) {
-            table_element+=row;
             table_element+=td;
             table_element+=data;
             table_element+=td2;
-            table_element+=row2;
-            
         }
     }else{
         header_or_body="";
