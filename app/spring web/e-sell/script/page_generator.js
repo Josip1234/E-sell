@@ -25,6 +25,30 @@ let strong2="</strong>";
 let p2="</p>";
 
 
+function generateParagraph(number,data){
+	let para="";
+	para+=generateKeyOrValue(number,"key",data);
+	para+=generateKeyOrValue(number, "value",data);	
+	document.getElementById("test2").innerHTML=para;
+	return para;
+}
+
+function generateKeyOrValue(number, keyOrValue,data){
+	let keyval="";
+	if(keyOrValue=="key"){
+		   for (let index = 0; index < number; index++) {
+            keyval+=p+strong+data+strong2+p2;
+       }
+	}else if(keyOrValue=="value"){
+		for (let index = 0; index < number; index++) {
+            keyval+=p+data+p2;
+       }
+	}
+	
+	return keyval;
+}
+
+
 function generate_table(number_of_rows, number_of_headers, data){
 let generate_table_header="";
 let generate_table_body="";
