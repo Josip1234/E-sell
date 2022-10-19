@@ -24,6 +24,27 @@ let strong="<strong>";
 let strong2="</strong>";
 let p2="</p>";
 
+function generate_list(list_type, number_of_items, data){
+	let list="";
+	if(list_type="ordered"){
+		list+=ol;
+	}else{
+		list+=ul;
+	}
+	
+	  for (let index = 0; index < number_of_items; index++) {
+		  list+=li;
+		  list+=data;
+		  list+=li2;
+	  }
+	
+	if(list_type="ordered"){
+		list+=ol2;
+	}else{
+		list+=ul2;
+	}
+	return list;
+}
 
 function generateParagraph(number,data){
 	let para="";
