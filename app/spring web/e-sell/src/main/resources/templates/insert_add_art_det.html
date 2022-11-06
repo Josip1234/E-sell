@@ -35,17 +35,44 @@
         <form th:action="@{/e-sell/en/articles/insert_add_art_det}" th:object="${add_art_det}" method="post">
             <input type="hidden" name="article_num" value="" id="article_num" th:field="*{article_num}"> <br>
             <p>Input first description:</p>
-            <select name="display_mode" id="display_mode">
-                <option value="table">Display by table</option>
-                <option value="unorder_List">Display by unorder list</option>
-                <option value="order_list">Display by order list</option>
-                <option value="paragraph">Display by paragraph</option>
-            </select> <br>
+
+
+
             <div ng-app="descriptions" ng-controller="descriptionDisplay">
-            <textarea ng-model="description1" name="description1" id="description1" cols="30" rows="10" th:field="*{description1}"></textarea>
-            {{description1}} <br>
-            <p>Size of: <h1 ng-bind="sizeOfDesc()">{{size}}</h1> </p>
-            </div>
+              <span class="note">To separate data put comma at the end, template must be like this: key:value, where key is for example model, : is separator, value is value, and separator is ,.
+                  When finished, dont put anything at the end. Also, you need to tick the checkbox to enable writing in textarea. When you finished, disable again.
+              </span> <br>
+              
+                      <select ng-model="display_mode" name="display_mode" id="display_mode">
+                          <option value="table">Display by table</option>
+                          <option value="unordered">Display by unorder list</option>
+                          <option value="ordered">Display by order list</option>
+                          <option value="paragraph">Display by paragraph</option>
+                      </select> <br>
+                          {{display_mode}}
+                      <br>
+                   
+              
+                      <div ng-init="mySwitch=true" class="ng-scope">
+                  
+                       
+                          <textarea  ng-model="description1" th:field="*{description1}" name="description1" id="description1" cols="30" rows="10" ng-disabled="mySwitch" disabled="disabled" >
+                          </textarea> <br>
+                      <input type="checkbox" ng-model="mySwitch" class="ng-valid ng-dirty ng-valid-parse ng-not-empty ng-touched" onchange="separate_data()"> Enable textarea <br>
+                        
+              
+                      {{description1}} <br>
+                      <p>Size of: <h1 ng-bind="sizeOfDesc()">{{size}}</h1> </p>
+                       
+                      <p id="separated_data" ng-bind="separate_data()"></p>
+              
+                  </div>
+                  </div>
+                 
+
+
+
+
             <br>
             <p>Input second description:</p>
             <select name="display_mode" id="display_mode2">
