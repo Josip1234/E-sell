@@ -23,6 +23,7 @@ let p="<p>";
 let strong="<strong>";
 let strong2="</strong>";
 let p2="</p>";
+let newline="<br>";
 
 function generate_list(list_type, number_of_items, data){
 	let list="";
@@ -43,7 +44,6 @@ function generate_list(list_type, number_of_items, data){
 	}else{
 		list+=ul2;
 	}
-	//document.getElementById("test3").innerHTML=list;
 	return list;
 }
 
@@ -67,7 +67,6 @@ function separate_array(some_array){
 		
 			
 	}
-	//document.getElementById("test4").innerHTML="Key: "+key_array+"<br>Value:"+value_array+"<br>";
 
 }
 //return size of a array
@@ -78,23 +77,21 @@ function returnArraySize(array){
 function generateParagraph(number,data){
 	separate_array(data);
 	let sizeOfKeys=returnArraySize(key_array);
-	let sizeOfValues=returnArraySize(value_array);
 	let para="";
-	para+=generateKeyOrValue(sizeOfKeys,key_array,value_array);
-	//para+=generateKeyOrValue(sizeOfValues,value_array,"value");	
-	document.getElementById("test4").innerHTML=para;
+	para+=generateKeyOrValue(sizeOfKeys,key_array,value_array);	
+	document.getElementById("look_on_site").innerHTML=para;
 	key_array=[];
 	value_array=[];
 	return para;
 }
 
 function generateKeyOrValue(number,data1,data2){
-	//alert(data);
 	let keyval="";
 		   for (let index = 0; index < number; index++) {
 			   
             keyval+=strong+data1[index]+":"+strong2;
 			     keyval+=data2[index];
+				 keyval+=newline;
 			   
        }
 	
@@ -105,12 +102,13 @@ function generateKeyOrValue(number,data1,data2){
 }
 
 
-function generate_table(number_of_rows, number_of_headers, data){
+function generate_table(data){
 let generate_table_header="";
 let generate_table_body="";
 let gentable="";
-generate_table_header=generateHeaderOrBody("header",number_of_headers,data);
-generate_table_body=generateHeaderOrBody("body",number_of_rows,data);
+separate_array(data);
+generate_table_header=generateHeaderOrBody("header",return_number_of_values_in_array(key_array),key_array);
+generate_table_body=generateHeaderOrBody("body",return_number_of_values_in_array(value_array),value_array);
 gentable+=table;
 gentable+=thead;
 gentable+=row;
@@ -121,22 +119,28 @@ gentable+=tbody;
 gentable+=generate_table_body;
 gentable+=tbody2;
 gentable+=table2;
-//alert(gentable);
-//document.getElementById("test").innerHTML=gentable;
+document.getElementById("look_on_site").innerHTML=gentable;
 return table;
 }
 
+function return_number_of_values_in_array(array){
+	let count=0;
+	for (let index = 0; index < array.length; index++) {
+		count+=1;
+	}
+	return count;
+}
 
 function generateHeaderOrBody(header_or_body, number, data){
     let table_element="";
     if(header_or_body=="header"){
        for (let index = 0; index < number; index++) {
-            table_element+=header+data+header2;
+            table_element+=header+data[index]+header2;
        }
     }else if(header_or_body=="body"){
         for (let index = 0; index < number; index++) {
             table_element+=td;
-            table_element+=data;
+            table_element+=data[index];
             table_element+=td2;
         }
     }else{
@@ -148,7 +152,7 @@ function generateHeaderOrBody(header_or_body, number, data){
 
 var app=angular.module('descriptions',[]);
 app.controller('descriptionDisplay', function($scope){
-	$scope.description1 = "Brand: Steve Madden, US Shoe Size: 10, Style: Fashion, Color: Brown, Upper Material: Synthetic, Department: Women, Type: Boots, Heel Style: Stiletto Heel, Height: Med (1 3/4 in. to 2 3/4 in.), Occasion: Boots, Model: Jessamy, Calf Width: Normal, Shoe Width: Medium (B, M),MPN: JG-4767732, UPC: 195945597675";
+	$scope.description1 = "Brand: Steve Madden, US Shoe Size: 10, Style: Fashion, Color: Brown, Upper Material: Synthetic, Department: Women, Type: Boots, Heel Style: Stiletto Heel, Height: Med (1 3/4 in. to 2 3/4 in.), Occasion: Boots, Model: Jessamy, Calf Width: Normal, Shoe Width: Medium (B M) MPN- JG-4767732, UPC: 195945597675";
 	$scope.display_mode="";
 
 	$scope.sizeOfDesc=function(){
@@ -160,19 +164,22 @@ app.controller('descriptionDisplay', function($scope){
 		let sepdat = $scope.description1.split(",");
 		if($scope.display_mode==="paragraph"){
 			let sizeOfData=sepdat.length;
-			//document.getElementById("test4").innerHTML=generateParagraph(sizeOfData,sepdat);
 			generateParagraph(sizeOfData,sepdat);
+			key_array=[];
+			value_array=[];
 		}else if($scope.display_mode==="ordered"){
 
 		}else if($scope.display_mode==="unordered"){
 
 		}else if($scope.display_mode==="table"){
-
+			 generate_table(sepdat);
+			 key_array=[];
+			value_array=[];
 		}
 		return sepdat;
 	}
     
-	var array=new Array($scope.description1);
+
 	
 
 	

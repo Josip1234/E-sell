@@ -41,7 +41,7 @@
             <div ng-app="descriptions" ng-controller="descriptionDisplay">
                 <span class="note">To separate data put comma at the end, template must be like this: key:value, where key is for example model, : is separator, value is value, and separator is ,.
                     When finished, dont put anything at the end. Also, you need to tick the checkbox to enable writing in textarea. When you finished, disable again. Do not put additional : in the numbers,
-                    it will not be correct key value!!!
+                    it will not be correct key value!!! Do not put also , if it is not separator, it will not look like should be.
                 </span> <br>
                 
                         <select ng-model="display_mode" name="display_mode" id="display_mode">
@@ -50,7 +50,6 @@
                             <option value="ordered">Display by order list</option>
                             <option value="paragraph">Display by paragraph</option>
                         </select> <br>
-                            {{display_mode}}
                         <br>
                      
                 
@@ -59,16 +58,17 @@
                          
                             <textarea  ng-model="description1" th:field="*{description1}" name="description1" id="description1" cols="30" rows="10" ng-disabled="mySwitch" disabled="disabled" >
                             </textarea> <br>
-                        <input type="checkbox" ng-model="mySwitch" class="ng-valid ng-dirty ng-valid-parse ng-not-empty ng-touched" onchange="separate_data()"> Enable textarea <br>
+                        <input type="checkbox" ng-model="mySwitch" class="ng-valid ng-dirty ng-valid-parse ng-not-empty ng-touched"> Enable textarea <br>
                           
                 
-                        {{description1}} <br>
                         <p>Size of: <h1 ng-bind="sizeOfDesc()">{{size}}</h1> </p>
                          
-                        <p id="separated_data" ng-bind="separate_data()"></p>
+                        <p id="separated_data" ng-bind="separate_data()" class="ng-hide"></p>
+                        <p id="look_on_site"></p>
                 
                     </div>
                     </div>
+                    
                  
 
 
