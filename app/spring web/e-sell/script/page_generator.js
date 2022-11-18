@@ -25,25 +25,29 @@ let strong2="</strong>";
 let p2="</p>";
 let newline="<br>";
 
-function generate_list(list_type, number_of_items, data){
+
+function generate_list(list_type, data){
+	let size_data=returnArraySize(data);
+	separate_array(data);
 	let list="";
-	if(list_type="ordered"){
+	if(list_type==="ordered"){
 		list+=ol;
 	}else{
 		list+=ul;
 	}
 	
-	  for (let index = 0; index < number_of_items; index++) {
+	  for (let index = 0; index < size_data; index++) {
 		  list+=li;
-		  list+=data;
+		  list+=strong+key_array[index]+":"+strong2+value_array[index];
 		  list+=li2;
 	  }
 	
-	if(list_type="ordered"){
+	if(list_type==="ordered"){
 		list+=ol2;
 	}else{
 		list+=ul2;
 	}
+	document.getElementById("look_on_site").innerHTML="<h1>Technical specifications:</h1>"+list;
 	return list;
 }
 
@@ -79,7 +83,7 @@ function generateParagraph(number,data){
 	let sizeOfKeys=returnArraySize(key_array);
 	let para="";
 	para+=generateKeyOrValue(sizeOfKeys,key_array,value_array);	
-	document.getElementById("look_on_site").innerHTML=para;
+	document.getElementById("look_on_site").innerHTML="<h1>Technical specifications:</h1>"+para;
 	key_array=[];
 	value_array=[];
 	return para;
@@ -119,7 +123,7 @@ gentable+=tbody;
 gentable+=generate_table_body;
 gentable+=tbody2;
 gentable+=table2;
-document.getElementById("look_on_site").innerHTML=gentable;
+document.getElementById("look_on_site").innerHTML="<h1>Technical specifications:</h1>"+gentable;
 return table;
 }
 
@@ -168,9 +172,9 @@ app.controller('descriptionDisplay', function($scope){
 			key_array=[];
 			value_array=[];
 		}else if($scope.display_mode==="ordered"){
-
+              generate_list("ordered",sepdat);
 		}else if($scope.display_mode==="unordered"){
-
+			generate_list("unordered",sepdat);
 		}else if($scope.display_mode==="table"){
 			 generate_table(sepdat);
 			 key_array=[];
