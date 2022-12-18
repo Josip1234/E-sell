@@ -47,8 +47,8 @@ function generate_list(list_type, data){
 	}else{
 		list+=ul2;
 	}
-	document.getElementById("look_on_site").innerHTML="<h1>Technical specifications:</h1>"+list;
-	return list;
+	//document.getElementById("look_on_site").innerHTML="<h1>Technical specifications:</h1>"+list;
+	return "<h1>Technical specifications:</h1>"+list;
 }
 
 let key_array=[];
@@ -83,10 +83,10 @@ function generateParagraph(number,data){
 	let sizeOfKeys=returnArraySize(key_array);
 	let para="";
 	para+=generateKeyOrValue(sizeOfKeys,key_array,value_array);	
-	document.getElementById("look_on_site").innerHTML="<h1>Technical specifications:</h1>"+para;
+	//document.getElementById("look_on_site").innerHTML="<h1>Technical specifications:</h1>"+para;
 	key_array=[];
 	value_array=[];
-	return para;
+	return "<h1>Technical specifications:</h1>"+para;
 }
 
 function generateKeyOrValue(number,data1,data2){
@@ -123,8 +123,8 @@ gentable+=tbody;
 gentable+=generate_table_body;
 gentable+=tbody2;
 gentable+=table2;
-document.getElementById("look_on_site").innerHTML="<h1>Technical specifications:</h1>"+gentable;
-return table;
+//document.getElementById("look_on_site").innerHTML="<h1>Technical specifications:</h1>"+gentable;
+return "<h1>Technical specifications:</h1>"+gentable;
 }
 
 function return_number_of_values_in_array(array){
@@ -158,9 +158,15 @@ var app=angular.module('descriptions',[]);
 app.controller('descriptionDisplay', function($scope){
 	$scope.description1 = "Brand: Steve Madden, US Shoe Size: 10, Style: Fashion, Color: Brown, Upper Material: Synthetic, Department: Women, Type: Boots, Heel Style: Stiletto Heel, Height: Med (1 3/4 in. to 2 3/4 in.), Occasion: Boots, Model: Jessamy, Calf Width: Normal, Shoe Width: Medium (B M) MPN- JG-4767732, UPC: 195945597675";
 	$scope.display_mode="";
+	$scope.description2="Name: Josip Bošnjak, Number: 510";
+	$scope.display_mode2="";
 
 	$scope.sizeOfDesc=function(){
 		return $scope.description1.length;
+	};
+
+	$scope.sizeOfDesc2=function(){
+		return $scope.description2.length;
 	};
 
 	$scope.separate_data=function(){
@@ -168,22 +174,43 @@ app.controller('descriptionDisplay', function($scope){
 		let sepdat = $scope.description1.split(",");
 		if($scope.display_mode==="paragraph"){
 			let sizeOfData=sepdat.length;
-			generateParagraph(sizeOfData,sepdat);
+			document.getElementById("look_on_site").innerHTML=generateParagraph(sizeOfData,sepdat);
 			key_array=[];
 			value_array=[];
 		}else if($scope.display_mode==="ordered"){
-              generate_list("ordered",sepdat);
+			document.getElementById("look_on_site").innerHTML=generate_list("ordered",sepdat);
 		}else if($scope.display_mode==="unordered"){
-			generate_list("unordered",sepdat);
+			document.getElementById("look_on_site").innerHTML=generate_list("unordered",sepdat);
 		}else if($scope.display_mode==="table"){
-			 generate_table(sepdat);
+			document.getElementById("look_on_site").innerHTML=generate_table(sepdat);
 			 key_array=[];
 			value_array=[];
 		}
+
+
+
+
 		return sepdat;
 	}
     
-
+   $scope.separate_data2=function(){
+	let sepdat2 = $scope.description2.split(",");
+	if($scope.display_mode2==="paragraph"){
+		let sizeOfData=sepdat2.length;
+		document.getElementById("look_on_site2").innerHTML=generateParagraph(sizeOfData,sepdat2);
+		key_array=[];
+		value_array=[];
+	}else if($scope.display_mode2==="ordered"){
+		document.getElementById("look_on_site2").innerHTML=generate_list("ordered",sepdat2);
+	}else if($scope.display_mode2==="unordered"){
+		document.getElementById("look_on_site2").innerHTML=generate_list("unordered",sepdat2);
+	}else if($scope.display_mode2==="table"){
+		document.getElementById("look_on_site2").innerHTML=generate_table(sepdat2);
+		 key_array=[];
+		value_array=[];
+	}
+	return sepdat2;
+   }
 	
 
 	
