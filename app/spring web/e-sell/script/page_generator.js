@@ -27,6 +27,8 @@ let newline="<br>";
 
 
 function generate_list(list_type, data){
+	key_array=[];
+	value_array=[];
 	let size_data=returnArraySize(data);
 	separate_array(data);
 	let list="";
@@ -58,7 +60,8 @@ let value_array=[];
 //add only even numbers to the key arrays
 
 function separate_array(some_array){
-
+	key_array=[];
+	value_array=[];
 	let separate_string="";
 	
 	for (let index = 0; index < some_array.length; index++) {
