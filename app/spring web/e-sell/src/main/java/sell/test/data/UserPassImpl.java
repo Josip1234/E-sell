@@ -1,8 +1,15 @@
 package sell.test.data;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.json.JSONArray;
@@ -33,10 +40,43 @@ public class UserPassImpl implements UserPassword{
 	}
 
 	@Override
-	public void readData(File file) {
-		// TODO Auto-generated method stub
-		
+	public List<String> readData(String file) {
+		List<String> values=new ArrayList();
+		String defaultPath="";
+	    if(file.equals("")) {
+	    	String deafultPath="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords.txt";
+	    	values=reading(values, deafultPath);
+	    }else {
+	    	values=reading(values, file);
+	    }
+		return values;
 	}
+	
+	public List<String> reading(List<String> initList,String deafultPath){
+	      BufferedReader reader;
+	        try {
+				reader= new BufferedReader(new FileReader(deafultPath));
+				String line=reader.readLine();
+				while(line != null) {
+					System.out.println(line);
+					line=reader.readLine();
+						initList.add(line);
+						initList.add("\n");
+					
+		
+				}
+				reader.close();
+				
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        
+	    	return initList;
+	    }
 
 	@Override
 	public void readUserPasswordByDesktopApplication(File file) {

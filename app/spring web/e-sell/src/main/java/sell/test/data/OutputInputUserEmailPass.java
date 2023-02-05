@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -62,10 +63,17 @@ public class OutputInputUserEmailPass extends JFrame {
 		dload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserPassImpl impl = new UserPassImpl();
-				impl.readData(null);
-				String user=username.getText();
-				String pwd=password.getText();
+			
 				loadedData.setText("Current data of test file:"+"\n");
+				List<String> list=  impl.readData("");
+				
+				for (String string : list) {
+					System.out.println(string.replace('|', ','));
+				}
+				loadedData.setText(list.toString());
+				
+				
+			
 			}
 		});
 		dload.setBackground(SystemColor.info);
@@ -84,7 +92,8 @@ public class OutputInputUserEmailPass extends JFrame {
 		JButton saveData = new JButton("Save data");
 		saveData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		
+				String user=username.getText();
+				String pwd=password.getText();
 			}
 		});
 		saveData.setBackground(SystemColor.info);
