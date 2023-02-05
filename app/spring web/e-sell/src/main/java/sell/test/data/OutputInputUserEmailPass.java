@@ -22,7 +22,7 @@ public class OutputInputUserEmailPass extends JFrame {
 	private JPanel contentPane;
 	private JTextField username;
 	private JTextField password;
-
+	JTextArea loadedData = new JTextArea();
 	/**
 	 * Launch the application.
 	 */
@@ -43,6 +43,7 @@ public class OutputInputUserEmailPass extends JFrame {
 	 * Create the frame.
 	 */
 	public OutputInputUserEmailPass() {
+		
 		setResizable(false);
 		setTitle("E-sell desktop application for saving usernames and password as test data");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,11 +61,16 @@ public class OutputInputUserEmailPass extends JFrame {
 		JButton dload = new JButton("Load data");
 		dload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UserPassImpl impl = new UserPassImpl();
+				impl.readData(null);
+				String user=username.getText();
+				String pwd=password.getText();
+				loadedData.setText("Current data of test file:"+"\n");
 			}
 		});
 		dload.setBackground(SystemColor.info);
 		
-		JTextArea loadedData = new JTextArea();
+	
 		loadedData.setBackground(SystemColor.info);
 		
 		username = new JTextField();
@@ -78,6 +84,7 @@ public class OutputInputUserEmailPass extends JFrame {
 		JButton saveData = new JButton("Save data");
 		saveData.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+		
 			}
 		});
 		saveData.setBackground(SystemColor.info);
