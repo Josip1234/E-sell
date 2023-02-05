@@ -40,8 +40,8 @@ public class UserPassImpl implements UserPassword{
 	}
 
 	@Override
-	public List<String> readData(String file) {
-		List<String> values=new ArrayList();
+	public String readData(String file) {
+		String values="";
 		String defaultPath="";
 	    if(file.equals("")) {
 	    	String deafultPath="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords.txt";
@@ -52,17 +52,17 @@ public class UserPassImpl implements UserPassword{
 		return values;
 	}
 	
-	public List<String> reading(List<String> initList,String deafultPath){
+	public String reading(String val,String deafultPath){
 	      BufferedReader reader;
 	        try {
 				reader= new BufferedReader(new FileReader(deafultPath));
 				String line=reader.readLine();
 				while(line != null) {
-					System.out.println(line);
+
 					line=reader.readLine();
-						initList.add(line);
-						initList.add("\n");
-					
+					     
+						val+=line+"\n";
+				
 		
 				}
 				reader.close();
@@ -74,8 +74,8 @@ public class UserPassImpl implements UserPassword{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        
-	    	return initList;
+	        val.replace("null", "");
+	    	return val;
 	    }
 
 	@Override

@@ -65,12 +65,9 @@ public class OutputInputUserEmailPass extends JFrame {
 				UserPassImpl impl = new UserPassImpl();
 			
 				loadedData.setText("Current data of test file:"+"\n");
-				List<String> list=  impl.readData("");
-				
-				for (String string : list) {
-					System.out.println(string.replace('|', ','));
-				}
-				loadedData.setText(list.toString());
+				String list=  impl.readData("");
+				loadedData.setText("email                    |       password"+"\n");
+				loadedData.setText(list.replaceAll("null", ""));
 				
 				
 			
