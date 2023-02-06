@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -40,13 +41,22 @@ public class UserPassImpl implements UserPassword{
 	}
 
 	@Override
-	public String readData(String file) {
+	public String readData(String file) throws IOException {
 		String values="";
 		String defaultPath="";
-	    if(file.equals("")) {
-	    	String deafultPath="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords.txt";
-	    	values=reading(values, deafultPath);
-	    }else {
+	    if(file.equals(""))
+			try {
+				{
+					String deafultPath="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords.txt";
+					values=reading(values, deafultPath);
+					File copied=new File("C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords_bak.txt");
+					FileUtils.copyFile(new File(deafultPath), copied);
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		else {
 	    	values=reading(values, file);
 	    }
 		return values;

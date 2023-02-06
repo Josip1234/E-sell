@@ -13,6 +13,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
@@ -65,9 +66,16 @@ public class OutputInputUserEmailPass extends JFrame {
 				UserPassImpl impl = new UserPassImpl();
 			
 				loadedData.setText("Current data of test file:"+"\n");
-				String list=  impl.readData("");
-				loadedData.setText("email                    |       password"+"\n");
-				loadedData.setText(list.replaceAll("null", ""));
+				String list;
+				try {
+					list = impl.readData("");
+					loadedData.setText("email                    |       password"+"\n");
+					loadedData.setText(list.replaceAll("null", ""));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		
 				
 				
 			
