@@ -40,6 +40,7 @@ public class UserPassImpl implements UserPassword{
 		return false;
 	}
 
+	
 	@Override
 	public String readData(String file) throws IOException {
 		String values="";
