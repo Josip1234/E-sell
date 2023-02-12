@@ -49,8 +49,6 @@ public class UserPassImpl implements UserPassword{
 	    if(file.equals("")) {
 			String deafultPath="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords.txt";
 			values=reading(values, deafultPath);
-			String backup="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords_bak.txt";
-			makeBackup(deafultPath, backup);
 		} else {
 	    	values=reading(values, file);
 	    }

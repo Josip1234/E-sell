@@ -31,7 +31,8 @@ public class OutputInputUserEmailPass extends JFrame {
 	private JTextField password;
 	JTextArea loadedData = new JTextArea();
 	JButton btnBackupButton = new JButton("Make file backup");
-	String fileName="";
+	String backup="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords_bak.txt";
+	String fileName="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords.txt";
 	/**
 	 * Launch the application.
 	 */
@@ -122,6 +123,12 @@ public class OutputInputUserEmailPass extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Add new password");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel_2.setBackground(SystemColor.info);
+		btnBackupButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+               UserPassImpl impl = new UserPassImpl();
+				impl.makeBackup(fileName, backup);
+			}
+		});
 		btnBackupButton.setMinimumSize(new Dimension(79, 36));
 		btnBackupButton.setMaximumSize(new Dimension(79, 36));
 		btnBackupButton.setPreferredSize(new Dimension(79, 36));
