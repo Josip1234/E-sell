@@ -20,6 +20,8 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class OutputInputUserEmailPass extends JFrame {
 
@@ -27,6 +29,7 @@ public class OutputInputUserEmailPass extends JFrame {
 	private JTextField username;
 	private JTextField password;
 	JTextArea loadedData = new JTextArea();
+	JButton btnBackupButton = new JButton("Make file backup");
 	String fileName="";
 	/**
 	 * Launch the application.
@@ -66,6 +69,7 @@ public class OutputInputUserEmailPass extends JFrame {
 		JButton dload = new JButton("Load data");
 		dload.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				 btnBackupButton.setEnabled(true);
 				UserPassImpl impl = new UserPassImpl();
 			
 				loadedData.setText("Current data of test file:"+"\n");
@@ -129,18 +133,18 @@ public class OutputInputUserEmailPass extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("Add new password");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lblNewLabel_2.setBackground(SystemColor.info);
+		
+
+		btnBackupButton.setEnabled(false);
+		btnBackupButton.setBackground(SystemColor.info);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(295, Short.MAX_VALUE)
-					.addComponent(dload, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)
-					.addGap(310))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addGap(273)
 					.addComponent(saveData, GroupLayout.PREFERRED_SIZE, 263, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(340, Short.MAX_VALUE))
-				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addContainerGap(306, Short.MAX_VALUE))
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(78)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
@@ -148,24 +152,32 @@ public class OutputInputUserEmailPass extends JFrame {
 							.addContainerGap())
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(loadedData, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
-								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+								.addComponent(loadedData, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
+								.addComponent(lblNewLabel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(username, GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE)
 									.addGap(18)
 									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 372, GroupLayout.PREFERRED_SIZE)
-										.addComponent(password, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE))))
-							.addGap(57))))
+										.addComponent(password, GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))))
+							.addGap(57))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(6)
+							.addComponent(dload, GroupLayout.PREFERRED_SIZE, 271, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnBackupButton, GroupLayout.PREFERRED_SIZE, 248, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap())))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(dload, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-					.addGap(35)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(btnBackupButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(dload, GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
+					.addGap(48)
 					.addComponent(loadedData, GroupLayout.PREFERRED_SIZE, 329, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -177,7 +189,7 @@ public class OutputInputUserEmailPass extends JFrame {
 						.addComponent(password, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(saveData, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(46, Short.MAX_VALUE))
+					.addContainerGap(37, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
