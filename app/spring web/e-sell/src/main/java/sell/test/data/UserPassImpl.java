@@ -1,6 +1,7 @@
 package sell.test.data;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -44,20 +45,13 @@ public class UserPassImpl implements UserPassword{
 	@Override
 	public String readData(String file) throws IOException {
 		String values="";
-		String defaultPath="";
-	    if(file.equals(""))
-			try {
-				{
-					String deafultPath="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords.txt";
-					values=reading(values, deafultPath);
-					File copied=new File("C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords_bak.txt");
-					FileUtils.copyFile(new File(deafultPath), copied);
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		else {
+
+	    if(file.equals("")) {
+			String deafultPath="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords.txt";
+			values=reading(values, deafultPath);
+			String backup="C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords_bak.txt";
+			makeBackup(deafultPath, backup);
+		} else {
 	    	values=reading(values, file);
 	    }
 		return values;
@@ -103,7 +97,43 @@ public class UserPassImpl implements UserPassword{
 
 
 	@Override
-	public boolean saveToFile(String fileName) {
+	public boolean saveToFile(String fileName,String whatToSave) {
+		boolean saved=false;
+		 FileWriter fw;
+		try {
+			fw = new FileWriter(fileName, true);
+		    BufferedWriter bw = new BufferedWriter(fw);
+		    //bw.write("\n");
+		    bw.write(whatToSave);
+		    bw.newLine();
+		    bw.close();
+		    saved=true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return saved;
+	}
+
+
+	@Override
+	public boolean makeBackup(String fileLocation, String fileBackupName) {
+		boolean done=false;
+		File copied=new File(fileBackupName);
+		try {
+			FileUtils.copyFile(new File(fileLocation), copied);
+			done=true;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return done;
+	}
+
+
+	@Override
+	public boolean fileRestore(String fileName) {
 		// TODO Auto-generated method stub
 		return false;
 	}
