@@ -13,6 +13,8 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -25,6 +27,7 @@ public class OutputInputUserEmailPass extends JFrame {
 	private JTextField username;
 	private JTextField password;
 	JTextArea loadedData = new JTextArea();
+	String fileName="";
 	/**
 	 * Launch the application.
 	 */
@@ -99,6 +102,22 @@ public class OutputInputUserEmailPass extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				String user=username.getText();
 				String pwd=password.getText();
+				
+			    FileWriter fw;
+				try {
+					fw = new FileWriter("C:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/files/testuserusernamesandpasswords.txt", true);
+				    BufferedWriter bw = new BufferedWriter(fw);
+				    //bw.write("\n");
+				    bw.write(user+"          "+pwd);
+				    bw.newLine();
+				    bw.close();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+		
+				
+				
 			}
 		});
 		saveData.setBackground(SystemColor.info);

@@ -101,4 +101,11 @@ public class UserPassImpl implements UserPassword{
 	   return field;
 	}
 
+
+	@Override
+	public boolean saveToFile(String fileName) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

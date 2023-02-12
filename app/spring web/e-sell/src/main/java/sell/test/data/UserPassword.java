@@ -12,4 +12,5 @@ boolean saveTestData(Map<String, Sellers> data,Sellers sellers);
 //data will be read with swing desktop interface
 String readData(String file) throws IOException;
 void readUserPasswordByDesktopApplication(File file);
+boolean saveToFile(String fileName);
 }
