@@ -66,7 +66,7 @@ public class OutputInputUserEmailPass extends JFrame {
 		System.setProperty("java.awt.headless", "false");
 		setResizable(false);
 		setTitle("E-sell desktop application for saving usernames and password as test data");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 868, 811);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.activeCaption);
