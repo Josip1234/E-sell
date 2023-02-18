@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import sell.articles.ArticleRepository;
 import sell.articles.Articles;
 import sell.functions.GeneralFunctions;
+import sell.test.data.OutputInputUserEmailPass;
 import sell.test.data.UserPassImpl;
 
 @Slf4j
@@ -55,6 +56,13 @@ public class SellerController {
 		map.put(sellers.getNickname(),sellers);
 		password.saveTestData(map,sellers);
 		return "redirect:/e-sell/en/";
+	}
+	
+	@GetMapping("/profile/test_data")
+	public String getSwingApplication() {
+		OutputInputUserEmailPass emailPass = new OutputInputUserEmailPass();
+		emailPass.runSwing();
+		return "profile";
 	}
 	
 	@GetMapping("/findAllArticles")
