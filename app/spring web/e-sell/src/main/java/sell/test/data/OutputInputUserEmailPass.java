@@ -36,6 +36,11 @@ public class OutputInputUserEmailPass extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		OutputInputUserEmailPass emailPass = new OutputInputUserEmailPass();
+		emailPass.runSwing();
+	}
+	
+	public void runSwing() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
