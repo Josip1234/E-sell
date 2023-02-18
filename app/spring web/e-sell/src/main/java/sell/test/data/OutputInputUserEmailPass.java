@@ -17,6 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 
 public class OutputInputUserEmailPass extends JFrame {
@@ -44,8 +45,13 @@ public class OutputInputUserEmailPass extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OutputInputUserEmailPass frame = new OutputInputUserEmailPass();
-					frame.setVisible(true);
+					System.setProperty("java.awt.headless", "false");
+					SwingUtilities.invokeLater(() -> {
+						OutputInputUserEmailPass frame = new OutputInputUserEmailPass();
+						frame.setVisible(true);
+					    
+					});
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -57,7 +63,7 @@ public class OutputInputUserEmailPass extends JFrame {
 	 * Create the frame.
 	 */
 	public OutputInputUserEmailPass() {
-		
+		System.setProperty("java.awt.headless", "false");
 		setResizable(false);
 		setTitle("E-sell desktop application for saving usernames and password as test data");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

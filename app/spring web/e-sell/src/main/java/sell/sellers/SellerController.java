@@ -60,9 +60,10 @@ public class SellerController {
 	
 	@GetMapping("/profile/test_data")
 	public String getSwingApplication() {
+		System.setProperty("java.awt.headless", "false");
 		OutputInputUserEmailPass emailPass = new OutputInputUserEmailPass();
 		emailPass.runSwing();
-		return "profile";
+		return "redirect:/e-sell/en/seller/profile";
 	}
 	
 	@GetMapping("/findAllArticles")
