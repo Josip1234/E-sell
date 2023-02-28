@@ -33,6 +33,8 @@
     <div id="rw" class="row mt-5">
       <div class="col mt-5">
       <form method="post" th:action="@{/e-sell/en/seller/profile}" th:object="${profile}" class="row g-3" ng-app="formValidation" ng-controller="validateForm" name="updateForm" novalidate>
+            
+      
  <div th:if="${#fields.hasErrors()}">
         <span class="validationError text-danger">
         Please correct the problems below and resubmit.
@@ -138,7 +140,7 @@
       <span ng-show="updateForm.email.$error.required">Email is required.</span></span>
       <span ng-show="alreradyExistsEmail" class="validationError text-danger">Email already exsts in database.</span >
             </div>
-       <input type="hidden" name="type_of_user" value="Seller" th:field="*{type_of_user}">
+
        
        
             <div class="col-12">

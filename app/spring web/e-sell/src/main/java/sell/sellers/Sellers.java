@@ -70,14 +70,15 @@ public class Sellers {
 	@Size(min=8, message = "Password must have at least 8 leters.")
 	@ValidPassword
 	private String hash_password;
-	TypeOfUser type_of_user;
+	private String type_of_user;
 	
 
-	public Sellers(Integer id,String nickname, String location, String contact) {
+	public Sellers(Integer id,String nickname, String location, String contact,String type_of_user) {
 	    this.id=id;
 		this.contact=contact;
 		this.nickname=nickname;
 		this.location=location;
+		this.type_of_user=type_of_user;
 	}
 	public Sellers(String nickname, String location, String contact) {
 		this.contact=contact;
