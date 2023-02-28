@@ -138,6 +138,8 @@
       <span ng-show="updateForm.email.$error.required">Email is required.</span></span>
       <span ng-show="alreradyExistsEmail" class="validationError text-danger">Email already exsts in database.</span >
             </div>
+       <input type="hidden" name="type_of_user" value="Seller" th:field="*{type_of_user}">
+       
        
             <div class="col-12">
                 <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="error||incomplete">

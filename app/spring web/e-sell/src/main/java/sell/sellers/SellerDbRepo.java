@@ -55,6 +55,10 @@ public class SellerDbRepo implements SellerRepository {
 				seller.getEmail(),
 				seller.getHash_password()
 				);
+		jdbc.update(
+				"insert into User_authorization(user_email, type_of_user) values(?,?)",
+				seller.getEmail(),seller.getType_of_user()
+				);
 		return seller;
 	}
 	@Override
