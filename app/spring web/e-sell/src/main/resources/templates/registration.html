@@ -29,7 +29,7 @@
  
 
     <form method="post" th:action="@{/e-sell/en/registration}" th:object="${sellers}" class="row g-3" ng-app="formValidation" ng-controller="validateForm" name="registrationForm" novalidate>
- <input type="hidden" th:field="*{type_of_user}" th:id="type_of_user" value="Seller">
+ <input type="hidden" th:field="*{type_of_user}" th:id="type_of_user" th:value="${sellers.type_of_user}">
  <div th:if="${#fields.hasErrors()}">
 
         <span class="validationError text-danger">

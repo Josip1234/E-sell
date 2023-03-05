@@ -24,7 +24,6 @@ import sell.password.ValidPassword;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 public class Sellers {
 	@Null
 	private Integer id;
@@ -70,20 +69,28 @@ public class Sellers {
 	@Size(min=8, message = "Password must have at least 8 leters.")
 	@ValidPassword
 	private String hash_password;
+	@NonNull
+	@NotNull
 	private String type_of_user;
 	
-
+	
+ 
+	public Sellers() {
+		this.type_of_user=TypeOfUser.Seller.toString();
+	}
+	
 	public Sellers(Integer id,String nickname, String location, String contact,String type_of_user) {
 	    this.id=id;
 		this.contact=contact;
 		this.nickname=nickname;
 		this.location=location;
-		this.type_of_user=type_of_user;
+		this.type_of_user=TypeOfUser.Seller.toString();
 	}
-	public Sellers(String nickname, String location, String contact) {
+	public Sellers(String nickname, String location, String contact,String type_of_user) {
 		this.contact=contact;
 		this.nickname=nickname;
 		this.location=location;
+		this.type_of_user=TypeOfUser.Seller.toString();
 	}
 
 	public Sellers(String nickname) {
@@ -94,4 +101,16 @@ public class Sellers {
 	    public PasswordEncoder passwordEncoder() {
 	        return new BCryptPasswordEncoder();
 	    }
+
+	public Sellers(String fname,String lname,String nickname, String location, String contact, String email,String hash_password) {
+		this.fname = fname;
+		this.lname = lname;
+		this.location = location;
+		this.nickname = nickname;
+		this.contact = contact;
+		this.email = email;
+		this.hash_password = hash_password;
+	}
+
+	  
 }

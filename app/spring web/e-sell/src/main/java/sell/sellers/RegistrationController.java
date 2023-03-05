@@ -48,6 +48,7 @@ public String registration(Model model) {
 @PostMapping
 public String registerSeller(@Valid @ModelAttribute("sellers") Sellers sellers, Errors errors) {
 	boolean doesExists=false;
+	sellers.setType_of_user(TypeOfUser.Seller.toString());
 	List<Sellers> findAll= (List<Sellers>) repository.findAll();
     doesExists=GeneralFunctions.findInAList(sellers.getNickname(),findAll);
 	if(doesExists==true) {

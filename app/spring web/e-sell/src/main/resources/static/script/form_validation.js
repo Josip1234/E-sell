@@ -23,6 +23,7 @@ app.controller('validateForm', function($scope,$http){
 	$scope.contact=document.getElementById("contact").value;
 	$scope.email=document.getElementById("email").value;
 	$scope.hash_password=document.getElementById("hash_password").value;
+	$scope.type_of_user=document.getElementById("type_of_user").value="Seller";
 	$scope.error=false;
 	$scope.incomplete=true;
 	$scope.$watch('fname', function(){$scope.validate();})
@@ -33,6 +34,7 @@ app.controller('validateForm', function($scope,$http){
 	$scope.$watch('contact', function(){$scope.validate();})
 	$scope.$watch('email', function(){$scope.validate();})
 	$scope.$watch('hash_password', function(){$scope.validate();})
+	$scope.type_of_user=document.getElementById("type_of_user").value="Seller";
 	$scope.fnameLength=function(){
 		return $scope.fname.length;
 	};
