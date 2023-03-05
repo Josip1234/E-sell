@@ -15,14 +15,18 @@
 <script th:src="@{/script/profile_update_validation.js}"></script>
  </head>
  <body>
-  <div class="topnav">
+  <div class="topnav" th:object="${type}">
   <a th:href="@{/e-sell/en/}" >Homepage</a>
         <a th:href="@{/e-sell/en/registration}" >Registration</a>
         <a th:href="@{/e-sell/en/articles/options}" class="text-decoration-none">Insert new ad</a>
         <a th:href="@{/e-sell/en/seller/findAllArticles}" class="text-decoration-none">Find your articles</a>
          <a th:href="@{/e-sell/en/seller/updatePass}">Update password</a>
          <a th:href="@{/e-sell/en/articles/update_article}">Update article</a>
-              <a th:href="@{/e-sell/en/seller/profile/test_data}">Test data</a>
+
+     <a th:if="${type.type_of_user == 'Admin'}" th:href="@{/e-sell/en/seller/profile/test_data}">Test data</a>
+
+
+         
           <a th:href="@{/e-sell/en/loggingout}">Logout</a>
     </div>
   <div class="container">

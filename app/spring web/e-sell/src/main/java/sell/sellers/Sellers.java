@@ -84,18 +84,19 @@ public class Sellers {
 		this.contact=contact;
 		this.nickname=nickname;
 		this.location=location;
-		this.type_of_user=TypeOfUser.Seller.toString();
+		this.type_of_user=type_of_user;
 	}
 	public Sellers(String nickname, String location, String contact,String type_of_user) {
 		this.contact=contact;
 		this.nickname=nickname;
 		this.location=location;
-		this.type_of_user=TypeOfUser.Seller.toString();
+		this.type_of_user=type_of_user;
 	}
 
 	public Sellers(String nickname) {
 		this.nickname=nickname;
 	}
+	
 	
 	  @Bean
 	    public PasswordEncoder passwordEncoder() {
@@ -111,6 +112,8 @@ public class Sellers {
 		this.email = email;
 		this.hash_password = hash_password;
 	}
+	
+	
 
 	  
 }

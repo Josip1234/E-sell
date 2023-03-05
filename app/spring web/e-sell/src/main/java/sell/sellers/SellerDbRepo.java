@@ -3,11 +3,13 @@ package sell.sellers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.hibernate.annotations.common.util.impl.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import lombok.NoArgsConstructor;
+import lombok.extern.log4j.Log4j;
 import sell.functions.GeneralFunctions;
 
 @Repository
@@ -37,6 +39,7 @@ public class SellerDbRepo implements SellerRepository {
 	
 	}
 	
+	@SuppressWarnings("unused")
 	private Sellers mapNicknameToSeller(ResultSet rs, int rowNum) throws SQLException {
 		return new Sellers(rs.getString("nickname"));
 	
@@ -65,7 +68,18 @@ public class SellerDbRepo implements SellerRepository {
 	public void updateProfile(Sellers seller) {
 		jdbc.update("UPDATE Sellers SET fname=?, lname=?, location=?, email=?, nickname=?, contact=? WHERE email=?", seller.getFname(),seller.getLname(),seller.getLocation(),seller.getEmail(),seller.getNickname(),seller.getContact(),GeneralFunctions.getUserEmail());
 	}
+	@Override
+	public Sellers findTypeOfUser(String email) {
+        Sellers sellers = new Sellers();
+        sellers.setType_of_user(jdbc.queryForObject("select type_of_user from User_authorization where user_email=?", this::mapRowToUserType,email));
+		return sellers;
+	}
+	@SuppressWarnings("unused")
+	private String mapRowToUserType(ResultSet rs, int rowNum) throws SQLException {
+
+		return rs.getString("type_of_user");
 	
+	}
 
 
 }

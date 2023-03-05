@@ -6,4 +6,5 @@ public interface SellerRepository {
 	Sellers findOne(String email);
 	Sellers save(Sellers seller);
     void updateProfile(Sellers seller);
+    Sellers findTypeOfUser(String email);
 }

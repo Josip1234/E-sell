@@ -45,6 +45,17 @@ public class SellerController {
 	public String getProfile(Model model) {
 		Sellers seller=sellerRepository.findOne(GeneralFunctions.getUserEmail());
 		model.addAttribute("profile",seller);
+      
+        if(seller.getType_of_user()==null) {
+        	seller.setType_of_user(sellerRepository.findTypeOfUser(GeneralFunctions.getUserEmail()).getType_of_user());
+        	System.out.println(seller.getType_of_user());
+        	model.addAttribute("type",seller);
+        
+        }else {
+        	model.addAttribute("type",seller.getType_of_user());
+        	  System.out.println(seller.getType_of_user());
+        }
+    	
 		return "profile";
 	}
 	
