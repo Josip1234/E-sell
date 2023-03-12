@@ -1,10 +1,19 @@
 package sell.files;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import sell.articles.Articles;
 import sell.sellers.Sellers;
+import sell.test.data.UserPassImpl;
 
 /***
  * Class for creating new folder of user and article
@@ -14,7 +23,7 @@ import sell.sellers.Sellers;
 
 @Data
 @NoArgsConstructor
-public class Folder {
+public class Folder implements CreateFolders {
 	//variale to check if folder has been made
    private boolean done;
    //variable for storing folder name
@@ -132,4 +141,23 @@ public class Folder {
 		}
 		return isDoesExists();
 	}
+@Override
+public boolean saveApplicationPropertiesFile(List<String> fileDataValues, ApplicationProperties applicationProperties) {
+    setFolder(fileDataValues.get(0));
+    setFile(new File(getFolderName()+fileDataValues.get(1)));
+    FileWriter fw;
+	try {
+		fw = new FileWriter(fileDataValues.get(1));
+	    BufferedWriter bw = new BufferedWriter(fw);
+	    //bw.write("\n");
+	    bw.write(applicationProperties.toString().replace("{", "").replace("}", ""));
+
+	    bw.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	return done;
+}
+
 }

@@ -1,5 +1,6 @@
 package sell;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,15 +25,17 @@ import sell.test.data.UserPassImpl;
  */
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
 		//test of application properties class
 	    ApplicationProperties properties = new ApplicationProperties();
 	    properties.setDefaultValues("com.mysql.cj.jdbc.Driver", "root", "", "file:///c:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/app/spring web/e-sell/eng/","jdbc:mysql://localhost:3306/esell");
 		properties.printProperties();
-		//new test
-		//ClassificationImplementation classificationImplementation=new ClassificationImplementation();
-		//classificationImplementation.returnPriceListForHomePage(Double.valueOf(120));
+		Folder folder = new Folder();
+		List<String> listOfFileData=new ArrayList();
+		listOfFileData.add("/e-sell/");
+		listOfFileData.add("application.properties");
+		folder.saveApplicationPropertiesFile(listOfFileData, properties);
 		
 		
 		/*start test2 test two test a function for finding minimun and maximum price. This price will be stored in a map. 

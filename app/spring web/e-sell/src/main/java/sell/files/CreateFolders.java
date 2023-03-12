@@ -1,5 +1,7 @@
 package sell.files;
 
+import java.util.List;
+
 import sell.articles.Articles;
 import sell.sellers.Sellers;
 /***
@@ -9,5 +11,6 @@ import sell.sellers.Sellers;
  */
 public interface CreateFolders {
 	boolean createFolder(Object object);
+	boolean saveApplicationPropertiesFile(List<String> fileDataValues, ApplicationProperties applicationProperties);
 
 }

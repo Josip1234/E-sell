@@ -22,6 +22,7 @@ public class ApplicationProperties {
 	private Map<String,String> springMultipartEnabled= new HashMap<String,String>();
 	private Map<String,String> springMultipartLocation= new HashMap<String,String>();
 	private Map<String,String> springWebResourcesStaticLocation= new HashMap<String,String>();
+
 	
 	
 	public boolean setDefaultValues(String datasourceDriver,String username,String password,String staticLocation,String datasourceUrl) {
@@ -67,6 +68,19 @@ public class ApplicationProperties {
 		 System.out.println(getSpringMultipartLocation());
 		 System.out.println(getSpringWebResourcesStaticLocation());
 		
+	}
+
+
+	@Override
+	public String toString() {
+		return   springDatasourceDriver + "\n" + springJpa
+				+ "\n" + springHibernateFormatSql + "\n"
+				+ springDatasourceUrl + "\n" + springDatasourceUsername
+				+ "\n" + springDatasourcePassword + "\n"
+				+ springMultipartMaxFileSize + "\n" + springMUltipartMaxRequestSize
+				+ "\n" + springMultipartEnabled + "\n"
+				+ springMultipartLocation + "\n" + springWebResourcesStaticLocation
+				+ "";
 	}
 
 
