@@ -28,7 +28,8 @@ public class Main {
 		
 		//test of application properties class
 	    ApplicationProperties properties = new ApplicationProperties();
-	   
+	    properties.setDefaultValues("com.mysql.cj.jdbc.Driver", "root", "", "file:///c:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/app/spring web/e-sell/eng/");
+		properties.printProperties();
 		//new test
 		//ClassificationImplementation classificationImplementation=new ClassificationImplementation();
 		//classificationImplementation.returnPriceListForHomePage(Double.valueOf(120));
