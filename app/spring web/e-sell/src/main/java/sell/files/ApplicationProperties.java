@@ -24,17 +24,49 @@ public class ApplicationProperties {
 	private Map<String,String> springWebResourcesStaticLocation= new HashMap<String,String>();
 	
 	
-	public boolean setDefaultValues(String datasourceDriver,String username,String password,String staticLocation) {
+	public boolean setDefaultValues(String datasourceDriver,String username,String password,String staticLocation,String datasourceUrl) {
 	String tempKey="";
 	tempKey="spring.datasource.driver-class-name";
 	getSpringDatasourceDriver().put(tempKey, datasourceDriver);
+	tempKey="spring.datasource.username";
+	getSpringDatasourceUsername().put(tempKey, username);
+	tempKey="spring.datasource.password";
+	getSpringDatasourcePassword().put(tempKey, password);
+	tempKey="spring.web.resources.static-locations";
+	getSpringWebResourcesStaticLocation().put(tempKey, staticLocation);
+	tempKey="spring.jpa.show-sql";
+	getSpringJpa().put(tempKey, "true");
+	tempKey="spring.jpa.properties.hibernate.format_sql";
+	getSpringHibernateFormatSql().put(tempKey, "true");
+	tempKey="spring.datasource.url";
+	getSpringDatasourceUrl().put(tempKey, datasourceUrl);
+	tempKey="spring.servlet.multipart.max-file-size";
+	getSpringMultipartMaxFileSize().put(tempKey, "-1");
+	tempKey="spring.servlet.multipart.max-request-size";
+	getSpringMUltipartMaxRequestSize().put(tempKey, "-1");
+	tempKey="spring.servlet.multipart.enabled";
+	getSpringMultipartEnabled().put(tempKey, "true");
+	tempKey="spring.servlet.multipart.location";
+	getSpringMultipartLocation().put(tempKey, "${java.io.tmpdir}");
  	return true;	
 	}
 
 
 	public void printProperties() {
 		 System.out.println(getSpringDatasourceDriver());
+		 System.out.println(getSpringJpa());
+		 System.out.println(getSpringHibernateFormatSql());
+		 System.out.println(getSpringDatasourceUrl());
 		 
+		 System.out.println(getSpringDatasourceUsername());
+		 System.out.println(getSpringDatasourcePassword());
+		 
+		 System.out.println(getSpringMultipartMaxFileSize());
+		 System.out.println(getSpringMUltipartMaxRequestSize());
+		 System.out.println(getSpringMultipartEnabled());
+		 System.out.println(getSpringMultipartLocation());
+		 System.out.println(getSpringWebResourcesStaticLocation());
+		
 	}
 
 
