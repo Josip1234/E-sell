@@ -8,6 +8,7 @@ import java.util.Map;
 
 import sell.articles.Article_basic_details;
 import sell.articles.Articles;
+import sell.files.ApplicationProperties;
 import sell.files.Folder;
 import sell.functions.ClassificationImplementation;
 import sell.functions.GeneralFunctions;
@@ -24,9 +25,14 @@ import sell.test.data.UserPassImpl;
 public class Main {
 
 	public static void main(String[] args) {
+		
+		//test of application properties class
+	    ApplicationProperties properties = new ApplicationProperties();
+	    properties.setDefaultValues("com.mysql.cj.jdbc.Driver", "root", "", "file:///c:/Users/Korisnik/Desktop/xampp/htdocs/E-sell/app/spring web/e-sell/eng/");
+		properties.printProperties();
 		//new test
-		ClassificationImplementation classificationImplementation=new ClassificationImplementation();
-		classificationImplementation.returnPriceListForHomePage(Double.valueOf(120));
+		//ClassificationImplementation classificationImplementation=new ClassificationImplementation();
+		//classificationImplementation.returnPriceListForHomePage(Double.valueOf(120));
 		
 		
 		/*start test2 test two test a function for finding minimun and maximum price. This price will be stored in a map. 
