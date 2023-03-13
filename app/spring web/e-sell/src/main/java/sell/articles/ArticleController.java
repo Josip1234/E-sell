@@ -107,6 +107,7 @@ public class ArticleController {
 	public String addArticle(@Valid @ModelAttribute("article") Articles articles, Errors errors) {
 		//get logged in user
 		Sellers sellers=sellerRepository.findOne(GeneralFunctions.getUserEmail());
+	
 		//set seller nickname to article field of seller, it is a foreign key to nickname in seller table
 		articles.setSeller(sellers.getNickname());
 		//print seller nickname to check if it is the real value

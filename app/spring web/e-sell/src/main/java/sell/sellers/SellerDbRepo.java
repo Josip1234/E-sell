@@ -34,7 +34,7 @@ public class SellerDbRepo implements SellerRepository {
 	}
 
 	private Sellers mapRowToSeller(ResultSet rs, int rowNum) throws SQLException {
-		return new Sellers(rs.getString("fname"),rs.getString("lname"),rs.getString("location"),rs.getString("nickname"),rs.getString("contact"),
+		return new Sellers(rs.getString("fname"),rs.getString("lname"),rs.getString("nickname"),rs.getString("location"),rs.getString("contact"),
 				rs.getString("email"),rs.getString("hash_password"));
 	
 	}

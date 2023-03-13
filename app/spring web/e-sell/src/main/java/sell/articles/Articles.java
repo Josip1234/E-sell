@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import sell.functions.GeneralFunctions;
 /***
  * 
  * @author Josip Bošnjak

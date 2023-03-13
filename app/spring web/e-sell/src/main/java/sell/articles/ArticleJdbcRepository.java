@@ -45,6 +45,7 @@ public class ArticleJdbcRepository implements ArticleRepository {
 	@Override
 	public Articles save(Articles articles) {
 		log.info("Values:"+articles);
+		System.out.println(articles.getSeller());
 		jdbc.update(
 				"insert into Articles (article_number, article_name,seller) values(?,?,?)",
 				articles.getArticle_number(),
