@@ -12,12 +12,18 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.ArticleBdRepository;
+import sell.articles.ArticleJpaRep;
 import sell.articles.ArticleRepository;
 import sell.articles.Article_basic_details;
 import sell.articles.Articles;
@@ -35,13 +41,15 @@ public class HomePageController {
 	private final TypesRepository typesRepository;
 	private final ArticleBdRepository articleBdRepository;
 	private final ArticleRepository articleRepository;
+	private final ArticleJpaRep articleJpaRep;
 	
 	@Autowired
-	public HomePageController(SellerRepository repository, TypesRepository typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository) {
+	public HomePageController(SellerRepository repository, TypesRepository typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository, ArticleJpaRep jpaRep) {
 		this.repository=repository;
 		this.typesRepository=typesRepository;
 		this.articleBdRepository=articleBdRepository;
 		this.articleRepository=articleRepository;
+		this.articleJpaRep=jpaRep;
 	}
 @GetMapping("/e-sell/en/")
 public String home(Model model) {
@@ -78,9 +86,23 @@ public String redirect() {
 }
 
 @GetMapping("/e-sell/en/products")
-public String getProducts(Model model) {
-	List<Articles> articles= (List<Articles>) articleRepository.findAll();
-	model.addAttribute("articles", articles);
+public String getProducts(@PageableDefault(size=10) Pageable pageable,Model model) {
+	
+	
+	Page<Articles> listOfArticles=articleJpaRep.findAll(pageable);
+	System.out.println(listOfArticles);
+	
+	List<Articles> articles=new ArrayList<Articles>();  
+	for (Articles art : articles) {
+		
+		articles.add(new Articles(art.getId(),art.getArticle_number(),art.getArticle_name(),art.getSeller()));
+	}
+	
+
+    listOfArticles=new PageImpl<>(articles);
+	
+    
+	model.addAttribute("articles", listOfArticles);
 	return "products";
 }
 
