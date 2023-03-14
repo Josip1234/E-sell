@@ -2,6 +2,9 @@ package sell.articles;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import sell.sellers.Sellers;
 
 /***
@@ -35,4 +38,6 @@ Articles findOne(String value);
  * @return save new articles
  */
 Articles save(Articles articles);
+
+
 }

@@ -2,8 +2,13 @@ package sell.articles;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -66,5 +71,7 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 				);
 		return bdetails;
 	}
+
+
 
 }

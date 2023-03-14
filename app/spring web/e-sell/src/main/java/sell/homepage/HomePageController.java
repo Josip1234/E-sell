@@ -9,15 +9,24 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.ArticleBdRepository;
+import sell.articles.ArticleJpa;
 import sell.articles.ArticleRepository;
 import sell.articles.Article_basic_details;
 import sell.articles.Articles;
@@ -35,13 +44,15 @@ public class HomePageController {
 	private final TypesRepository typesRepository;
 	private final ArticleBdRepository articleBdRepository;
 	private final ArticleRepository articleRepository;
+	private final ArticleJpa articleJpa;
 	
 	@Autowired
-	public HomePageController(SellerRepository repository, TypesRepository typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository) {
+	public HomePageController(SellerRepository repository, TypesRepository typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository,ArticleJpa articleJpa) {
 		this.repository=repository;
 		this.typesRepository=typesRepository;
 		this.articleBdRepository=articleBdRepository;
 		this.articleRepository=articleRepository;
+		this.articleJpa=articleJpa;
 	}
 @GetMapping("/e-sell/en/")
 public String home(Model model) {
@@ -78,10 +89,30 @@ public String redirect() {
 }
 
 @GetMapping("/e-sell/en/products")
-public String getProducts(Model model) {
-	List<Articles> articles= (List<Articles>) articleRepository.findAll();
-	model.addAttribute("articles", articles);
+public String getProducts(@PageableDefault(size=10) Pageable pageable,Model model) {
+	//List<Articles> articles= (List<Articles>) articleRepository.findAll();
+
+	Page<Articles> listOfArticles=articleJpa.findAll(pageable);
+	
+	List<Articles> list=new ArrayList<Articles>();  
+	for (Articles article : listOfArticles) {
+		list.add(new Articles(article.getArticle_number(),article.getArticle_name(),article.getSeller()));
+	}
+	
+
+	listOfArticles=new PageImpl<>(list);
+	model.addAttribute("art",listOfArticles);
+	
+  
+
+
+	
+	
+	
+	//model.addAttribute("articles", articles);
 	return "products";
 }
+
+
 
 }

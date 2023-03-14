@@ -1,4 +1,10 @@
 package sell.articles;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 /***
  * 
  * @author Josip Bošnjak
@@ -26,4 +32,5 @@ Iterable<Article_basic_details> findAll();
  * Save basic details of articles. Article number may be extra. Probably will be removed in the future.
  */
 Article_basic_details save(String article_number,Article_basic_details bdetails);
+
 }
