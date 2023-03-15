@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
- xmlns:th="http://www.thymeleaf.org"
  lang="en">
  <head>
  <meta charset="UTF-8">
@@ -10,55 +10,66 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<link th:href="@{/styles/top_navigation.css}" rel="stylesheet" />
-<link th:href="@{/styles/rowpadding.css}" rel="stylesheet" />
+<link href="/styles/top_navigation.css" rel="stylesheet">
+<link href="/styles/rowpadding.css" rel="stylesheet" >
  </head>
  <body>
  <div class="topnav">
-        <a th:href="@{/e-sell/en/registration}" >Registration</a>
-        <a th:href="@{/e-sell/en/seller/profile}" class="text-decoration-none">Profile</a>
-        <a th:href="@{/login}">Login</a> 
+        <a href="/e-sell/en/registration" >Registration</a>
+        <a href="/e-sell/en/seller/profile" class="text-decoration-none">Profile</a>
+        <a href="/login">Login</a> 
         <a href="#about">Contact</a>
     </div>
 
         
 
- <divclass="container">
-     <ul class="list-unstyled">
-         <li th:unless="${#lists.isEmpty(art)}" th:each="arti:${art}">
-           <p th:text="${arti.article_number}" class="article_number" th:id="${arti.article_number}" ></p>
-            <p th:id="${arti.article_name}" th:text="${arti.article_name}"></p >
-        </li>
-  </div >
+ <div class="container">
+ <div class="row">
+ <div class="col">
 
+<div class="card mb-3" style="max-width: 100%;" th:unless="${#lists.isEmpty(art)}" th:each="arti:${art}">
+<div class="container text-center">
 
-<div id="linkovi">
-   <nav aria-label="Page navigation">
-   <ul class="pagination">
-   <li class="page-item">
-      <a class="page-link" th:href="@{/e-sell/en/products/(page=${art.number-1},size=${art.size})}">Previous</a >
-   </li>
-   <li class="page-item">
-       <a class="page-link" th:href="@{/e-sell/en/products/(page=${art.number+1},size=${art.size})}">Next</a >
-   </li >
-   </ul>
+  <div class="row row-cols-3">
+    <div class="col">
+      <img src="..." class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col">
+      <div class="card-body">
+        <h5 class="card-title article_number" th:text="${arti.article_number}" th:id="${arti.article_number}">Card title</h5>
+          <p th:id="${arti.article_name}" th:text="${arti.article_name}"></p >
+      </div>
+    </div>
+
    
-   </nav >
-
-  
    
-
-  
-</div>
-</section>
-  
-  
-<footer id="foot1" class="text-center text-lg-start text-muted"> 
- <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); color:black">
-    &copy; 2022 Copyright: Esell.com 
+    </div>
   </div>
-</footer  >
 
+</div>
+ 
+  
+ 
+ </div>
+ <a style="text-align: left;" href="/e-sell/en/products/?page=-1&amp;size=10">Previous</a >
+
+    <a style="text-align: end;" href="/e-sell/en/products/?page=1&amp;size=10">Next</a >
+ </div>
+
+
+
+  
+
+    
+  
+
+ </div>
+ <footer id="foot1" class="text-center text-lg-start text-muted"> 
+ <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); color:black">
+    &copy; 2022 Copyright: Esell.com      
+  </div>
+</footer>
+ </div>
  </body>
 
 </html>
