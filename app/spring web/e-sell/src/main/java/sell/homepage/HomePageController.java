@@ -102,7 +102,7 @@ public String getProducts(@PageableDefault(size=10) Pageable pageable,Model mode
 
 	listOfArticles=new PageImpl<>(list);
 	model.addAttribute("art",listOfArticles);
-	
+	model.addAttribute("first",pageable.first());
   
 
 
