@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -89,21 +90,35 @@ public String redirect() {
 }
 
 @GetMapping("/e-sell/en/products")
-public String getProducts(@PageableDefault(size=10) Pageable pageable,Model model) {
-	//List<Articles> articles= (List<Articles>) articleRepository.findAll();
+public String getProducts(Model model,@RequestParam(required = false) String keyword,
+	      @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "3") int size) {
 
-	Page<Articles> listOfArticles=articleJpa.findAll(pageable);
 	
-	List<Articles> list=new ArrayList<Articles>();  
-	for (Articles article : listOfArticles) {
-		list.add(new Articles(article.getArticle_number(),article.getArticle_name(),article.getSeller()));
-	}
+    try {
+        List<Articles> products = new ArrayList<Articles>();
+        Pageable paging = PageRequest.of(page - 1, size);
+
+        Page<Articles> pageTuts;
+        if (keyword == null) {
+          pageTuts = articleJpa.findAll(paging);
+        } else {
+          pageTuts = articleJpa.findAll(paging);
+          model.addAttribute("keyword", keyword);
+        }
+
+        products = pageTuts.getContent();
+
+        model.addAttribute("products", products);
+        model.addAttribute("currentPage", pageTuts.getNumber() + 1);
+        model.addAttribute("totalItems", pageTuts.getTotalElements());
+        model.addAttribute("totalPages", pageTuts.getTotalPages());
+        model.addAttribute("pageSize", size);
+      } catch (Exception e) {
+        model.addAttribute("message", e.getMessage());
+      }
 	
 
-	listOfArticles=new PageImpl<>(list);
-	model.addAttribute("art",listOfArticles);
-	model.addAttribute("first",pageable.first());
-  
+
 
 
 	
