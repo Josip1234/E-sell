@@ -89,6 +89,11 @@ public String redirect() {
 	return "/e-sell/en/";
 }
 
+@GetMapping("/e-sell/en/contact")
+public String contact() {
+	return "contact";
+}
+
 @GetMapping("/e-sell/en/products")
 public String getProducts(Model model,@RequestParam(required = false) String keyword,
 	      @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "3") int size) {
