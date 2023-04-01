@@ -4,8 +4,7 @@ window.onload = function(){
 		document.getElementById("show_error3").style.display='none';
 		document.getElementById("show_error4").style.display='none';
 	document.getElementById("showPriceError").style.display='none';
-	document.getElementById("types_id3").disabled = true;
-	document.getElementById("types_id2").disabled = true;
+
 let x = document.cookie;
  var y = document.getElementById("an").value=x.match(/(?<=article_number=).*/);
 y.value=x;
@@ -62,7 +61,7 @@ app.controller('validateDetailsForm', function($scope){
 	
 	$scope.validate=function(){
 				
-	$scope.article_condition=document.getElementById("article_condition").value;
+
 	$scope.price=document.getElementById("price").value;
 
 	  
@@ -71,7 +70,15 @@ app.controller('validateDetailsForm', function($scope){
 	  var selected_subtype=document.getElementById("types_id2").value;
 	  var second_subtype=document.getElementById("types_id3").value;
 	  
-
+	  if($scope.price.length===0){
+		$scope.error=true;
+			document.getElementById("showPriceError").style.display='';
+			document.getElementById("subbut").disabled=true;
+	}else{
+		$scope.error=false;
+		document.getElementById("subbut").disabled=false;
+		document.getElementById("showPriceError").style.display='none';
+	}
 	  	
 	  if(parseInt(selected)===0){
 		document.getElementById("types_id2").disabled = true;
@@ -91,6 +98,7 @@ app.controller('validateDetailsForm', function($scope){
 		document.getElementById("types_id3").disabled = true;
      document.getElementById("show_error2").style.display = '';
 		$scope.error=true;
+		document.getElementById("subbut").disabled=true
 	$scope.incomplete=checkForIncomplete(selected,selected_subtype,second_subtype);
 	}else{
 		document.getElementById("types_id3").disabled = false;
@@ -102,6 +110,7 @@ app.controller('validateDetailsForm', function($scope){
 	
    
    if(parseInt(second_subtype)===0){
+	document.getElementById("subbut").disabled=true
      document.getElementById("show_error3").style.display = '';
 		$scope.error=true;
 	$scope.incomplete=checkForIncomplete(selected,selected_subtype,second_subtype);
@@ -109,12 +118,16 @@ app.controller('validateDetailsForm', function($scope){
 		     document.getElementById("show_error3").style.display = 'none';
 	$scope.error=false;
 	$scope.incomplete=checkForIncomplete(selected,selected_subtype,second_subtype);
+
+
+
 	}
 	
 	
  if(checkForAlreadySelectedTypesOrSubtypes(selected,selected_subtype,second_subtype)==true){
 		document.getElementById("show_error4").style.display='';
 		$scope.incomplete=checkForIncomplete(selected,selected_subtype,second_subtype);
+		document.getElementById("subbut").disabled=true
 	
 }else{
 	document.getElementById("show_error4").style.display='none';
@@ -123,6 +136,7 @@ app.controller('validateDetailsForm', function($scope){
 }
 
 }
+
 
 
 	

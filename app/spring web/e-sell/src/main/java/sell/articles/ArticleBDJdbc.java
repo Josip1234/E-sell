@@ -60,6 +60,13 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 
 	@Override
 	public Article_basic_details save(String article_number,Article_basic_details bdetails) {
+		System.out.println(bdetails);
+		if(bdetails.getType_id2()==0) {
+			bdetails.setType_id2(4);
+		}
+		if(bdetails.getType_id3()==null) {
+			bdetails.setType_id3(4);
+		}
 		template.update(
 				"insert into Article_basic_details (ar_num,type_id,price,article_condition,type_id_2,type_id_3) values(?,?,?,?,?,?)",
 			    bdetails.getArt_num(),

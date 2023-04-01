@@ -48,6 +48,17 @@ public Article_basic_details(String art_num, Integer type_id,String price,String
 	this.type_id2 = type_id2;
 	this.type_id3 = type_id3;
 }
+
+public Article_basic_details(String art_num, Integer type_id,String price) {
+	this.art_num = art_num;
+	this.type_id = type_id;
+	this.price = price;
+	this.article_condition = "";
+	this.type_id2 = 4;
+	this.type_id3 = 4;
+}
+
+
 public Article_basic_details(String art_num) {
 	this.art_num = art_num;
 
