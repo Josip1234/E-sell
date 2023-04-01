@@ -40,6 +40,24 @@ function selectArticleTypes(){
 	return $result;
 }
 
+function selectImagesFromStorage(){
+	include("sql_connect.php");
+	$sql="SELECT nickname,article_number,type, relative_link FROM storage_system";
+	$result=mysqli_query($dbc,$sql);
+	return $result;
+}
+
+function getStorageResults(){
+	$result=selectImagesFromStorage();
+	$array=array();
+	while($row=mysqli_fetch_array($result)){
+		array_push($array, array("nickname"=>$row["nickname"],"article_number"=>$row["article_number"], "type"=>$row["type"],"relative_link"=>$row["relative_link"] ));
+	}
+	$toJson=json_encode($array,JSON_UNESCAPED_UNICODE);
+	$data.=openBracket1().getQuotation()."storage_system".getQuotation().getColon().$toJson.closeBracket1();
+	return $data;
+}
+
 function retrieveValuesOfArticlesAndNumbers(){
 	$result=selectArticleNamesAndNumbers();
 	$array=array();
