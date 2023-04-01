@@ -40,7 +40,6 @@ function selectArticleTypes(){
 	return $result;
 }
 
-
 function retrieveValuesOfArticlesAndNumbers(){
 	$result=selectArticleNamesAndNumbers();
 	$array=array();
