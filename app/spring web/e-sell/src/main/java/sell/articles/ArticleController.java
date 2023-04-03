@@ -265,7 +265,7 @@ public String handleFileUpload(@CookieValue(value="article_number", required = f
 			"You successfully uploaded " + file.getOriginalFilename() + "!");
     //if user want to input more files we need to ask it overhere when button is executed then redirect first on get where upload 
 	//form is then we can finally redirect to insert advanced details.
-	return "redirect:insert_add_art_det";
+	return "redirect:uploadFile";
 }
 
 @ExceptionHandler(StorageFileNotFoundException.class)
