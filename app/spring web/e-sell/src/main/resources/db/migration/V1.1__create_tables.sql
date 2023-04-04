@@ -61,8 +61,8 @@ CREATE TABLE `shipping_details` (
 CREATE TABLE `article_advanced_details` (
   `id` int(11) NOT NULL,
   `article_num` varchar(20) COLLATE utf8_croatian_ci NOT NULL,
-  `description1` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`description1`)),
-  `description2` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`description2`))
+  `description1` longtext CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL CHECK (json_valid(`description1`)),
+  `description2` longtext CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL CHECK (json_valid(`description2`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
 

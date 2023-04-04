@@ -60,6 +60,7 @@ public class ArticleController {
 	private final SellerRepository sellerRepository;
 	private final ArticleBdRepository articleBdRepository;
 	private final ImageStorageService imageStorageService;
+	private final ArticleADRepository adRepository;
 	
 	//empty object for making new folder
 	Folder folder=new Folder();
@@ -72,12 +73,13 @@ public class ArticleController {
 	 * @param articleBdRepository
 	 * Repository injection
 	 */
-	public ArticleController(TypesRepository repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService) {
+	public ArticleController(TypesRepository repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository) {
 		this.repository = repository;
 		this.articleRepository=articleRepository;
 		this.sellerRepository=sellerRepository;
 		this.articleBdRepository=articleBdRepository;
 		this.imageStorageService=imageStorageService;
+		this.adRepository=adRepository;
 	}
     /***
      * @author Josip Bošnjak
@@ -286,6 +288,27 @@ public String update_article(Model model) {
 public String insertAdvancedProductDetail(Model model) {
 	model.addAttribute("add_art_det", new Article_advanced_details());
 	return "insert_add_art_det";
+}
+
+@PostMapping("/insert_add_art_det")
+public String addtype(@Valid @ModelAttribute("add_art_det") Article_advanced_details details,@CookieValue(value="article_number", required = false) String article_number, Errors errors) {
+	log.info("article_number", article_number);
+	log.info("details",details.toString());
+	System.out.println(article_number);
+	System.out.println(details);
+	details.setArticle_num(article_number);
+	adRepository.save(details);
+/*	if(errors.hasErrors()) {
+		errors.getClass();
+		//System.out.println(errors.toString());
+		return "insert_add_art_det";
+	}else {
+		//log.info("Values:"+types);
+		adRepository.save(details);
+		return "redirect:/e-sell/en/";
+	}*/
+	return "insert_add_art_det";
+	
 }
 
 

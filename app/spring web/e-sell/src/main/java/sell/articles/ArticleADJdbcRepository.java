@@ -21,6 +21,7 @@ public class ArticleADJdbcRepository implements ArticleADRepository {
 
 	@Override
 	public Article_advanced_details save(Article_advanced_details advanced_details) {
+		System.out.println(advanced_details);
 		jdbcTemplate.update(
 				"insert into article_advanced_details (article_num, description1, description2) values(?,?,?)",
 				advanced_details.getArticle_num(),
