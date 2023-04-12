@@ -79,10 +79,7 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 		return bdetails;
 	}
 
-	@Override
-	public Iterable<Article_basic_details> findBySellere(String seller) {
-		return 	return  template.query("select ar_num,type_id,price,article_condition,type_id_2,type_id_3 from Article_basic_details", this::mapRowToArticlesBD);;
-	}
+
 
 
 

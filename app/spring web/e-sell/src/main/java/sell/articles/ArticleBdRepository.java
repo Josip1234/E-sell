@@ -19,7 +19,7 @@ public interface ArticleBdRepository {
 	 * Find article basic details by price.
 	 */
 Iterable<Article_basic_details> findByPrice(String price);
-Iterable<Article_basic_details> findBySellere(String seller);
+
 /***
  * @author Josip Bošnjak
  * @return list of article basic details
