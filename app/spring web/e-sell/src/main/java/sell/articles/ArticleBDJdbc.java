@@ -79,6 +79,12 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 		return bdetails;
 	}
 
+	@Override
+	public Iterable<Article_basic_details> findBySellere(String seller) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.ArticleRepository;
+import sell.articles.Article_basic_details;
 import sell.articles.Articles;
 import sell.functions.GeneralFunctions;
 import sell.test.data.OutputInputUserEmailPass;
@@ -116,7 +119,7 @@ public class SellerController {
 		return "redirect:/e-sell/en/";
 		}
 	}
-	
+
 	
 	
 }
