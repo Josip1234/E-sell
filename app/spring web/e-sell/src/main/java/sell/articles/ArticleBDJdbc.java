@@ -81,8 +81,7 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 
 	@Override
 	public Iterable<Article_basic_details> findBySellere(String seller) {
-		// TODO Auto-generated method stub
-		return null;
+		return 	return  template.query("select ar_num,type_id,price,article_condition,type_id_2,type_id_3 from Article_basic_details", this::mapRowToArticlesBD);;
 	}
 
 
