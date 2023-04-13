@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -120,6 +121,20 @@ public class SellerController {
 		}
 	}
 
+	@GetMapping("/sellers")
+	public String getSellers(Model model) {
+	   // String url= ServletUriComponentsBuilder.fromRequestUri(request).toUriString();
+	   //log.info("Map entry "+seller);
+	    //String replacedUrl=GeneralFunctions.replaceURL(url);
+	    //log.info("Replaced url "+url);
+	    //List<Article_basic_details> article_basic_details=(List<Article_basic_details>) articleBdRepository.findAll();
+	    //List<Article_basic_details> getNumbersFromList=GeneralFunctions.removeStringFromPrice(article_basic_details);
+	    //List<Article_basic_details> getFinalList=GeneralFunctions.findAllObjectsByPrice(getNumbersFromList, replacedUrl);
+	    //model.addAttribute("seller", seller);
+		List<Sellers> sellers= (List<Sellers>) sellerRepository.findAll();
+		model.addAttribute("sellers",sellers);
+		return "sellers";
+	}
 	
 	
 }

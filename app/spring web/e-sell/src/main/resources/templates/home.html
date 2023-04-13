@@ -60,7 +60,7 @@
         <li th:unless="${#lists.isEmpty(sell)}" th:each="seller : ${sell}">
             <a th:href="@{/e-sell/en/sellers/{nickname}(nickname=${seller.nickname})}" th:text="${seller.nickname}" class="text-decoration-none"></a>
         </li>
-        <li><a th:href="@{/e-sell/en/sellers}" class="text-decoration-none">Find more sellers...</a></li>
+        <li><a th:href="@{/e-sell/en/seller/sellers}" class="text-decoration-none">Find more sellers...</a></li>
     </ul>
     </div>
     

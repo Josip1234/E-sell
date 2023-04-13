@@ -27,10 +27,10 @@
 
  <divclass="container">
      <ul class="list-unstyled">
-         <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
-           <p th:text="${article.art_num}" class="article_number" th:id="${article.art_num}" ></p>
-            <p th:id="price+${article.art_num}" th:text="${article.price}"></p >
-            <p th:text="${article.article_condition}"></p >
+         <li th:unless="${#lists.isEmpty(sellers)}" th:each="seller : ${sellers}">
+           <p th:text="${seller.nickname}" class="nickname" th:id="${seller.nickname}" ></p>
+            <p th:id="seller.fname" th:text="${seller.fname}"></p >
+            <p th:text="${seller.lname}"></p >
         </li>
   </div >
   
