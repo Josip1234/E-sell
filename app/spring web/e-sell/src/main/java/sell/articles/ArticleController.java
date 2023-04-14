@@ -311,5 +311,10 @@ public String addtype(@Valid @ModelAttribute("add_art_det") Article_advanced_det
 	
 }
 
+@GetMapping("/moreFilters")
+public String getMoreFilters() {
+	return "allFilters";
+}
+
 
 }
