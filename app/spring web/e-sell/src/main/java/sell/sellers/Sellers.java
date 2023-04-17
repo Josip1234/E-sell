@@ -2,6 +2,12 @@ package sell.sellers;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -24,26 +30,35 @@ import sell.password.ValidPassword;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name="sellers")
 public class Sellers {
 	@Null
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private Integer id;
 	@NotNull
 	@NonNull
 	@NotBlank(message = "First name is required.")
 	@Size(min = 1, max = 50, message = "Name must be between 1 and 50 letters.")
+	@Column(name="fname")
 	private String fname;
 	@NotNull
 	@NonNull
 	@NotBlank(message = "Last name is required.")
 	@Size(min=1,max=50, message = "Last name must be between 1 and 50 letters.")
+	@Column(name="lname")
 	private String lname;
 	@NotNull(message = "Date of birth is required.")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Column(name="dateofbirth")
 	private Date dateofbirth;
 	@NotNull
 	@NonNull
 	@NotBlank(message = "Location is required.")
 	@Size(min=1, message = "Location must contain at least 1 letter.")
+	@Column(name="location")
 	private String location;
 	@NonNull
 	@NotNull
@@ -51,23 +66,27 @@ public class Sellers {
 	@Size(min=1, max=50, message ="Nickname must be between 1 and 50 letters.")
 	//trebamo napisati validaciju za nickname jer ne smije dva nicknamea biti u bazi
 	//za dupli email ista stvar.
+	@Column(name="nickname")
 	private String nickname;
 	@NonNull
 	@NotNull
 	@NotBlank(message = "Contact is required.")
 	@Size(min=1, max=150, message = "Contact must be between 1 and 150 letters.")
+	@Column(name="contact")
 	private String contact;
 	@NotNull
 	@NonNull
 	@NotBlank(message = "Email is required.")
 	@Size(min=10, max=50, message = "Email must have at least 10 letters, or 50 letters max.")
 	@Email(message = "Email must be correct.")
+	@Column(name="email")
 	private String email;
 	@NonNull
 	@NotNull
 	@NotBlank(message = "Password is required.")
 	@Size(min=8, message = "Password must have at least 8 leters.")
 	@ValidPassword
+	@Column(name="hash_password")
 	private String hash_password;
 	@NonNull
 	@NotNull

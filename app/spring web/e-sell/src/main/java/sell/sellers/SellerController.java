@@ -1,5 +1,6 @@
 package sell.sellers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +21,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
 
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.ArticleRepository;
@@ -33,6 +39,7 @@ import sell.test.data.UserPassImpl;
 public class SellerController {
 	private final SellerRepository sellerRepository;
 	private final ArticleRepository articleRepository;
+	private final SellerJpaRep jpaRep;
 	
 	UserPassImpl password= new UserPassImpl();
 	Map<String, Sellers> map = new HashMap<>();
@@ -40,9 +47,10 @@ public class SellerController {
 	@Autowired
 	PasswordEncoder encoder;
 	
-	public SellerController(SellerRepository sellerRepository, ArticleRepository articleRepository) {
+	public SellerController(SellerRepository sellerRepository, ArticleRepository articleRepository,SellerJpaRep seller) {
 		this.sellerRepository = sellerRepository;
 		this.articleRepository=articleRepository;
+		this.jpaRep=seller;
 	}
 	
 	@GetMapping("/profile")
@@ -122,19 +130,26 @@ public class SellerController {
 	}
 
 	@GetMapping("/sellers")
-	public String getSellers(Model model) {
-	   // String url= ServletUriComponentsBuilder.fromRequestUri(request).toUriString();
-	   //log.info("Map entry "+seller);
-	    //String replacedUrl=GeneralFunctions.replaceURL(url);
-	    //log.info("Replaced url "+url);
-	    //List<Article_basic_details> article_basic_details=(List<Article_basic_details>) articleBdRepository.findAll();
-	    //List<Article_basic_details> getNumbersFromList=GeneralFunctions.removeStringFromPrice(article_basic_details);
-	    //List<Article_basic_details> getFinalList=GeneralFunctions.findAllObjectsByPrice(getNumbersFromList, replacedUrl);
-	    //model.addAttribute("seller", seller);
-		List<Sellers> sellers= (List<Sellers>) sellerRepository.findAll();
+	public String getSellers(Model model,@RequestParam(required = false)String keyword, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "3") int size) {
+		List<Sellers> sellers= new ArrayList<Sellers>();
+		 Pageable paging = PageRequest.of(page - 1, size);
+	      Page<Sellers> pageSeller;
+	      if (keyword == null) {
+		        pageSeller = jpaRep.findAll(paging);
+		      } else {
+		    	  pageSeller = jpaRep.findAll(paging);
+		        model.addAttribute("keyword", keyword);
+		      }
+            sellers=pageSeller.getContent();
+         
 		model.addAttribute("sellers",sellers);
+	    model.addAttribute("currentPage", pageSeller.getNumber() + 1);
+	      model.addAttribute("totalItems", pageSeller.getTotalElements());
+	      model.addAttribute("totalPages", pageSeller.getTotalPages());
+	      model.addAttribute("pageSize", size);
 		return "sellers";
 	}
 	
+
 	
 }
