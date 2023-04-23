@@ -30,6 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import lombok.extern.slf4j.Slf4j;
+import sell.articles.types.ArtTypJpa;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.files.Folder;
@@ -55,7 +56,7 @@ public class ArticleController {
     /***
      * Repositories for database operations
      */
-	private final TypesRepository repository;
+	private final ArtTypJpa repository;
 	private final ArticleRepository articleRepository;
 	private final SellerRepository sellerRepository;
 	private final ArticleBdRepository articleBdRepository;
@@ -73,7 +74,7 @@ public class ArticleController {
 	 * @param articleBdRepository
 	 * Repository injection
 	 */
-	public ArticleController(TypesRepository repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository) {
+	public ArticleController(ArtTypJpa repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository) {
 		this.repository = repository;
 		this.articleRepository=articleRepository;
 		this.sellerRepository=sellerRepository;

@@ -130,7 +130,7 @@ public class SellerController {
 	}
 
 	@GetMapping("/sellers")
-	public String getSellers(Model model,@RequestParam(required = false)String keyword, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "3") int size) {
+	public String getSellers(Model model,@RequestParam(required = false)String keyword, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "5") int size) {
 		List<Sellers> sellers= new ArrayList<Sellers>();
 		 Pageable paging = PageRequest.of(page - 1, size);
 	      Page<Sellers> pageSeller;

@@ -21,7 +21,7 @@ public class CategoriesController {
 	private final ArtTypJpa artTypJpa;
 
 	@GetMapping("/e-sell/en/categories")
-	public String getAllCategories(Model model,@RequestParam(required = false)String keyword, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "3") int size) {
+	public String getAllCategories(Model model,@RequestParam(required = false)String keyword, @RequestParam(defaultValue = "1")int page, @RequestParam(defaultValue = "5") int size) {
 		List<ArticleTypes> categories= new ArrayList<ArticleTypes>();
 		 PageRequest paging = PageRequest.of(page - 1, size);
 	      Page<ArticleTypes> pageType;

@@ -31,6 +31,7 @@ import sell.articles.ArticleJpa;
 import sell.articles.ArticleRepository;
 import sell.articles.Article_basic_details;
 import sell.articles.Articles;
+import sell.articles.types.ArtTypJpa;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.functions.GeneralFunctions;
@@ -42,13 +43,13 @@ import sell.sellers.Sellers;
 @Controller
 public class HomePageController {
 	private final SellerRepository repository;
-	private final TypesRepository typesRepository;
+	private final ArtTypJpa typesRepository;
 	private final ArticleBdRepository articleBdRepository;
 	private final ArticleRepository articleRepository;
 	private final ArticleJpa articleJpa;
 	
 	@Autowired
-	public HomePageController(SellerRepository repository, TypesRepository typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository,ArticleJpa articleJpa) {
+	public HomePageController(SellerRepository repository, ArtTypJpa typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository,ArticleJpa articleJpa) {
 		this.repository=repository;
 		this.typesRepository=typesRepository;
 		this.articleBdRepository=articleBdRepository;
@@ -96,7 +97,7 @@ public String contact() {
 
 @GetMapping("/e-sell/en/products")
 public String getProducts(Model model,@RequestParam(required = false) String keyword,
-	      @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "3") int size) {
+	      @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size) {
 
 	
     try {
