@@ -1,0 +1,35 @@
+
+
+You can use pagination with a native query. It is documented here: Spring Data JPA - Reference Documentation
+
+"You can however use native queries for pagination by specifying the count query yourself: Example 59. Declare native count queries for pagination at the query method using @Query"
+
+public interface UserRepository extends JpaRepository<User, Long> {
+
+  @Query(value = "SELECT * FROM USERS WHERE LASTNAME = ?1",
+    countQuery = "SELECT count(*) FROM USERS WHERE LASTNAME = ?1",
+    nativeQuery = true)
+  Page<User> findByLastname(String lastname, Pageable pageable);
+}
+
+Native Queries
+The @Query annotation allows for running native queries by setting the nativeQuery flag to true, as shown in the following example:
+
+Example 64. Declare a native query at the query method using @Query
+public interface UserRepository extends JpaRepository<User, Long> {
+
+  @Query(value = "SELECT * FROM USERS WHERE EMAIL_ADDRESS = ?1", nativeQuery = true)
+  User findByEmailAddress(String emailAddress);
+}
+
+Spring Data JPA does not currently support dynamic sorting for native queries, because it would have to manipulate the actual query declared, which it cannot do reliably for native SQL. You can, however, use native queries for pagination by specifying the count query yourself, as shown in the following example:
+Example 65. Declare native count queries for pagination at the query method by using @Query
+public interface UserRepository extends JpaRepository<User, Long> {
+
+  @Query(value = "SELECT * FROM USERS WHERE LASTNAME = ?1",
+    countQuery = "SELECT count(*) FROM USERS WHERE LASTNAME = ?1",
+    nativeQuery = true)
+  Page<User> findByLastname(String lastname, Pageable pageable);
+}
+
+A similar approach also works with named native queries, by adding the .count suffix to a copy of your query. You probably need to register a result set mapping for your count query, though.
