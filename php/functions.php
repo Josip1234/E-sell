@@ -146,5 +146,27 @@ function selectArticleNamesAndNumbers(){
 	return $result;
 }
 
+function selectProductPicturesOfList(){
+	include("sql_connect.php");
+	$sql = "SELECT `nickname`, `article_number`, `user_folder`, `article_folder`, `file_name`, `file_extension`, `local_path`, `url`, `type`, `relative_link` FROM `storage_system` WHERE `type`='Product_list_picture';
+	";
+	$result=mysqli_query($dbc,$sql);
+	return $result;
+}
+
+function selectListProductPictures(){
+	$result=selectProductPicturesOfList();
+	$array=array();
+	while($row=mysqli_fetch_array($result)){
+		array_push($array, array("nickname"=>$row["nickname"],"article_number"=>$row["article_number"],"user_folder"=>$row["user_folder"],"article_folder"=>$row["article_folder"],"file_name"=>$row["file_name"],
+	    "file_extension"=>$row["file_extension"], "local_path"=>$row["local_path"],"url"=>$row["url"],"type"=>$row["type"],"relative_link"=>$row["relative_link"]
+	));
+	}
+	$toJson=json_encode($array,JSON_UNESCAPED_UNICODE);
+	$data.=openBracket1().getQuotation()."storage_system".getQuotation().getColon().$toJson.closeBracket1();
+	return $data;
+	
+}
+
 
 ?>
