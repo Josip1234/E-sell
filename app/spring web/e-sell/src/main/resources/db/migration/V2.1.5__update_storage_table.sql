@@ -1,0 +1,1 @@
+ALTER TABLE `storage_system` CHANGE `type` `type` ENUM('Logo','Product_picture','Product_list_picture') CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL;
