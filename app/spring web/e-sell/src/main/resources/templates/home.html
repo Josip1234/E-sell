@@ -41,7 +41,7 @@
          <img class="brand" th:src="@{/images/clarks_brand_logo.png}" alt="Clarks"/>
     </div>
     <div class="col">
-       <h3>Search by category:</h3>
+       <h3>Search product categories:</h3>
           
         <ul class="list-unstyled">
         <li th:unless="${#lists.isEmpty(type)}" th:each="tip : ${type}">
@@ -54,7 +54,7 @@
 
     </div>
     <div class="col">
-      <h3> Search by sellers:</h3>
+      <h3> Search sellers:</h3>
       
         <ul class="list-unstyled">
         <li th:unless="${#lists.isEmpty(sell)}" th:each="seller : ${sell}">
