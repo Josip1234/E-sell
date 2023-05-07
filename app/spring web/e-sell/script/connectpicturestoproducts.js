@@ -8,8 +8,9 @@ app.config(function($sceDelegateProvider) {
             });
 app.controller('connectPicture', function($scope,$http){
 	$scope.data=$http.get("http://localhost/e-sell/php/storage_system_select_picture_list_product.php").then(function(response){
-        $scope.myData = response.data.storage_system;
+        $scope.data = response.data.storage_system;
     });
-
-	
+  $scope.article_number=document.getElementsByClassName("article_number");
+  alert($scope.article_number);
+	alert($scope.data);
 });
