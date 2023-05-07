@@ -48,4 +48,5 @@ function checkForNickname(nickname,list){
     }
   }
 }
-
+//NApomena za svaki article number korisnik bi trebao upisati samo jedanput Product_list_picture za pojedini proizvod. Za logo ista stvar smao što će korisnik trebati izabrati možda i sti logo ali će se samo id promijeniti. 
+//Možda bi bilo bolje za brandove napraviti posebnu tablicu.
