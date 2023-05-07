@@ -9,10 +9,10 @@ app.config(function($sceDelegateProvider) {
 app.controller('connectPicture', function($scope,$http){
 	$scope.data=$http.get("http://localhost/e-sell/php/storage_system_select_picture_list_product.php").then(function(response){
         $scope.data = response.data.storage_system;
-        alert($scope.data[0].nickname);
-        var res=document.getElementsByClassName("article_seller")[0].textContent;
-        alert(res);
-        checkForNickname("Jobo",$scope.data);
+      //  alert($scope.data[0].nickname);
+        //var res=document.getElementsByClassName("article_seller")[0].textContent;
+        //alert(res);
+        checkForUnique("Nickname","Jobo",$scope.data);
     });
   
     //var res=document.getElementsByClassName("article_seller").textContent;
@@ -36,17 +36,20 @@ app.controller('connectPicture', function($scope,$http){
 
 });
 
-function checkForNickname(nickname,list){
+function checkForUnique(whatToCheck,value,list){
   for (let i = 0; i < list.length; i++) {
-    if(nickname===list[i].nickname){
-      alert("Nickname is the same.");
-      alert(list[i].nickname);
+    if(value===list[i].whatToCheck){
+      alert(whatToCheck+" is the same.");
+      alert(list[i].whatToCheck);
       break;
     }else{
-      alert("Nickname is different.")
-      alert(list[i].nickname);
+      alert(whatToCheck +" is different.")
+      alert(list[i].whatToCheck);
     }
   }
 }
+
+
+
 //NApomena za svaki article number korisnik bi trebao upisati samo jedanput Product_list_picture za pojedini proizvod. Za logo ista stvar smao što će korisnik trebati izabrati možda i sti logo ali će se samo id promijeniti. 
 //Možda bi bilo bolje za brandove napraviti posebnu tablicu.
