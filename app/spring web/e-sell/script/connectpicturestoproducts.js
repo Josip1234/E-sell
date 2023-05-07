@@ -9,10 +9,11 @@ app.config(function($sceDelegateProvider) {
 app.controller('connectPicture', function($scope,$http){
 	$scope.data=$http.get("http://localhost/e-sell/php/storage_system_select_picture_list_product.php").then(function(response){
         $scope.data = response.data.storage_system;
-      //  alert($scope.data[0].nickname);
+        //alert($scope.data[0].nickname);
         //var res=document.getElementsByClassName("article_seller")[0].textContent;
         //alert(res);
-        checkForUnique("Nickname","Jobo",$scope.data);
+        //checkForNickname("Jobo",$scope.data);
+        checkForUnique("nickname","Jobo",$scope.data);
     });
   
     //var res=document.getElementsByClassName("article_seller").textContent;
@@ -36,18 +37,25 @@ app.controller('connectPicture', function($scope,$http){
 
 });
 
+
 function checkForUnique(whatToCheck,value,list){
-  for (let i = 0; i < list.length; i++) {
-    if(value===list[i].whatToCheck){
-      alert(whatToCheck+" is the same.");
-      alert(list[i].whatToCheck);
-      break;
-    }else{
-      alert(whatToCheck +" is different.")
-      alert(list[i].whatToCheck);
+  lowercase=whatToCheck.toLowerCase();
+  alert("What to check in json array: "+ lowercase);
+  for (let j = 0; j < list.length; j++) {
+    if(lowercase==="nickname"){
+      if(value===list[j].nickname){
+        alert(whatToCheck+" is the same.");
+        alert(list[j].nickname);
+        break;
+      }else{
+        alert(whatToCheck+" is different.")
+        alert(list[j].nickname);
+      }
     }
+   
   }
 }
+
 
 
 
