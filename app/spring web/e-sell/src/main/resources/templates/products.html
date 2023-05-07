@@ -18,6 +18,7 @@
  </head>
  <body ng-app="pictureConnection" ng-controller="connectPicture">
   <h1>{{data}}</h1>
+
  <div class="topnav">
         <a href="/e-sell/en/registration" >Registration</a>
         <a href="/e-sell/en/seller/profile" class="text-decoration-none">Profile</a>
@@ -31,17 +32,21 @@
  <div class="row">
  <div class="col">
 
+
+
+
 <div class="card mb-3" style="max-width: 100%;" th:unless="${#lists.isEmpty(products)}" th:each="prod:${products}">
 <div class="container text-center">
 
   <div class="row row-cols-3">
-    <div class="col">
-      <img src="..." class="img-fluid rounded-start" alt="...">
+    <div class="col source">
+      <img src="..." class="img-fluid rounded-start source" alt="...">
     </div>
     <div class="col">
       <div class="card-body">
         <h5 class="card-title article_number" th:text="${prod.article_number}" th:id="${prod.article_number}">Card title</h5>
           <p th:id="${prod.article_name}" th:text="${prod.article_name}"></p >
+            <p class="article_seller" th:id="${prod.seller}" th:text="${prod.seller}"></p >
       </div>
     </div>
 

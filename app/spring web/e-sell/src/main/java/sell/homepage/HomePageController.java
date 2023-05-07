@@ -36,20 +36,21 @@ import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.functions.GeneralFunctions;
 import sell.functions.MinMax;
+import sell.sellers.SellerJpaRep;
 import sell.sellers.SellerRepository;
 import sell.sellers.Sellers;
 
 @Slf4j
 @Controller
 public class HomePageController {
-	private final SellerRepository repository;
+	private final SellerJpaRep repository;
 	private final ArtTypJpa typesRepository;
 	private final ArticleBdRepository articleBdRepository;
 	private final ArticleRepository articleRepository;
 	private final ArticleJpa articleJpa;
 	
 	@Autowired
-	public HomePageController(SellerRepository repository, ArtTypJpa typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository,ArticleJpa articleJpa) {
+	public HomePageController(SellerJpaRep repository, ArtTypJpa typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository,ArticleJpa articleJpa) {
 		this.repository=repository;
 		this.typesRepository=typesRepository;
 		this.articleBdRepository=articleBdRepository;
@@ -113,6 +114,8 @@ public String getProducts(Model model,@RequestParam(required = false) String key
         }
 
         products = pageTuts.getContent();
+        
+   
 
         model.addAttribute("products", products);
         model.addAttribute("currentPage", pageTuts.getNumber() + 1);
