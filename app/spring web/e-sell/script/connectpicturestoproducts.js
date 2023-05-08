@@ -13,7 +13,21 @@ app.controller('connectPicture', function($scope,$http){
         //var res=document.getElementsByClassName("article_seller")[0].textContent;
         //alert(res);
         //checkForNickname("Jobo",$scope.data);
-        checkForUnique("nickname","Jobo",$scope.data);
+       //var url= checkForUniqueAndReturnUrl("nickname","Jobo",$scope.data);
+       //alert(url);
+       //document.getElementById("0").src=url;
+
+       //get all article numbers
+       var allArticleNumbersByClass = document.getElementsByClassName("article_number");
+
+       //iterate trough list and check for article numbers if they are equal to article numbers in data
+       //replace their url
+       for (let i = 0; i < allArticleNumbersByClass.length; i++) {
+        var url= checkForUniqueAndReturnUrl("article_number",allArticleNumbersByClass[i].textContent,$scope.data);
+        document.getElementById(allArticleNumbersByClass[i].textContent).src=url;
+       }
+
+        
     });
   
     //var res=document.getElementsByClassName("article_seller").textContent;
@@ -37,19 +51,32 @@ app.controller('connectPicture', function($scope,$http){
 
 });
 
-
-function checkForUnique(whatToCheck,value,list){
+//function to check unique values like product seller or article number returns url if exists
+function checkForUniqueAndReturnUrl(whatToCheck,value,list){
   lowercase=whatToCheck.toLowerCase();
-  alert("What to check in json array: "+ lowercase);
+  //alert("What to check in json array: "+ lowercase);
   for (let j = 0; j < list.length; j++) {
     if(lowercase==="nickname"){
       if(value===list[j].nickname){
-        alert(whatToCheck+" is the same.");
-        alert(list[j].nickname);
+        //alert(whatToCheck+" is the same.");
+        //alert(list[j].nickname);
+        //alert(list[j].url);
+        return list[j].url;
         break;
       }else{
-        alert(whatToCheck+" is different.")
-        alert(list[j].nickname);
+        //alert(whatToCheck+" is different.")
+        //alert(list[j].nickname);
+      }
+    }else if(lowercase==="article_number"){
+      if(value===list[j].article_number){
+        //alert(whatToCheck+" is the same.");
+        //alert(list[j].nickname);
+        //alert(list[j].url);
+        return list[j].url;
+        break;
+      }else{
+        //alert(whatToCheck+" is different.")
+        //alert(list[j].nickname);
       }
     }
    
