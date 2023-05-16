@@ -73,6 +73,7 @@ public class GeneralFunctions {
      * This function using security context holder and user details to get user email from logged in user.
      * @author Josip Bošnjak
      * @return email from logged in user
+     * note: we need to force username to be equal to email for login or change function to find username
      */
 	public static String getUserEmail() {
 		String email="";
