@@ -29,13 +29,13 @@ xmlns:th="http://www.thymeleaf.org" lang="en">
 
     <form method="post" th:action="@{/e-sell/en/shipping/insertShippingDetails}" th:object="${shipping}">
 
-        <input type="hidden" name="article_number" value="article_number">
-        <input type="text" name="shipping" value="shipping">
-        <input type="text" name="comment" value="comment">
-<input type="text" name="location" value="location">
-<input type="text" name="delivery" value="delivery">
-<input type="text" name="returns" value="returns">
-<input type="text" name="payments" value="payments">
+        <input type="hidden" name="article_number" value="article_number" th:field="*{article_number}">
+        <input type="text" name="shipping" th:field="*{shipping}">
+        <input type="text" name="comment" th:field="*{comment}">
+<input type="text" name="location" th:field="*{location}">
+<input type="text" name="delivery" th:field="*{delivery}">
+<input type="text" name="returns" th:field="*{returns}">
+<input type="text" name="payments" th:field="*{payments}">
 
 <input type="submit" value="Add shipping details">
     </form>
