@@ -2,11 +2,13 @@ package sell.shipping;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class Shipping_details {
 private Integer id;
 @NonNull
