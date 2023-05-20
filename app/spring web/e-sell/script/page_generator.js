@@ -159,9 +159,9 @@ function generateHeaderOrBody(header_or_body, number, data){
 
 var app=angular.module('descriptions',[]);
 app.controller('descriptionDisplay', function($scope){
-	$scope.description1 = "Brand: Steve Madden, US Shoe Size: 10, Style: Fashion, Color: Brown, Upper Material: Synthetic, Department: Women, Type: Boots, Heel Style: Stiletto Heel, Height: Med (1 3/4 in. to 2 3/4 in.), Occasion: Boots, Model: Jessamy, Calf Width: Normal, Shoe Width: Medium (B M) MPN- JG-4767732, UPC: 195945597675";
+	$scope.description1 = "";
 	$scope.display_mode="";
-	$scope.description2="Name: Josip Bošnjak, Number: 510";
+	$scope.description2="";
 	$scope.display_mode2="";
 
 	$scope.sizeOfDesc=function(){
