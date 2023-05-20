@@ -29,7 +29,7 @@ public class ArticleTypes {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 @Column(name="id")
-private Integer id;
+private Long id;
 @NotNull
 @NotBlank(message = "Type is required.")
 @Size(min = 1, max = 255, message = "Type must be between 1 and 50 letters.")

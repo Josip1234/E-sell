@@ -33,7 +33,13 @@
       <div class="col mt-5">
         <div class="col-auto">
         <form th:action="@{/e-sell/en/articles/insert_add_art_det}" th:object="${add_art_det}" method="post">
-            <input type="hidden" name="article_num" value="" id="article_num" th:field="*{article_num}"> <br>
+
+          <select class="form-control" th:field="*{article_num}">
+            <option value="0">select article</option>
+           <option th:each="article : ${articles}" th:value="${article.article_number}" th:text="${article.article_name}"></option >
+         </select>
+          
+
             <div ng-app="descriptions" ng-controller="descriptionDisplay">
                 <span class="note">To separate data put comma at the end, template must be like this: key:value, where key is for example model, : is separator, value is value, and separator is ,.
                     When finished, dont put anything at the end. Also, you need to tick the checkbox to enable writing in textarea. When you finished, disable again. Do not put additional : in the numbers,

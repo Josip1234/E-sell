@@ -287,7 +287,15 @@ public String update_article(Model model) {
 
 @GetMapping("/insert_add_art_det")
 public String insertAdvancedProductDetail(Model model) {
+	String username=GeneralFunctions.getUserEmail();
+	Sellers seller = sellerRepository.findOne(username);
+	List<Articles> articles = new ArrayList<Articles>();
+	//need to fix general function name
+	
+	//for now it can stay like this, we need probably fix this function
+	articles=articleRepository.findAllByUsername(seller);
 	model.addAttribute("add_art_det", new Article_advanced_details());
+	model.addAttribute("articles",articles);
 	return "insert_add_art_det";
 }
 
