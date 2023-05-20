@@ -27,17 +27,46 @@ xmlns:th="http://www.thymeleaf.org" lang="en">
         <div class="col mt-5">
         
 
-    <form method="post" th:action="@{/e-sell/en/shipping/insertShippingDetails}" th:object="${shipping}">
+    <form method="post" th:action="@{/e-sell/en/shipping/insertShippingDetails}" th:object="${shipping}" class="row g-3">
 
         <input type="hidden" name="article_number" value="article_number" th:field="*{article_number}">
-        <input type="text" name="shipping" th:field="*{shipping}">
+        <div class="col-md-6">
+            <label for="shipping" class="form-label">Enter shipping information:</label>
+            <div class="input-group mb-3">
+            <input type="text" name="shipping" th:field="*{shipping}">
+            </div>
+        </div>
+        <div class="col-md-6">
+        <label for="comment" class="form-label">Enter comments:</label>
+        <div class="input-group mb-3">
         <input type="text" name="comment" th:field="*{comment}">
+        </div>
+        </div>
+        <div class="col-md-6">
+        <label for="location" class="form-label">Enter location:</label>
+        <div class="input-group mb-3">
 <input type="text" name="location" th:field="*{location}">
+        </div>
+        </div>
+        <div class="col-md-6">
+<label for="delivery" class="form-label">Enter delivery information:</label>
+<div class="input-group mb-3">
 <input type="text" name="delivery" th:field="*{delivery}">
-<input type="text" name="returns" th:field="*{returns}">
-<input type="text" name="payments" th:field="*{payments}">
+</div>
+        </div>
+        <div class="col-md-6">
+<label for="returns" class="form-label">Enter information about returns:</label>
+<div class="input-group mb-3"><input type="text" name="returns" th:field="*{returns}"></div>
 
-<input type="submit" value="Add shipping details">
+        </div>
+        <div class="col-md-6">
+<label for="payments" class="form-label">Enter information about payments:</label>
+<div class="input-group mb-3"><input type="text" name="payments" th:field="*{payments}"></div>
+
+        </div>
+        <div class="col-12">
+<input type="submit" value="Add shipping details" class="btn btn-primary">
+        </div>
     </form>
         </div>
         </div>
