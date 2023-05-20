@@ -144,6 +144,12 @@ public class ArticleController {
 		return "newtype";
 	}
 	
+	@ModelAttribute(name = "typ")
+	public ArticleTypes types() {
+	return new ArticleTypes();
+	}
+	
+	
 	/***
 	 * @author Josip Bošnjak
 	 * @param types recieve form from data
@@ -151,7 +157,7 @@ public class ArticleController {
 	 * @return form from newtype and display errors in view if there are no errors save new type
 	 */
 	@PostMapping("/newtype")
-	public String addtype(@Valid @ModelAttribute("type") ArticleTypes types, Errors errors) {
+	public String addtype(@Valid ArticleTypes types, Errors errors) {
 		System.out.println(types.getType());
 		log.info("Values:"+types);
 		if(errors.hasErrors()) {

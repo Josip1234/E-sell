@@ -36,7 +36,7 @@ private Integer id;
 @NotNull
 @NotBlank(message = "Type is required.")
 @Size(min = 1, max = 255, message = "Type must be between 1 and 50 letters.")
-@Column(name="types")
+@Column(name="type")
 private String type;
 
 }
