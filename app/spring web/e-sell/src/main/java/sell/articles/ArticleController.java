@@ -63,7 +63,7 @@ public class ArticleController {
 	private final ArticleBdRepository articleBdRepository;
 	private final ImageStorageService imageStorageService;
 	private final ArticleADRepository adRepository;
-	private final ArticleTypeJdbc jdb;
+	private final TypesRepository jdb;
 	
 	//empty object for making new folder
 	Folder folder=new Folder();
@@ -76,7 +76,7 @@ public class ArticleController {
 	 * @param articleBdRepository
 	 * Repository injection
 	 */
-	public ArticleController(ArticleTypeJdbc jdb,ArtTypJpa repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository) {
+	public ArticleController(TypesRepository jdb,ArtTypJpa repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository) {
 		this.repository = repository;
 		this.articleRepository=articleRepository;
 		this.sellerRepository=sellerRepository;
@@ -152,12 +152,15 @@ public class ArticleController {
 	 */
 	@PostMapping("/newtype")
 	public String addtype(@Valid @ModelAttribute("type") ArticleTypes types, Errors errors) {
+		System.out.println(types.getType());
+		log.info("Values:"+types);
 		if(errors.hasErrors()) {
 			errors.getClass();
-			//System.out.println(errors.toString());
+			System.out.println(errors.toString());
+			System.out.println(types);
 			return "newtype";
 		}else {
-			//log.info("Values:"+types);
+			log.info("Values:"+types);
 			jdb.save(types);
 			return "redirect:/e-sell/en/articles/newarticles";
 		}

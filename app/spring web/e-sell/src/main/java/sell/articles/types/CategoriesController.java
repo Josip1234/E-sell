@@ -1,6 +1,5 @@
 package sell.articles.types;
 
-import java.awt.print.Pageable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.AllArgsConstructor;
-import sell.sellers.SellerRepository;
 
 @AllArgsConstructor
 @Controller
 public class CategoriesController {
-	private final TypesRepository repository;
 	private final ArtTypJpa artTypJpa;
 
 	@GetMapping("/e-sell/en/categories")

@@ -36,8 +36,9 @@ public class ArticleTypeJdbc implements TypesRepository {
 
 	@Override
 	public ArticleTypes save(ArticleTypes types) {
+		System.out.println("tip:"+types);
 		jdbc.update(
-				"insert into article_types (type) values(?)",
+				"insert into Article_types (type) values(?)",
 				types.getType()
 				);
 		return types;
@@ -45,7 +46,7 @@ public class ArticleTypeJdbc implements TypesRepository {
 	
 	private ArticleTypes mapRowToTypes(ResultSet rs, int rowNum) throws SQLException {
 		return new ArticleTypes(
-				rs.getInt("id"),
+				
 				rs.getString("type"));
 	
 	}
