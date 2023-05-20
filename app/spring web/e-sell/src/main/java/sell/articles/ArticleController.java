@@ -31,6 +31,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.types.ArtTypJpa;
+import sell.articles.types.ArticleTypeJdbc;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.files.Folder;
@@ -62,6 +63,7 @@ public class ArticleController {
 	private final ArticleBdRepository articleBdRepository;
 	private final ImageStorageService imageStorageService;
 	private final ArticleADRepository adRepository;
+	private final ArticleTypeJdbc jdb;
 	
 	//empty object for making new folder
 	Folder folder=new Folder();
@@ -74,13 +76,14 @@ public class ArticleController {
 	 * @param articleBdRepository
 	 * Repository injection
 	 */
-	public ArticleController(ArtTypJpa repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository) {
+	public ArticleController(ArticleTypeJdbc jdb,ArtTypJpa repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository) {
 		this.repository = repository;
 		this.articleRepository=articleRepository;
 		this.sellerRepository=sellerRepository;
 		this.articleBdRepository=articleBdRepository;
 		this.imageStorageService=imageStorageService;
 		this.adRepository=adRepository;
+		this.jdb=jdb;
 	}
     /***
      * @author Josip Bošnjak
@@ -155,7 +158,7 @@ public class ArticleController {
 			return "newtype";
 		}else {
 			//log.info("Values:"+types);
-			repository.save(types);
+			jdb.save(types);
 			return "redirect:/e-sell/en/articles/newarticles";
 		}
 		
