@@ -23,7 +23,7 @@ app.controller('connectPicture', function($scope,$http){
        //iterate trough list and check for article numbers if they are equal to article numbers in data
        //replace their url
        for (let i = 0; i < allArticleNumbersByClass.length; i++) {
-        var url= checkForUniqueAndReturnUrl("article_number",allArticleNumbersByClass[i].textContent,$scope.data);
+        var url= checkForUniqueAndReturnUrl("article_number",allArticleNumbersByClass[i].textContent,$scope.data,"localhost");
         document.getElementById(allArticleNumbersByClass[i].textContent).src=url;
        }
 
@@ -52,7 +52,7 @@ app.controller('connectPicture', function($scope,$http){
 });
 
 //function to check unique values like product seller or article number returns url if exists
-function checkForUniqueAndReturnUrl(whatToCheck,value,list){
+function checkForUniqueAndReturnUrl(whatToCheck,value,list, isLocalHost){
   lowercase=whatToCheck.toLowerCase();
   //alert("What to check in json array: "+ lowercase);
   for (let j = 0; j < list.length; j++) {
@@ -61,8 +61,15 @@ function checkForUniqueAndReturnUrl(whatToCheck,value,list){
         //alert(whatToCheck+" is the same.");
         //alert(list[j].nickname);
         //alert(list[j].url);
-        return list[j].url;
-        break;
+        if(isLocalHost==="localhost"){
+          list[j].relative_link;
+          break;
+        }else{
+          return list[j].url;
+          break;
+        }
+    
+        
       }else{
         //alert(whatToCheck+" is different.")
         //alert(list[j].nickname);
@@ -72,7 +79,13 @@ function checkForUniqueAndReturnUrl(whatToCheck,value,list){
         //alert(whatToCheck+" is the same.");
         //alert(list[j].nickname);
         //alert(list[j].url);
-        return list[j].url;
+        if(isLocalHost==="localhost"){
+          list[j].relative_link;
+          break;
+        }else{
+          return list[j].url;
+          break;
+        }
         break;
       }else{
         //alert(whatToCheck+" is different.")
