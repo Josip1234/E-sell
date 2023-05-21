@@ -62,7 +62,7 @@ function checkForUniqueAndReturnUrl(whatToCheck,value,list, isLocalHost){
         //alert(list[j].nickname);
         //alert(list[j].url);
         if(isLocalHost==="localhost"){
-          list[j].relative_link;
+          return list[j].relative_link;
           break;
         }else{
           return list[j].url;
@@ -80,7 +80,8 @@ function checkForUniqueAndReturnUrl(whatToCheck,value,list, isLocalHost){
         //alert(list[j].nickname);
         //alert(list[j].url);
         if(isLocalHost==="localhost"){
-          list[j].relative_link;
+      
+          return list[j].relative_link;
           break;
         }else{
           return list[j].url;
