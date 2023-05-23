@@ -20,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -59,6 +60,7 @@ public class HomePageController {
 	}
 @GetMapping("/e-sell/en/")
 public String home(Model model) {
+	
 	List<ArticleTypes> types=(List<ArticleTypes>) typesRepository.findAll();
 	List<Sellers> sellers = (List<Sellers>) repository.findAll();
 	List<Article_basic_details> articleBasic=(List<Article_basic_details>) articleBdRepository.findAll();
@@ -79,6 +81,14 @@ public String home(Model model) {
 	model.addAttribute("type",types.stream().limit(4).collect(Collectors.toList()));
 	model.addAttribute("basic", valuesToDisplay);
 	return "home";
+}
+
+@GetMapping("/e-sell/en/Search")
+public String searchArticles(@CookieValue(value="article_name", required = false) String article_name, Model model) {
+	System.out.println(article_name);
+	List<Articles> articles = articleJpa.findByArticleName(article_name); 
+    model.addAttribute("products",articles);
+	return "search";
 }
 
 @GetMapping("/e-sell/en/loggingout")
