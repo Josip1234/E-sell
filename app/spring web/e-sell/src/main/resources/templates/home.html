@@ -13,6 +13,16 @@
 <link th:href="@{/styles/top_navigation.css}" rel="stylesheet" />
 <link th:href="@{/styles/rowpadding.css}" rel="stylesheet" />
 
+<script>
+       function storeValues(){
+            var gallery_name=document.getElementById("name").value;
+      
+        document.cookie = "article_name="+gallery_name;
+           
+         return true;
+      
+        }
+</script>
  </head>
  <body>
 
@@ -31,7 +41,7 @@
   <div id="rw" class="row mt-5">
       <div class="col mt-5">
         <div class="col-auto">
-    <input type="text" class="form-control-plaintext border border-dark" id="name" placeholder="Search by name:">
+    <input type="text" class="form-control-plaintext border border-dark"  placeholder="Search by name:" id="name" onchange="storeValues()">
   </div>
     </div>
   </div>
