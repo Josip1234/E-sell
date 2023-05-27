@@ -35,8 +35,7 @@
 	width: 30%;
 	height: 30%;
 }
-@media only screen and (min-width: 1900px) { #foot5{ padding-top: 11.50%; } }
-
+@media screen and (max-width:1920px) { #foot5{ padding-top: 11.50%;} }
 
 /*@media only screen and (min-width: 320px)  { body{ font-size: 12px; } }
 @media only screen and (min-width: 768px)  { body{ font-size: 14px; } }
