@@ -41,8 +41,18 @@
   <div id="rw" class="row mt-5">
       <div class="col mt-5">
         <div class="col-auto">
-    <input type="text" class="form-control-plaintext border border-dark"  placeholder="Search by name:" id="name" onchange="storeValues()">
+          <div class="input-group">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control"  id="name" placeholder="Search by name:" name="name" onchange="storeValues()">
+                  <div class="input-group-append">
+    <span class="input-group-text"><a th:href="@{/e-sell/en/Search}"><img src="http://localhost/e-sell/files/search.svg" alt="search"></a></span>
   </div>
+             </div>
+       
+          </div>
+      
+  </div>
+
     </div>
   </div>
   <div class="row">
