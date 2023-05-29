@@ -97,6 +97,10 @@ function checkForUniqueAndReturnUrl(whatToCheck,value,list, isLocalHost){
   }
 }
 
+function more_information(id){
+            
+  alert(id);
+}
 
 
 
