@@ -98,7 +98,7 @@ function checkForUniqueAndReturnUrl(whatToCheck,value,list, isLocalHost){
 }
 
 function more_information(id,host){
-  document.cookie = "article_name="+id;
+  document.cookie = "article_number="+id;
   
   if(host==="undefined"){
     host='/e-sell/en/articles/productDetail';
