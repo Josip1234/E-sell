@@ -337,5 +337,9 @@ public String getMorePriceFilters() {
 	return "morePriceFilters";
 }
 
+@GetMapping("/productDetail")
+public String getProductDetails() {
+	return "productDetails";
+}
 
 }

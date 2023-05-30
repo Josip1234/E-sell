@@ -97,9 +97,13 @@ function checkForUniqueAndReturnUrl(whatToCheck,value,list, isLocalHost){
   }
 }
 
-function more_information(id){
-            
-  alert(id);
+function more_information(id,host){
+  document.cookie = "article_name="+id;
+  
+  if(host==="undefined"){
+    host='/e-sell/en/articles/productDetail';
+  }
+  location.href = host;
 }
 
 

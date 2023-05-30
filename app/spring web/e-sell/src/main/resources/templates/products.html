@@ -42,7 +42,7 @@
 
   <div class="row row-cols-3">
     <div class="col source">
-      <img th:id="${prod.article_number}" th:src="..." class="img-fluid rounded-start source" th:alt="..." onclick="more_information(this.id)">
+      <img th:id="${prod.article_number}" th:src="..." class="img-fluid rounded-start source" th:alt="..." onclick="more_information(this.id,''+window.location.url+'')">
     </div>
     <div class="col">
       <div class="card-body">
