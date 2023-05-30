@@ -111,6 +111,7 @@ public class ArticleController {
 	 */
 	@PostMapping("/newarticles")
 	public String addArticle(@Valid @ModelAttribute("article") Articles articles, Errors errors) {
+	
 		//get logged in user
 		Sellers sellers=sellerRepository.findOne(GeneralFunctions.getUserEmail());
 	
