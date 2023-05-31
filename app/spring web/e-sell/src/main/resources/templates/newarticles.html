@@ -13,12 +13,7 @@
 <link th:href="@{/styles/rowpadding.css}" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <script th:src="@{/script/newarticle_form_validation.js}"></script>
-<script>
-  function deleteCookies(){
-    document.cookie = "article_number=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/e-sell/en;";
-    document.cookie = "article_name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/e-sell/en;";
-  }
-</script>
+<script th:src="@{/script/cookieoperations.js}"></script>
  </head>
  <body onload="deleteCookies()">
    <div class="topnav">
