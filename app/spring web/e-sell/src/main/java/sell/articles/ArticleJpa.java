@@ -12,5 +12,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface ArticleJpa extends JpaRepository<Articles, Integer> {
 	  @Query(value = "SELECT * FROM Articles WHERE article_name LIKE %?%", nativeQuery = true)
-	  List<Articles> findByArticleName(String articleName);
+	  Page<Articles> findByArticleName(String articleName, Pageable pageable);
 }

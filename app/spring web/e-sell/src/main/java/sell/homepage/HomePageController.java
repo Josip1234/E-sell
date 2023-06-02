@@ -84,10 +84,32 @@ public String home(Model model) {
 }
 
 @GetMapping("/e-sell/en/Search")
-public String searchArticles(@CookieValue(value="article_name", required = false) String article_name, Model model) {
-	System.out.println(article_name);
-	List<Articles> articles = articleJpa.findByArticleName(article_name); 
+public String searchArticles(@CookieValue(value="article_name", required = false) String article_name, Model model,@RequestParam(required = false) String keyword,
+	      @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size) {
+
+	List<Articles> articles = new ArrayList<Articles>(); 
+	
+    try {
+       // List<Articles> articles = new ArrayList<Articles>();
+        Pageable paging = PageRequest.of(page - 1, size);
+
+        Page<Articles> pageTuts;
+        if (keyword == null) {
+          pageTuts = articleJpa.findByArticleName(article_name, paging);
+        } else {
+          pageTuts = articleJpa.findByArticleName(article_name, paging);
+          model.addAttribute("keyword", keyword);
+        }
+        articles = pageTuts.getContent();
+	
     model.addAttribute("products",articles);
+    model.addAttribute("currentPage", pageTuts.getNumber() + 1);
+    model.addAttribute("totalItems", pageTuts.getTotalElements());
+    model.addAttribute("totalPages", pageTuts.getTotalPages());
+    model.addAttribute("pageSize", size);
+    } catch (Exception e) {
+        model.addAttribute("message", e.getMessage());
+      }
 	return "search";
 }
 
