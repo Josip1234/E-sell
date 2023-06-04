@@ -73,6 +73,7 @@ public String home(Model model) {
 	try {
 		//need to display maps instead list
 		valuesToDisplay=GeneralFunctions.displayPrices(valuesToDisplay,articleBasic);
+		//System.out.println(valuesToDisplay);
 	} catch (Exception e) {
 		
 		e.printStackTrace();

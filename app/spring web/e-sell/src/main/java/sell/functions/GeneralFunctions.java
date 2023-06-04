@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.Set;
@@ -167,42 +168,12 @@ public class GeneralFunctions {
 		//declare min and max value to find range for prices
 		Double max;
 		//variable for range
-		//Double divideBy=0.0; deprecated
 		//find min and max value and add it into the map
 		maxmin=findMinAndMax(articleBasic);
 		//get minimum value
-		//min=Double.valueOf(map.get(MinMax.min.toString())); we dont need minimum value only max deprecated function now
 		//get maximum value
 		max=Double.valueOf(maxmin.get(MinMax.max.toString()));
-		//log.info(String.valueOf(max));
-		//get range round it to integer
-		//divideBy= max/min; deprecated we have function now
-		//ntil max value has been reached, subtract max value add it to list
-		/*List<Double> valuesToDisplay = new ArrayList<Double>();
-		double remainder=0.0; deprecated we need map key value as class
-		*/
-		//if index is zero remainder is max add it to the list after that subtract remainder and add it to the list for every other case subtract remainder add it to the list
-		//this will be optimized after project is finished
-		//we need anpther list for second class, we need one variable to save current value and next value added by division reminder.
-		//we need to decide by how much will devide
-		/*for (double i = 0.0; i < max; i++) {
-			if(i==0) {
-				remainder=max;
-			}else if(remainder<0) {
-				break;
-			}else {
-				BigDecimal db= new BigDecimal(remainder).setScale(2,RoundingMode.HALF_UP);
-				double rounded=db.doubleValue();
-				valuesToDisplay.add(rounded);
-				remainder=remainder-divideBy;
-				
-			}
-			
-			
-		}
-		   deprecated we need map 
-		*/
-		//Collections.shuffle(map); deprecated we need to see how to shuffle data in map
+
 		ClassificationImplementation implementation = new ClassificationImplementation();
 		map=implementation.returnPriceListForHomePage(max);
 		return map;
@@ -321,13 +292,19 @@ public static List<Article_basic_details> findAllObjectsByPrice(List<Article_bas
 //it is not possible at this momment to make random apearence at the site. we need to think about it maybe in angular
 //or some other framework.
 public static Map<Double, Double> displayValues(Map<Double,Double> map, int howMany){
+	List<Double> keys=new ArrayList<Double>();
+	List<Double> values =new  ArrayList<Double>();
+    String getKey="Key";
+    String getValue="Value";
+
+	
 	Numeric numeric=new Numeric();
 	numeric.initMap();
 	int mapSize=map.size();
 	int[] randomIndexes=numeric.generateRandomIndexesWithoutRepeat(mapSize, howMany);
 int index=0;
 	for (Map.Entry<Double, Double> entry : map.entrySet()) {
-		if(index==howMany) break;
+		//if(index==howMany) break;
 		
 	    //System.out.println("Index"+index);  
 		Double key = entry.getKey();
@@ -347,6 +324,9 @@ int index=0;
 }
 
 
+public static int generateRandomIndex(int upTo) {
+	return Faker.instance().number().numberBetween(0, upTo);
+}
 
 
 }
