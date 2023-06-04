@@ -1,1 +1,1 @@
-ALTER TABLE `article_basic_details` ADD `converted_price` DECIMAL(28,28) NULL AFTER `price`;
+ALTER TABLE `article_basic_details` ADD `converted_price` DOUBLE NOT NULL AFTER `price`;
