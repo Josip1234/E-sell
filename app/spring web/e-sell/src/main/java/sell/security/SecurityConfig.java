@@ -38,6 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("e-sell/en/articles/uploadFile").authenticated()
 		.antMatchers("/e-sell/en/articles/{*article}").permitAll()
 		.antMatchers("/e-sell/en/articles/uploadFile").authenticated()
+		.antMatchers("/e-sell/en/advert/advertDetails").authenticated()
 		.antMatchers("/e-sell/en/seller/profile","/e-sell/en/seller/updatePass").authenticated()
 		.antMatchers("/e-sell/en/seller/findAllArticles").authenticated()
 		.antMatchers("/e-sell/en/shipping/insertShippingDetails").authenticated()
