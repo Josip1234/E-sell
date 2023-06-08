@@ -58,11 +58,9 @@ public class Ad_details {
 	@Column(name="ad_last_updated")
 	private Date ad_last_updated;
 	@NonNull
-	@Null
 	@Column(name="time_until_expire")
 	private String time_until_expire;
 	@NonNull
-	@Null
 	@Column(name="ad_shown")
 	private String ad_shown;
 }

@@ -33,6 +33,10 @@ app.controller('validateForm', function($scope,$http){
 		$scope.error=true;
 		$scope.showError=true;
 		$scope.incomplete=true;
+	   }else{
+		$scope.error=false;
+		$scope.showError=false;
+		$scope.incomplete=false;
 	   }
 	};
 	
