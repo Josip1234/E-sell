@@ -37,20 +37,15 @@
         </span>
       </div>
             <div class="col-md-6">
-             <label for="article_num" class="form-label">Enter article number:</label>
+             <label for="article_num" class="form-label">Select article number:</label>
              <div class="input-group mb-3">
-                <input type="text" th:field="*{article_num}"  class="form-control" ng-model="article_num" required id="article_num">
-                  <div class="input-group-append">
-    <span class="input-group-text" ng-bind="article_numLength()"></span>
-  </div>
+
+                <select class="form-control" th:field="*{article_num}">
+                  <option value="0">Select article number</option>
+                  <option th:each="article:${articles}" th:value="${article.article_number}" th:text="${article.article_name}"></option>
+                </select>
+ 
              </div>
-                <span class="validationError text-danger" th:if="${#fields.hasErrors('article_num')}" 
-                th:errors="*{article_num}">
-                Article number error
-                </span>
-               
-                    <span class="validationError text-danger" ng-show="advertDetailsForm.article_num.$dirty && advertDetailsForm.article_num.$invalid">
-      <span ng-show="advertDetailsForm.article_num.$error.required">Article number is required.</span></span>
                 
             </div>
              <div class="col-md-6">
