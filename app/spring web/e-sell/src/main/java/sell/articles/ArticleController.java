@@ -340,7 +340,9 @@ public String getMorePriceFilters() {
 }
 
 @GetMapping("/productDetail")
-public String getProductDetails() {
+public String getProductDetails(@CookieValue(value="article_number", required = true) String article_number, Model model) {
+	log.info(article_number);
+	model.addAttribute("detailsFor",article_number);
 	return "productDetails";
 }
 
