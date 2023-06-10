@@ -87,6 +87,12 @@ public class ArticleJdbcRepository implements ArticleRepository {
 		return returnArticles;
 	}
 
+	@Override
+	public Articles findByArticleNumber(String article_number) {
+		
+		return jdbc.queryForObject("select article_number, article_name,seller from Articles WHERE article_number = ? ", this::mapRowToArticles, article_number);
+	}
+
 
 
 

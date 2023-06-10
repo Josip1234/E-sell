@@ -39,5 +39,7 @@ Articles findOne(String value);
  */
 Articles save(Articles articles);
 
+Articles findByArticleNumber(String article_number);
+
 
 }

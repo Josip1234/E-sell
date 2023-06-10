@@ -33,5 +33,6 @@ Iterable<Article_basic_details> findAll();
  * Save basic details of articles. Article number may be extra. Probably will be removed in the future.
  */
 Article_basic_details save(String article_number,Article_basic_details bdetails);
+Article_basic_details selectByArticleNumber(String article_number);
 
 }

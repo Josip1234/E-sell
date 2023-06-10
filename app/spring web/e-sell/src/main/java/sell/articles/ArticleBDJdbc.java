@@ -79,6 +79,12 @@ public class ArticleBDJdbc implements ArticleBdRepository {
 		return bdetails;
 	}
 
+	@Override
+	public Article_basic_details selectByArticleNumber(String article_number) {
+		
+		return template.queryForObject("select ar_num,type_id,price,article_condition,type_id_2,type_id_3 from Article_basic_details where ar_num=?", this::mapRowToArticlesBD,article_number);
+	}
+
 
 
 

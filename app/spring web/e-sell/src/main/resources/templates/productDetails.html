@@ -31,25 +31,50 @@
         
 
  <div class="container">
- <div class="row">
- <div class="col">
 
-      <p th:text="${detailsFor}"></p>
+<div class="row">
+   <div class="col">
+
+   
 
 
-
+         <h1 th:text="${detailsFor.article_name}"></h1>
+      
+       
  
+    </div>
+    <div class="col">
+      <h2>Article number:</h2>
+      <h2 th:text="${detailsFor.article_number}"></h2>
+     
+   </div>
+   <div class="col">
+      <h3>Seller:</h3>
+      <h3 th:text="${detailsFor.seller}"></h3>
+   </div>
+   </div>
+<div class="row">
+<div class="col">
+   <p>Price:</p>
+   <p th:text="${basic_dt.price}"></p>
+   <p>Article condition:</p> 
+   <p th:text="${basic_dt.article_condition}"></p>
+</div>
+
+<div class="col">
+ 
+   <p th:text="${ad.description1}"></p>
   
+   
+</div>
+<div class="col">
  
- </div>
- 
+   <p th:text="${ad.description2}"></p>
+  
+   
+</div>
 
-
-
- </div>
-
-
-
+</div>    
   
 
     

@@ -341,8 +341,13 @@ public String getMorePriceFilters() {
 
 @GetMapping("/productDetail")
 public String getProductDetails(@CookieValue(value="article_number", required = true) String article_number, Model model) {
+	Articles articles = articleRepository.findByArticleNumber(article_number);
+	Article_basic_details article_basic_details= articleBdRepository.selectByArticleNumber(article_number);
+	Article_advanced_details advanced_details = adRepository.findDetails(article_number);
 	log.info(article_number);
-	model.addAttribute("detailsFor",article_number);
+	model.addAttribute("detailsFor",articles);
+	model.addAttribute("basic_dt",article_basic_details);
+	model.addAttribute("ad",advanced_details);
 	return "productDetails";
 }
 
