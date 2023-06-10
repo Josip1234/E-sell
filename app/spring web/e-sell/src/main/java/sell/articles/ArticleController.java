@@ -30,6 +30,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import lombok.extern.slf4j.Slf4j;
+import sell.ad.Ad_details;
+import sell.ad.AdvertDetailsRepo;
 import sell.articles.types.ArtTypJpa;
 import sell.articles.types.ArticleTypeJdbc;
 import sell.articles.types.ArticleTypes;
@@ -40,6 +42,8 @@ import sell.files.StorageFileNotFoundException;
 import sell.functions.GeneralFunctions;
 import sell.sellers.SellerRepository;
 import sell.sellers.Sellers;
+import sell.shipping.ShipDetailRepo;
+import sell.shipping.Shipping_details;
 
 /***
  * 
@@ -64,6 +68,8 @@ public class ArticleController {
 	private final ImageStorageService imageStorageService;
 	private final ArticleADRepository adRepository;
 	private final TypesRepository jdb;
+	private final ShipDetailRepo repo;
+	private final AdvertDetailsRepo ad_details;
 	
 	//empty object for making new folder
 	Folder folder=new Folder();
@@ -76,7 +82,7 @@ public class ArticleController {
 	 * @param articleBdRepository
 	 * Repository injection
 	 */
-	public ArticleController(TypesRepository jdb,ArtTypJpa repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository) {
+	public ArticleController(TypesRepository jdb,ArtTypJpa repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository,ShipDetailRepo repo,  AdvertDetailsRepo ad_details) {
 		this.repository = repository;
 		this.articleRepository=articleRepository;
 		this.sellerRepository=sellerRepository;
@@ -84,6 +90,8 @@ public class ArticleController {
 		this.imageStorageService=imageStorageService;
 		this.adRepository=adRepository;
 		this.jdb=jdb;
+		this.repo=repo;
+		this.ad_details=ad_details;
 	}
     /***
      * @author Josip Bošnjak
@@ -344,10 +352,14 @@ public String getProductDetails(@CookieValue(value="article_number", required = 
 	Articles articles = articleRepository.findByArticleNumber(article_number);
 	Article_basic_details article_basic_details= articleBdRepository.selectByArticleNumber(article_number);
 	Article_advanced_details advanced_details = adRepository.findDetails(article_number);
-	log.info(article_number);
+	Shipping_details shipping_details = repo.readDetails(article_number);
+    Ad_details det = ad_details.findDetailsByAn(article_number);
+    
 	model.addAttribute("detailsFor",articles);
 	model.addAttribute("basic_dt",article_basic_details);
 	model.addAttribute("ad",advanced_details);
+	model.addAttribute("sd",shipping_details);
+	model.addAttribute("det",det);
 	return "productDetails";
 }
 

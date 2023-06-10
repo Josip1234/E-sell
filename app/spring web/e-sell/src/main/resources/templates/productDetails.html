@@ -76,6 +76,55 @@
 
 </div>    
   
+<div class="row">
+ 
+   <div class="col">
+      <h2>Shipping details</h2>
+      <ul>
+         <li><strong>Shipping:</strong>
+            <span th:text="${sd.shipping}"></span></li>
+            <li><strong>Comment:</strong>
+               <span th:text="${sd.comment}"></span></li>
+               <li><strong>Location:</strong>
+                  <span th:text="${sd.location}"></span></li>
+                  <li><strong>Delivery:</strong>
+                     <span th:text="${sd.delivery}"></span></li>
+                     <li><strong>Returns:</strong>
+                        <span th:text="${sd.returns}"></span></li>
+                        <li><strong>Payments:</strong>
+                           <span th:text="${sd.payments}"></span></li>
+      </ul>
+ 
+      
+     
+   </div>
+   <div class="col">
+      <h2>Advert details</h2>
+      <ul>
+         <li>
+            <strong>Advert added:</strong>
+            <span th:text="${det.ad_added}"></span>
+         </li>
+         <li>
+            <strong>Last date advert is updated:</strong>
+            <span th:text="${det.ad_last_updated}"></span>
+         </li>
+         <li>
+            <strong>Time until advert expire:</strong>
+            <span th:text="${det.time_until_expire}"></span>
+         </li>
+         <li>
+            <strong>Advert has been shown:</strong>
+            <span th:text="${det.ad_shown}"></span>
+         </li>
+      </ul>
+
+      
+      
+   </div>
+
+
+</div>
 
     
   
