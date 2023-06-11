@@ -1,10 +1,15 @@
 package sell.files;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import lombok.NoArgsConstructor;
+import sell.articles.Article_advanced_details;
 
 @Repository
 @NoArgsConstructor
@@ -26,6 +31,28 @@ public class StorageRepJdbcImpl implements StorageRepository {
 				);
 		return storage;
 		
+	}
+	
+	private Storage mapRowToStorage(ResultSet rs, int rowNum) throws SQLException {
+		return new Storage(
+				rs.getString("nickname"),
+				rs.getString("article_number"),
+				rs.getString("user_folder"),
+				rs.getString("article_folder"),
+				rs.getString("file_name"),
+				rs.getString("file_extension"),
+				rs.getString("local_path"),
+				rs.getString("url"),
+				rs.getString("type"),
+				rs.getString("relative_link")
+				);
+	
+	}
+
+	@Override
+	public List<Storage> findImagesByArticleNumber(String article_number) {
+		
+		return jdbcTemplate.query("SELECT * FROM Storage_system where article_number=?", this::mapRowToStorage,article_number);
 	}
 
 }

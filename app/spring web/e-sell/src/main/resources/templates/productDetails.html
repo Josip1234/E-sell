@@ -15,10 +15,11 @@
 <link href="/styles/rowpadding.css" rel="stylesheet" >
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
 <script th:src="@{/script/connectpicturestoproducts.js}"></script>
+<script th:src="@{/script/parse_url_for_localhost.js}"></script>
 <link th:href="@{/styles/cursor_style.css}" rel="stylesheet">
 
  </head>
- <body ng-app="pictureConnection" ng-controller="connectPicture">
+ <body ng-app="pictureConnection" ng-controller="connectPicture" onload="parse()">
  
 
  <div class="topnav">
@@ -118,11 +119,22 @@
             <span th:text="${det.ad_shown}"></span>
          </li>
       </ul>
+     
 
       
       
    </div>
+<div class="row">
+   <div class="col-md-3" style="padding-bottom: 10%;">
+      <span th:unless="${#lists.isEmpty(images)}" th:each="image:${images}">
+         <img th:src="${image.url}" th:alt="${image.file_name}" class="img img-responsive" width="40%" height="auto">
+      </span>
+   </div>
+   
+  
+ 
 
+</div>
 
 </div>
 

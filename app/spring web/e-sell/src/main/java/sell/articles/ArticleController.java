@@ -38,7 +38,9 @@ import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.files.Folder;
 import sell.files.ImageStorageService;
+import sell.files.Storage;
 import sell.files.StorageFileNotFoundException;
+import sell.files.StorageRepository;
 import sell.functions.GeneralFunctions;
 import sell.sellers.SellerRepository;
 import sell.sellers.Sellers;
@@ -70,6 +72,7 @@ public class ArticleController {
 	private final TypesRepository jdb;
 	private final ShipDetailRepo repo;
 	private final AdvertDetailsRepo ad_details;
+	private final StorageRepository repository2;
 	
 	//empty object for making new folder
 	Folder folder=new Folder();
@@ -82,7 +85,7 @@ public class ArticleController {
 	 * @param articleBdRepository
 	 * Repository injection
 	 */
-	public ArticleController(TypesRepository jdb,ArtTypJpa repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository,ShipDetailRepo repo,  AdvertDetailsRepo ad_details) {
+	public ArticleController(TypesRepository jdb,ArtTypJpa repository, ArticleRepository articleRepository,SellerRepository sellerRepository, ArticleBdRepository articleBdRepository, ImageStorageService imageStorageService, ArticleADRepository adRepository,ShipDetailRepo repo,  AdvertDetailsRepo ad_details,StorageRepository repository2) {
 		this.repository = repository;
 		this.articleRepository=articleRepository;
 		this.sellerRepository=sellerRepository;
@@ -92,6 +95,7 @@ public class ArticleController {
 		this.jdb=jdb;
 		this.repo=repo;
 		this.ad_details=ad_details;
+		this.repository2=repository2;
 	}
     /***
      * @author Josip Bošnjak
@@ -354,12 +358,15 @@ public String getProductDetails(@CookieValue(value="article_number", required = 
 	Article_advanced_details advanced_details = adRepository.findDetails(article_number);
 	Shipping_details shipping_details = repo.readDetails(article_number);
     Ad_details det = ad_details.findDetailsByAn(article_number);
+
+    List<Storage> listOfImages = repository2.findImagesByArticleNumber(article_number);
     
 	model.addAttribute("detailsFor",articles);
 	model.addAttribute("basic_dt",article_basic_details);
 	model.addAttribute("ad",advanced_details);
 	model.addAttribute("sd",shipping_details);
 	model.addAttribute("det",det);
+	model.addAttribute("images",listOfImages);
 	return "productDetails";
 }
 
