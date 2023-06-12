@@ -34,7 +34,7 @@
         <div class="col-auto">
         <form th:action="@{/e-sell/en/articles/insert_add_art_det}" th:object="${add_art_det}" method="post">
 
-          <select class="form-control" th:field="*{article_num}">
+          <select class="form-control" th:field="*{article_num}" id="article_num" name="article_num">
             <option value="0">select article</option>
            <option th:each="article : ${articles}" th:value="${article.article_number}" th:text="${article.article_name}"></option >
          </select>
@@ -95,12 +95,15 @@
                     <p id="look_on_site2"></p>
                 
                 </div>
-                
+
+
                     </div>
                     
 
 
         <br>
+        <input type="hidden" th:field="*{display_mode_desc1}" name="display_mode_desc1" id="display_mode_desc1">
+        <input type="hidden" th:field="*{display_mode_desc2}" name="display_mode_desc2" id="display_mode_desc2">
             <input type="submit" value="Insert data">
 
         </form>

@@ -326,12 +326,8 @@ public String insertAdvancedProductDetail(Model model) {
 }
 
 @PostMapping("/insert_add_art_det")
-public String addtype(@Valid @ModelAttribute("add_art_det") Article_advanced_details details,@CookieValue(value="article_number", required = false) String article_number, Errors errors) {
-	log.info("article_number", article_number);
-	log.info("details",details.toString());
-	System.out.println(article_number);
-	System.out.println(details);
-	details.setArticle_num(article_number);
+public String addtype(@Valid @ModelAttribute("add_art_det") Article_advanced_details details, Errors errors) {
+
 	adRepository.save(details);
 /*	if(errors.hasErrors()) {
 		errors.getClass();

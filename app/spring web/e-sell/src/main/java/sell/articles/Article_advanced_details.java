@@ -24,6 +24,9 @@ private String article_num;
 private String description1;
 @NonNull
 private String description2;
-
+@NonNull
+private String display_mode_desc1;
+@NonNull
+private String display_mode_desc2;
 
 }

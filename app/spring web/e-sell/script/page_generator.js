@@ -173,19 +173,27 @@ app.controller('descriptionDisplay', function($scope){
 	};
 
 	$scope.separate_data=function(){
+		var par="paragraph";
+		var table="table";
+		var unordered="unordered_list";
+		var ordered="ordered_list";
 		//separate by , first to get separate data from string divided by ,
 		let sepdat = $scope.description1.split(",");
 		if($scope.display_mode==="paragraph"){
 			let sizeOfData=sepdat.length;
 			document.getElementById("look_on_site").innerHTML=generateParagraph(sizeOfData,sepdat);
+			document.getElementById("display_mode_desc1").value=par;
 			key_array=[];
 			value_array=[];
 		}else if($scope.display_mode==="ordered"){
 			document.getElementById("look_on_site").innerHTML=generate_list("ordered",sepdat);
+			document.getElementById("display_mode_desc1").value=ordered;
 		}else if($scope.display_mode==="unordered"){
 			document.getElementById("look_on_site").innerHTML=generate_list("unordered",sepdat);
+			document.getElementById("display_mode_desc1").value=unordered;
 		}else if($scope.display_mode==="table"){
 			document.getElementById("look_on_site").innerHTML=generate_table(sepdat);
+			document.getElementById("display_mode_desc1").value=table;
 			 key_array=[];
 			value_array=[];
 		}
@@ -197,24 +205,34 @@ app.controller('descriptionDisplay', function($scope){
 	}
     
    $scope.separate_data2=function(){
+	var par="paragraph";
+		var table="table";
+		var unordered="unordered_list";
+		var ordered="ordered_list";
+
 	let sepdat2 = $scope.description2.split(",");
 	if($scope.display_mode2==="paragraph"){
 		let sizeOfData=sepdat2.length;
 		document.getElementById("look_on_site2").innerHTML=generateParagraph(sizeOfData,sepdat2);
+		document.getElementById("display_mode_desc2").value=par;
 		key_array=[];
 		value_array=[];
 	}else if($scope.display_mode2==="ordered"){
 		document.getElementById("look_on_site2").innerHTML=generate_list("ordered",sepdat2);
+		document.getElementById("display_mode_desc2").value=ordered;
 	}else if($scope.display_mode2==="unordered"){
 		document.getElementById("look_on_site2").innerHTML=generate_list("unordered",sepdat2);
+		document.getElementById("display_mode_desc2").value=unordered;
 	}else if($scope.display_mode2==="table"){
 		document.getElementById("look_on_site2").innerHTML=generate_table(sepdat2);
+		document.getElementById("display_mode_desc2").value=table;
 		 key_array=[];
 		value_array=[];
 	}
 	return sepdat2;
    }
 	
+
 
 	
 });

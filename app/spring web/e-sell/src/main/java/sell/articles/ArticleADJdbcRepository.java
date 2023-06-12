@@ -26,10 +26,12 @@ public class ArticleADJdbcRepository implements ArticleADRepository {
 	public Article_advanced_details save(Article_advanced_details advanced_details) {
 		System.out.println(advanced_details);
 		jdbcTemplate.update(
-				"insert into article_advanced_details (article_num, description1, description2) values(?,?,?)",
+				"insert into article_advanced_details (article_num, description1, description2,display_mode_desc1,display_mode_desc2) values(?,?,?,?,?)",
 				advanced_details.getArticle_num(),
 				advanced_details.getDescription1(),
-				advanced_details.getDescription2()
+				advanced_details.getDescription2(),
+				advanced_details.getDisplay_mode_desc1(),
+			    advanced_details.getDisplay_mode_desc2()
 				);
 		return advanced_details;
 	}
@@ -39,14 +41,16 @@ public class ArticleADJdbcRepository implements ArticleADRepository {
 	@Override
 	public Article_advanced_details findDetails(String article_number) {
 		
-		return jdbcTemplate.queryForObject("select article_num, description1, description2 from Article_advanced_details where article_num=?", this::mapRowToArticlesAD, article_number);
+		return jdbcTemplate.queryForObject("select article_num, description1, description2,display_mode_desc1,display_mode_desc2 from Article_advanced_details where article_num=?", this::mapRowToArticlesAD, article_number);
 	}
 	
 	private Article_advanced_details mapRowToArticlesAD(ResultSet rs, int rowNum) throws SQLException {
 		return new Article_advanced_details(
 				rs.getString("article_num"),
 				rs.getString("description1"),
-				rs.getString("description2")
+				rs.getString("description2"),
+				rs.getString("display_mode_desc1"),
+				rs.getString("display_mode_desc2")
 				);
 	
 	}

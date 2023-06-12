@@ -1,0 +1,1 @@
+ALTER TABLE `article_basic_details` CHANGE `converted_price` `converted_price` DOUBLE NOT NULL DEFAULT '0';
