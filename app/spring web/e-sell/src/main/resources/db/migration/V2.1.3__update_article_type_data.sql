@@ -1,1 +1,1 @@
-INSERT INTO `article_types` (`id`, `type`) VALUES (4, 'NONE');
+--INSERT INTO `article_types` (`id`, `type`) VALUES (4, 'NONE');

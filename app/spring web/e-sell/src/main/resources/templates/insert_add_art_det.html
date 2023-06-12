@@ -10,8 +10,8 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<link th:href="@{/styles/top_navigation.css}" rel="stylesheet" />
-<link th:href="@{/styles/rowpadding.css}" rel="stylesheet" />
+<link th:href="@{/styles/top_navigation.css}" rel="stylesheet" >
+<link th:href="@{/styles/rowpadding.css}" rel="stylesheet" >
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <script th:src="@{/script/page_generator.js}"></script>
  </head>
@@ -32,13 +32,12 @@
   <div id="rw" class="row mt-5">
       <div class="col mt-5">
         <div class="col-auto">
-        <form th:action="@{/e-sell/en/articles/insert_add_art_det}" th:object="${add_art_det}" method="post">
+        <form th:action="@{/e-sell/en/articles/insert_add_art_det}" th:object="${add_art_det}" method="post">   
 
-          <select class="form-control" th:field="*{article_num}" id="article_num" name="article_num">
-            <option value="0">select article</option>
+          <select class="form-control" th:field="*{article_num}" name="article_num" id="article_num">
+            <option value="0" selected>select article</option>
            <option th:each="article : ${articles}" th:value="${article.article_number}" th:text="${article.article_name}"></option >
          </select>
-          
 
             <div ng-app="descriptions" ng-controller="descriptionDisplay">
                 <span class="note">To separate data put comma at the end, template must be like this: key:value, where key is for example model, : is separator, value is value, and separator is ,.
@@ -104,6 +103,8 @@
         <br>
         <input type="hidden" th:field="*{display_mode_desc1}" name="display_mode_desc1" id="display_mode_desc1">
         <input type="hidden" th:field="*{display_mode_desc2}" name="display_mode_desc2" id="display_mode_desc2">
+     
+       
             <input type="submit" value="Insert data">
 
         </form>

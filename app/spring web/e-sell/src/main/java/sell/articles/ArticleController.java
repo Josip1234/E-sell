@@ -327,9 +327,7 @@ public String insertAdvancedProductDetail(Model model) {
 
 @PostMapping("/insert_add_art_det")
 public String addtype(@Valid @ModelAttribute("add_art_det") Article_advanced_details details, Errors errors) {
-
-	adRepository.save(details);
-/*	if(errors.hasErrors()) {
+	if(errors.hasErrors()) {
 		errors.getClass();
 		//System.out.println(errors.toString());
 		return "insert_add_art_det";
@@ -337,8 +335,7 @@ public String addtype(@Valid @ModelAttribute("add_art_det") Article_advanced_det
 		//log.info("Values:"+types);
 		adRepository.save(details);
 		return "redirect:/e-sell/en/";
-	}*/
-	return "insert_add_art_det";
+	}
 	
 }
 

@@ -104,7 +104,7 @@ ALTER TABLE `shipping_details`
 
 ALTER TABLE `article_advanced_details`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `article_num` (`article_num`);
+  ADD UNIQUE KEY `article_num` (`article_num`);
 
 
 
