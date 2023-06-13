@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.core.io.Resource;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -345,7 +346,7 @@ public String getMorePriceFilters() {
 }
 
 @GetMapping("/productDetail")
-public String getProductDetails(@CookieValue(value="article_number", required = true) String article_number, Model model) {
+public String getProductDetails(@CookieValue(value="article_number", required = true) String article_number, Model model){
 	Articles articles = articleRepository.findByArticleNumber(article_number);
 	Article_basic_details article_basic_details= articleBdRepository.selectByArticleNumber(article_number);
 	Article_advanced_details advanced_details = adRepository.findDetails(article_number);
@@ -353,6 +354,9 @@ public String getProductDetails(@CookieValue(value="article_number", required = 
     Ad_details det = ad_details.findDetailsByAn(article_number);
 
     List<Storage> listOfImages = repository2.findImagesByArticleNumber(article_number);
+    
+
+    
     
 	model.addAttribute("detailsFor",articles);
 	model.addAttribute("basic_dt",article_basic_details);

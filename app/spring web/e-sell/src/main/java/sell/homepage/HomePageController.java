@@ -147,7 +147,7 @@ public String getProducts(Model model,@RequestParam(required = false) String key
         }
 
         products = pageTuts.getContent();
-        
+        products.removeIf(t -> t.getSeller().contentEquals("root"));
    
 
         model.addAttribute("products", products);
