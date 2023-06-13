@@ -243,7 +243,7 @@ public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_
     	return "insertBasicArticleDetails";
     }else {
     	articleBdRepository.save(article_numb,bdetails);
-    	return "redirect:/insert_add_art_det";
+    	return "redirect:insert_add_art_det";
     }
 }
 
@@ -323,7 +323,7 @@ public String insertAdvancedProductDetail(Model model) {
 	articles=articleRepository.findAllByUsername(seller);
 	model.addAttribute("add_art_det", new Article_advanced_details());
 	model.addAttribute("articles",articles);
-	return "redirect:uploadFile";
+	return "insert_add_art_det";
 }
 
 @PostMapping("/insert_add_art_det")
@@ -335,7 +335,7 @@ public String addtype(@Valid @ModelAttribute("add_art_det") Article_advanced_det
 	}else {
 		//log.info("Values:"+types);
 		adRepository.save(details);
-		return "redirect:/e-sell/en/";
+		return "redirect:uploadFile";
 	}
 	
 }
