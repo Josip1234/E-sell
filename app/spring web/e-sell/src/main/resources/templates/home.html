@@ -24,8 +24,8 @@
         <a th:href="@{/e-sell/en/login}">Login</a> 
         <a th:href="@{/e-sell/en/products}">Products</a>
       <a th:href="@{/e-sell/en/contact}">Contact</a>
-      <a th:href="@{/e-sell/en/Search}">Search articles</a>
-      <a th:href="@{/e-sell/en/advert/advertDetails}">Insert advert details</a>
+      <a th:href="@{/e-sell/en/loggingout}">Logout</a>
+
     </div>
 
 
@@ -75,34 +75,7 @@
         <li><a th:href="@{/e-sell/en/seller/sellers}" class="text-decoration-none">Find more sellers...</a></li>
     </ul>
     </div>
-    
-      <div class="col">
-      <h3> Search by price:</h3>
-      <!-- need to display key value prices 
-       <ul class="list-unstyled">
-         <li th:unless="${#lists.isEmpty(basic)}" th:each="article : ${basic}">
-            <span id="spacing">To</span ><a th:href="@{/e-sell/en/articles/{article}(article=${article})}" th:text="${article}" class="text-decoration-none"></a>
-        </li> -->
-        
-        <div th:each="map : ${basic}">
-     <div th:each="article : ${map}">
-     <a th:href="@{/e-sell/en/articles/{article}(article=${article})}"  class="text-decoration-none">
-     <span th:text="${article.key}"></span> -
-         <span th:text="${article.value}"></span> 
-     </a>
-          
-     </div>
-        
-</div>
-<a th:href="@{/e-sell/en/articles/morePriceFilters}" class="text-decoration-none">More price filters</a>
-       <!--
-       <li>Between 0.01 and 100</li>
-        <li>Between 100 and 1000</li>
-         <li>Between 1000 and 1000</li>
-          <li>Enter number:</li>
-          -->
-      
-    </div>
+  
   </div>
   
 
