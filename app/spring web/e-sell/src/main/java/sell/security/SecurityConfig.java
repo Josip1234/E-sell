@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.antMatchers("/e-sell/en/seller/profile","/e-sell/en/seller/updatePass").authenticated()
 		.antMatchers("/e-sell/en/seller/findAllArticles").authenticated()
 		.antMatchers("/e-sell/en/shipping/insertShippingDetails").authenticated()
+		.antMatchers("/e-sell/en/deletion/deleteAdvert").authenticated()
 		.antMatchers("/e-sell/en/registration","/e-sell/en/","/e-sell/en/seller/updateNotLoggedInPass").permitAll() .and()
 		.logout().logoutSuccessUrl("/e-sell/en/").and()
 		.formLogin().loginPage("/e-sell/en/login").defaultSuccessUrl("/e-sell/en/seller/profile", true);
