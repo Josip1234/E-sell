@@ -12,5 +12,6 @@ import sell.sellers.Sellers;
 public interface CreateFolders {
 	boolean createFolder(Object object);
 	boolean saveApplicationPropertiesFile(List<String> fileDataValues, ApplicationProperties applicationProperties);
+	boolean deleteFolder(String url);
 
 }

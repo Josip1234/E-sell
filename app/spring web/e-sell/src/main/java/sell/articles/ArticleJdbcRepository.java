@@ -12,8 +12,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.sellers.Sellers;
@@ -91,6 +93,14 @@ public class ArticleJdbcRepository implements ArticleRepository {
 	public Articles findByArticleNumber(String article_number) {
 		
 		return jdbc.queryForObject("select article_number, article_name,seller from Articles WHERE article_number = ? ", this::mapRowToArticles, article_number);
+	}
+
+	@Override
+	public void deleteAll(String article_number) {
+		String deleteQuery = "delete from Articles where article_number = ?";
+		jdbc.update(deleteQuery, article_number);
+	  
+		
 	}
 
 

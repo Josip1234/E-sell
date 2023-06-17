@@ -25,6 +25,8 @@ import com.github.javafaker.Faker;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.articles.Article_basic_details;
+import sell.files.Folder;
+import sell.files.Storage;
 import sell.sellers.Sellers;
 /***
  * Class for general functions.
@@ -328,5 +330,44 @@ public static int generateRandomIndex(int upTo) {
 	return Faker.instance().number().numberBetween(0, upTo);
 }
 
+public static List<String> returnMatchedUrls(List<Storage> storage){
+	//initialise some array
+	List<String> mat=new ArrayList<String>();
+	//for each object in the storage list
+	for (Storage storage2 : storage) {
+		//declare empty string 
+		String matched="";
+		//get local path
+		String localp=storage2.getLocal_path();
+		//replace \ with /
+		String replace=localp.replace('\\','/');
+	    //define regex
+		String regex=".*(?<=/)";
+		//compile regex
+		Pattern pattern=Pattern.compile(regex);
+		//compile what to find
+		Matcher matcher= pattern.matcher(replace);
+		//find match
+	    boolean matchFound = matcher.find();
+	    //if match is found return local url path to folder with article_number else return match not found error
+	    if(matchFound) {
+	    matched=matcher.group(0);
+	    mat.add(matched);
+	    } else {
+	      System.out.println("Match not found");
+	    }
+
+
+}
+	return mat;
+}
+public static boolean deleteFolderFromListOfUrls(Folder folder, List<String> list) {
+	boolean deleted=false;
+	  for (String string : list) {
+			folder.setDefaultPath(string);
+			folder.deleteFolder(folder.getDefaultPath());
+		}
+	  return deleted;
+}
 
 }

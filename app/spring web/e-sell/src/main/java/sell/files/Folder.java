@@ -5,6 +5,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -158,6 +162,29 @@ public boolean saveApplicationPropertiesFile(List<String> fileDataValues, Applic
 		e.printStackTrace();
 	}
 	return done;
+}
+@Override
+public boolean deleteFolder(String url) {
+	boolean deleted=false;
+	Path dir=Paths.get(url);
+	try {
+		deleted=true;
+		Files.walk(dir).sorted(Comparator.reverseOrder()).forEach(path->{
+			System.out.println("Deleting:"+url);
+	
+			try {
+				Files.delete(path);
+				
+			} catch (IOException e) {
+			   System.out.println("Folder not exists");
+		
+			}
+		});
+	} catch (IOException e) {
+		deleted=false;
+		   System.out.println("Folder not exists");
+	}
+	return deleted;
 }
 
 }

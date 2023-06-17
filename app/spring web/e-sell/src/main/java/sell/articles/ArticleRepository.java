@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jdbc.repository.query.Modifying;
+import org.springframework.transaction.annotation.Transactional;
 
 import sell.sellers.Sellers;
 
@@ -40,6 +42,9 @@ Articles findOne(String value);
 Articles save(Articles articles);
 
 Articles findByArticleNumber(String article_number);
+@Modifying
+@Transactional
+void deleteAll(String article_number);
 
 
 }

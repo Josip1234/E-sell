@@ -1,6 +1,10 @@
 package sell.ad.delete;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +22,8 @@ import sell.articles.ArticleBdRepository;
 import sell.articles.ArticleJpa;
 import sell.articles.ArticleRepository;
 import sell.articles.Articles;
+import sell.files.Folder;
+import sell.files.Storage;
 import sell.files.StorageRepository;
 import sell.functions.GeneralFunctions;
 import sell.sellers.SellerRepository;
@@ -28,12 +34,8 @@ import sell.shipping.ShipDetailRepo;
 @AllArgsConstructor
 @RequestMapping("/e-sell/en/deletion/")
 public class AdvertDeletionController {
-    private final AdvertDetailsRepo advertDetailsRepo;
-    private final ArticleBdRepository articleBdRepository;
-    private final ArticleADRepository adRepository;
     private final ArticleRepository articleRepository;
     private final StorageRepository repository;
-    private final ShipDetailRepo detailRepo;
     private final SellerRepository repository2;
     
     
@@ -51,7 +53,17 @@ public class AdvertDeletionController {
 
     @PostMapping("deleteAdvert")
     public String deleteAdvert(@CookieValue(name = "article_num") String article_num,Model model) {
-    	advertDetailsRepo.deleteAll(article_num);
+    	//since we have defined cascade keys, we can delete just one for all objects. before we need to take out from database all of items from storage repository, we need urls to delete folders.
+    	List<Storage> storage=repository.findImagesByArticleNumber(article_num);
+    	List<String> mat=new ArrayList<String>();
+    	//return list of matched local paths as list
+        mat=GeneralFunctions.returnMatchedUrls(storage);
+       
+        //delete folders
+        Folder folder=new Folder();
+      GeneralFunctions.deleteFolderFromListOfUrls(folder, mat);
+      //delete all from articles where article number equals
+        articleRepository.deleteAll(article_num);
  
     	return "redirect:deleteAdvert";
     }
