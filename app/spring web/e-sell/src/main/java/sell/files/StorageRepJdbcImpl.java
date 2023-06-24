@@ -55,4 +55,10 @@ public class StorageRepJdbcImpl implements StorageRepository {
 		return jdbcTemplate.query("SELECT * FROM Storage_system where article_number=?", this::mapRowToStorage,article_number);
 	}
 
+	@Override
+	public List<Storage> findImagesByLoggedInUser(String nickname) {
+		
+		return jdbcTemplate.query("SELECT * FROM Storage_system where nickname=?", this::mapRowToStorage,nickname);
+	}
+
 }

@@ -1,7 +1,6 @@
 package sell.articles;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.core.io.Resource;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,15 +28,16 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.servlet.view.RedirectView;
 
 import lombok.extern.slf4j.Slf4j;
 import sell.ad.Ad_details;
 import sell.ad.AdvertDetailsRepo;
 import sell.articles.types.ArtTypJpa;
-import sell.articles.types.ArticleTypeJdbc;
 import sell.articles.types.ArticleTypes;
 import sell.articles.types.TypesRepository;
 import sell.files.Folder;
+import sell.files.ImageStorage;
 import sell.files.ImageStorageService;
 import sell.files.Storage;
 import sell.files.StorageFileNotFoundException;
@@ -74,6 +74,7 @@ public class ArticleController {
 	private final ShipDetailRepo repo;
 	private final AdvertDetailsRepo ad_details;
 	private final StorageRepository repository2;
+	
 	
 	//empty object for making new folder
 	Folder folder=new Folder();
@@ -301,8 +302,50 @@ public String handleFileUpload(@CookieValue(value="article_number", required = f
 @ExceptionHandler(StorageFileNotFoundException.class)
 public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
 	//log.info("success");
-	return ResponseEntity.notFound().build();
+
+	//return ResponseEntity.notFound().build();
+	HttpHeaders headers = new HttpHeaders();
+	headers.add("Location", "/addNewStorageFolder");    
+	return new ResponseEntity<String>(headers,HttpStatus.FOUND);
+	
 }
+
+@GetMapping("/addNewStorageFolder")
+public String getAddNewStorageFolder(Model model) {
+	//find logged in user
+	String user=GeneralFunctions.getUserEmail();
+	//find seller from sellers repository we need user's nickname
+	Sellers sellers = sellerRepository.findOne(user);
+	//if folder has not being made, then make a new folder. First we need list of articles.
+	List<Articles> articles=articleRepository.findAllByUsername(sellers);
+	model.addAttribute("articles",articles);
+	return "addNewStorageFolder";
+}
+
+@PostMapping("/addNewStorageFolder")
+public String addNewFolder(@ModelAttribute("ar_num") String art_num, RedirectAttributes attributes) {
+	//find all from storage we need article numbers for check if folder has been made
+	List<Storage> storages = repository2.findImagesByArticleNumber(art_num);
+	//find logged in user
+	String user=GeneralFunctions.getUserEmail();
+	//find seller from sellers repository we need user's nickname
+	Sellers sellers = sellerRepository.findOne(user);
+	if(storages.size()==0) {
+		   Folder folder = new Folder();
+		   Articles articles = new Articles();
+		   articles.setArticle_number(art_num);
+		   articles.setSeller(sellers.getNickname());
+		  System.out.println(folder.createFolder(articles));
+		  
+		   attributes.addFlashAttribute("message", "You successfully made new folder.");
+			return "redirect:addNewStorageFolder";
+	}else {
+		//nemoj praviti novi folder i vrati poruku da folder već postoji
+		  attributes.addFlashAttribute("message", "Folder already exists for this article. Please, choose different one.");
+			return "redirect:addNewStorageFolder";
+	}
+}
+
 
 @GetMapping("/update_article")
 public String update_article(Model model) {

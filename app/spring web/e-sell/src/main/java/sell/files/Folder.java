@@ -93,6 +93,7 @@ public class Folder implements CreateFolders {
 		   //create new folder object with default path. Get seller, concatinate article number. This is the path from
 		   //seller, which is logged in user, and article number, name of the folder to create.
 		   Folder folder2 = new Folder(getDefaultPath()+articles.getSeller()+"/",articles.getArticle_number().toString());
+		   //System.out.println(folder2);
 		   //System.out.println(folder2.getFolderName());
 		   //set true if directory is made.
 		   setDone(makeDirectory(folder2));

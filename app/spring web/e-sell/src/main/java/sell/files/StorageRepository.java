@@ -12,4 +12,5 @@ import java.util.List;
 public interface StorageRepository {
  Storage save(Storage storage);
  List<Storage> findImagesByArticleNumber(String article_number);
+ List<Storage> findImagesByLoggedInUser(String nickname);
 }
