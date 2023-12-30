@@ -9,66 +9,160 @@
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<link th:href="@{/styles/top_navigation.css}" rel="stylesheet" />
+<link th:href="@{/styles/rowpadding.css}" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script th:src="@{/script/profile_update_validation.js}"></script>
  </head>
  <body>
- 
+  <div class="topnav" th:object="${type}">
+  <a th:href="@{/e-sell/en/}" >Homepage</a>
+        <a th:href="@{/e-sell/en/registration}" >Registration</a>
+        <a th:href="@{/e-sell/en/articles/options}" class="text-decoration-none">Products</a>
+        <a th:href="@{/e-sell/en/seller/findAllArticles}" class="text-decoration-none">Find your articles</a>
+         <a th:href="@{/e-sell/en/seller/updatePass}">Update password</a>
+        
+<a th:href="@{/e-sell/en/contact}">Contact</a>
+
+     <a th:if="${type.type_of_user == 'Admin'}" th:href="@{/e-sell/en/seller/profile/test_data}">Test data</a>
+
+
+         
+          <a th:href="@{/e-sell/en/loggingout}">Logout</a>
+    </div>
   <div class="container">
-      <form method="post" th:action="@{/e-sell/en/seller/profile}" th:object="${profile}" class="row g-3 bg-dark text-white">
+
+    <!-- napraviti php skriptu koja će poziati preko servera putem angulara i pri tome će php skripta imati querije koje će provjeravati postoji li vrijednost u bazi i to dok se upisuje u polje. 
+    možda je potrebna validacija to će se preko angulara riješiti ako bude bilo potrebe možda je bolje da se i stavi da se disablea submit ako podaci nisu ispunjeni -->
+    
+    <div id="rw" class="row mt-5">
+      <div class="col mt-5">
+      <form method="post" th:action="@{/e-sell/en/seller/profile}" th:object="${profile}" class="row g-3" ng-app="formValidation" ng-controller="validateForm" name="updateForm" novalidate>
+            
+      
+ <div th:if="${#fields.hasErrors()}">
+        <span class="validationError text-danger">
+        Please correct the problems below and resubmit.
+        </span>
+      </div>
             <div class="col-md-6">
              <label for="fname" class="form-label">Enter first name:</label>
-                <input type="text" th:field="*{fname}" th:value="${profile.fname}" class="form-control">
-
+             <div class="input-group mb-3">
+                <input type="text" th:field="*{fname}"  class="form-control" ng-model="fname" required id="fname" placeholder="John, Jane...">
+                  <div class="input-group-append">
+    <span class="input-group-text" ng-bind="fnameLength()"></span>
+  </div>
+             </div>
+                <span class="validationError text-danger" th:if="${#fields.hasErrors('fname')}" 
+                th:errors="*{fname}">
+                First name error
+                </span>
+               
+                    <span class="validationError text-danger" ng-show="updateForm.fname.$dirty && updateForm.fname.$invalid">
+      <span ng-show="updateForm.fname.$error.required">First name is required.</span></span>
+                
             </div>
              <div class="col-md-6">
               <label for="lname" class="form-label">Enter last name:</label>
-                <input type="text" th:field="*{lname}" id="lname" th:value="${profile.lname}" class="form-control">
+              <div class="input-group mb-3">
+                <input type="text" th:field="*{lname}" id="lname" class="form-control" ng-model="lname" required placeholder="Doe...">
+                 <span class="input-group-text" ng-bind="lnameLength()"></span>
+              </div>
+                <span class="validationError text-danger" th:if="${#fields.hasErrors('lname')}" 
+                th:errors="*{lname}">
+                Last name error
+                </span>
+         <span class="validationError text-danger" ng-show="updateForm.lname.$dirty && updateForm.lname.$invalid">
+      <span ng-show="updateForm.lname.$error.required">Last name is required.</span></span>
+      
 
             </div>
                <div class="col-md-6">
                <label for="location" class="form-label">Enter location:</label>
-                <input type="text" th:field="*{location}" id="location" th:value="${profile.location}" class="form-control">
+               <div class="input-group mb-3">
+                <input type="text" th:field="*{location}" id="location" class="form-control" ng-model="location" required placeholder="London, 3600 Open Road... ">
+                  <div class="input-group-append">
+                         <span class="input-group-text" ng-bind="locationLength()"></span  >
+                  </div>
+               </div>
+   <span class="validationError text-danger" th:if="${#fields.hasErrors('location')}" 
+                th:errors="*{location}">
+                Location error
+                </span>
+                
+     <span class="validationError text-danger" ng-show="updateForm.location.$dirty && updateForm.location.$invalid">
+      <span ng-show="updateForm.location.$error.required">Location is required.</span></span>
+  
             </div>
+            
             
                <div class="col-md-6">
                <label for="nickname" class="form-label">Enter nickname:</label>
-                <input type="text" th:field="*{nickname}" id="nickname" th:value="${profile.nickname}" class="form-control">
+               <div class="input-group mb-3">
+                <input type="text" th:field="*{nickname}"  id="nickname" class="form-control" ng-model="nickname" required placeholder="John the Doe,Jane the doe...">
+                 <div class="input-group-append">
+    <span class="input-group-text" ng-bind="nicknameLength()"></span>
+  </div>
+               </div>
+  <span class="validationError text-danger" th:if="${#fields.hasErrors('nickname')}" 
+                th:errors="*{nickname}">
+                Nickname error
+                </span>
+   <span class="validationError text-danger" ng-show="updateForm.nickname.$dirty && updateForm.nickname.$invalid">
+      <span ng-show="updateForm.nickname.$error.required">Nickname is required.</span></span>
+      <span ng-show="alreradyExists" class="validationError text-danger">Nickname already exsts in database.</span >
             </div>
             
               <div class="col-md-6">
                <label for="contact" class="form-label">Enter contact information:</label>
-                <input type="text" th:field="*{contact}" id="contact" th:value="${profile.contact}" class="form-control">
+               <div class="input-group mb-3">
+                <input type="text" th:field="*{contact}" id="contact" class="form-control" ng-model="contact" required placeholder="Email: janedoe@email.com, Phone: +11111111...">
+                <div class="input-group-append">
+    <span class="input-group-text" ng-bind="contactLength()"></span>
+  </div>
+               </div>
+  <span class="validationError text-danger" th:if="${#fields.hasErrors('contact')}" 
+                th:errors="*{contact}">
+                Contact error
+                </span>
+     <span class="validationError text-danger" ng-show="updateForm.contact.$dirty && updateForm.contact.$invalid">
+      <span ng-show="updateForm.contact.$error.required">Contact is required.</span></span>
             </div>
             
              <div class="col-md-6">
                <label for="email" class="form-label">Enter email:</label>
-                <input type="email" th:field="*{email}" id="email" th:value="${profile.email}" class="form-control">
+               <div class="input-group mb-3">
+                <input type="email" th:field="*{email}" id="email" class="form-control" ng-model="email" required placeholder="janedoe@email.com,johndoe@gmail.com...">
+                 <div class="input-group-append">
+    <span class="input-group-text" ng-bind="emailLength()"></span>
+  </div>
+               </div>
+ <span class="validationError text-danger" th:if="${#fields.hasErrors('email')}" 
+                th:errors="*{email}">
+                Email error
+                </span>
+        <span class="validationError text-danger" ng-show="updateForm.email.$dirty && updateForm.email.$invalid">
+      <span ng-show="updateForm.email.$error.required">Email is required.</span></span>
+      <span ng-show="alreradyExistsEmail" class="validationError text-danger">Email already exsts in database.</span >
             </div>
-            
-            
-            
-            
-             <div class="col-md-6">
-               <label for="hash_password" class="form-label">Password:</label>
-                <input type="text" th:field="*{hash_password}" id="hash_password" th:value="${profile.hash_password}" class="form-control" disabled>
-                
-            </div>
-           
-             
-               
 
        
+       
             <div class="col-12">
-                <input type="submit" value="Submit" class="btn btn-primary">
+                <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="error||incomplete">
             </div>
-                <a href="" class="btn btn-primary">Forgotten password?</a>
         </form>
                 
-  
-                
-           
+ 
+      </div>
+    </div >
        
 </div>
  
- 
+ <footer id="foot2" class="text-center text-lg-start text-muted mt-5"> 
+ <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); color:black">
+    &copy; 2022 Copyright: Esell.com 
+  </div>
+</footer  >
  </body>
 </html>

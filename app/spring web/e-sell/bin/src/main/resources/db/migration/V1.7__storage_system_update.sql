@@ -1,0 +1,1 @@
+ALTER TABLE `storage_system` ADD `type` ENUM('Logo','Product_picture') NOT NULL AFTER `url`;

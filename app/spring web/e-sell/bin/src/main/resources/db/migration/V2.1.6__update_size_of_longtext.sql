@@ -1,0 +1,1 @@
+ALTER TABLE `article_advanced_details` CHANGE `description1` `description1` LONGTEXT CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL, CHANGE `description2` `description2` LONGTEXT CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL;

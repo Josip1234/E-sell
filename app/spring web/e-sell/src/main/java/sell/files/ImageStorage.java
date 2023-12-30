@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.stream.Stream;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
@@ -29,7 +28,6 @@ public class ImageStorage implements ImageStorageService {
 	
 	private final StorageRepository repository;
 	
-	@Autowired
 	public ImageStorage(StorageSettings settings, StorageRepository repository) {
 		this.repository=repository;
 		this.fileLocation = Paths.get(settings.getLocation());

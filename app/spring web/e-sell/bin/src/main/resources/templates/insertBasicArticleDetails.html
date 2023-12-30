@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org"
+ lang="en">
+ <head>
+ <title>E-sell homepage</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<link th:href="@{/styles/top_navigation.css}" rel="stylesheet" />
+<link th:href="@{/styles/rowpadding.css}" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script th:src="@{/script/basicdetails.js}"></script>
+ </head>
+ <body>
+ 
+  <div class="topnav">
+        <a th:href="@{/e-sell/en/}" >Homepage</a>
+        <a th:href="@{/e-sell/en/loggingout}">Logout</a>
+    </div>
+ 
+ <div class="container">
+ <div id="rw" class="row mt-4">
+ <div class="col mt-5">
+ 
+<!-- type is not needed it will have this type when processed get request -->
+    <form method="post" th:action="@{/e-sell/en/articles/insertBasicDetails}" th:object="${bdetails}" class="row g-3" ng-app="detailsFormValidation" ng-controller="validateDetailsForm" name="detailsForm" novalidate>
+ <div th:if="${#fields.hasErrors()}">
+        <span class="validationError text-danger">
+        Please correct the problems below and resubmit.
+        
+        </span>
+
+      </div>
+      <div class="col-md-6">
+         <label for="an" class="form-label">Article number</label>
+        <input type="text" id="an" value="Nothing" name="art_num" class="form-control" readonly>
+      </div>
+      <div class="col-md-6">
+      <label class="form-label">Choose product type:</label >
+      <select th:field="*{type_id}" class="form-control" ng-model="types_id" id="types_id"  required>
+         <option value="0">select type</option>
+        <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option >
+      </select>
+      
+       <span class="validationError text-danger" ng-show="detailsForm.types_id.$dirty && detailsForm.types_id.$invalid">
+
+    </span>
+             <span class="text-danger" id="show_error">Please select product type.</span>
+      </div>
+      
+      <div class="col-md-6">
+         <label for="price" class="form-label">Enter price of product:</label>
+           <div class="input-group mb-3">
+      <input type="text" th:field="*{price}" class="form-control" id="price" ng-model="price" required>
+                       <div class="input-group-append">
+    <span class="input-group-text" ng-bind="priceLn()"></span>
+  </div>
+               </div>
+      <span class="validationError text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price error</span>
+       </span>
+          <span class="validationError text-danger" ng-show="detailsForm.price.$dirty && detailsForm.price.$invalid">
+
+          </span>
+          
+           <span class="validationError text-danger" id="showPriceError">Price is required.</span >
+          
+      </div>
+      
+      <div class="col-md-6">
+         <label for="article_condition" class="form-label">Enter product condition:</label>
+            <div class="input-group mb-3">
+      <input type="text" th:field="*{article_condition}" class="form-control" ng-model="article_condition">
+                 <div class="input-group-append">
+    <span class="input-group-text" ng-bind="arconLn()"></span>
+  </div>
+      
+      </div>
+      </div>
+      
+      
+      
+      <div class="col-md-6">
+     <label class="form-label">Choose subtype:</label >
+     <select th:field="*{type_id2}" class="form-control" ng-model="types_id2" id="types_id2">
+         <option value="0">select subtype</option>
+        <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
+      </select>
+        <span class="validationError text-danger" ng-show="detailsForm.types_id2.$dirty && detailsForm.types_id2.$invalid">
+
+    </span>
+             <span class="text-danger" id="show_error2">Please select product subtype.</span>
+      </div>
+      
+      <div class="col-md-6">
+         <label class="form-label">Choose subtype:</label >
+       <select   th:field="*{type_id3}" class="form-control" ng-model="types_id3" id="types_id3">
+         <option value="0">select subtype</option>
+        <option th:each="types:${types}" th:value="${types.id}" th:text="${types.type}"></option  >
+      </select>
+            <span class="validationError text-danger" ng-show="detailsForm.types_id3.$dirty && detailsForm.types_id3.$invalid">
+
+    </span>
+     <span class="text-danger" id="show_error3">Please select product second subtype.</span>
+      </div>
+                 <span class="text-danger" id="show_error4">Selected values has the same values. Please select different types or subtypes.</span>
+       
+            <div class="col-12">
+                <input type="submit" value="Submit" class="btn btn-primary" ng-disabled="error" id="subbut">
+            </div>
+        </form>
+ </div >
+ </div >
+ </div>
+ 
+ <footer id="foot1" class="text-center text-lg-start text-muted mt-5"> 
+ <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05); color:black">
+    &copy; 2022 Copyright: Esell.com 
+  </div>
+</footer >
+
+ </body >
+</html>

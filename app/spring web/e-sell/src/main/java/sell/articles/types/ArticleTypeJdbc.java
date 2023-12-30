@@ -3,7 +3,6 @@ package sell.articles.types;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 /***
@@ -19,7 +18,6 @@ public class ArticleTypeJdbc implements TypesRepository {
 	
 	private JdbcTemplate jdbc;
 	
-	@Autowired
 	public ArticleTypeJdbc(JdbcTemplate jdbcTemplate) {
 		this.jdbc=jdbcTemplate;
 				}

@@ -3,13 +3,10 @@ package sell.sellers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.hibernate.annotations.common.util.impl.Log;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import lombok.NoArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import sell.functions.GeneralFunctions;
 
 @Repository
@@ -17,7 +14,6 @@ import sell.functions.GeneralFunctions;
 public class SellerDbRepo implements SellerRepository {
 
 	private JdbcTemplate jdbc;
-	@Autowired
 	public SellerDbRepo(JdbcTemplate jdbc) {
 		this.jdbc=jdbc;
 	}

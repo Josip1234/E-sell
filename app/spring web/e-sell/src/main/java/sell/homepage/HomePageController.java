@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
@@ -50,7 +49,6 @@ public class HomePageController {
 	private final ArticleRepository articleRepository;
 	private final ArticleJpa articleJpa;
 	
-	@Autowired
 	public HomePageController(SellerJpaRep repository, ArtTypJpa typesRepository, ArticleBdRepository articleBdRepository, ArticleRepository articleRepository,ArticleJpa articleJpa) {
 		this.repository=repository;
 		this.typesRepository=typesRepository;
@@ -85,7 +83,7 @@ public String home(Model model) {
 }
 
 @GetMapping("/e-sell/en/Search")
-public String searchArticles(@CookieValue(value="article_name", required = false) String article_name, Model model,@RequestParam(required = false) String keyword,
+public String searchArticles(@CookieValue(required = false) String article_name, Model model,@RequestParam(required = false) String keyword,
 	      @RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "5") int size) {
 
 	List<Articles> articles = new ArrayList<Articles>(); 

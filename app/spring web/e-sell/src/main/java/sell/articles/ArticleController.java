@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -238,7 +238,7 @@ public String getForm(Model model) {
  * @return form if there are erors, save details if form is correctly fullfilled by user.
  */
 @PostMapping("/insertBasicDetails")
-public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_basic_details bdetails,Errors errors ,@ModelAttribute("article_numb") String article_numb ) {
+public String addProductBasicDetails(@Valid @ModelAttribute Article_basic_details bdetails,Errors errors ,@ModelAttribute String article_numb ) {
     if(errors.hasErrors()) {
     	errors.getClass();
     	return "insertBasicArticleDetails";
@@ -254,7 +254,7 @@ public String addProductBasicDetails(@Valid @ModelAttribute("bdetails") Article_
  *we need to get coockies here see file:///C:/Users/Korisnik/Desktop/Tutorials/docs/spring%205/java%20-%20get%20cookie%20value%20by%20name%20in%20spring%20mvc%20-%20Stack%20Overflow.html
  */
 @GetMapping("/uploadFile")
-public String getUploadForm(@CookieValue(value="article_number", required = false) String article_number,Model model) throws IOException {
+public String getUploadForm(@CookieValue(required = false) String article_number,Model model) throws IOException {
 	String email=GeneralFunctions.getUserEmail();
 	log.info(article_number);
 	if(email!="anonymousUser") {
@@ -284,7 +284,7 @@ public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
 }
 
 @PostMapping("/uploadFile")
-public String handleFileUpload(@CookieValue(value="article_number", required = false) String article_number, @RequestParam("file") MultipartFile file,
+public String handleFileUpload(@CookieValue(required = false) String article_number, @RequestParam MultipartFile file,
 		RedirectAttributes redirectAttributes) {
 	 //we will save here everything from url article number nickname user folder article folder file name file extension local path url and type of file.
      //log.info("success");
@@ -389,7 +389,7 @@ public String getMorePriceFilters() {
 }
 
 @GetMapping("/productDetail")
-public String getProductDetails(@CookieValue(value="article_number", required = true) String article_number, Model model){
+public String getProductDetails(@CookieValue(required = true) String article_number, Model model){
 	Articles articles = articleRepository.findByArticleNumber(article_number);
 	Article_basic_details article_basic_details= articleBdRepository.selectByArticleNumber(article_number);
 	Article_advanced_details advanced_details = adRepository.findDetails(article_number);

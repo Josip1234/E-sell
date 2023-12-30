@@ -1,0 +1,1 @@
+ALTER TABLE `storage_system` ADD `relative_link` VARCHAR(255) NOT NULL AFTER `type`;
