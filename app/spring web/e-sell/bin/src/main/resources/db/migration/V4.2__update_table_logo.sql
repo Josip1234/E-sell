@@ -1,1 +1,0 @@
-ALTER TABLE `logo` ADD CONSTRAINT `art_num` FOREIGN KEY (`article_number`) REFERENCES `articles`(`article_number`) ON DELETE CASCADE ON UPDATE CASCADE;

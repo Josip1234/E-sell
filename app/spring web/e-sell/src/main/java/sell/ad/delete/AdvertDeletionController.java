@@ -42,7 +42,7 @@ public class AdvertDeletionController {
     }
 
     @PostMapping("deleteAdvert")
-    public String deleteAdvert(@CookieValue String article_num,Model model) {
+    public String deleteAdvert(@CookieValue(name = "article_num") String article_num,Model model) {
     	//since we have defined cascade keys, we can delete just one for all objects. before we need to take out from database all of items from storage repository, we need urls to delete folders.
     	List<Storage> storage=repository.findImagesByArticleNumber(article_num);
     	List<String> mat=new ArrayList<String>();

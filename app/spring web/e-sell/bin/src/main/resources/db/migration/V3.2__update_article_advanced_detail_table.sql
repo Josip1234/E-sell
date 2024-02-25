@@ -1,1 +1,0 @@
-ALTER TABLE `article_advanced_details` ADD `display_mode_desc1` ENUM('paragraph','table','unordered_list','ordered_list') CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL AFTER `description2`, ADD `display_mode_desc2` ENUM('paragraph','table','unordered_list','ordered_list') CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL AFTER `display_mode_desc1`;

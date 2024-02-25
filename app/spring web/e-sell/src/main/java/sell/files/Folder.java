@@ -79,13 +79,17 @@ public class Folder implements CreateFolders {
     */
 	public boolean createFolder(Object object) {
 		//if object is instance of seller create seller folder else create article folder.
-	   if(object instanceof Sellers sellers) {
+	   if(object instanceof Sellers) {
+		   //convert object to sellers
+		   Sellers sellers = (Sellers) object;
 		   //make new folder object. It contains default path. We are opening new file stream with it.
 		   Folder folder=new Folder(sellers.getNickname());
 		   //Call function for making a directory. Will return true if it successfull and boolean variable done will be set to true. If
 		   //it is not it will be set to false.
 		   setDone(makeDirectory(folder));
-	   }else if(object instanceof Articles articles) {
+	   }else if(object instanceof Articles) {
+		   //convert object to articles
+		   Articles articles = (Articles) object;
 		   //create new folder object with default path. Get seller, concatinate article number. This is the path from
 		   //seller, which is logged in user, and article number, name of the folder to create.
 		   Folder folder2 = new Folder(getDefaultPath()+articles.getSeller()+"/",articles.getArticle_number().toString());
@@ -93,7 +97,8 @@ public class Folder implements CreateFolders {
 		   //System.out.println(folder2.getFolderName());
 		   //set true if directory is made.
 		   setDone(makeDirectory(folder2));
-	   }else if(object instanceof Folder folder3) {
+	   }else if(object instanceof Folder) {
+	        Folder folder3=(Folder) object;
 	        setDone(makeDirectory(folder3));
 		   
 	   }else {

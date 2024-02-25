@@ -1,1 +1,0 @@
-ALTER TABLE `user_authorization` ADD CONSTRAINT `seller_user` FOREIGN KEY (`user_email`) REFERENCES `sellers`(`email`) ON DELETE CASCADE ON UPDATE CASCADE;

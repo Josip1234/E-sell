@@ -1,1 +1,0 @@
-ALTER TABLE `article_basic_details` ADD `converted_price` DOUBLE NOT NULL AFTER `price`;

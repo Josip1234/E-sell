@@ -1,6 +1,6 @@
 package sell.articles;
 
-import jakarta.validation.constraints.Null;
+import javax.validation.constraints.Null;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

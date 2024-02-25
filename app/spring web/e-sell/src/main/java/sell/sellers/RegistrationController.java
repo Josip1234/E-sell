@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -36,6 +36,7 @@ public class RegistrationController {
 	@Autowired
 	PasswordEncoder encoder;
 	
+	@Autowired
 	public RegistrationController(SellerRepository repository) {
 		this.repository=repository;
 	}
@@ -45,7 +46,7 @@ public String registration(Model model) {
 	return  "registration";
 }
 @PostMapping
-public String registerSeller(@Valid @ModelAttribute Sellers sellers, Errors errors) {
+public String registerSeller(@Valid @ModelAttribute("sellers") Sellers sellers, Errors errors) {
 	boolean doesExists=false;
 	sellers.setType_of_user(TypeOfUser.Seller.toString());
 	List<Sellers> findAll= (List<Sellers>) repository.findAll();

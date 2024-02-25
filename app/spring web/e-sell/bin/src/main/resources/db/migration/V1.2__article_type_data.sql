@@ -1,1 +1,0 @@
-INSERT INTO `article_types` (`id`, `type`) VALUES (1, "Nothing");

@@ -1,1 +1,0 @@
-ALTER TABLE `sellers` ADD `type_of_user` ENUM('Seller','Admin') CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL AFTER `hash_password`;

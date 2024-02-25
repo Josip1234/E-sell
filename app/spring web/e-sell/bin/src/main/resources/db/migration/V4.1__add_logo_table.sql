@@ -1,1 +1,0 @@
-CREATE TABLE `esell`.`logo` ( `id` INT NOT NULL AUTO_INCREMENT , `article_number` VARCHAR(20) CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL , `url` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_croatian_ci NOT NULL , PRIMARY KEY (`id`), INDEX (`article_number`)) ENGINE = InnoDB CHARSET=utf8 COLLATE utf8_croatian_ci;

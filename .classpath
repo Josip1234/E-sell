@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<classpath>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="src" path="app/spring web/e-sell/.mvn/wrapper"/>
-	<classpathentry kind="src" path="app/spring web/e-sell/src/main/java"/>
-	<classpathentry kind="src" path="app/spring web/e-sell/src/test/java"/>
-	<classpathentry kind="lib" path="app/spring web/e-sell/bin/.mvn/wrapper/maven-wrapper.jar"/>
-	<classpathentry kind="output" path="bin"/>
-</classpath>

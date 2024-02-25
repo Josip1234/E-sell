@@ -82,8 +82,8 @@ public class GeneralFunctions {
 		String email="";
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-		if (principal instanceof UserDetails details) {
-		  String username = details.getUsername();
+		if (principal instanceof UserDetails) {
+		  String username = ((UserDetails)principal).getUsername();
 		  email=username;
 		} else {
 		  String username = principal.toString();

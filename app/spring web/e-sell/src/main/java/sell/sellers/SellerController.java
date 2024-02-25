@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -74,7 +74,7 @@ public class SellerController {
 	}
 	
 	@PostMapping("/profile")
-	public String updateProfileData(@ModelAttribute Sellers sellers) {
+	public String updateProfileData(@ModelAttribute("sellers") Sellers sellers) {
 		//treba ažurirati folder od usera treba napraviti u folder klasi funkciju koja će foldere izažurirati zasad neka ostane ovako
 		//nakon ažuriranja u test datu ne spremi password o treba popraviti
 		sellerRepository.updateProfile(sellers);
