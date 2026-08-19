@@ -6,7 +6,23 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                         <!--if authenticated user has profile image and if url in database answers to url in public storage upload print user image otherwise print original logo -->
+                         @php
+
+
+                            $userPictureInUploadFolder=false;
+                            $images = File::allFiles('uploads');
+                           foreach ($images as $value) {
+                            $img_in_public_folder=str_replace("\\","/",$value);
+                            if($img_in_public_folder===Auth::user()->profilePicture) $userPictureInUploadFolder=true; break;
+                           }
+                         @endphp
+                         @if(!empty(Auth::user()->profilePicture) && (int)$userPictureInUploadFolder==1)
+                            <img src="{{ Auth::user()->profilePicture }}" alt="profile_picture" class="block h-9 w-auto fill-current text-gray-800">
+                      @else
+                    <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                     @endif
+
                     </a>
                 </div>
 
@@ -23,7 +39,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            <div>{{ Auth::user()->username }}</div>
 
                             <div class="ms-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
