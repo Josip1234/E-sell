@@ -53,7 +53,7 @@
             @endif
 
         </header>
-          <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-2">
+          <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-2 pb-2">
             {{ __('Recently added products') }}
         </h2>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
@@ -144,7 +144,7 @@
                 </div>
                 </div>
 
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-2">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-2 pb-2 mt-2">
             {{ __('Products with most views') }}
         </h2>
                 <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
