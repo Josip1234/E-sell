@@ -19,8 +19,8 @@ Route::middleware('auth')->group(function () {
 });
 */
 
-Route::prefix("/")->name('esell.homepage')->controller(HomepageController::class)->group(function(){
-    Route::get('/',[HomepageController::class,'homepage'])->name('homepage');
+Route::prefix("/")->name('esell.')->controller(HomepageController::class)->group(function(){
+    Route::get('/',[HomepageController::class,'homepage'])->name('home');
 });
 
 require __DIR__.'/auth.php';
